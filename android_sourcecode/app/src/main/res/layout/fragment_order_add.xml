@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_back_title_bar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <include layout="@layout/fragment_area_top" />
+
+
+            <include layout="@layout/line_ten" />
+
+            <include layout="@layout/pressure_edit_one" />
+
+            <include layout="@layout/line_ten" />
+
+            <include layout="@layout/pressure_edit_two" />
+
+            <include layout="@layout/line_ten" />
+
+            <include layout="@layout/pressure_edit_three" />
+
+            <include layout="@layout/line_ten" />
+
+            <include layout="@layout/pressure_edit_four" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF3" />
+
+
+
+
+            <Button
+                android:id="@+id/ok"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="32dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginRight="55dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/setbar_cp3"
+                android:text="确认"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

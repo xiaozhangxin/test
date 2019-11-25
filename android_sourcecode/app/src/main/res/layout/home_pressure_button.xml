@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llButton"
+    android:layout_height="40dp"
+    android:layout_marginBottom="18dp"
+    android:layout_marginLeft="48dp"
+    android:layout_marginRight="48dp"
+    android:layout_marginTop="16dp"
+    android:background="@drawable/setbar_cp5"
+    android:elevation="3dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+    <TextView
+        android:id="@+id/btnPressureNow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="正在试压(未完成)"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/ivWait"
+        android:layout_width="9dp"
+        android:layout_height="9dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/shape_red"
+        android:visibility="gone" />
+
+</merge>

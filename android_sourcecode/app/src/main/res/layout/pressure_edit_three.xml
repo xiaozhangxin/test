@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlThree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="施工信息"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="24dp"
+            android:gravity="end"
+            android:src="@drawable/detail_show"
+            android:textColor="@color/colorTextG6"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llChildThree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="厨"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvEOne"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:paddingRight="16dp"
+
+                android:text="一"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="卫"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvEOneAdd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:paddingRight="16dp"
+
+                android:text="一"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="阳台"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvETwoAdd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:paddingRight="16dp"
+                android:text="一"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="水管类型"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvETwo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:hint="请选择"
+                android:paddingRight="16dp"
+                android:text="绿色热水管"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="水管型号"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvWaterType"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:gravity="end|center_vertical"
+                android:hint="请输入水管型号"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="试压类型"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvEThree"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:hint="请选择"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="TDS值"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvTDS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:gravity="end|center_vertical"
+                android:hint="请输入TDS值"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="管道走向"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvEFour"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:hint="请选择"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="安装方式"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvEFive"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:hint="请选择"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="使用水管品牌(地暖专用)"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvESix"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:drawablePadding="5dp"
+                android:gravity="end|center_vertical"
+                android:hint="请输入水管品牌"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="使用线管品牌"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvESeven"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:hint="请选择"
+                android:text="保利"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="门套安装情况"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvEEight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:hint="请选择"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="朴勒防水"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvENine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:hint="请选择"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</merge>

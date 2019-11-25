@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <item
+        android:drawable="@drawable/pt_1"
+        android:duration="200" />
+    <!--<item-->
+        <!--android:drawable="@drawable/pt_2"-->
+        <!--android:duration="200" />-->
+<!--
+   <item
+        android:drawable="@drawable/pt_3"
+        android:duration="200" />
+-->
+ <!--   <item
+        android:drawable="@drawable/pt_4"
+        android:duration="200" />-->
+<!--    <item
+        android:drawable="@drawable/pt_5"
+        android:duration="200" />-->
+<!--    <item
+        android:drawable="@drawable/pt_6"
+        android:duration="200" />-->
+   <item
+        android:drawable="@drawable/pt_7"
+        android:duration="200" />
+<!--    <item
+        android:drawable="@drawable/pt_8"
+        android:duration="200" />-->
+<!--    <item
+        android:drawable="@drawable/pt_9"
+        android:duration="200" />-->
+<!--  <item
+        android:drawable="@drawable/pt_10"
+        android:duration="200" />-->
+<!--  <item
+        android:drawable="@drawable/pt_11"
+        android:duration="200" />-->
+    <!--<item-->
+        <!--android:drawable="@drawable/pt_12"-->
+        <!--android:duration="200" />-->
+    <item
+        android:drawable="@drawable/pt_13"
+        android:duration="200" />
+<!--    <item
+        android:drawable="@drawable/pt_14"
+        android:duration="200" />-->
+<!--   <item
+        android:drawable="@drawable/pt_15"
+        android:duration="200" />-->
+<!--    <item
+        android:drawable="@drawable/pt_16"
+        android:duration="200" />-->
+<!--    <item
+        android:drawable="@drawable/pt_17"
+        android:duration="200" />-->
+<!--    <item
+        android:drawable="@drawable/pt_18"
+        android:duration="200" />-->
+    <item
+        android:drawable="@drawable/pt_19"
+        android:duration="200" />
+<!--    <item
+        android:drawable="@drawable/pt_20"
+        android:duration="200" />-->
+<!--    <item
+        android:drawable="@drawable/pt_21"
+        android:duration="200" />-->
+<!--   <item
+        android:drawable="@drawable/pt_22"
+        android:duration="200" />-->
+<!--   <item
+        android:drawable="@drawable/pt_23"
+        android:duration="200" />-->
+<!--    <item
+        android:drawable="@drawable/pt_24"
+        android:duration="200" />-->
+    <item
+        android:drawable="@drawable/pt_25"
+        android:duration="200" />
+
+
+</animation-list>

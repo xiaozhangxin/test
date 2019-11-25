@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_back_title_bar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="试压编号"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/et_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入试压编号"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="12dp"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="2dp"
+                    android:paddingLeft="1dp"
+                    android:text="所属经销商"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvDepartment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/right"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择部门"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="2dp"
+                    android:paddingLeft="1dp"
+                    android:text="用户姓名"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/tv_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入用户姓名"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="2dp"
+                    android:paddingLeft="1dp"
+                    android:text="性别"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/right"
+                    android:gravity="end|center_vertical"
+                    android:text="先生"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="2dp"
+                    android:text="用户电话"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/tv_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入用户电话"
+                    android:inputType="numberDecimal"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF3" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="2dp"
+                    android:paddingLeft="1dp"
+                    android:text="地址"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_four"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/right"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择地址"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="2dp"
+                    android:text="详细地址"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/tv_five"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入详细地址"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="2dp"
+                    android:text="邮编"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/tv_six"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入邮编"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF3" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="2dp"
+                    android:text="反馈人姓名"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/tvQOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入反馈人姓名"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="2dp"
+                    android:text="反馈人电话"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/tvQTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入反馈人电话"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="12dp"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="2dp"
+                    android:paddingLeft="1dp"
+                    android:text="产品型号"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvWOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/right"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择产品型号"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF3" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/wTittle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="7dp"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="2dp"
+                    android:text="产品编号"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/tvWTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@+id/tvWTwoImg"
+                    android:layout_toRightOf="@+id/wTittle"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入产品编号"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/tvWTwoImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/saoma" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF3" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="12dp"
+                android:drawableLeft="@drawable/must_img"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="问题描述"
+                android:textColor="@color/colorTextG6"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvWThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入问题描述"
+                android:paddingBottom="32dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/colorTextG3" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:text="拍摄问题视频"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/takeVideo"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="11dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/video" />
+
+                <ImageView
+                    android:id="@+id/delete"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="88dp"
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/delete"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+
+            <include layout="@layout/button_ok"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

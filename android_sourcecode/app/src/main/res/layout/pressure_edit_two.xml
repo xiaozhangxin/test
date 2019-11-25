@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="人员信息"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="24dp"
+            android:gravity="end"
+            android:src="@drawable/detail_show"
+            android:textColor="@color/colorTextG6"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llChildTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="经销商名称"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/tvWOne"
+                android:layout_width="match_parent"
+                android:completionThreshold="1"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入经销商名称"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />   <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="经销商电话"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/tvWAddOne"
+                android:layout_width="match_parent"
+                android:completionThreshold="1"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入经销商电话"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="装修公司名称"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:completionThreshold="1"
+                android:id="@+id/tvWTwo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入装修公司名称"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="装修公司联系人电话"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/tvWThree"
+                android:completionThreshold="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入装修公司联系人电话"
+                android:inputType="number"
+                android:maxLength="11"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="项目经理姓名"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/tvWFour"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入项目经理姓名"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="项目经理电话"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/tvWFive"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:inputType="number"
+                android:maxLength="11"
+                android:gravity="end|center_vertical"
+                android:hint="请输入项目经理电话"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="项目经理积分"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvWSix"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入项目经理积分"
+                android:paddingRight="16dp"
+                android:inputType="number"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="项目经理累计积分"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvWSeven"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入项目经理累计积分"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="水工姓名"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:completionThreshold="1"
+                android:id="@+id/tvWEight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入水工姓名"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="水工电话"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:completionThreshold="1"
+                android:id="@+id/tvWNine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入水工电话"
+                android:inputType="number"
+                android:maxLength="11"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="水工积分"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvWTen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入水工积分"
+                android:inputType="number"
+                android:maxLength="6"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:visibility="gone"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="水工累计积分"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvWEleven"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入水工累计积分"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="积分卡卡号"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvWTwelve"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入积分卡卡号"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+</merge>

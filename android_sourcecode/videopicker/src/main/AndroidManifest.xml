@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.uniquext.videopicker">
+
+    <application>
+        <activity
+            android:name=".VideoLibraryActivity"
+            android:configChanges="orientation"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="uniquext.intent.action.COMMON_VIDEO_LIB" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

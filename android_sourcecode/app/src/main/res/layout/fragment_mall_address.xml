@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorActivityBackground"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/top_back_title_bar_new" />
+
+    <com.jude.easyrecyclerview.EasyRecyclerView
+        android:id="@+id/recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_empty="@layout/layout_empty"
+        android:layout_above="@+id/tvAddAddress"
+        android:layout_below="@+id/include" />
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tvAddAddress"
+        android:layout_below="@+id/include"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"
+        android:drawableTop="@drawable/zwdz"
+        android:gravity="center_horizontal"
+        android:text="当前暂无收获地址"
+        android:visibility="gone"
+        android:textColor="@color/colorTextG6"
+        android:textSize="17sp" />
+
+    <Button
+        android:id="@+id/tvAddAddress"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimaryNew"
+        android:text="新增收货地址"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+</RelativeLayout>

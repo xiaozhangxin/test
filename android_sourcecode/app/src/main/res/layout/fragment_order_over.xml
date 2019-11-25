@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_back_title_bar_new" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:drawableTop="@drawable/pay_success"
+        android:text="订单支付成功"
+        android:drawablePadding="10dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorTextG3"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvOrder"
+        android:layout_width="120dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="查看订单"
+        android:background="@drawable/setbar_mall"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tvMall"
+        android:layout_width="120dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
+        android:text="返回积分商城"
+        android:gravity="center"
+        android:background="@drawable/setbar_g15"
+        android:textColor="@color/colorTextG3"
+        android:textSize="15sp" />
+
+
+</LinearLayout>

@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/basic_information"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="24dp"
+            android:gravity="end"
+            android:src="@drawable/detail_show"
+            android:textColor="@color/colorTextG6"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llChildOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="所属区域"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvAddDepartment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:hint="请选择"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="试压地址"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvQOne"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入试压地址"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="预约时间"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvHopeTIme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:hint="请选择"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="小区名称"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvQTwo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入小区名称"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="小区门牌号"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvQOneAdd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入小区门牌号"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="地址分类"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvQThree"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:hint="请选择"
+                android:paddingRight="16dp"
+                android:text="市区"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="服务类型"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvQFour"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:hint="请选择"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="现场联系人"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvQFive"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入现场联系人"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="现场联系人电话"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvQSix"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:inputType="number"
+                android:maxLength="11"
+                android:gravity="end|center_vertical"
+                android:hint="请输入现场联系人电话"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="现场联系人身份"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvQSeven"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:hint="请选择"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="业主姓名"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvQEight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入业主姓名"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="业主电话"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/tvQNine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="end|center_vertical"
+                android:hint="请输入业主电话"
+                android:inputType="number"
+                android:maxLength="11"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/labQTen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="2dp"
+                android:paddingLeft="1dp"
+                android:text="业主是否在场"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvQTen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/right"
+                android:gravity="end|center_vertical"
+                android:hint="请选择"
+                android:paddingRight="16dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</merge>

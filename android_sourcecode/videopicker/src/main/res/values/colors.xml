@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#19A864</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- 波纹颜色 -->
+    <color name="colorControlHighlight">#1f000000</color>
+    <!-- 默认背景色 -->
+    <color name="backgroundDefault">#f8f8f8</color>
+    <!-- 用于页面分割线 -->
+    <color name="lineDividing">#DCDCE0</color>
+
+</resources>

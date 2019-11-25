@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:checkedButton="@+id/rbHome"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:text="@string/tab_home"
+            android:textColor="@color/tab_text_color"
+            android:textSize="@dimen/bottom_menu_text_size" />
+
+        <RadioButton
+            android:id="@+id/rbSQ"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:text="@string/tab_goods"
+            android:textColor="@color/tab_text_color"
+            android:textSize="@dimen/bottom_menu_text_size" />
+
+
+        <RadioButton
+            android:id="@+id/rbDD"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:text="@string/tab_car"
+            android:textColor="@color/tab_text_color"
+            android:textSize="@dimen/bottom_menu_text_size" />
+
+        <RadioButton
+            android:id="@+id/rbWD"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="4dp"
+            android:gravity="center"
+            android:text="@string/tab_mine"
+            android:textColor="@color/tab_text_color"
+            android:textSize="@dimen/bottom_menu_text_size" />
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0.1dp"
+        android:layout_alignTop="@+id/rg"
+        android:background="@color/bg_lien"
+        app:layout_constraintBottom_toTopOf="@+id/rg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

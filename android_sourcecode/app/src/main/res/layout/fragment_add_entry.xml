@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mvp.fragment.people.CloseActivity">
+
+    <include layout="@layout/top_back_title_bar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <include layout="@layout/fragment_top_two" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="3dp"
+                    android:paddingLeft="1dp"
+                    android:text="经销商名称"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@drawable/right"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF8" />
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="42dp"-->
+<!--                android:layout_marginLeft="7dp"-->
+<!--                android:layout_marginRight="16dp"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:drawableLeft="@drawable/must_img_not"-->
+<!--                    android:drawablePadding="3dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:text="联系人"-->
+<!--                    android:textColor="@color/colorTextG3"-->
+<!--                    android:textSize="13sp" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/tvTwo"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginLeft="11dp"-->
+<!--                    android:background="@null"-->
+<!--                    android:gravity="end|center_vertical"-->
+<!--                    android:hint="请输入内容"-->
+<!--                    android:textColor="@color/colorTextG3"-->
+<!--                    android:textSize="13sp" />-->
+<!--            </LinearLayout>-->
+<!--            -->
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:background="@color/colorTextF8" />-->
+<!--            -->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="42dp"-->
+<!--                android:layout_marginLeft="7dp"-->
+<!--                android:layout_marginRight="16dp"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:drawableLeft="@drawable/must_img_not"-->
+<!--                    android:drawablePadding="3dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:text="联系人电话"-->
+<!--                    android:textColor="@color/colorTextG3"-->
+<!--                    android:textSize="13sp" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/tvThree"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginLeft="11dp"-->
+<!--                    android:background="@null"-->
+<!--                    android:gravity="end|center_vertical"-->
+<!--                    android:hint="请输入内容"-->
+<!--                    android:textColor="@color/colorTextG3"-->
+<!--                    android:textSize="13sp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:background="@color/colorTextF8" />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="42dp"-->
+<!--                android:layout_marginLeft="7dp"-->
+<!--                android:layout_marginRight="16dp"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:drawableLeft="@drawable/must_img_not"-->
+<!--                    android:drawablePadding="3dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:inputType="number"-->
+<!--                    android:text="试压人员配置情况(人数)"-->
+<!--                    android:textColor="@color/colorTextG3"-->
+<!--                    android:textSize="13sp" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/tvFour"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginLeft="11dp"-->
+<!--                    android:background="@null"-->
+<!--                    android:inputType="number"-->
+<!--                    android:gravity="end|center_vertical"-->
+<!--                    android:hint="请输入内容"-->
+<!--                    android:textColor="@color/colorTextG3"-->
+<!--                    android:textSize="13sp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:background="@color/colorTextF8" />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="42dp"-->
+<!--                android:layout_marginLeft="7dp"-->
+<!--                android:layout_marginRight="16dp"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:drawableLeft="@drawable/must_img_not"-->
+<!--                    android:drawablePadding="3dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:text="试压量(平均每月用户数)"-->
+<!--                    android:textColor="@color/colorTextG3"-->
+<!--                    android:textSize="13sp" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/tvFive"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginLeft="11dp"-->
+<!--                    android:background="@null"-->
+<!--                    android:gravity="end|center_vertical"-->
+<!--                    android:hint="请输入内容"-->
+<!--                    android:inputType="number"-->
+<!--                    android:textColor="@color/colorTextG3"-->
+<!--                    android:textSize="13sp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:background="@color/colorTextF8" />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="42dp"-->
+<!--                android:layout_marginLeft="7dp"-->
+<!--                android:layout_marginRight="16dp"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:drawableLeft="@drawable/must_img_not"-->
+<!--                    android:drawablePadding="3dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:text="目前拍照工具"-->
+<!--                    android:textColor="@color/colorTextG3"-->
+<!--                    android:textSize="13sp" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/tvSix"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginLeft="11dp"-->
+<!--                    android:background="@null"-->
+<!--                    android:gravity="end|center_vertical"-->
+<!--                    android:hint="请输入内容"-->
+<!--                    android:textColor="@color/colorTextG3"-->
+<!--                    android:textSize="13sp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:background="@color/colorTextF8" />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="42dp"-->
+<!--                android:layout_marginLeft="7dp"-->
+<!--                android:layout_marginRight="16dp"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:drawableLeft="@drawable/must_img_not"-->
+<!--                    android:drawablePadding="3dp"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:text="交通工具"-->
+<!--                    android:textColor="@color/colorTextG3"-->
+<!--                    android:textSize="13sp" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/tvSeven"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginLeft="11dp"-->
+<!--                    android:background="@null"-->
+<!--                    android:gravity="end|center_vertical"-->
+<!--                    android:hint="请输入内容"-->
+<!--                    android:textColor="@color/colorTextG3"-->
+<!--                    android:textSize="13sp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="1dp"-->
+<!--                android:background="@color/colorTextF8" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/oneRecycleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF8" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/twoRecycleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <include layout="@layout/item_choose_check" />
+
+            <include layout="@layout/button_ok" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

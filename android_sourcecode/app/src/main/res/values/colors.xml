@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#64BAF5</color>
+    <color name="colorPrimaryDark">#64BAF5</color>
+    <color name="colorAccent">#64BAF5</color>
+    <color name="colorPrimaryNew">#33aaff</color>
+
+    <color name="top_bar_bg">#3AC2A6</color>
+    <color name="bar_bg">#CBBFA4</color>
+    <color name="mask_color">#88888888</color>
+    <color name="tab_bg_color">#00888888</color>
+    <color name="selected_color">#BD151D</color>
+    <color name="lien_color">#D2C4A7</color>
+    <color name="goods_yuan_money">#5F411F</color>
+    <color name="bottn_lan">#CBC1A8</color>
+    <color name="yq_text">#FFDB6E</color>
+    <color name="jrgwc_text">#EAD5B5</color>
+
+
+    <color name="tm_tab">#99966B37</color>
+    <color name="translate">#00000000</color>
+
+    <color name="tm_tab_tm">#E5966B37</color>
+
+
+    <color name="top_bar_yq">#AF8A65</color>
+    <color name="top_bar_yq_bg">#6E5C45</color>
+
+    <color name="tab_text_color_a">#666666</color>
+    <color name="tab_text_color_normal">#999999</color>
+    <color name="tab_text_color_selected">#33aaff</color>
+    <color name="progress_color">#FB5553</color>
+    <color name="bg_red_color">#FB5553</color>
+    <color name="bg_red_color_pressed">#FFEEF0</color>
+    <color name="input">#00ffffff</color>
+    <color name="room_table_text_color">#808080</color>
+    <color name="room_lable_title_color">#333333</color>
+    <color name="room_lable_color">#999999</color>
+    <color name="room_lable_content_color">#666666</color>
+
+    <color name="progressBarColor">#AA33aaff</color>
+
+    <color name="text_error_color">#7f000000</color>
+
+    <color name="third_party_text_color">#5F411F</color>
+
+    <color name="default_bg_color">#DACAA5</color>
+
+    <color name="default2_bg_color">#F1F5F6</color>
+
+
+    <color name="seach_home_bg">#9cFFFFFF</color>
+    <color name="room_edit_bg">#f8f8f8</color>
+    <color name="title_bg_color">#fafafa</color>
+    <color name="mine_follower_bg">#1f000000</color>
+    <color name="line_bg">#AF8A65</color>
+
+
+    <color name="bs">#ffededed</color>
+
+    <color name="tx_l">#333333</color>
+    <color name="tx_a">#AF8A65</color>
+
+    <color name="grid_state_bg">#1A141011</color>
+
+    <color name="grid_state">#96141011</color>
+    <color name="bg_tm">#00ffffff</color>
+    <color name="bg_lien">#EAEAEA</color>
+    <color name="bg_bbs_details">#F0F3F4</color>
+    <color name="lien_ccc">#cccccc</color>
+    <color name="goods_price">#B42F4F</color>
+
+    <color name="search_top">#F1F3F5</color>
+
+
+    <color name="colorTransparentBlack">#44777777</color>
+
+    <color name="c1">#0ACCAC</color>
+    <color name="c2">#222b48</color>
+    <color name="c3">#ff333333</color>
+    <color name="c4">#F5F5F5</color>
+    <color name="c5">#D8D8D8</color>
+    <color name="c6">#FFFFFF</color>
+    <color name="c7">#000000</color>
+    <color name="c8">#FFFFFF</color>
+    <color name="c9">#777777</color>
+
+    <color name="colorSendName">#9966cc</color>
+    <color name="colorSendName1">#F12B5B</color>
+    <color name="colorSendName2">#2B7DE2</color>
+    <color name="colorSendName3">#006599</color>
+    <color name="colorSendName4">#FF7906</color>
+    <color name="colorSendName5">#1FBCB6</color>
+    <color name="colorSendName6">#FFAE1F</color>
+    <color name="colorSendName7">#FF437D</color>
+    <!--蒙版-->
+
+
+    <!--文字白色-->
+    <color name="colorTextWhite">#FFFFFF</color>
+    <!--文字G1-->
+    <color name="colorTextGC">#CCCCCC</color>
+    <!--文字G2-->
+    <color name="colorTextG9">#999999</color>
+    <!--文字G3-->
+    <color name="colorTextG3">#333333</color><!--文字G6-->
+    <color name="colorTextG6">#666666</color>
+    <!--文字G4-->
+    <color name="colorTextG4">#444444</color>
+    <color name="colorTextF3">#F3F3F3</color>
+    <!--文字black-->
+    <color name="colorTextBlack">#000000</color>
+
+    <color name="color_bottom_bar_background">#222B48</color>
+    <color name="transparent">#00000000</color>
+    <color name="colorBlue">#440accac</color>
+    <color name="colorActivityBackground">#F3F3F3</color>
+    <color name="colorTransparentGray">#88ffffff</color>
+    <color name="colorDarkTransparentGray">#a4000000</color>
+    <color name="colorVeryDarkTransparentGray">#d4000000</color>
+    <color name="colorLightTransparentGray">#22ffffff</color>
+    <color name="color_input_dialog_background">#b4ffffff</color>
+
+    <color name="colorDanmuMsg">#30e7d5</color>
+
+    <color name="window_background">#eaeaea</color>
+    <color name="white_80">#FAFAFA</color>
+    <color name="gray_20">#B3B3B3</color>
+
+
+    <color name="nightColorPrimary">#555555</color>
+    <color name="nightColorPrimaryDark">#424242</color>
+    <color name="nightColorPrimaryLight">#757575</color>
+    <color name="pure_white">#FFFFFF</color>
+    <color name="dayModeBackgroundColor">#FCECDF</color>
+    <color name="dayModeTextColor">#424242</color>
+    <color name="nightModeBackgroundColor">#424242</color>
+    <color name="nightModeTextColor">#E0E0E0</color>
+    <color name="colorPrimaryLight">#90CAF9</color>
+    <color name="colorPrimaryLightest">#E3F2FD</color>
+
+    <color name="drawer_item_bg_p">#e8e8e8</color>
+    <color name="drawer_item_bg_n">#fffff9</color>
+    <color name="colorTextF8">#F5F5F5</color>
+
+    <color name="audit_one">#FBAA3C</color>
+    <color name="audit_two">#4da9eb</color>
+    <color name="audit_three">#ff1111</color>
+    <color name="img_color">#FF5353</color>
+    <color name="bg_img">#77000000</color>
+    <color name="mall_color">#F9A534</color>
+</resources>

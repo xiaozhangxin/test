@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/setbar_shadow_bottom"
+    android:id="@+id/llAccept"
+    android:layout_alignParentBottom="true"
+    android:layout_height="50dp"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:visibility="gone">
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/tvRefuse"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:text="拒绝"
+        android:textColor="#ff1111"
+        android:textSize="14sp" />
+
+    <TextView
+        android:background="@color/colorActivityBackground"
+        android:layout_height="match_parent"
+        android:layout_width="1dp" />
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/tvAccept"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:text="同意"
+        android:textColor="@color/colorPrimaryNew"
+        android:textSize="14sp" />
+</LinearLayout>

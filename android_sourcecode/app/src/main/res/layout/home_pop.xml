@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <ViewFlipper
+        android:id="@+id/vfPop"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="14dp"
+        android:flipInterval="3000"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/setbar_home_top"
+        android:inAnimation="@anim/anim_come_in"
+        android:outAnimation="@anim/anim_get_out" />
+
+    <ImageView
+        android:id="@+id/popClose"
+        android:padding="10dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pop_close" />
+
+</RelativeLayout>
