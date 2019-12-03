@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="14dp"
+    android:background="@color/colorActivityBackground"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/tvNum"
+            android:text="褐色接头卡视角的哈市阿斯顿哈吉\n斯口红大空间很大卡上的"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/tvUnit"
+            android:text="1600"
+            android:textColor="@color/colorTextG3"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:text=""
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="32dp"
+            android:layout_toLeftOf="@+id/tvSend"
+            android:text="送货数量"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:gravity="end"
+            android:hint="暂无数据"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="32dp"
+            android:layout_toLeftOf="@+id/tvDeport"
+            android:text="收货仓库"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvDeport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:gravity="end"
+            android:hint="请选择"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp" />
+    </RelativeLayout>    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="32dp"
+            android:layout_toLeftOf="@+id/tvWhManager"
+            android:text="仓管员"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvWhManager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:gravity="end"
+            android:hint="请选择"
+            android:textColor="@color/colorPrimary"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="32dp"
+            android:layout_toLeftOf="@+id/tvMfc"
+            android:text="厂牌"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvMfc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:gravity="end"
+            android:hint="暂无厂牌"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlActual"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="32dp"
+            android:layout_toLeftOf="@+id/tvActual"
+            android:text="实收数量"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/tvActual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:enabled="false"
+            android:gravity="end"
+            android:hint="输扫码"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlPass"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="32dp"
+            android:layout_toLeftOf="@+id/tvPass"
+            android:text="合格数量"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/tvPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:gravity="end"
+            android:hint="输入数量"
+            android:inputType="number"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlNotPass"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="32dp"
+            android:layout_toLeftOf="@+id/tvNotPass"
+            android:text="不合格数量"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/tvNotPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:gravity="end"
+            android:inputType="number"
+            android:hint="输入数量"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+</LinearLayout>

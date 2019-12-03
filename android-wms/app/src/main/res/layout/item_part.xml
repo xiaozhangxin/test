@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/white_80"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/iv_img" />
+
+        <TextView
+            android:id="@+id/tvTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_toLeftOf="@+id/tvTime"
+            android:layout_toRightOf="@+id/ivImg"
+            android:text="销售管理"
+            android:textColor="@color/colorTextG3"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTittle"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/tvTime"
+            android:layout_toRightOf="@+id/ivImg"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="请点击进入查看待办击进入查看待办事项"
+            android:textColor="@color/colorTextG6"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:text="12:14"
+            android:textColor="@color/colorTextG6"
+            android:textSize="11sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorActivityBackground" />
+</LinearLayout>
+

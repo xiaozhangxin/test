@@ -1,0 +1,106 @@
+<resources>
+    <string name="app_name">WMS仓储管理系统</string>
+
+    <string name="press_again_to_exit">再按一次退出</string>
+
+    <string name="tab_home">首页</string>
+    <string name="tab_goods">料品</string>
+    <string name="tab_car">消息</string>
+    <string name="tab_mine">我的</string>
+
+    <!-- 搜索 -->
+
+    <!-- permission check-->
+    <string name="network_unavailable">没有网络哦</string>
+
+    <string name="permission_camera">App扫码需要用到拍摄权限</string>
+    <string name="tips_scan_code">将二维码/条形码放入框内，即可自动扫描</string>
+    <string name="bar_and_qr">二维码/条码</string>
+
+
+    <string name="input_old_pwd">请输入旧密码</string>
+    <string name="new_twopwd_defrevent">两次新密码不一致</string>
+    <string name="input_pwd">请输入密码</string>
+    <string name="input_pwd_two">请确认密码</string>
+    <string name="pwd_length_no">密码长度不够</string>
+
+    <string name="ok">确定</string>
+    <string name="quit">是否退出登录？</string>
+    <string name="sure">确定</string>
+    <string name="cancel">取消</string>
+    <string name="update_loading">正在下载更新</string>
+    <string name="update_fail">下载新版本失败</string>
+    <string name="permission_ask_fail">没有存储权限,下载失败</string>
+    <string name="audit_pass">是否确认审核通过？</string>
+    <string name="point">提示</string>
+    <string name="auditing">审核中</string>
+    <string name="audit_already">已审核</string>
+    <string name="mix_send_detail">杂发单详情</string>
+    <string name="please_scan">请先扫码</string>
+    <string name="scan_actual_different">扫码数量与实收数量不一致</string>
+    <string name="please_choose_deport">请选择仓库</string>
+    <string name="actual_more_send">实收数量为0,请扫码</string>
+    <string name="check_actual_different">质检数量与实收数量不一致</string>
+    <string name="close_sure">退出后不会保存已经输入的数据，是否确认退出此界面？</string>
+    <string name="scan_close_sure">可能有未保存的扫码记录，是否确认退出此界面？</string>
+    <string name="all_function">全部功能</string>
+    <string name="no_device_information">暂无设备信息</string>
+    <string name="in_buy">采购入库</string>
+    <string name="sale_return">销售退货</string>
+    <string name="complete">完工申报</string>
+    <string name="produce_return">生产退料</string>
+    <string name="finish">成品入库</string>
+    <string name="buy_return">采购退货</string>
+    <string name="sale_out">销售出库</string>
+    <string name="produce_receive">生产领料</string>
+    <string name="supplier">供应商</string>
+    <string name="depot_information">仓库信息</string>
+    <string name="devide_information">设备信息</string>
+    <string name="customer_manager">客户管理</string>
+    <string name="depot_in">入库</string>
+    <string name="depot_out">出库</string>
+    <string name="base">基础</string>
+    <string name="check">盘点</string>
+    <string name="transfer">调拨</string>
+    <string name="depot_search">库存查询</string>
+    <string name="transfer_in">调拨入库</string>
+    <string name="transfer_out">调拨出库</string>
+    <string name="depot_manager">库管</string>
+    <string name="flow_in_and_out">出入库流水</string>
+    <string name="count">统计</string>
+    <string name="choose_out_depot">选择调出仓库</string>
+    <string name="choose_in_depot">选择调入仓库</string>
+    <string name="no_function">暂无功能</string>
+    <string name="choose_operator">选择操作工</string>
+    <string name="choose_group">选择班组</string>
+    <string name="choose_mold_num">选择模具编号</string>
+    <string name="choose_goods">选择商品</string>
+    <string name="already_choose">已选择：</string>
+    <string name="please_chooose_goods">请选择商品</string>
+    <string name="choose_zero">已选择：0</string>
+    <string name="produse_order">生产订单</string>
+    <string name="produce_order_list">生产订单列表</string>
+    <string name="sync_success">数据同步成功，请稍后刷新查看！</string>
+    <string name="agree_out">是否同意出库？</string>
+    <string name="unprocessed">未处理</string>
+    <string name="already_stocked">已配货</string>
+    <string name="out_of_stock">已出库</string>
+    <string name="sure_invalid_order">是否确认作废此单据？</string>
+    <string name="sure_distribution">是否确认配货？</string>
+    <string name="production_picking_details">生产领料详情</string>
+    <string name="no_remark">暂无备注</string>
+    <string name="please_scan_three">请扫码</string>
+    <string name="customer_Information">客户信息</string>
+    <string name="warehouse_information">仓库信息</string>
+    <string name="Flo_into_and_out">出入库流水</string>
+    <string name="no_type">暂无类型</string>
+    <string name="select_type">选择出入库类型</string>
+    <string name="download_link">http://www.pgyer.com/3zqW</string>
+    <string name="please_choose_operator">请选择仓管员</string>
+    <string name="out_plan">出货计划</string>
+    <string name="purchase_return_application">采购退货申请</string>
+    <string name="produce_order">生产订单</string>
+    <string name="transfer_apply">调拨申请</string>
+    <string name="buy_apply">采购申请</string>
+
+</resources>

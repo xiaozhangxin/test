@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayout3"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/white">
+
+
+    <ImageView
+        android:id="@+id/ivOne"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/state_h"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivTwo"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:src="@drawable/state_y"
+        app:layout_constraintEnd_toStartOf="@+id/ivThree"
+        app:layout_constraintStart_toEndOf="@+id/ivOne"
+        app:layout_constraintTop_toTopOf="@+id/ivOne" />
+
+    <ImageView
+        android:id="@+id/ivThree"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:src="@drawable/state_y"
+        app:layout_constraintEnd_toStartOf="@+id/ivFour"
+        app:layout_constraintLeft_toRightOf="@+id/ivTwo"
+        app:layout_constraintTop_toTopOf="@+id/ivOne" />
+
+    <ImageView
+        android:id="@+id/ivFour"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginRight="32dp"
+        android:src="@drawable/state_y"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivOne" />
+
+
+    <View
+        android:id="@+id/lineOne"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:background="@color/colorActivityBackground"
+        app:layout_constraintBottom_toBottomOf="@+id/ivOne"
+        app:layout_constraintLeft_toRightOf="@+id/ivOne"
+        app:layout_constraintRight_toLeftOf="@+id/ivTwo"
+        app:layout_constraintTop_toTopOf="@+id/ivOne" />
+
+    <View
+        android:id="@+id/lineTwo"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:background="@color/colorActivityBackground"
+        app:layout_constraintBottom_toBottomOf="@+id/ivOne"
+        app:layout_constraintLeft_toRightOf="@+id/ivTwo"
+        app:layout_constraintRight_toLeftOf="@+id/ivThree"
+        app:layout_constraintTop_toTopOf="@+id/ivOne" />
+
+    <View
+        android:id="@+id/lineThree"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:background="@color/colorActivityBackground"
+        app:layout_constraintBottom_toBottomOf="@+id/ivOne"
+        app:layout_constraintLeft_toRightOf="@+id/ivThree"
+        app:layout_constraintRight_toLeftOf="@+id/ivFour"
+        app:layout_constraintTop_toTopOf="@+id/ivOne" />
+
+    <TextView
+        android:id="@+id/stateOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="已发货"
+        android:textColor="@color/colorPrimary"
+        android:textSize="13sp"
+        app:layout_constraintLeft_toLeftOf="@+id/ivOne"
+        app:layout_constraintRight_toRightOf="@+id/ivOne"
+        app:layout_constraintTop_toBottomOf="@+id/ivOne" />
+
+    <TextView
+        android:id="@+id/stateTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="已点收"
+        android:textColor="@color/colorTextG9"
+        android:textSize="13sp"
+        app:layout_constraintLeft_toLeftOf="@+id/ivTwo"
+        app:layout_constraintRight_toRightOf="@+id/ivTwo"
+        app:layout_constraintTop_toBottomOf="@+id/ivTwo" />
+
+    <TextView
+        android:id="@+id/stateThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="已质检"
+        android:textColor="@color/colorTextG9"
+        android:textSize="13sp"
+        app:layout_constraintLeft_toLeftOf="@+id/ivThree"
+        app:layout_constraintRight_toRightOf="@+id/ivThree"
+        app:layout_constraintTop_toBottomOf="@+id/ivThree" />
+
+    <TextView
+        android:id="@+id/stateFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="已入库"
+        android:textColor="@color/colorTextG9"
+        android:textSize="13sp"
+        app:layout_constraintLeft_toLeftOf="@+id/ivFour"
+        app:layout_constraintRight_toRightOf="@+id/ivFour"
+        app:layout_constraintTop_toBottomOf="@+id/ivFour" />
+
+</android.support.constraint.ConstraintLayout>
+

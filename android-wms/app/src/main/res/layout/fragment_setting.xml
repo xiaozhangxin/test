@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/include7"
+        layout="@layout/top_back_title_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvAccount"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/setting_account"
+        android:drawablePadding="14dp"
+        android:drawableRight="@drawable/right"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="18dp"
+        android:text="账号管理"
+        android:visibility="gone"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include7" />
+
+    <TextView
+        android:id="@+id/tvPersonInfo"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/set_one"
+        android:drawablePadding="14dp"
+        android:drawableRight="@drawable/right"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="18dp"
+        android:text="个人资料"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAccount" />
+
+    <TextView
+        android:id="@+id/tvAboutUs"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+
+        android:background="@color/white"
+        android:drawableLeft="@drawable/set_two"
+        android:drawablePadding="14dp"
+        android:drawableRight="@drawable/right"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="18dp"
+        android:text="关于我们"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPersonInfo" />
+
+    <TextView
+        android:id="@+id/tvPwd"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/set_six"
+        android:drawablePadding="16dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="18dp"
+        android:text="修改密码"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAboutUs" />
+
+    <TextView
+        android:id="@+id/tvClear"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/set_three"
+        android:drawablePadding="14dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="18dp"
+        android:text="清除缓存"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPwd" />
+
+    <TextView
+        android:id="@+id/cacheSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:text="0M"
+        android:textColor="@color/colorTextG6"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvClear"
+        app:layout_constraintRight_toRightOf="@+id/tvClear"
+        app:layout_constraintTop_toTopOf="@+id/tvClear" />
+
+    <TextView
+        android:id="@+id/tvSaftware"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/set_four"
+        android:drawablePadding="14dp"
+        android:drawableRight="@drawable/right"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="18dp"
+        android:text="软件信息"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvClear" />
+
+    <TextView
+        android:id="@+id/tvSuggest"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:drawableLeft="@drawable/set_five"
+        android:drawablePadding="14dp"
+        android:drawableRight="@drawable/right"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="18dp"
+        android:text="意见反馈"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSaftware" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginRight="47dp"
+        android:background="@drawable/setbar_color"
+        android:elevation="3dp"
+        android:text="退出登录"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

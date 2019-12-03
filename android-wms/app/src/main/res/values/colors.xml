@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#329FF9</color>
+    <color name="colorPrimaryDark">#329FF9</color>
+    <color name="colorAccent">#329FF9</color>
+    <color name="color_scan">#62b900</color>
+    <color name="top_bar_bg">#329FF9</color>
+    <color name="mask_color">#88888888</color>
+    <color name="yq_text">#FFDB6E</color>
+    <color name="jrgwc_text">#EAD5B5</color>
+
+
+    <color name="translate">#00000000</color>
+
+    <color name="tm_tab_tm">#E5966B37</color>
+
+
+    <color name="tab_text_color_normal">#999999</color>
+    <color name="tab_text_color_selected">#329FF9</color>
+
+    <color name="text_error_color">#7f000000</color>
+
+
+    <color name="title_bg_color">#fafafa</color>
+
+
+    <color name="bg_lien">#EAEAEA</color>
+    <color name="lien_ccc">#cccccc</color>
+
+
+    <color name="colorSendName4">#FF7906</color>
+    <color name="colorSendName6">#FFAE1F</color>
+    <!--蒙版-->
+
+
+    <!--文字白色-->
+    <color name="colorTextWhite">#FFFFFFFF</color>
+    <!--文字G1-->
+    <color name="colorTextGC">#CCCCCC</color>
+    <!--文字G2-->
+    <color name="colorTextG9">#999999</color>
+    <!--文字G3-->
+    <color name="colorTextG6">#666666</color>
+    <!--文字G4-->
+    <color name="colorTextG3">#333333</color>
+    <color name="colorTextG5">#555555</color>
+    <!--文字black-->
+
+    <color name="transparent">#00000000</color>
+    <color name="colorActivityBackground">#F3F3F3</color>
+    <color name="colorActivityBackgroundTwo">#E0E0E0</color>
+    <color name="colorTextF5">#11FFFFFF</color>
+
+    <color name="window_background">#eaeaea</color>
+    <color name="white_80">#FFFFFFFF</color>
+
+
+    <color name="black">#0f0b02</color>
+    <color name="white">#ffffffff</color>
+    <color name="nightModeTextColor">#99E0E0E0</color>
+
+    <color name="color_f15">#41C2FF</color>
+    <color name="colorPrimaryNew">#329FF9</color>
+    <color name="check_bg">#f2f2f2</color>
+    <color name="drop_down_selected">#7B1FA2</color>
+    <color name="drop_down_unselected">#111111</color>
+    <color name="gray">#cccccc</color>
+    <color name="color_yellow">#FCAC3B</color>
+    <color name="colorTextF8">#F5F5F5</color>
+</resources>

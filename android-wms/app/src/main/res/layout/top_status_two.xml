@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:id="@+id/addImg"
+    android:background="@color/white">
+
+
+    <ImageView
+        android:id="@+id/ivOne"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/state_h"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/stateOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="已配货"
+        android:textColor="@color/colorPrimary"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/ivOne"
+        app:layout_constraintStart_toStartOf="@+id/ivOne"
+        app:layout_constraintTop_toBottomOf="@+id/ivOne" />
+
+    <View
+        android:id="@+id/lineOne"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorActivityBackground"
+        app:layout_constraintBottom_toBottomOf="@+id/ivOne"
+        app:layout_constraintLeft_toRightOf="@+id/ivOne"
+        app:layout_constraintRight_toLeftOf="@+id/ivTwo"
+        app:layout_constraintTop_toTopOf="@+id/ivOne" />
+
+    <ImageView
+        android:id="@+id/ivTwo"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginRight="80dp"
+        android:src="@drawable/state_y"
+        app:layout_constraintBottom_toBottomOf="@+id/ivOne"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivOne" />
+
+    <TextView
+        android:id="@+id/stateTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="已出库"
+        android:textColor="@color/colorTextG9"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/ivTwo"
+        app:layout_constraintStart_toStartOf="@+id/ivTwo"
+        app:layout_constraintTop_toBottomOf="@+id/ivTwo" />
+
+</android.support.constraint.ConstraintLayout>
+

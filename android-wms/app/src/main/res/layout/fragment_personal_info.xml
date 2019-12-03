@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/include8"
+        layout="@layout/top_back_title_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+
+    <TextView
+        android:id="@+id/tvPersonInfo"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:drawablePadding="14dp"
+        android:drawableRight="@drawable/right"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="18dp"
+        android:text="头像"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include8" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="48dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPersonInfo"
+        app:layout_constraintRight_toRightOf="@+id/tvPersonInfo"
+        app:layout_constraintTop_toTopOf="@+id/tvPersonInfo" />
+
+
+    <TextView
+        android:id="@+id/tvNameTittle"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:drawablePadding="14dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="18dp"
+        android:text="姓名"
+        android:textColor="@color/colorTextG9"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPersonInfo" />
+
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/colorTextG9"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNameTittle"
+        app:layout_constraintRight_toRightOf="@+id/tvNameTittle"
+        app:layout_constraintTop_toTopOf="@+id/tvNameTittle" />
+
+    <TextView
+        android:id="@+id/tvSexTittle"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:drawablePadding="14dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="18dp"
+        android:text="性别"
+        android:textColor="@color/colorTextG9"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameTittle" />
+
+
+    <TextView
+        android:id="@+id/tvSex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/colorTextG9"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSexTittle"
+        app:layout_constraintRight_toRightOf="@+id/tvSexTittle"
+        app:layout_constraintTop_toTopOf="@+id/tvSexTittle" />
+
+    <TextView
+        android:id="@+id/tvBornTittle"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:drawablePadding="14dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="18dp"
+        android:text="生日"
+        android:textColor="@color/colorTextG9"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSexTittle" />
+
+
+    <TextView
+        android:id="@+id/tvBorn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/colorTextG9"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvBornTittle"
+        app:layout_constraintRight_toRightOf="@+id/tvBornTittle"
+        app:layout_constraintTop_toTopOf="@+id/tvBornTittle" />
+
+    <TextView
+        android:id="@+id/tvAddressTittle"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:drawablePadding="14dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="18dp"
+        android:text="联系地址"
+        android:textColor="@color/colorTextG9"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBornTittle" />
+
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="82dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="0dp"
+        android:gravity="center_vertical|end"
+        android:textColor="@color/colorTextG9"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAddressTittle"
+        app:layout_constraintLeft_toLeftOf="@+id/tvAddressTittle"
+        app:layout_constraintRight_toRightOf="@+id/tvAddressTittle"
+        app:layout_constraintTop_toTopOf="@+id/tvAddressTittle" />
+
+    <TextView
+        android:id="@+id/tvPhoneTittle"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:drawablePadding="14dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="18dp"
+        android:text="联系方式"
+        android:textColor="@color/colorTextG9"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAddressTittle" />
+
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/colorTextG9"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPhoneTittle"
+        app:layout_constraintRight_toRightOf="@+id/tvPhoneTittle"
+        app:layout_constraintTop_toTopOf="@+id/tvPhoneTittle" />
+
+    <TextView
+        android:id="@+id/tvSuperiorTittle"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:drawablePadding="14dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="14dp"
+        android:paddingRight="18dp"
+        android:text="直属上级"
+        android:textColor="@color/colorTextG9"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPhoneTittle" />
+
+
+    <TextView
+        android:id="@+id/tvSuperior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/colorTextG9"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSuperiorTittle"
+        app:layout_constraintRight_toRightOf="@+id/tvSuperiorTittle"
+        app:layout_constraintTop_toTopOf="@+id/tvSuperiorTittle" />    <TextView
+    android:id="@+id/tvRoleNameTittle"
+    android:layout_width="0dp"
+    android:layout_height="44dp"
+    android:layout_marginTop="1dp"
+    android:background="@color/white"
+    android:drawablePadding="14dp"
+    android:gravity="center_vertical"
+    android:paddingLeft="14dp"
+    android:paddingRight="18dp"
+    android:text="系统身份"
+    android:textColor="@color/colorTextG9"
+    android:textSize="14sp"
+    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tvSuperiorTittle" />
+
+
+    <TextView
+        android:id="@+id/tvRoleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/colorTextG9"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvRoleNameTittle"
+        app:layout_constraintRight_toRightOf="@+id/tvRoleNameTittle"
+        app:layout_constraintTop_toTopOf="@+id/tvRoleNameTittle" />
+
+
+    <TextView
+        android:id="@+id/tvPhoneCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="48dp"
+        android:gravity="center_horizontal"
+        android:text="个人资料如若需要修改\n请联系客服（电话：400-820-8717)"
+        android:textColor="@color/colorTextG6"
+        android:textSize="13sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRoleNameTittle" />
+</android.support.constraint.ConstraintLayout>

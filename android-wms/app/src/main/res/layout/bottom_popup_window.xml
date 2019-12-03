@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:id="@+id/id_pop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="作废"
+            android:textColor="@color/colorTextG3"
+            android:textSize="14sp" />
+
+        <View
+            android:id="@+id/lineOne"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorActivityBackground" />
+
+        <Button
+            android:id="@+id/btTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="扫一扫"
+            android:textColor="@color/colorTextG3"
+            android:textSize="14sp" />
+
+        <View
+            android:id="@+id/lineTwo"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorActivityBackground" />
+
+        <Button
+            android:id="@+id/btThree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="同意"
+            android:textColor="@color/colorTextG3"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/colorActivityBackground" />
+
+        <Button
+            android:id="@+id/btFour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="取消"
+            android:textColor="@color/colorTextG3"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</RelativeLayout>

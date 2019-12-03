@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/setbar_color_left5"
+        android:drawablePadding="8dp"
+        android:text="铜管"
+        android:textColor="@color/colorTextG3"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvReduce"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="5dp"
+        android:text="黄色"
+        android:textColor="@color/colorTextG9"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvReduce"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <ImageView
+        android:id="@+id/tvAdd"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/car_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/tvNum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@null"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="7"
+        android:maxLines="1"
+        android:text="0"
+        android:textColor="@color/colorTextG3"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvAdd"
+        app:layout_constraintStart_toEndOf="@+id/tvReduce"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/tvReduce"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="48dp"
+        android:src="@drawable/car_reduce"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAdd"
+        app:layout_constraintEnd_toStartOf="@+id/tvAdd"
+        app:layout_constraintTop_toTopOf="@+id/tvAdd" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorActivityBackgroundTwo"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>

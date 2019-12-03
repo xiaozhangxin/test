@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_back_title_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.jude.easyrecyclerview.EasyRecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            app:layout_empty="@layout/view_empty"
+            app:layout_progress="@layout/view_progress" />
+
+        <com.akan.wms.view.DropDownView.DropDownMenu
+            android:id="@+id/dropDownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:dddividerColor="@color/gray"
+            app:ddmaskColor="@color/mask_color"
+            app:ddmenuBackgroundColor="@color/white"
+            app:ddmenuMenuHeightPercent="0.5"
+            app:ddmenuSelectedIcon="@drawable/menu_up"
+            app:ddmenuTextSize="13sp"
+            app:ddmenuUnselectedIcon="@drawable/menu_down"
+            app:ddtextSelectedColor="@color/colorPrimary"
+            app:ddtextUnselectedColor="@color/colorTextG6"
+            app:ddunderlineColor="@color/gray" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="基础信息"
+        android:layout_marginLeft="8dp"
+        android:textColor="@color/colorTextG3"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorActivityBackground" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="3dp"
+            android:drawableRight="@drawable/must_img_not"
+            android:text="制单人"
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorActivityBackground" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="3dp"
+            android:drawableRight="@drawable/must_img_not"
+            android:text="制单日期"
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/lineOne"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:visibility="gone"
+        android:background="@color/colorActivityBackground" />
+
+    <LinearLayout
+        android:id="@+id/llThree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:visibility="gone"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/tvThreeTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="3dp"
+            android:drawableRight="@drawable/must_img"
+            android:text="供应商"
+            android:textColor="@color/colorTextG6"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvThree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/right"
+            android:gravity="end"
+            android:hint="请选择"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/lineTwo"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorActivityBackground" />
+
+    <LinearLayout
+        android:id="@+id/llFour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:visibility="gone"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/tvFourTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="3dp"
+            android:drawableRight="@drawable/must_img_not"
+            android:text="供应商编码"
+            android:textColor="@color/colorTextG6"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/tvFour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="end"
+            android:hint="请输入内容"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+</LinearLayout>
+
+

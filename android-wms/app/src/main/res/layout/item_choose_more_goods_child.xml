@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:drawableLeft="@drawable/setbar_color_left"
+        android:drawablePadding="8dp"
+        android:text="铜管20"
+        android:textColor="@color/colorTextG3"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tvDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:layout_toLeftOf="@+id/tvNum"
+        android:layout_toRightOf="@+id/tvName"
+        android:text="黄色"
+        android:textColor="@color/colorTextG6"
+        android:textSize="13sp" />
+
+    <ImageView
+        android:id="@+id/tvAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/car_add" />
+
+    <EditText
+        android:id="@+id/tvNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:layout_alignParentRight="true"
+        android:layout_toLeftOf="@+id/tvAdd"
+        android:inputType="number"
+        android:maxLength="8"
+        android:background="@null"
+        android:paddingLeft="8dp"
+        android:paddingRight="16dp"
+        android:text="0"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14dp" />
+
+    <ImageView
+        android:id="@+id/tvReduce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:visibility="gone"
+        android:layout_toLeftOf="@+id/tvNum"
+        android:src="@drawable/car_reduce" />
+
+
+</RelativeLayout>

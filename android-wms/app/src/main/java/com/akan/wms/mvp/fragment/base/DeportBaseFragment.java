@@ -1,0 +1,182 @@
+package com.akan.wms.mvp.fragment.base;
+
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.akan.wms.R;
+import com.akan.wms.bean.UserBean;
+import com.akan.wms.bean.WareHouseBean;
+import com.akan.wms.mvp.adapter.home.DeportBaseAdapter;
+import com.akan.wms.mvp.base.BaseFragment;
+import com.akan.wms.mvp.presenter.ChooseDeportPresenter;
+import com.akan.wms.mvp.view.IChooseDeportView;
+import com.akan.wms.util.SpSingleInstance;
+import com.akan.wms.util.ToastUtil;
+import com.jude.easyrecyclerview.EasyRecyclerView;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
+public class DeportBaseFragment extends BaseFragment<IChooseDeportView, ChooseDeportPresenter> implements IChooseDeportView {
+
+    Unbinder unbinder;
+    @BindView(R.id.ivLeft)
+    ImageView ivLeft;
+    @BindView(R.id.tvTitle)
+    TextView tvTitle;
+    @BindView(R.id.ivRight)
+    ImageView ivRight;
+    @BindView(R.id.tvRight)
+    TextView tvRight;
+    @BindView(R.id.etSearch)
+    EditText etSearch;
+    @BindView(R.id.recyclerView)
+    EasyRecyclerView recyclerView;
+
+
+    private List<WareHouseBean> list;
+    private DeportBaseAdapter adapter;
+    private int page = 1;
+    private Map<String, String> map = new HashMap<>();
+    private UserBean userBean;
+
+
+    public static DeportBaseFragment newInstance() {
+        Bundle args = new Bundle();
+        DeportBaseFragment fragment = new DeportBaseFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public int getRootViewId() {
+        return R.layout.fragment_list_deport_base;
+    }
+
+    @Override
+    public void initUI() {
+        tvTitle.setText(R.string.warehouse_information);
+        list = new ArrayList<>();
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        adapter = new DeportBaseAdapter(context, list);
+        recyclerView.setAdapterWithProgress(adapter);
+        adapter.setNoMore(R.layout.view_nomore);
+        recyclerView.setRefreshingColorResources(R.color.colorPrimary);
+        recyclerView.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                page = 1;
+                refresh();
+
+            }
+        });
+        adapter.setMore(R.layout.view_more, new RecyclerArrayAdapter.OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                page++;
+                refresh();
+            }
+        });
+        etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    page=1;
+                    refresh();
+                    recyclerView.setRefreshing(true);
+                }
+                return false;
+            }
+        });
+    }
+
+    @Override
+    public void initData() {
+        userBean = SpSingleInstance.getSpSingleInstance().getUserBean();
+        refresh();
+    }
+
+    private void refresh() {
+        map.put("org_id", userBean.getOrg_id());
+        map.put("warehouse_name", etSearch.getText().toString());
+        map.put("page", page + "");
+        getPresenter().getWareHouseList(userBean.getStaff_token(), map);
+    }
+
+
+    @Override
+    public ChooseDeportPresenter createPresenter() {
+        return new ChooseDeportPresenter(getApp());
+    }
+
+
+    @OnClick({R.id.ivLeft, R.id.ivRight})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ivLeft:
+                finish();
+                break;
+        }
+    }
+
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void onCompleted() {
+
+    }
+
+    @Override
+    public void onError(Throwable e) {
+        ToastUtil.showToast(context.getApplicationContext(), e.getMessage());
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+
+    @Override
+    public void getWareHouseList(List<WareHouseBean> data) {
+        if (page == 1) {
+            adapter.clear();
+        }
+        adapter.addAll(data);
+        adapter.notifyDataSetChanged();
+    }
+
+
+}
