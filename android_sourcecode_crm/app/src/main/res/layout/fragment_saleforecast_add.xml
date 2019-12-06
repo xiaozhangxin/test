@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_back_title_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:overScrollMode="never">
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="制单人"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="end|center_vertical"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="制单日期"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="end|center_vertical"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="部门"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvWOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:drawablePadding="12dp"
+                    android:drawableRight="@drawable/right"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择部门"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="4dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="年份"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvWTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:drawablePadding="12dp"
+                    android:drawableRight="@drawable/right"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择年份"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="4dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="产品名称"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvWThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:drawablePadding="12dp"
+                    android:drawableRight="@drawable/right"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择产品"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="总计"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvWFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="自动计算"
+
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:text="第一季度"
+
+                android:textColor="@color/colorTextG3"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="1月"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入内容"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="2月"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入内容"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="3月"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入内容"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="合计"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvOneTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="自动计算"
+
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:text="第二季度"
+
+                android:textColor="@color/colorTextG3"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="4月"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入内容"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="5月"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvFive"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入内容"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="6月"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvSix"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入内容"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="合计"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvTwoTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="自动计算"
+
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:text="第三季度"
+
+                android:textColor="@color/colorTextG3"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="7月"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvSeven"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入内容"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="8月"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvEight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入内容"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="9月"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvNine"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入内容"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="合计"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvThreeTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="自动计算"
+
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:text="第四季度"
+
+                android:textColor="@color/colorTextG3"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="10月"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvTen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入内容"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="11月"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvEleven"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入内容"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="12月"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvTwelve"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入内容"
+                    android:inputType="numberDecimal"
+                    android:maxLength="11"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="12dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="合计"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvFourTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="自动计算"
+
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF8" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="14dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:text="备注"
+                android:textColor="@color/colorTextG3"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/etReason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="请输入内容"
+                android:paddingBottom="24dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="8dp"
+                android:textSize="13sp" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF8" />
+
+            <TextView
+                android:id="@+id/ok"
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginEnd="81dp"
+                android:layout_marginLeft="81dp"
+                android:layout_marginRight="81dp"
+                android:layout_marginStart="81dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/setbar_colorprimary"
+                android:gravity="center"
+                android:text="确认申请"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:background="@color/white"
+        android:checkedButton="@+id/rbHome"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/sign"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="2dp"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/btn_tabbar_home_selector_leave"
+            android:gravity="center"
+            android:layout_marginBottom="4dp"
+            android:text="提交"
+            android:textColor="@color/tab_text_color"
+            android:textSize="@dimen/bottom_menu_text_size" />
+
+        <RadioButton
+            android:id="@+id/signRecord"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/btn_tabbar_shopping_selector_sign_record"
+            android:gravity="center"
+            android:paddingTop="6dp"
+            android:paddingBottom="4dp"
+            android:drawablePadding="4dp"
+            android:text="@string/tab_sign_record"
+            android:textColor="@color/tab_text_color"
+            android:textSize="@dimen/bottom_menu_text_size" />
+
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0.1dp"
+        android:layout_alignTop="@+id/rg"
+        android:background="@color/bg_lien"
+        app:layout_constraintBottom_toTopOf="@+id/rg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

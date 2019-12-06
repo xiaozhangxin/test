@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_back_title_bar" />
+
+    <include layout="@layout/sign_record_head" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srlEnableFooterFollowWhenLoadFinished="true"
+            app:srlEnableScrollContentWhenLoaded="true">
+
+
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srlClassicsSpinnerStyle="FixedBehind"
+                app:srlDrawableArrowSize="20dp"
+                app:srlDrawableMarginRight="20dp"
+                app:srlDrawableProgress="@drawable/ic_progress_puzzle"
+                app:srlDrawableProgressSize="20dp"
+                app:srlEnableLastTime="true"
+                app:srlFinishDuration="500"
+                app:srlTextSizeTime="10dp"
+                app:srlTextSizeTitle="16sp"
+                app:srlTextTimeMarginTop="2dp" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycleView"
+                android:overScrollMode="never"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srlClassicsSpinnerStyle="Translate" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        <include
+            android:id="@+id/empty"
+            layout="@layout/layout_empty" />
+    </FrameLayout>
+
+</LinearLayout>

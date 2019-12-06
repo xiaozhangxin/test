@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTop"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:background="@color/colorTextF8"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:text="费用明细"
+        android:textColor="@color/colorTextG6"
+        android:textSize="13sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvSubjectTittle"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="end"
+        android:text="科目"
+        android:textColor="@color/colorTextG6"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTop" />
+
+    <TextView
+        android:id="@+id/tvSubject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="34987230472307402"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@+id/tvSubjectTittle"
+        app:layout_constraintTop_toTopOf="@+id/tvSubjectTittle" />
+
+    <TextView
+        android:id="@+id/tvPriceTittle"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="end"
+        android:text="报销金额"
+        android:textColor="@color/colorTextG6"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="@+id/tvSubjectTittle"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubject" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="哈哈"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@+id/tvPriceTittle"
+        app:layout_constraintTop_toTopOf="@+id/tvPriceTittle" />
+
+    <TextView
+        android:id="@+id/tvNumTittle"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="end"
+        android:text="单据张数"
+        android:textColor="@color/colorTextG6"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="@+id/tvPriceTittle"
+        app:layout_constraintTop_toBottomOf="@+id/tvPriceTittle" />
+
+    <TextView
+        android:id="@+id/tvNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="婚假"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@+id/tvNumTittle"
+        app:layout_constraintTop_toTopOf="@+id/tvNumTittle" />
+
+    <TextView
+        android:id="@+id/tvContentTittle"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="end"
+        android:text="摘要"
+        android:textColor="@color/colorTextG6"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="@+id/tvNumTittle"
+        app:layout_constraintTop_toBottomOf="@+id/tvNumTittle" />
+
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginRight="16dp"
+        android:text="2983290"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/tvContentTittle"
+        app:layout_constraintTop_toTopOf="@+id/tvContentTittle" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvContentTittle" />
+
+</android.support.constraint.ConstraintLayout>

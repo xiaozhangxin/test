@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="关闭"
+        android:textColor="#2FB8FF"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:drawablePadding="21dp"
+        android:drawableTop="@drawable/web_login_img"
+        android:gravity="center_horizontal"
+        android:text="登录确认"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ok"
+            android:layout_width="152dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/setbar_line_c"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="#51BEFF"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:padding="16dp"
+            android:text="取消登录"
+            android:textColor="#878787"
+            android:textSize="13sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

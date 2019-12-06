@@ -1,0 +1,119 @@
+<resources>
+    <string name="app_name"> 爱康管理系统 </string>
+
+    <string name="press_again_to_exit">再按一次退出</string>
+
+    <string name="welcome_tips">欢迎进入爱康管理系统</string>
+    <string name="swipe_down_to_refresh">暂无数据~</string>
+    <string name="tab_home">首页</string>
+    <string name="tab_book">通讯录</string>
+    <string name="tab_message">消息</string>
+    <string name="tab_mine">我的</string>
+    <string name="tab_sign">签到</string>
+    <string name="tab_sign_record">记录</string>
+
+
+    <!-- 搜索 -->
+
+    <!-- permission check-->
+    <string name="network_unavailable">没有网络哦</string>
+    <string name="sign">签到</string>
+    <string name="quit">是否退出登录？</string>
+    <string name="authorized">请授权！</string>
+
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="delete">删除</string>
+    <string name="edit">编辑</string>
+    <string name="more">更多</string>
+    <string name="down_url">http://up.akan.com.cn/#/index/crm</string>
+    <string name="copy_link">复制链接</string>
+    <string name="share_description">全新版本欢迎下载使用...</string>
+    <string name="input_old_pwd">请输入旧密码</string>
+    <string name="new_twopwd_defrevent">两次新密码不一致</string>
+    <string name="input_pwd">请输入密码</string>
+    <string name="input_pwd_two">请确认密码</string>
+    <string name="pwd_length_no">密码长度不够</string>
+    <string name="deleted">此单据已删除！</string>
+    <string name="delete_order">你确定要删除此申请吗?</string>
+    <string name="detete_file">文件删除后无法恢复,是否确认删除?</string>
+    <string name="cope_already_choose">该抄送人已被选择</string>
+    <string name="loading">加载中...</string>
+    <string name="where_post">所在岗位</string>
+    <string name="sign_record">签到记录</string>
+    <string name="daily_add">新增日报</string>
+    <string name="commit">提交</string>
+    <string name="daily_modify">修改日报</string>
+    <string name="modify_sure">确认修改</string>
+    <string name="img_max_ten">最多10张</string>
+    <string name="please_fill_today_summary">请填写今日总结</string>
+    <string name="today_most_one_thousand">今日小结字数最多为1000字</string>
+    <string name="please_fill_tomorrow_summary">请填写明日计划</string>
+    <string name="tomorrow_most_one_thousand">明日小结字数最多为1000字</string>
+    <string name="daily_list">日报列表</string>
+    <string name="filter">筛选</string>
+    <string name="leave_request_record">请假申请记录</string>
+    <string name="sign_detail">签到详情</string>
+    <string name="daily_detail">日报详情</string>
+    <string name="review">审阅</string>
+    <string name="review_reply">审阅回复</string>
+    <string name="delete_daily">你确定要删除此日报吗?</string>
+    <string name="leave_request">请假申请</string>
+    <string name="confirmation_application">确认申请</string>
+    <string name="max_ten_img">最多10张</string>
+    <string name="modify_leave_request">修改请假申请</string>
+    <string name="confirm_the_changes">确认修改</string>
+    <string name="month_list">月报列表</string>
+    <string name="weekly_list">周报列表</string>
+    <string name="arrears_application_record">欠款申请记录</string>
+    <string name="cost_statistics">费用统计记录</string>
+    <string name="payment_request_record">付款申请记录</string>
+    <string name="policy_application_record">政策申请记录</string>
+    <string name="reimbursement_record">报销申请记录</string>
+    <string name="borrowing_record">借支申请记录</string>
+    <string name="work_report_record">工报备申请记录</string>
+    <string name="problem_list">问题建议/新品申请记录</string>
+    <string name="visit_list">客户来访接待申请记录</string>
+    <string name="area_posting">区域投稿</string>
+    <string name="leave_details">请假单详情</string>
+    <string name="please_select_next_reviewer">请选择下一位审核人</string>
+    <string name="enter_reason_rejection">请输入拒绝原因</string>
+    <string name="sure_delete_request">确定要删除此申请吗?</string>
+    <string name="review_replay">审阅回复</string>
+    <string name="no_comment">暂无评议</string>
+    <string name="monthly_details">月报详情</string>
+    <string name="sure_delete_monthly">你确定要删除此月报吗?</string>
+    <string name="sure_delete_weekly">你确定要删除此周报吗?</string>
+    <string name="weekly_detail">周报详情</string>
+    <string name="sure_delete_order">你确定要删除此申请吗?</string>
+    <string name="company_details">家装公司详情</string>
+    <string name="distribution_network_details">分销网点详情</string>
+    <string name="project_details">工程项目详情</string>
+    <string name="hvac_company_details">暖通公司详情</string>
+    <string name="foreman_information_details">工长信息详情</string>
+    <string name="sure_delete">你确定要删除此单据吗?</string>
+    <string name="cost_statistics_details">费用统计详情</string>
+    <string name="policy_application_details">政策申请单详情</string>
+    <string name="reimbursement_details">费用报销单详情</string>
+    <string name="delete_article">确认删除此投稿吗?</string>
+    <string name="please_enter_your_feedback">请输入要反馈的意见</string>
+    <string name="successfully_thanks_for_your_feedback">提交成功,感谢您的反馈</string>
+    <string name="feedback">意见反馈</string>
+    <string name="setting">设置</string>
+    <string name="please_enter_the_security_code">请输入防伪码</string>
+    <string name="security_check">防伪查询</string>
+    <string name="choose_department">选择部门</string>
+    <string name="please_choose_department">请选择部门</string>
+
+
+
+    <string name="doc_no">单据编号</string>
+    <string name="prepared_by">制单人</string>
+    <string name="approval_status">审核状态</string>
+    <string name="billing_date">制单日期</string>
+    <string name="pressure_img">试压图片</string>
+    <string name="denial_reason">拒绝原因</string>
+    <string name="basic_information">基础信息</string>
+    <string name="pressure_test_address">试压地址</string>
+    <string name="download_link">http://up.akan.com.cn/#/index/crm</string>
+</resources>

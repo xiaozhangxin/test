@@ -1,0 +1,120 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:listDivider">@color/colorPrimaryDark</item>
+        <item name="android:textSize">14sp</item>
+        <!--   <item name="android:progressBarStyle">@style/progressBarStyle</item>-->
+<!--        <item name="android:windowBackground">@drawable/welcome</item>  //闪屏页图片
+        <item name="android:windowFullscreen">true</item>-->
+
+    </style>
+
+    <style name="BaseAppTheme" parent="AppTheme">
+
+
+    </style>
+
+    <!-- 透明activity -->
+
+    <!-- Input dialog theme. -->
+
+    <!--
+        <style name="progressBarStyle" parent="Widget.AppCompat.ProgressBar">
+            <item name="android:indeterminateDrawable">@drawable/progress_bar</item>
+        </style>-->
+
+
+    <style name="TabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+
+    <style name="dialog_exit_live" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@style/dialog_exit_live_animation</item>
+    </style>
+
+    <style name="dialog_exit_live_animation" parent="android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_out</item>
+    </style>
+
+    <!--ToolBar TextSize style-->
+
+    <!--
+        <style name="mRatingBar">
+            <item name="android:progressDrawable">@drawable/five_rating_bar</item>
+            <item name="android:minHeight">44px</item>
+            <item name="android:maxHeight">66px</item>
+            <item name="android:isIndicator">true</item>
+        </style>
+
+        <style name="mRatingBary">
+            <item name="android:progressDrawable">@drawable/five_rating_bar</item>
+            <item name="android:minHeight">@dimen/x44</item>
+            <item name="android:maxHeight">@dimen/x44</item>
+        </style>
+    -->
+
+    <declare-styleable name="DragScrollDetailsLayout">
+        <!-- float value for indicate the moment of switch panel-->
+        <attr name="percent" format="float" />
+        <!-- how long the animation keep-->
+        <attr name="duration" format="integer" />
+        <!-- default panel to show after init-->
+        <attr name="default_panel" format="enum">
+            <enum name="front" value="0" />
+            <enum name="behind" value="1" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="MagicTextView">
+        <attr name="innerShadowColor" format="color" />
+        <attr name="innerShadowRadius" format="float" />
+        <attr name="innerShadowDx" format="float" />
+        <attr name="innerShadowDy" format="float" />
+        <attr name="outerShadowColor" format="color" />
+        <attr name="outerShadowRadius" format="float" />
+        <attr name="outerShadowDx" format="float" />
+        <attr name="outerShadowDy" format="float" />
+        <attr name="typeface" format="string" />
+        <attr name="foreground" format="reference|color" />
+        <attr name="strokeWidth" format="float" />
+        <attr name="strokeMiter" format="float" />
+        <attr name="strokeColor" format="color" />
+        <attr name="strokeJoinStyle">
+            <enum name="miter" value="0" />
+            <enum name="bevel" value="1" />
+            <enum name="round" value="2" />
+        </attr>
+    </declare-styleable>
+
+
+    <style name="AnimTopRight" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/top_right_in</item>
+        <item name="android:windowExitAnimation">@anim/top_right_out</item>
+    </style>
+
+    <!-- popup window 显示消失动画-->
+    <style name="PopWindowAnimStyle">
+        <item name="android:windowShowAnimation">@anim/dialog_enter</item>
+        <!-- 指定显示的动画xml  -->
+        <item name="android:windowHideAnimation">@anim/dialog_exit</item>
+        <!-- 指定消失的动画xml  -->
+    </style>
+
+
+</resources>

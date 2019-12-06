@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:overScrollMode="never">
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:drawableLeft="@drawable/detail_one"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:text="本年度业绩指标"
+                android:textColor="@color/colorTextG3"
+                android:textSize="15sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTopOne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="24dp"
+                        android:drawableLeft="@drawable/shape_sign"
+                        android:drawablePadding="24dp"
+                        android:text="目标"
+                        android:textColor="@color/colorTextG9"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvOne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="49dp"
+                        android:layout_marginTop="5dp"
+                        android:text="TextView"
+                        android:textColor="@color/colorTextG3"
+                        android:textSize="14sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvTopTwo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:drawableLeft="@drawable/shape_sign"
+                        android:drawablePadding="24dp"
+                        android:text="实际"
+                        android:textColor="@color/colorTextG9"
+                        android:textSize="13sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvTwo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="49dp"
+                        android:layout_marginTop="5dp"
+                        android:text="TextView"
+                        android:textColor="@color/colorTextG3"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvTopThree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:drawableLeft="@drawable/shape_sign"
+                        android:drawablePadding="24dp"
+                        android:text="差值"
+                        android:textColor="@color/colorTextG9"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvThree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="49dp"
+                        android:layout_marginTop="5dp"
+                        android:text="TextView"
+                        android:textColor="@color/colorTextG3"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvTopFour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:drawableLeft="@drawable/shape_sign"
+                        android:drawablePadding="24dp"
+                        android:text="月均"
+                        android:textColor="@color/colorTextG9"
+                        android:textSize="13sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvFour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="49dp"
+                        android:layout_marginTop="5dp"
+                        android:text="TextView"
+                        android:textColor="@color/colorTextG3"
+                        android:textSize="14sp"
+                        app:layout_constraintLeft_toLeftOf="@+id/tvTopFour"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTopFour" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="32dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/topTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="01月01日-12月30日"
+                        android:textColor="@color/colorTextG9"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:text="业绩指标(百分率)"
+                        android:textSize="9sp"
+                        android:textColor="@color/colorTextG3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/chart1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvThreeTittle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/detail_three"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:text="同期对比（"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tvPercentage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF2828"
+                    android:text="增长率60%"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:text="）"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="26dp"
+                    android:layout_height="17dp"
+                    android:background="@drawable/setbar_yuan_two" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="今年数据"
+                    android:textColor="@color/colorTextG9"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvNowYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="2018-01-06"
+                    android:textColor="@color/yuan_two"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="8dp">
+
+                <View
+                    android:id="@+id/progressOne"
+                    android:layout_width="130dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/progress_two_bg"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <!--  <ProgressBar
+                      android:id="@+id/progressOne"
+                      style="@style/StyleProgressBarMiniOne"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="35dp"
+                      android:max="100"
+                      android:progress="100"
+                      app:layout_constraintLeft_toLeftOf="parent"
+                      app:layout_constraintTop_toTopOf="parent" />-->
+
+
+                <ImageView
+                    android:id="@+id/imgOne"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/progress_two"
+                    app:layout_constraintBottom_toBottomOf="@+id/progressOne"
+                    app:layout_constraintLeft_toRightOf="@+id/progressOne"
+                    app:layout_constraintTop_toTopOf="@+id/progressOne" />
+
+                <TextView
+                    android:id="@+id/tvNowSum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="9dp"
+                    android:background="@drawable/setbar_white"
+                    android:elevation="1dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="2dp"
+                    android:text="2018-06"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toTopOf="@+id/imgOne"
+                    app:layout_constraintLeft_toLeftOf="@+id/imgOne"
+                    app:layout_constraintRight_toRightOf="@+id/imgOne" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="26dp"
+                    android:layout_height="17dp"
+                    android:background="@drawable/setbar_yuan_one" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="去年数据"
+                    android:textColor="@color/colorTextG9"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvOldYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:text="2018-01-06"
+                    android:textColor="@color/yuan_one"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="8dp">
+
+
+                <!--          <ProgressBar
+                              android:id="@+id/progressTwo"
+                              style="@style/StyleProgressBarMini"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="35dp"
+                              android:max="100"
+                              android:progress="100"
+                              app:layout_constraintLeft_toLeftOf="parent"
+                              app:layout_constraintTop_toTopOf="parent" />-->
+
+                <View
+                    android:id="@+id/progressTwo"
+                    android:layout_width="100dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/progress_one_bg"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgTwo"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_toRightOf="@+id/progressTwo"
+                    android:src="@drawable/progress_one"
+                    app:layout_constraintBottom_toBottomOf="@+id/progressTwo"
+                    app:layout_constraintLeft_toRightOf="@+id/progressTwo"
+                    app:layout_constraintTop_toTopOf="@+id/progressTwo" />
+
+                <TextView
+                    android:id="@+id/tvOldSum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/imgTwo"
+                    android:layout_marginBottom="9dp"
+                    android:background="@drawable/setbar_white"
+                    android:elevation="1dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="2dp"
+                    android:text="2018-06"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toTopOf="@+id/imgTwo"
+                    app:layout_constraintLeft_toLeftOf="@+id/imgTwo"
+                    app:layout_constraintRight_toRightOf="@+id/imgTwo" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/tvTittleTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:drawableLeft="@drawable/detail_two"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:text="本年度销售简报"
+                android:textColor="@color/colorTextG3"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recycleView" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/shape_sign"
+                    android:drawablePadding="24dp"
+                    android:text="部门"
+                    android:textColor="@color/colorTextG9"
+                    android:textSize="13sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTittleTwo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/shape_sign"
+                    android:drawablePadding="24dp"
+                    android:text="产品线"
+                    android:textColor="@color/colorTextG9"
+                    android:textSize="13sp"
+                    app:layout_constraintLeft_toRightOf="@+id/tvTopOne"
+                    app:layout_constraintTop_toTopOf="@+id/tvTopOne" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvBottomOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvTopOne"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTopOne" />
+
+                <TextView
+                    android:id="@+id/tvBottomTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvTopTwo"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTopTwo" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/shape_sign"
+                    android:drawablePadding="24dp"
+                    android:text="任务量"
+                    android:textColor="@color/colorTextG9"
+                    android:textSize="13sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTittleTwo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/shape_sign"
+                    android:drawablePadding="24dp"
+                    android:text="已完成量"
+                    android:textColor="@color/colorTextG9"
+                    android:textSize="13sp"
+                    app:layout_constraintLeft_toRightOf="@+id/tvTopOne"
+                    app:layout_constraintTop_toTopOf="@+id/tvTopOne" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvBottomThree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvTopOne"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTopOne" />
+
+                <TextView
+                    android:id="@+id/tvBottomFour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toLeftOf="@+id/tvTopTwo"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTopTwo" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+</android.support.v4.widget.NestedScrollView>

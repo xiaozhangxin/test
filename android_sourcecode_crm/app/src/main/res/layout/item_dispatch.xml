@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="7dp"
+    android:layout_marginTop="3dp"
+    android:background="@drawable/setbar_white"
+    android:elevation="1dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvbB"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="部门"
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvTwoTittle"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="产品线"
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvThreeTittle"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="年度目标"
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvTittleFour"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
+            android:text="年份"
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvFour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,521 @@
+package com.akan.qf.mvp.fragment.bapproval;
+
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.akan.qf.R;
+import com.akan.qf.bean.PermissionsBean;
+import com.akan.qf.bean.FileListBean;
+import com.akan.qf.bean.FirstEventFilter;
+import com.akan.qf.bean.NewApplyBean;
+import com.akan.qf.bean.RecordListBean;
+import com.akan.qf.bean.UserBean;
+import com.akan.qf.mvp.activity.TbsFileActivity;
+import com.akan.qf.mvp.adapter.home.ImagePayAdapter;
+import com.akan.qf.mvp.base.BaseFragment;
+import com.akan.qf.mvp.fragment.ReviewFragment;
+import com.akan.qf.mvp.presenter.home.ProblemPresenter;
+import com.akan.qf.mvp.view.home.IProblemView;
+import com.akan.qf.util.SpSingleInstance;
+import com.akan.qf.util.ToastUtil;
+import com.akan.qf.view.CustomDialog;
+import com.akan.qf.view.img.ShowPictureActivity;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.king.base.util.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
+/**
+ * Created by admin on 2018/11/13.
+ */
+
+public class ProblemDetailFragment extends BaseFragment<IProblemView, ProblemPresenter> implements IProblemView {
+
+    Unbinder unbinder;
+    @BindView(R.id.ivLeft)
+    ImageView ivLeft;
+    @BindView(R.id.tvTitle)
+    TextView tvTitle;
+    @BindView(R.id.ivRight)
+    ImageView ivRight;
+    @BindView(R.id.tvRight)
+    TextView tvRight;
+    @BindView(R.id.tvTop)
+    TextView tvTop;
+    @BindView(R.id.tvNoTittle)
+    TextView tvNoTittle;
+    @BindView(R.id.tvNo)
+    TextView tvNo;
+    @BindView(R.id.tvNameTittle)
+    TextView tvNameTittle;
+    @BindView(R.id.tvName)
+    TextView tvName;
+    @BindView(R.id.tvStateTittle)
+    TextView tvStateTittle;
+    @BindView(R.id.tvState)
+    TextView tvState;
+    @BindView(R.id.tvStartTimeTittle)
+    TextView tvStartTimeTittle;
+    @BindView(R.id.tvStartTime)
+    TextView tvStartTime;
+    @BindView(R.id.tvDepartmentTittle)
+    TextView tvDepartmentTittle;
+    @BindView(R.id.tvDepartment)
+    TextView tvDepartment;
+    @BindView(R.id.tvMarkTittle)
+    TextView tvMarkTittle;
+    @BindView(R.id.tvMark)
+    TextView tvMark;
+    @BindView(R.id.lineAll)
+    View lineAll;
+    @BindView(R.id.tvTopTwo)
+    TextView tvTopTwo;
+    @BindView(R.id.tvContent)
+    TextView tvContent;
+    @BindView(R.id.imgRecycleView)
+    RecyclerView imgRecycleView;
+    @BindView(R.id.lineTwo)
+    View lineTwo;
+    @BindView(R.id.tvAssessTittle)
+    TextView tvAssessTittle;
+    @BindView(R.id.tvAssess)
+    TextView tvAssess;
+    @BindView(R.id.nestedScrollView)
+    NestedScrollView nestedScrollView;
+
+
+    private Map<String, String> map = new HashMap<>();
+    private UserBean userBean;
+    private String detail_id;
+    private List<FileListBean> imgList;
+    private ImagePayAdapter imgAdapter;
+    private NewApplyBean bean;
+
+    private PermissionsBean permissionsBean;
+
+    public static ProblemDetailFragment newInstance(String detail_id, PermissionsBean permissionsBean) {
+        Bundle args = new Bundle();
+        ProblemDetailFragment fragment = new ProblemDetailFragment();
+        fragment.detail_id = detail_id;
+        fragment.permissionsBean = permissionsBean;
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public int getRootViewId() {
+        return R.layout.fragment_problem_detail;
+    }
+
+    @Override
+    public void initUI() {
+        tvTitle.setText("问题建议/新品申请详情");
+
+        imgList = new ArrayList<>();
+        imgRecycleView.setLayoutManager(new GridLayoutManager(context, 3));
+        imgRecycleView.setNestedScrollingEnabled(false);
+        imgAdapter = new ImagePayAdapter(context, imgList);
+        imgRecycleView.setAdapter(imgAdapter);
+        imgAdapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                String upUrl = imgAdapter.getItem(position).getUp_url();
+                if (upUrl.endsWith(".png") | upUrl.endsWith(".jpg") | upUrl.endsWith(".jpeg")) {
+                    ArrayList<String> list = new ArrayList<>();
+                    int mPosition = 0;
+                    for (int i = 0; i < imgAdapter.getAllData().size(); i++) {
+                        String file_path = imgAdapter.getItem(i).getUp_url();
+                        if (file_path.equals(upUrl)) {
+                            mPosition = list.size();
+                        }
+                        if (file_path.endsWith(".png") | file_path.endsWith(".jpg") | file_path.endsWith(".jpeg")) {
+                            list.add(file_path);
+
+                        }
+                    }
+                    Intent intent = new Intent(getActivity(), ShowPictureActivity.class);
+                    intent.putExtra("imagelist", (Serializable) list);
+                    intent.putExtra("position", mPosition);
+                    getActivity().startActivity(intent);
+                } else {
+                    Intent intentVisit = new Intent(getActivity(), TbsFileActivity.class);
+                    intentVisit.putExtra("file_url", upUrl);
+                    intentVisit.putExtra("file_name", imgAdapter.getItem(position).getFile_name());
+                    startActivity(intentVisit);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void initData() {
+        userBean = SpSingleInstance.getSpSingleInstance().getUserBean();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refresh();
+    }
+
+    private void refresh() {
+        map.clear();
+        map.put("apply_id", detail_id);
+        getPresenter().getNewApply(userBean.getStaff_token(), map);
+    }
+
+    private String appOperation;
+    private String orderStaffId;//制单人id
+
+    @Override
+    public void OnGetNewApply(NewApplyBean data) {
+        if (TextUtils.isEmpty(data.getApply_id())) {
+            showEmptyDialog();
+            return;
+        }
+        orderStaffId = data.getStaff_id();
+        //appOperation 0新增 1编辑 2删除 3审核
+        appOperation = permissionsBean.getApp_operation();
+        String[] strings = appOperation.split(",");
+        switch (data.getApply_state()) {
+            case "wait_audit":
+                if (data.getStaff_id().equals(userBean.getStaff_id())) {
+                    if (isHave("2",strings)) {
+                        tvRight.setVisibility(View.VISIBLE);
+                        tvRight.setText(R.string.more);
+                    } else {
+                        tvRight.setVisibility(View.VISIBLE);
+                        tvRight.setText(R.string.edit);
+                    }
+                } else {
+                    showRight(strings);
+
+                }
+                tvState.setTextColor(getResources().getColor(R.color.audit_one));
+                break;
+            case "accept":
+                if (data.getStaff_id().equals(userBean.getStaff_id())) {
+                    tvRight.setVisibility(View.VISIBLE);
+                    tvRight.setText(R.string.review_replay);
+                } else {
+                    if (isHave("3",strings)) {
+                        tvRight.setVisibility(View.VISIBLE);
+                        tvRight.setText(R.string.review);
+                    } else {
+                        tvRight.setVisibility(View.GONE);
+                    }
+                }
+                tvState.setTextColor(getResources().getColor(R.color.audit_two));
+                break;
+        }
+        bean = data;
+        tvNo.setText(data.getApply_no());
+        tvName.setText(data.getStaff_name());
+        tvState.setText(data.getStaff_department());
+
+        tvStartTime.setText(data.getApply_category_show());
+        tvDepartment.setText(data.getApply_state_show());
+        tvMark.setText(data.getApply_create_time());
+        tvContent.setText(data.getApply_remark());
+        if (data.getFileList().size() <= 0) {
+            imgRecycleView.setVisibility(View.GONE);
+        } else {
+            imgRecycleView.setVisibility(View.VISIBLE);
+            imgAdapter.clear();
+            imgAdapter.addAll(data.getFileList());
+            imgAdapter.notifyDataSetChanged();
+        }
+        List<RecordListBean> dailyAuditBeans = data.getRecordList();
+        String audit = "";
+        if (dailyAuditBeans.size() > 0) {
+
+            for (int i = 0; i < dailyAuditBeans.size(); i++) {
+                audit = audit + dailyAuditBeans.get(i).getRecord_name() + "："
+                        + dailyAuditBeans.get(i).getRecord_remark() + "  "
+                        + dailyAuditBeans.get(i).getRecord_create_time() + "\n\n";
+            }
+            tvAssess.setText(audit);
+        } else {
+            tvAssess.setText(R.string.no_comment);
+        }
+
+
+    }
+
+    //右上角显示
+    private void showRight(String[] strings) {
+        if (isHave("1", strings) && isHave("2", strings) && isHave("3", strings)) {
+            tvRight.setVisibility(View.VISIBLE);
+            tvRight.setText(R.string.more);
+        } else if (isHave("1", strings) && isHave("2", strings) && !isHave("3", strings)) {
+            tvRight.setVisibility(View.VISIBLE);
+            tvRight.setText(R.string.more);
+        } else if (isHave("1", strings) && isHave("3", strings) && !isHave("2", strings)) {
+            tvRight.setVisibility(View.VISIBLE);
+            tvRight.setText(R.string.more);
+        } else if (isHave("2", strings) && isHave("3", strings) && !isHave("1", strings)) {
+            tvRight.setVisibility(View.VISIBLE);
+            tvRight.setText(R.string.more);
+        } else if (isHave("1", strings) && !isHave("2", strings) && !isHave("3", strings)) {
+            tvRight.setVisibility(View.VISIBLE);
+            tvRight.setText(R.string.edit);
+        } else if (isHave("2", strings) && !isHave("1", strings) && !isHave("3", strings)) {
+            tvRight.setVisibility(View.VISIBLE);
+            tvRight.setText(R.string.delete);
+        } else if (isHave("3", strings) && !isHave("1", strings) && !isHave("2", strings)) {
+            tvRight.setVisibility(View.VISIBLE);
+            tvRight.setText(R.string.review);
+        } else if (!isHave("1", strings) && !isHave("2", strings) && !isHave("3", strings)) {
+            tvRight.setVisibility(View.GONE);
+        }
+
+    }
+
+    //数组钟是否包含某元素
+    public boolean isHave(String index, String[] split) {
+        for (int i = 0; i < split.length; i++) {
+            if (index.equals(split[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    //显示空单据弹框
+    private void showEmptyDialog() {
+        final CustomDialog.Builder builder = new CustomDialog.Builder(context);
+        builder.setMessage(getString(R.string.deleted));
+        builder.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+                dialog.dismiss();
+            }
+        });
+        builder.onCreate().show();
+    }
+
+
+    @OnClick({R.id.ivLeft, R.id.tvRight})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ivLeft:
+                finish();
+                break;
+            case R.id.tvRight:
+                String s = tvRight.getText().toString();
+                switch (s) {
+                    case "编辑":
+                        startProblemAddFragment(bean, "1", permissionsBean);
+                        break;
+                    case "删除":
+                        toDelete();
+                        break;
+                    case "审阅":
+                        startDayReviewFragment("0");
+                        break;
+                    case "审阅回复":
+                        startDayReviewFragment("1");
+                        break;
+                    case "更多":
+                        if (TextUtils.isEmpty(orderStaffId) || TextUtils.isEmpty(appOperation)) {
+                            return;
+                        }
+                        moreOperation(orderStaffId, appOperation);
+                        break;
+                }
+                break;
+        }
+    }
+
+
+    //更多显示的操作  //appOperation  1编辑 2删除 3审核
+    private void moreOperation(String orderStaffId, String appOperation) {
+        if (orderStaffId.equals(userBean.getStaff_id())) {//自己的单据
+            showList(new String[]{"编辑", "删除"});
+        } else {
+            String[] strings = appOperation.split(",");
+            if (isHave("1",strings) && isHave("2", strings) && isHave("3", strings)) {
+                showList(new String[]{"编辑", "删除", "审阅"});
+            } else if (isHave("1",strings) && isHave("2", strings) && !isHave("3", strings)) {
+                showList(new String[]{"编辑", "删除"});
+            } else if (isHave("1",strings) && isHave("3", strings) && !isHave("2", strings)) {
+                showList(new String[]{"编辑", "审阅"});
+            } else if (isHave("2", strings) && isHave("3", strings) && !isHave("1",strings)) {
+                showList(new String[]{"删除", "审阅"});
+            }
+        }
+    }
+
+    private AlertDialog alertDialog1;
+
+    public void showList(final String[] items) {
+
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
+        alertBuilder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                switch (items[i]) {
+                    case "编辑":
+                        startProblemAddFragment(bean, "1", permissionsBean);
+                        break;
+                    case "删除":
+                        toDelete();
+                        break;
+                    case "审阅":
+                        startDayReviewFragment("0");
+                        break;
+                }
+
+                alertDialog1.dismiss();
+            }
+
+
+        });
+        alertDialog1 = alertBuilder.create();
+        alertDialog1.show();
+    }
+
+
+    //删除单据
+    private void toDelete() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage(R.string.sure_delete_order);
+        builder.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                map.clear();
+                map.put("apply_id", detail_id);
+                map.put("is_select", "0");
+                map.put("is_app", "1");
+                map.put("operation", "2");
+                map.put("module_id", permissionsBean.getMenu_id());
+                getPresenter().deleteNewApply(userBean.getStaff_token(), map);
+            }
+        });
+        builder.setNegativeButton(getString(R.string.cancel), null);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    //审阅
+    private void startDayReviewFragment(String type) {
+        ReviewFragment fragment = ReviewFragment.newInstance(type);
+        fragment.setOnReviewClickListener(new ReviewFragment.OnReviewClickListener() {
+            @Override
+            public void ok(String content) {
+                map.clear();
+                map.put("staff_id", userBean.getStaff_id());
+                map.put("apply_id", detail_id);
+                map.put("apply_remark", content);
+                map.put("is_select", "0");
+                map.put("is_app", "1");
+                map.put("operation", "3");
+                map.put("module_id", permissionsBean.getMenu_id());
+                getPresenter().auditNewApply(userBean.getStaff_token(), map);
+            }
+        });
+
+        fragment.show(getFragmentManager(), ProblemDetailFragment.class.getSimpleName());
+    }
+
+
+    @Override
+    public void OnAuditNewApply(String data) {
+        ToastUtil.showToast(context.getApplicationContext(), data);
+        refresh();
+    }
+
+
+    @Override
+    public void OndeleteNewApply(String data) {
+        EventBus.getDefault().post(new FirstEventFilter("problem_delete"));
+        ToastUtil.showToast(context.getApplicationContext(), data);
+        finish();
+
+    }
+
+    @Override
+    public void OndeleteNewApplyFile(String data) {
+
+    }
+
+    @Override
+    public void OnupdateNewApply(String data) {
+
+    }
+
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void onCompleted() {
+
+    }
+
+    @Override
+    public void onError(Throwable e) {
+        ToastUtil.showToast(context.getApplicationContext(), e.getMessage());
+    }
+
+    @Override
+    public ProblemPresenter createPresenter() {
+        return new ProblemPresenter(getApp());
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @Override
+    public void onUploadFiles(String[] data) {
+
+    }
+
+    @Override
+    public void OnInsertNewApplyy(String data) {
+
+    }
+
+    @Override
+    public void OnGetNewApplyList(List<NewApplyBean> data, String total) {
+
+    }
+
+
+}

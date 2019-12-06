@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llCheck"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <TextView
+        android:id="@+id/lineTop"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:background="@color/colorTextF8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/must_img"
+        android:drawablePadding="5dp"
+        android:text="审批人"
+        android:textColor="@color/colorTextG3"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineTop" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageVIew"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/check_img"
+        app:layout_constraintEnd_toEndOf="@+id/tvCheck"
+        app:layout_constraintStart_toStartOf="@+id/tvCheck"
+        app:layout_constraintTop_toBottomOf="@+id/tvCheck" />
+
+    <ImageView
+        android:id="@+id/ivCheckDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="3dp"
+        android:padding="5dp"
+        android:src="@drawable/delete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCheck" />
+
+
+    <TextView
+        android:id="@+id/tvCheckPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        android:hint="请选择"
+        android:textColor="@color/colorTextG3"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/circleImageVIew"
+        app:layout_constraintStart_toStartOf="@+id/circleImageVIew"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageVIew" />
+
+</android.support.constraint.ConstraintLayout>

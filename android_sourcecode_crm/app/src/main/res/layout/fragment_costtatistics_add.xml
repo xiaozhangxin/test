@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_back_title_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:overScrollMode="never">
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:gravity="center_vertical"
+                    android:text="制单人"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="end|center_vertical"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:gravity="center_vertical"
+                    android:text="制单日期"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="end|center_vertical"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:gravity="center_vertical"
+                    android:text="部门"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvDepartment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:layout_marginRight="16dp"
+                    android:gravity="end|center_vertical"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="部门"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择部门"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="年份"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:drawablePadding="8dp"
+                    android:drawableRight="@drawable/right"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="月份"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:drawablePadding="8dp"
+                    android:drawableRight="@drawable/right"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="任务量"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入任务量"
+
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="月收入(含税)"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvFive"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入月收入(含税)"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="月收入(未税)"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvSix"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入月收入(未税)"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="月成本"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvAddOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入月成本"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="直营利润(毛利)"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvSeven"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入直营利润(毛利)"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="直营毛利率"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvNine"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入直营毛利率"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="费用总预算"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvTen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入费用总预算"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="月费用预算"
+
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tEleven"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入月费用预算"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="月实际费用"
+
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvTwelve"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入月实际费用"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="费用发生率"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvThirteen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入费用发生率"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="费用率"
+
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvFourteen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入费用率"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="市场费用"
+
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvFifteen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入市场费用"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="人力成本"
+
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvSixteen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="人力成本"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="运杂费用"
+
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvSeventeen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入运杂费用"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="办公费"
+
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvEighteen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入办公费"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="招待费用"
+
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvNineteen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入招待费用"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="广告费用"
+
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvTwenty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入广告费用"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="折旧摊销"
+
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvTwentyOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入折旧摊销"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="出货不立账费用"
+
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvTwentyTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入出货不立账费用"
+                    android:paddingRight="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginLeft="8dp"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:drawablePadding="1dp"
+                    android:gravity="center_vertical"
+                    android:text="备注"
+
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvTwentyThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="11dp"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入备注"
+                    android:paddingRight="16dp"
+                    android:maxLength="1000"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorTextF8" />
+
+            <TextView
+                android:id="@+id/ok"
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginEnd="81dp"
+                android:layout_marginLeft="81dp"
+                android:layout_marginRight="81dp"
+                android:layout_marginStart="81dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/setbar_colorprimary"
+                android:gravity="center"
+                android:text="确认申请"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

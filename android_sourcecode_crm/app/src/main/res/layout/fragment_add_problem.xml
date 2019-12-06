@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:overScrollMode="never">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include10"
+            layout="@layout/top_back_title_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="1" />
+
+        <View
+            android:id="@+id/lineOne"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:background="@color/colorTextF8"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include10" />
+
+        <TextView
+            android:id="@+id/tvTypeTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:drawableLeft="@drawable/must_img_not"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:text="制单人"
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineOne" />
+
+        <TextView
+            android:id="@+id/tvType"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical|end"
+            android:paddingRight="16dp"
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTypeTittle"
+            app:layout_constraintLeft_toRightOf="@+id/tvTypeTittle"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTypeTittle" />
+
+        <View
+            android:id="@+id/lineTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF8"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTypeTittle" />
+
+        <TextView
+            android:id="@+id/tvTimeTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:text="制单时间"
+            android:drawableLeft="@drawable/must_img_not"
+            android:drawablePadding="5dp"
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineTwo" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical|end"
+            android:paddingRight="16dp"
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTimeTittle"
+            app:layout_constraintLeft_toRightOf="@+id/tvTimeTittle"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTimeTittle" />
+
+        <View
+            android:id="@+id/lineThree"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF8"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTimeTittle" />
+
+        <TextView
+            android:id="@+id/tvAddressTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:paddingLeft="8dp"
+            android:text="所属部门"
+            android:gravity="center_vertical"
+            android:drawableLeft="@drawable/must_img"
+            android:drawablePadding="5dp"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineThree" />
+
+        <EditText
+            android:id="@+id/tvAddress"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical|end"
+            android:paddingLeft="8dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp"
+            android:background="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAddressTittle"
+            app:layout_constraintLeft_toRightOf="@+id/tvAddressTittle"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvAddressTittle" />
+
+        <View
+            android:id="@+id/lineFour"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:background="@color/colorTextF8"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddressTittle" />
+
+        <TextView
+            android:id="@+id/tvTyTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginLeft="-17dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center_vertical"
+            android:drawableLeft="@drawable/must_img"
+            android:drawablePadding="5dp"
+            android:paddingLeft="8dp"
+            android:text="类型"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineFour" />
+
+        <TextView
+            android:id="@+id/tvTy"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:drawablePadding="8dp"
+            android:drawableRight="@drawable/right"
+            android:gravity="center_vertical|end"
+            android:hint="请选择"
+            android:paddingRight="16dp"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTyTittle"
+            app:layout_constraintLeft_toRightOf="@+id/tvTyTittle"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvTyTittle" />
+
+        <View
+            android:id="@+id/lineFive"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/colorTextF8"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTyTittle" />
+
+
+        <EditText
+            android:id="@+id/etReason"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:background="@null"
+            android:gravity="start"
+            android:hint="请输入内容"
+            android:paddingLeft="24dp"
+            android:paddingTop="32dp"
+            android:paddingBottom="24dp"
+            android:textSize="13sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineFive" />
+
+        <TextView
+            android:id="@+id/tvReasonTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:drawableLeft="@drawable/must_img"
+            android:drawablePadding="5dp"
+            android:layout_marginTop="8dp"
+            android:text="详情描述"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="@+id/etReason"
+            app:layout_constraintTop_toTopOf="@+id/etReason" />
+
+        <View
+            android:id="@+id/lineSix"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:background="@color/colorTextF8"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etReason" />
+
+        <TextView
+            android:id="@+id/tvImgTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="15dp"
+            android:text="添加凭证"
+            android:drawableLeft="@drawable/must_img_not"
+            android:drawablePadding="5dp"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineSix" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycleView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="@+id/tvImgTittle"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvImgTittle" />
+
+        <TextView
+            android:id="@+id/ok"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="85dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginRight="85dp"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/setbar_colorprimary"
+            android:gravity="center"
+            android:text="确认申请"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycleView" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>

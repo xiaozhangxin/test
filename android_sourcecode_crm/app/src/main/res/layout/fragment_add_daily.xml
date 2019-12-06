@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <include layout="@layout/top_back_title_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tvTodayTittle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:drawableLeft="@drawable/must_img"
+                android:drawablePadding="5dp"
+                android:text="今日小结"
+                android:textColor="@color/colorTextG3"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/tvToday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="请填写内容"
+                android:maxLength="1000"
+                android:paddingBottom="16dp"
+                android:paddingTop="8dp"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvTomorrowTittle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:drawableLeft="@drawable/must_img"
+                android:drawablePadding="5dp"
+                android:text="明日计划"
+                android:textColor="@color/colorTextG3"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/dtvTomorrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="请填写内容"
+                android:maxLength="1000"
+                android:paddingBottom="16dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/colorTextG3"
+                android:textSize="13sp" />
+
+            <View
+                android:id="@+id/lineOne"
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/bg_blue" />
+
+            <TextView
+                android:id="@+id/tvImgTittle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:drawableLeft="@drawable/must_img_not"
+                android:drawablePadding="5dp"
+                android:text="图片"
+                android:textColor="@color/colorTextG3"
+                android:textSize="13sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp" />
+
+
+            <Button
+                android:id="@+id/ok"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="85dp"
+                android:layout_marginRight="85dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/setbar_colorprimary"
+                android:text="提交"
+                android:textColor="@color/white" />
+
+
+            <View
+                android:id="@+id/lineTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

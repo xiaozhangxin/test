@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/top_back_title_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/pressure_detail_base" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvTimeTittle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="所属区域"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvAddDepartment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:gravity="end"
+                    android:textColor="@color/colorTextG6"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+            <include layout="@layout/line_ten" />
+
+            <LinearLayout
+                android:id="@+id/llRefuse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvRefuseTittle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/denial_reason"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvRefuseReason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:gravity="end"
+                    android:textColor="@color/red"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/lineRefuse"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:visibility="gone"
+                android:background="@color/colorTextF3" />
+
+            <include layout="@layout/pressure_detail_one" />
+
+            <include layout="@layout/line_ten" />
+
+            <include layout="@layout/pressure_detail_two" />
+
+            <include layout="@layout/line_ten" />
+
+            <include layout="@layout/pressure_detail_three" />
+
+            <include layout="@layout/line_ten" />
+
+            <include layout="@layout/pressure_detail_four" />
+
+            <Button
+                android:id="@+id/ok"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginRight="55dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/setbar_cp3"
+                android:text="审核"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

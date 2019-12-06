@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="img_color">#FF5353</color>
+    <color name="colorTextF3">#F3F3F3</color>
+
+    <color name="colorPrimary">#33aaff</color>
+    <color name="colorPrimaryDark">#33aaff</color>
+    <color name="colorAccent">#33aaff</color>
+
+    <color name="yq_text">#FFDB6E</color>
+    <color name="jrgwc_text">#EAD5B5</color>
+
+
+    <color name="translate">#00000000</color>
+
+    <color name="tm_tab_tm">#E5966B37</color>
+
+
+    <color name="text_error_color">#7f000000</color>
+
+
+    <color name="tx_l">#333333</color>
+
+    <color name="bg_lien">#EAEAEA</color>
+
+    <color name="c4">#E0E0E0</color>
+
+    <color name="colorSendName2">#2B7DE2</color>
+    <color name="colorSendName4">#FF7906</color>
+    <!--蒙版-->
+
+    <!--文字白色-->
+    <!--文字G1-->
+    <color name="colorTextGC">#CCCCCC</color>
+    <!--文字G2-->
+    <color name="colorTextG9">#999999</color>
+    <!--文字G3-->
+    <color name="colorTextG6">#777777</color>
+    <!--文字G4-->
+    <color name="colorTextG3">#333333</color>
+    <!--文字black-->
+    <color name="colorTextE5">#E5E5E5</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="colorActivityBackground">#F3F3F3</color>
+
+    <color name="window_background">#eaeaea</color>
+
+    <color name="black">#0f0b02</color>
+    <color name="colorPrimaryNew">#33aaff</color>
+    <color name="colorTextF8">#F6F9FB</color>
+    <color name="audit_one">#ffb666</color>
+    <color name="audit_two">#4da9eb</color>
+    <color name="login_trans">#69000000</color>
+    <color name="week_bar_xaxis">#70C0FF</color>
+    <color name="yuan_one">#ff9494</color>
+    <color name="yuan_two">#74c0ff</color>
+    <color name="name_one">#E3AE56</color>
+    <color name="bg_blue">#F6F9FB</color>
+
+    <color name="lable_one">#F7B500</color>
+    <color name="lable_two">#32C5FF</color>
+    <color name="lable_three">#E02020</color>
+    <color name="lable_sign">#3BC4FF</color>
+</resources>

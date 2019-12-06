@@ -1,0 +1,88 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--Global configuration dimen-->
+
+    <!--weekday bangumi layout size-->
+
+    <!--load more layout size-->
+
+    <!--banner height size-->
+
+    <!--video item common strip size-->
+
+
+    <!--video card size-->
+
+
+    <!--search size-->
+
+
+    <!--game center size-->
+
+
+    <!--home live size-->
+
+
+    <!--home recommend size-->
+
+    <!--bangumi index size-->
+
+    <!--bangumi recomend size-->
+
+
+    <!--splash size-->
+
+
+    <!--video details size-->
+
+
+    <!--discover layout size-->
+
+
+    <!--more layout size-->
+
+
+    <!--offline download size-->
+
+
+    <!--common text size-->
+
+    <!--tab layout size-->
+
+
+    <!--circle head portrait size-->
+
+    <!-- Common resources -->
+
+    <!-- CircleProgressView -->
+
+    <!-- UserTagView -->
+
+    <!-- Card -->
+
+    <!-- List -->
+
+    <!-- Navigation -->
+
+    <!-- Android Design Support Library -->
+
+    <!-- Layouts' special resources -->
+
+    <!-- activity_user_info.xml -->
+
+    <!-- activity_sp_view.xml -->
+
+    <!-- video player -->
+
+    <!--bangumi details size-->
+
+    <!--user details size-->
+
+    <!--chase bangumi size-->
+
+
+</resources>

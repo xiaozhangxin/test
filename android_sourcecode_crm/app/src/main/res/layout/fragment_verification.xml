@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_back_title_bar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="输入验证码"
+        android:textColor="@color/colorTextG3"
+        android:textSize="28sp" />
+
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="24dp"
+        android:text="系统监测到您的设备更换，已向发送验证码短信，请查看短信并输入验证码"
+        android:textColor="@color/colorTextG6"
+        android:textSize="17sp" />
+
+    <com.akan.qf.view.SecurityCodeView
+        android:id="@+id/tvSecurityView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        app:icv_et_bg_focus="@drawable/shape_icv_et_bg_focus"
+        app:icv_et_bg_normal="@drawable/shape_icv_et_bg_normal"
+        app:icv_et_divider_drawable="@drawable/shape_divider_identifying"
+        app:icv_et_number="4"
+        app:icv_et_text_color="#000000"
+        app:icv_et_width="60dp" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="接受短信大概需要60秒"
+        android:visibility="gone"
+        android:textColor="@color/colorTextG6"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="收不到验证短信？"
+        android:padding="10dp"
+        android:textColor="@color/colorPrimaryNew"
+        android:textSize="16sp"
+        />
+
+
+</LinearLayout>

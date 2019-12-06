@@ -1,0 +1,39 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+
+    <dimen name="title_text_size">17sp</dimen>
+    <dimen name="bottom_menu_text_size">12sp</dimen>
+
+
+    <!-- 飘星 -->
+
+
+    <!--circle head portrait size-->
+
+    <!-- Common resources -->
+    <!--common text size-->
+
+
+    <!-- umeng -->
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+
+    <!--大小-->
+    <!--h1-->
+    <!--h2-->
+    <!--h3-->
+    <!--h4-->
+    <!--h5-->
+    <!--h6-->
+    <!--h7-->
+    <!--h8-->
+    <!--h9-->
+    <!--h10-->
+    <!--h11-->
+
+</resources>

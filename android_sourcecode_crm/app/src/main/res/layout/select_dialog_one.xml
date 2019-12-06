@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="32dp"
+        android:text="如忘记密码？ \n\n请致电400-820-8717"
+        android:textColor="@color/colorPrimaryNew"
+        android:background="@drawable/setbar_white"
+        android:textSize="18sp" />
+</LinearLayout>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_blue"
+    android:orientation="vertical">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <View
+            android:id="@+id/whiteBg"
+            android:layout_width="0dp"
+            android:layout_height="190dp"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <View
+            android:id="@+id/topView"
+            android:layout_width="0dp"
+            android:layout_height="158dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/setbar_white"
+            android:elevation="3dp"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:elevation="3dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/login_logo"
+            app:layout_constraintBottom_toTopOf="@+id/lineOne"
+            app:layout_constraintLeft_toLeftOf="@+id/topView"
+            app:layout_constraintTop_toTopOf="@+id/topView" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:elevation="3dp"
+            android:text="138****3344"
+            android:textColor="#2B3137"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        <ImageView
+            android:id="@+id/ivCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="0dp"
+            android:elevation="3dp"
+            android:src="@drawable/mine_code"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPhone"
+            app:layout_constraintLeft_toRightOf="@+id/tvPhone"
+            app:layout_constraintTop_toTopOf="@+id/tvPhone" />
+
+        <ImageView
+            android:id="@+id/ivMessage"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:elevation="3dp"
+            android:src="@drawable/mine_message"
+            app:layout_constraintRight_toRightOf="@+id/topView"
+            app:layout_constraintTop_toTopOf="@+id/topView" />
+
+        <TextView
+            android:id="@+id/num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/shape_red"
+            android:gravity="center"
+            android:paddingBottom="2dp"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:elevation="3dp"
+            android:paddingTop="2dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="9sp"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="@+id/topView"
+            app:layout_constraintTop_toTopOf="@+id/topView" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:elevation="3dp"
+            android:text="韩璐琳"
+            android:textColor="#363839"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintLeft_toLeftOf="@+id/tvPhone" />
+
+        <TextView
+            android:id="@+id/tvJob"
+            android:layout_width="37dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/setbar_dt"
+            android:elevation="3dp"
+            android:gravity="center"
+            android:text="文秘"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvName"
+            app:layout_constraintLeft_toRightOf="@+id/tvName" />
+
+        <View
+            android:id="@+id/lineOne"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_marginBottom="45dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="#F5F5F5"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toBottomOf="@+id/topView"
+            app:layout_constraintLeft_toLeftOf="@+id/topView"
+            app:layout_constraintRight_toRightOf="@+id/topView" />
+
+        <TextView
+            android:id="@+id/tvDepartment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:elevation="3dp"
+            android:text="爱康企业— 北方大区"
+            android:textColor="#363839"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/topView"
+            app:layout_constraintLeft_toLeftOf="@+id/lineOne"
+            app:layout_constraintRight_toRightOf="@+id/topView"
+            app:layout_constraintTop_toBottomOf="@+id/lineOne" />
+
+
+        <TextView
+            android:id="@+id/tvPersonInfo"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:drawableLeft="@drawable/mine_one"
+            android:drawablePadding="14dp"
+            android:drawableRight="@drawable/right"
+            android:gravity="center_vertical"
+            android:paddingLeft="14dp"
+            android:paddingRight="18dp"
+            android:text="个人资料"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:textColor="#1E232A"
+            android:textSize="15sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/whiteBg" />
+
+
+        <TextView
+            android:id="@+id/tvQuestion"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:drawableLeft="@drawable/mine_two"
+            android:drawablePadding="14dp"
+            android:drawableRight="@drawable/right"
+            android:gravity="center_vertical"
+            android:paddingLeft="14dp"
+            android:paddingRight="18dp"
+            android:text="问卷调查"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:textColor="#1E232A"
+            android:textSize="15sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPersonInfo" />
+
+
+
+        <TextView
+            android:id="@+id/tvNotice"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:drawableLeft="@drawable/mine_three"
+            android:drawablePadding="14dp"
+            android:drawableRight="@drawable/right"
+            android:gravity="center_vertical"
+            android:paddingLeft="14dp"
+            android:paddingRight="18dp"
+            android:text="公告通知"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:textColor="#1E232A"
+            android:textSize="15sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvQuestion" />
+
+        <TextView
+            android:id="@+id/numTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="38dp"
+            android:background="@drawable/shape_red"
+            android:gravity="center"
+            android:paddingBottom="2dp"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:paddingTop="2dp"
+            android:text="0"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="9sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNotice"
+            app:layout_constraintRight_toRightOf="@+id/tvNotice"
+            app:layout_constraintTop_toTopOf="@+id/tvNotice" />
+
+
+
+        <TextView
+            android:id="@+id/tvAddOne"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:drawableLeft="@drawable/mine_add_one"
+            android:drawablePadding="14dp"
+            android:drawableRight="@drawable/right"
+            android:gravity="center_vertical"
+            android:paddingLeft="14dp"
+            android:paddingRight="18dp"
+            android:text="协调函"
+            android:textColor="#1E232A"
+            android:textSize="15sp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNotice" />
+
+
+
+        <TextView
+            android:id="@+id/tvSecurity"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:drawableLeft="@drawable/mine_five"
+            android:drawablePadding="14dp"
+            android:drawableRight="@drawable/right"
+            android:gravity="center_vertical"
+            android:paddingLeft="14dp"
+            android:paddingRight="18dp"
+            android:text="防伪识别"
+            android:textColor="#1E232A"
+            android:textSize="15sp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvAddOne" />
+
+
+
+        <TextView
+            android:id="@+id/tvShare"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:drawableLeft="@drawable/mine_six"
+            android:drawablePadding="14dp"
+            android:drawableRight="@drawable/right"
+            android:gravity="center_vertical"
+            android:paddingLeft="14dp"
+            android:paddingRight="18dp"
+            android:text="软件分享"
+            android:textColor="#1E232A"
+            android:textSize="15sp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSecurity" />
+
+
+        <TextView
+            android:id="@+id/tvCard"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:drawableLeft="@drawable/mine_seven"
+            android:drawablePadding="14dp"
+            android:drawableRight="@drawable/right"
+            android:gravity="center_vertical"
+            android:paddingLeft="14dp"
+            android:paddingRight="18dp"
+            android:text="客户名片"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:textColor="#1E232A"
+            android:textSize="15sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvShare" />
+
+        <TextView
+            android:id="@+id/tvSetting"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:drawableLeft="@drawable/mine_eight"
+            android:drawablePadding="14dp"
+
+            android:drawableRight="@drawable/right"
+            android:gravity="center_vertical"
+            android:paddingLeft="14dp"
+            android:paddingRight="18dp"
+            android:text="设置"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            android:textColor="#1E232A"
+            android:textSize="15sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCard" />
+
+        <TextView
+            android:id="@+id/viewEight"
+            android:layout_width="0dp"
+            android:layout_height="61dp"
+            android:gravity="center"
+            android:text="客服电话：4008208717"
+            android:textColor="@color/colorTextG9"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSetting" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>

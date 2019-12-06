@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/include9"
+        layout="@layout/top_back_title_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/setbar_gnine"
+        android:gravity="center"
+        android:text="保存到手机"
+        android:textColor="@color/colorTextG3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/setbar_dt"
+        android:gravity="center"
+        android:text="分享"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/textView3"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <View
+        android:id="@+id/viewBg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/setbar_white"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="26dp"
+        android:textStyle="bold"
+        android:text="二维码名片"
+        android:textColor="@color/colorTextG3"
+        android:textSize="18dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/include9" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:text="哈哈"
+        android:textColor="@color/colorTextG3"
+        android:textSize="14sp"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/line"
+        app:layout_constraintLeft_toLeftOf="@+id/viewBg"
+        app:layout_constraintTop_toTopOf="@+id/viewBg" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="16dp"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/line"
+        app:layout_constraintRight_toRightOf="@+id/viewBg"
+        app:layout_constraintTop_toTopOf="@+id/viewBg"
+        app:srcCompat="@drawable/ak" />
+
+    <ImageView
+        android:id="@+id/ivCode"
+        android:layout_width="167dp"
+        android:layout_height="167dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewBg"
+        app:layout_constraintLeft_toLeftOf="@+id/viewBg"
+        app:layout_constraintRight_toRightOf="@+id/viewBg"
+        app:srcCompat="@drawable/ak"
+        app:layout_constraintHorizontal_bias="0.503"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/line" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="软件扫一扫加我哦"
+        android:elevation="2dp"
+        android:textColor="@color/colorTextG6"
+        app:layout_constraintBottom_toBottomOf="@+id/viewBg"
+        app:layout_constraintLeft_toLeftOf="@+id/viewBg"
+        app:layout_constraintRight_toRightOf="@+id/viewBg" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="64dp"
+        android:elevation="2dp"
+        android:background="@color/colorTextF8"
+        app:layout_constraintLeft_toLeftOf="@+id/viewBg"
+        app:layout_constraintRight_toRightOf="@+id/viewBg"
+        app:layout_constraintTop_toTopOf="@+id/viewBg" />
+
+</android.support.constraint.ConstraintLayout>
