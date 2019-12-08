@@ -15,11 +15,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ak.pt.R;
+import com.ak.pt.bean.FirstEvent;
 import com.ak.pt.mvp.base.BaseFragment;
 import com.ak.pt.mvp.presenter.ChangePwdpresenter;
 import com.ak.pt.mvp.view.IChangePwdView;
 import com.ak.pt.util.ToastUtil;
 
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -62,11 +65,13 @@ public class ForgetPwdFragment extends BaseFragment<IChangePwdView, ChangePwdpre
 
     private Map<String, String> map = new HashMap<>();
 
+    private String type;
 
-    public static ForgetPwdFragment newInstance() {
+    public static ForgetPwdFragment newInstance(String type) {
         Bundle args = new Bundle();
         ForgetPwdFragment fragment = new ForgetPwdFragment();
         fragment.setArguments(args);
+        fragment.type = type;
         return fragment;
     }
 
@@ -78,29 +83,32 @@ public class ForgetPwdFragment extends BaseFragment<IChangePwdView, ChangePwdpre
 
     @Override
     public void initUI() {
-        tvTitle.setText("忘记密码");
-        ckOne.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    ckOne.setButtonDrawable(R.drawable.eye_h);
-                    registeredNewPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                } else {
-                    ckOne.setButtonDrawable(R.drawable.eye);
-                    registeredNewPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                }
+        switch (type) {
+            case "0":
+                tvTitle.setText("忘记密码");
+                break;
+
+            case "1":
+                tvTitle.setText("修改密码");
+                break;
+        }
+
+        ckOne.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                ckOne.setButtonDrawable(R.drawable.eye_h);
+                registeredNewPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            } else {
+                ckOne.setButtonDrawable(R.drawable.eye);
+                registeredNewPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
             }
         });
-        ckTwo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    ckTwo.setButtonDrawable(R.drawable.eye_h);
-                    registeredNewsPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                } else {
-                    ckTwo.setButtonDrawable(R.drawable.eye);
-                    registeredNewsPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                }
+        ckTwo.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                ckTwo.setButtonDrawable(R.drawable.eye_h);
+                registeredNewsPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            } else {
+                ckTwo.setButtonDrawable(R.drawable.eye);
+                registeredNewsPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
             }
         });
     }
@@ -119,6 +127,7 @@ public class ForgetPwdFragment extends BaseFragment<IChangePwdView, ChangePwdpre
     @Override
     public void ongetwangjiminma(String data) {
         ToastUtil.showToast(context.getApplicationContext(), data);
+        EventBus.getDefault().post(new FirstEvent("change_success"));
         finish();
     }
 
@@ -226,6 +235,9 @@ public class ForgetPwdFragment extends BaseFragment<IChangePwdView, ChangePwdpre
 
     @Override
     public void onError(Throwable e) {
+        timer.cancel();
+        getYzm.setEnabled(true);
+        getYzm.setText("获取验证码");
         ToastUtil.showToast(context.getApplicationContext(), e.getMessage());
     }
 

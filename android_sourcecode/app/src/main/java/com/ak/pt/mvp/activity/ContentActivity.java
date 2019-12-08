@@ -529,7 +529,8 @@ public class ContentActivity extends AppCompatActivity {
                 replaceFragment(BleListFragment.newInstance(ptBeanONE));
                 break;
             case Constants.FORGOT_PWD:
-                replaceFragment(ForgetPwdFragment.newInstance());
+                String changeType = getIntent().getStringExtra(Constants.DETAIL_ID);
+                replaceFragment(ForgetPwdFragment.newInstance(changeType));
                 break;
             case Constants.UP_IMG:
                 String doc_no = getIntent().getStringExtra(Constants.DETAIL_ID);

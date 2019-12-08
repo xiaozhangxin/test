@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.appcompat.app.AlertDialog;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,11 +23,16 @@ import com.ak.pt.Constants;
 import com.ak.pt.MainActivity;
 import com.ak.pt.R;
 import com.ak.pt.bean.AppVersionBean;
+import com.ak.pt.bean.DepartmentBean;
+import com.ak.pt.bean.FirstEvent;
+import com.ak.pt.bean.FirstEventWorker;
 import com.ak.pt.bean.UserBean;
+import com.ak.pt.bean.WorkerBean;
 import com.ak.pt.mvp.activity.ContentActivity;
 import com.ak.pt.mvp.base.BaseActivity;
 import com.ak.pt.mvp.presenter.LoginPresenter;
 import com.ak.pt.mvp.view.ILoginView;
+import com.ak.pt.util.CustomDialog;
 import com.ak.pt.util.SPUtils;
 import com.ak.pt.util.SpSingleInstance;
 import com.ak.pt.util.ToastUtil;
@@ -35,6 +41,10 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -72,6 +82,7 @@ public class LoginActivity extends BaseActivity<ILoginView, LoginPresenter> impl
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
         App.getInstance().backLogin();
         // getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
@@ -91,8 +102,6 @@ public class LoginActivity extends BaseActivity<ILoginView, LoginPresenter> impl
         etAccount.setText(username);
         etPassword.setText(password);
     }
-
-
 
 
     @Override
@@ -163,7 +172,7 @@ public class LoginActivity extends BaseActivity<ILoginView, LoginPresenter> impl
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tvForget:
-                startForgetPwdFragment();
+                startForgetPwdFragment("0");
                 break;
             case R.id.ok:
                 String account = etAccount.getText().toString().trim();
@@ -176,6 +185,11 @@ public class LoginActivity extends BaseActivity<ILoginView, LoginPresenter> impl
                     ToastUtil.showToast(this, getString(R.string.input_pwd));
                     return;
                 }
+
+                if ("a123456".equals(password)) {
+                    showChangePwdDialog();
+                    return;
+                }
                 saveLoginInfo(this, account, password);
                 map.put("staff_account", account);
                 map.put("staff_password", password);
@@ -184,6 +198,22 @@ public class LoginActivity extends BaseActivity<ILoginView, LoginPresenter> impl
                 break;
         }
     }
+
+    //密码过于简单弹框
+    private void showChangePwdDialog() {
+            final CustomDialog.Builder builder = new CustomDialog.Builder(this);
+            builder.setMessage("您输入的密码为初始密码,请您修改后在进行登录！");
+            builder.setPositiveButton(getString(R.string.fix_rightnow), (dialog, which) -> {
+                startForgetPwdFragment("1");
+                dialog.dismiss();
+            });
+        builder.setNegativeButton("重新输入", (dialog, which) -> {
+            etPassword.setText("");
+            dialog.dismiss();
+        });
+            builder.onCreate().show();
+    }
+
 
     /**
      * 使用SharedPreferences保存用户登录信息
@@ -223,8 +253,19 @@ public class LoginActivity extends BaseActivity<ILoginView, LoginPresenter> impl
     protected void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        EventBus.getDefault().unregister(this);
     }
 
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(FirstEvent msg) {
+        switch (msg.getMsg()) {
+            case "change_success":
+                etPassword.setText("");
+                break;
+        }
+
+    }
     /**
      * 获取版本号
      */

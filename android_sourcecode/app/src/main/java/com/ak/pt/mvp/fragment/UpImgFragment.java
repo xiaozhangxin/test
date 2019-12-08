@@ -14,10 +14,12 @@ import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,7 @@ import com.ak.pt.bean.ImgUpBean;
 import com.ak.pt.bean.PressureImgBean;
 import com.ak.pt.bean.UserBean;
 import com.ak.pt.bean.photoBeanListBean;
+import com.ak.pt.http.converter.ExMultipartBody;
 import com.ak.pt.mvp.adapter.ImgTypeAdapter;
 import com.ak.pt.mvp.base.BaseFragment;
 import com.ak.pt.mvp.presenter.UpImgPresenter;
@@ -57,6 +60,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -119,6 +124,7 @@ public class UpImgFragment extends BaseFragment<IUpImgView, UpImgPresenter> impl
     private ProgressDialog pd;
     //选择图片类型弹窗
     private AlertDialog alertDialog;
+    private Thread imgThread;
 
     public static UpImgFragment newInstance(String doc_no, String address) {
         Bundle args = new Bundle();
@@ -129,31 +135,6 @@ public class UpImgFragment extends BaseFragment<IUpImgView, UpImgPresenter> impl
         return fragment;
     }
 
-    public static File saveBitmap(Context context, Bitmap mBitmap) {
-        String savePath;
-        File filePic;
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            savePath = SD_PATH;
-        } else {
-            savePath = context.getApplicationContext().getFilesDir().getAbsolutePath() + IN_PATH;
-        }
-        try {
-            filePic = new File(savePath + UUID.randomUUID().toString() + ".jpg");
-            if (!filePic.exists()) {
-                filePic.getParentFile().mkdirs();
-                filePic.createNewFile();
-            }
-            FileOutputStream fos = new FileOutputStream(filePic);
-            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-            fos.flush();
-            fos.close();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return null;
-        }
-        return filePic;
-    }
 
     @Override
     public int getRootViewId() {
@@ -198,66 +179,15 @@ public class UpImgFragment extends BaseFragment<IUpImgView, UpImgPresenter> impl
     private void deleteClass(final int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage(R.string.sure_delete_class);
-        builder.setPositiveButton(getString(R.string.sure), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                numAdapter.remove(position);
-                numAdapter.notifyDataSetChanged();
-            }
+        builder.setPositiveButton(getString(R.string.sure), (dialog, which) -> {
+            numAdapter.remove(position);
+            numAdapter.notifyDataSetChanged();
         });
         builder.setNegativeButton(getString(R.string.cancel), null);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 
-
-    //上传图片
-   /* private void upImage(final List<ImgUpBean> allData) {
-        final ArrayList<String> markList = new ArrayList<>();
-        for (int i = 0; i < allData.size(); i++) {
-            ImgUpBean imgUpBean = allData.get(i);
-            Bitmap bitmap = adjustImage(imgUpBean.getUtl());
-            Bitmap markBitmap = createBitmap(bitmap, imgUpBean.getType(), getDate());
-            //保存bitmap 返回路劲
-            String s = saveBitmap(context, markBitmap);
-            markList.add(s);
-            pd.setProgress(markList.size());
-        }
-
-
-        //压缩并上传
-        final List<File> files = new ArrayList<>();
-        Luban.with(getActivity())
-                .load(markList)
-                .ignoreBy(200).setCompressListener(new OnCompressListener() {
-            @Override
-            public void onStart() {
-            }
-
-            @Override
-            public void onSuccess(File file) {
-                pd.setMessage("图片压缩中...");
-                files.add(file);
-                pd.setProgress(files.size());
-                if (markList.size() == files.size()) {
-                    pd.setMessage("图片上传中...");
-                    MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
-                    builder.addFormDataPart("path", "/images/order");
-                    for (int i = 0; i < files.size(); i++) {
-                        builder.addFormDataPart("file", file.getName(), RequestBody.create(MediaType.parse("image/jpeg"), files.get(i)));
-                        pd.setProgress(i);
-                    }
-                    MultipartBody build = builder.build();
-                    getPresenter().uploadFiles(userBean.getStaff_token(), build);
-                }
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-        }).launch();
-    }*/
 
     @Override
     public void initData() {
@@ -271,13 +201,7 @@ public class UpImgFragment extends BaseFragment<IUpImgView, UpImgPresenter> impl
             ToastUtil.showToast(context.getApplicationContext(), R.string.boxing_storage_deny);
             return;
         }
-        Uri destUri = new Uri.Builder()
-                .scheme("file")
-                .appendPath(cachePath)
-                .appendPath(String.format(Locale.CHINA, "%s.jpg", System.currentTimeMillis()))
-                .build();
         BoxingConfig config = new BoxingConfig(BoxingConfig.Mode.MULTI_IMG)
-                .withCropOption(new BoxingCropOption(destUri))
                 .withMaxCount(100)
                 .needCamera(R.drawable.ic_boxing_camera_white)
                 .withMediaPlaceHolderRes(R.drawable.ic_boxing_default_image);
@@ -325,6 +249,8 @@ public class UpImgFragment extends BaseFragment<IUpImgView, UpImgPresenter> impl
             case R.id.ok:
                 upList.clear();
                 List<ImgTypeBean> allImg = numAdapter.getAllData();
+
+
                 for (int i = 0; i < allImg.size(); i++) {
                     List<String> urlList = allImg.get(i).getUrlList();
                     for (int j = 0; j < urlList.size(); j++) {
@@ -341,25 +267,94 @@ public class UpImgFragment extends BaseFragment<IUpImgView, UpImgPresenter> impl
                 }
                 ok.setEnabled(false);
                 if (pd != null) {
-                    pd.setMessage("上传进度...");
+                    pd.setMessage("添加水印中...");
                     pd.setMax(upList.size());
                     pd.show();
                 }
-                new Thread() {
+                imgThread = new Thread() {
                     @Override
                     public void run() {
                         super.run();
                         upImage();
                     }
-                }.start();
-
+                };
+                imgThread.start();
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + view.getId());
         }
     }
 
 
-    //保存bitmap到本地
-/*    public static String saveBitmap(Context context, Bitmap mBitmap) {
+    private List<File> deleteList = new ArrayList<>();
+
+    private void upImage() {
+        final ArrayList<String> markList = new ArrayList<>();
+        //添加水印
+        for (int i = 0; i < upList.size(); i++) {
+            pd.setProgress(i);
+            ImgUpBean imgUpBean = upList.get(i);
+            try {
+                FileInputStream inputStream = new FileInputStream(imgUpBean.getUtl());
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                Bitmap alreadyBitmap = createBitmap(bitmap, imgUpBean.getType(), getDate());
+                File target = saveBitmap(context, alreadyBitmap);
+                deleteList.add(target);
+                markList.add(target.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+
+
+        if (imgThread.isInterrupted()){
+            return;
+        }
+        //压缩并上传
+        final List<File> files = new ArrayList<>();
+        Luban.with(getActivity())
+                .load(markList)
+                .ignoreBy(100).setCompressListener(new OnCompressListener() {
+            @Override
+            public void onStart() {
+                pd.setMessage("图片压缩中...");
+            }
+
+            @Override
+            public void onSuccess(File file) {
+                files.add(file);
+                pd.setProgress(files.size());
+                if (markList.size() == files.size()) {
+                    pd.setMessage("图片上传中...");
+                    MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+                    builder.addFormDataPart("path", "/images/order");
+                    for (int i = 0; i < files.size(); i++) {
+                        File mFile = files.get(i);
+                        //自己创建想要保存的文件的文件对象
+                        builder.addFormDataPart("file", mFile.getName(), RequestBody.create(MediaType.parse("image/jpeg"), mFile));
+                    }
+
+                    //MultipartBody build = builder.build();
+                    //上传进度监听
+                    ExMultipartBody build = new ExMultipartBody(builder.build(), (total, current) -> {
+                        long l = current / total;
+                        pd.setProgress((int) l);
+                    });
+
+                    getPresenter().uploadFiles(userBean.getStaff_token(), build);
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+        }).launch();
+    }
+
+    public static File saveBitmap(Context context, Bitmap mBitmap) {
         String savePath;
         File filePic;
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
@@ -374,99 +369,15 @@ public class UpImgFragment extends BaseFragment<IUpImgView, UpImgPresenter> impl
                 filePic.createNewFile();
             }
             FileOutputStream fos = new FileOutputStream(filePic);
-             mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             fos.flush();
-             fos.close();
+            fos.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             return null;
         }
-        return filePic.getAbsolutePath();
-    }*/
-
-    private void upImage() {
-        final ArrayList<String> markList = new ArrayList<>();
-        //添加水印
-        for (int i=0;i<upList.size();i++){
-            pd.setProgress(i);
-            ImgUpBean imgUpBean = upList.get(i);
-            Bitmap bitmap = BitmapFactory.decodeFile(imgUpBean.getUtl());
-            if (bitmap != null) {
-                Bitmap alreadyBitmap = createBitmap(bitmap, imgUpBean.getType(), getDate());
-                File target = saveBitmap(context, alreadyBitmap);
-                markList.add(target.getAbsolutePath());
-            }else {
-                upList.remove(i);
-            }
-        }
-        //压缩并上传
-        final List<File> files = new ArrayList<>();
-        Luban.with(getActivity())
-                .load(markList)
-                .ignoreBy(100).setCompressListener(new OnCompressListener() {
-            @Override
-            public void onStart() {
-            }
-
-            @Override
-            public void onSuccess(File file) {
-                files.add(file);
-                if (markList.size() == files.size()) {
-                    MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
-                    builder.addFormDataPart("path", "/images/order");
-                    for (int i = 0; i < files.size(); i++) {
-                        File mFile = files.get(i);
-//                        Bitmap bitmap = BitmapFactory.decodeFile(mFile.getAbsolutePath());
-//                        Bitmap alreadyBitmap = createBitmap(bitmap, upList.get(i).getType(), getDate());
-//                        File mAlreadFile = saveBitmap(context, alreadyBitmap);
-                        pd.setProgress(upList.size() + i);
-                        //自己创建想要保存的文件的文件对象
-                        builder.addFormDataPart("file", mFile.getName(), RequestBody.create(MediaType.parse("image/jpeg"), mFile));
-                    }
-
-                    MultipartBody build = builder.build();
-                    pd.setProgress(upList.size() * 2 + 1);
-                    getPresenter().uploadFiles(userBean.getStaff_token(), build);
-                }
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-        }).launch();
-    }
-
-    private Bitmap adjustImage(String absolutePath) {
-        BitmapFactory.Options opt = new BitmapFactory.Options();
-        // 这个isjustdecodebounds很重要
-        //opt.inJustDecodeBounds = true;
-        Bitmap bm = BitmapFactory.decodeFile(absolutePath, opt);
-/*
-        // 获取到这个图片的原始宽度和高度
-        int picWidth = opt.outWidth;
-        int picHeight = opt.outHeight;
-
-        // 获取屏的宽度和高度
-        WindowManager windowManager = getActivity().getWindowManager();
-        Display display = windowManager.getDefaultDisplay();
-        int screenWidth = display.getWidth();
-        int screenHeight = display.getHeight();
-        // isSampleSize是表示对图片的缩放程度，比如值为2图片的宽度和高度都变为以前的1/2
-        opt.inSampleSize = 1;
-        // 根据屏的大小和图片大小计算出缩放比例
-        if (picWidth > picHeight) {
-            if (picWidth > screenWidth)
-                opt.inSampleSize = picWidth / screenWidth;
-        } else {
-            if (picHeight > screenHeight)
-                opt.inSampleSize = picHeight / screenHeight;
-        }
-        // 这次再真正地生成一个有像素的，经过缩放了的bitmap
-        opt.inJustDecodeBounds = false;
-        bm = BitmapFactory.decodeFile(absolutePath, opt);*/
-        return bm;
+        return filePic;
     }
 
     //获取水印上的日期
@@ -493,10 +404,9 @@ public class UpImgFragment extends BaseFragment<IUpImgView, UpImgPresenter> impl
         textPaint.setColor(Color.WHITE);
         //背景
         TextPaint bgPaint = new TextPaint();
-        bgPaint.setColor(getResources().getColor(R.color.bg_img));
+        bgPaint.setColor(Color.argb(77, 00, 00, 00));
         bgPaint.setAntiAlias(true);
         canvas.drawBitmap(bitmap, 0, 0, textPaint);
-
 
         int roundradius = 5;//阴影背景角度
         int margin = 8;//透明背景距离左下的边距
@@ -544,10 +454,20 @@ public class UpImgFragment extends BaseFragment<IUpImgView, UpImgPresenter> impl
         ToastUtil.showToast(context.getApplicationContext(), data);
         numAdapter.removeAll();
         finish();
+
     }
 
     @Override
     public void onUploadFiles(String[] data) {
+        //删除已保存添加水印的图片
+      if (deleteList.size() > 0) {
+            for (int m = 0; m < deleteList.size(); m++) {
+                boolean delete = deleteList.get(m).delete();
+
+            }
+        }
+        deleteList.clear();
+
         ArrayList<photoBeanListBean> photoList = new ArrayList<>();
         for (int i = 0; i < upList.size(); i++) {
             photoBeanListBean photoBean = new photoBeanListBean();
@@ -580,6 +500,9 @@ public class UpImgFragment extends BaseFragment<IUpImgView, UpImgPresenter> impl
     public void onDestroyView() {
         super.onDestroyView();
         saveData();
+        if (imgThread != null) {
+            imgThread.interrupt();
+        }
         unbinder.unbind();
 
     }
@@ -597,6 +520,9 @@ public class UpImgFragment extends BaseFragment<IUpImgView, UpImgPresenter> impl
 
     @Override
     public void onError(Throwable e) {
+        if (pd!=null&&pd.isShowing()){
+            pd.dismiss();
+        }
         ok.setEnabled(true);
         ToastUtil.showToast(context.getApplicationContext(), e.getMessage());
 
@@ -713,6 +639,7 @@ public class UpImgFragment extends BaseFragment<IUpImgView, UpImgPresenter> impl
         pd = new ProgressDialog(getActivity());
         pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         pd.setCanceledOnTouchOutside(false);
+        pd.setCancelable(false);
     }
 
 
@@ -764,35 +691,24 @@ public class UpImgFragment extends BaseFragment<IUpImgView, UpImgPresenter> impl
         mList.toArray(items);
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
         alertBuilder.setTitle(R.string.choose_img_type);
-        alertBuilder.setMultiChoiceItems(items, null, new DialogInterface.OnMultiChoiceClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                if (isChecked) {
-                    chooseType.add(items[which]);
-                } else {
-                    chooseType.remove(items[which]);
-                }
+        alertBuilder.setMultiChoiceItems(items, null, (dialog, which, isChecked) -> {
+            if (isChecked) {
+                chooseType.add(items[which]);
+            } else {
+                chooseType.remove(items[which]);
             }
         });
-        alertBuilder.setPositiveButton(getString(R.string.sure), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                for (int m = 0; m < chooseType.size(); m++) {
-                    ArrayList<String> strings = new ArrayList<>();
-                    strings.add("");
-                    numAdapter.add(new ImgTypeBean(chooseType.get(m), strings));
-                }
-                numAdapter.notifyDataSetChanged();
-                alertDialog.dismiss();
+        alertBuilder.setPositiveButton(getString(R.string.sure), (dialogInterface, i) -> {
+            for (int m = 0; m < chooseType.size(); m++) {
+                ArrayList<String> strings1 = new ArrayList<>();
+                strings1.add("");
+                numAdapter.add(new ImgTypeBean(chooseType.get(m), strings1));
             }
+            numAdapter.notifyDataSetChanged();
+            alertDialog.dismiss();
         });
 
-        alertBuilder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                alertDialog.dismiss();
-            }
-        });
+        alertBuilder.setNegativeButton(getString(R.string.cancel), (dialogInterface, i) -> alertDialog.dismiss());
         alertDialog = alertBuilder.create();
         alertDialog.show();
     }

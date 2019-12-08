@@ -85,8 +85,9 @@ public abstract class BaseActivity<V extends MvpView, P extends MvpPresenter<V>>
     }
 
 
-    protected void startForgetPwdFragment() {
+    protected void startForgetPwdFragment(String type) {
         Intent intent = getFragmentIntent(Constants.FORGOT_PWD);
+        intent.putExtra(Constants.DETAIL_ID, type);
         startActivity(intent);
     }
 
