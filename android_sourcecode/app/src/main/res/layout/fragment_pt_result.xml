@@ -47,7 +47,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="压力值(选择的压力值mPa)"
+            android:text="压力值(选择的压力值kg)"
             android:textColor="@color/colorTextG3"
             android:textSize="14sp" />
 
@@ -176,7 +176,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="开始压力值(mPa)"
+            android:text="开始压力值(kg)"
             android:textColor="@color/colorTextG3"
             android:textSize="14sp" />
 
@@ -208,7 +208,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="结束压力值(mPa)"
+            android:text="结束压力值(kg)"
             android:textColor="@color/colorTextG3"
             android:textSize="14sp" />
 
@@ -241,7 +241,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="压降值(mPa)"
+            android:text="压降值(kg)"
             android:textColor="@color/colorTextG3"
             android:textSize="14sp" />
 

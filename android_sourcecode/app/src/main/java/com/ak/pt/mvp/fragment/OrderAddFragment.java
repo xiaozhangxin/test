@@ -952,7 +952,7 @@ public class OrderAddFragment extends BaseFragment<IOrderView, OrderPresenter> i
     }
 
     @Override
-    public void OnGetAppTestPressureList(List<PressurePageBean> data) {
+    public void OnGetAppTestPressureList(List<PressurePageBean> data,String total) {
 
     }
 
@@ -965,7 +965,7 @@ public class OrderAddFragment extends BaseFragment<IOrderView, OrderPresenter> i
 
 
     @Override
-    public void OnGetTestPressureList(List<PressurePageBean> data) {
+    public void OnGetTestPressureList(List<PressurePageBean> data,String total) {
 
     }
 

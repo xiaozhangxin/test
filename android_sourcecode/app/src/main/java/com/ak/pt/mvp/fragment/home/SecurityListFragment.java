@@ -242,6 +242,7 @@ public class SecurityListFragment extends BaseFragment<IIntegralView, IntegralPr
         return rootView;
     }
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -256,7 +257,7 @@ public class SecurityListFragment extends BaseFragment<IIntegralView, IntegralPr
 
     @Override
     public void OnGetAntiFakeList(List<FakeBean> data,String total) {
-            tvRight.setText("查询次数 " +total);
+        tvRight.setText("查询次数 " +total);
         if (page == 1) {
             adapter.clear();
         }

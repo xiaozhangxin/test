@@ -33,7 +33,6 @@ public class NoticeFragment extends SimpleFragment {
     TabLayout tabLayout;
     @BindView(R.id.viewPager)
     ViewPager viewPager;
-    Unbinder unbinder1;
     @BindView(R.id.ivLeft)
     ImageView ivLeft;
     @BindView(R.id.tvTitle)
@@ -105,13 +104,13 @@ public class NoticeFragment extends SimpleFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder1 = ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder1.unbind();
+        unbinder.unbind();
     }
 }

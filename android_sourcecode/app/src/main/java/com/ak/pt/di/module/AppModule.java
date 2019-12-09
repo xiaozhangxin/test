@@ -10,6 +10,7 @@ import com.ak.pt.util.IsInternet;
 import com.ak.pt.util.SpSingleInstance;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -42,17 +43,16 @@ public class AppModule {
     /**
      * 默认超时时间 单位/秒
      */
-    private static final int DEFAULT_TIME_OUT = 20;
+    private static final int DEFAULT_TIME_OUT = 15;//所有接口默认时间
+    private static final int IMG_TIME_OUT = 300;//上传图片时间
 
     private Context context;
 
     private String baseUrl;
-    private UserBean userBean;
 
     public AppModule(App context, String baseUrl) {
         this.context = context;
         this.baseUrl = baseUrl;
-        userBean = SpSingleInstance.getSpSingleInstance().getUserBean();
     }
 
     @Provides
@@ -72,21 +72,18 @@ public class AppModule {
                 .build();
     }
 
+
     @Provides
     @Singleton
     public OkHttpClient provideOkHttpClient() {
-
         return new OkHttpClient.Builder()
                 .connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
                 .readTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
                 .writeTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
                 .addInterceptor(new CommonInterceptor())
-                .addInterceptor(new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-                    @Override
-                    public void log(String message) {
-                    }
-                }).setLevel(HttpLoggingInterceptor.Level.BODY))
+                //.addInterceptor(new HttpLoggingInterceptor(message -> { }).setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build();
+
     }
 
     @Provides
@@ -95,15 +92,19 @@ public class AppModule {
         return provideRetrofit().create(com.ak.pt.http.APIService.class);
     }
 
+
     private class CommonInterceptor implements Interceptor {
 
         @Override
         public Response intercept(Chain chain) throws IOException {
-
             Request oldRequest = chain.request();
-            //如果是post请求的话就把参数重新拼接一下，get请求的话就可以直接加入公共参数了
-            if (oldRequest.url().toString().contains("uploadFile")) {
-                return chain.proceed(oldRequest);
+            String questUrl = oldRequest.url().toString();
+            //多张图片上传设置超时时间1000秒
+            if (questUrl.contains("uploadFiles")) {
+                return chain.withConnectTimeout(IMG_TIME_OUT, TimeUnit.SECONDS)
+                        .withReadTimeout(IMG_TIME_OUT, TimeUnit.SECONDS)
+                        .withWriteTimeout(IMG_TIME_OUT, TimeUnit.SECONDS)
+                        .proceed(oldRequest);
             } else {
                 FormBody body = (FormBody) oldRequest.body();
                 Map<String, String> oldMap = new HashMap<>();
@@ -114,15 +115,11 @@ public class AppModule {
                 }
                 List<Map.Entry<String, String>> infoIds = new ArrayList<>(oldMap.entrySet());
                 // 对所有传入参数按照字段名的 ASCII 码从小到大排序（字典序）
-                Collections.sort(infoIds, new Comparator<Map.Entry<String, String>>() {
-                    public int compare(Map.Entry<String, String> o1, Map.Entry<String, String> o2) {
-                        return (o1.getKey()).toString().compareTo(o2.getKey());
-                    }
-                });
+                Collections.sort(infoIds, (o1, o2) -> (o1.getKey()).compareTo(o2.getKey()));
                 // 构造签名键值对的格式
                 StringBuilder sb = new StringBuilder();
                 for (Map.Entry<String, String> item : infoIds) {
-                    if (item.getValue() != null && ! "".equals(item.getValue())) {
+                    if (item.getValue() != null && !"".equals(item.getValue())) {
                         String key = item.getKey();
                         String val = item.getValue();
                         sb.append(key + "=" + val + "&");

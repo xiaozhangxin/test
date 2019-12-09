@@ -11,11 +11,11 @@ import java.util.List;
  */
 
 public interface IOrderView extends BaseView{
-    void OnGetTestPressureList(List<PressurePageBean> data);
+    void OnGetTestPressureList(List<PressurePageBean> data,String total);
 
     void onInsertOrUpdateTestPressure(String data);
 
-    void OnGetAppTestPressureList(List<PressurePageBean> data);
+    void OnGetAppTestPressureList(List<PressurePageBean> data,String total);
 
     void onInsertOrUpdateAppTestPressure(String data);
 

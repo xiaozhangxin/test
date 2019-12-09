@@ -1,9 +1,12 @@
 package com.ak.pt.mvp.fragment;
 
 import android.os.Bundle;
+
 import com.google.android.material.tabs.TabLayout;
+
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,6 +87,8 @@ public class OrderManagerFragment extends SimpleFragment {
         viewPagerFragmentAdapter = new ViewPagerFragmentAdapter(getChildFragmentManager(), listData, listTitle);
         viewPager.setAdapter(viewPagerFragmentAdapter);
         viewPager.setCurrentItem(0);
+        //设置预加载个数
+        viewPager.setOffscreenPageLimit(4);
         tabLayout.setupWithViewPager(viewPager);
 
     }
@@ -101,10 +106,15 @@ public class OrderManagerFragment extends SimpleFragment {
                 finish();
                 break;
             case R.id.tvRight:
-                startOrderAddFragment(new PressurePageBean(), "0",permissionsBean);
+                startOrderAddFragment(new PressurePageBean(), "0", permissionsBean);
                 break;
 
         }
+    }
+
+    //设置统计数
+    public void setTitleTotal(int index, String total) {
+        tabLayout.getTabAt(index).setText(total);
     }
 
 

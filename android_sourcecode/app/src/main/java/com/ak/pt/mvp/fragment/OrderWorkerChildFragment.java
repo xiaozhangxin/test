@@ -1,8 +1,10 @@
 package com.ak.pt.mvp.fragment;
 
 import android.os.Bundle;
+
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +22,15 @@ import com.ak.pt.util.SpSingleInstance;
 import com.ak.pt.util.ToastUtil;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.tencent.bugly.crashreport.CrashReport;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -131,13 +138,24 @@ public class OrderWorkerChildFragment extends BaseFragment<IOrderView, OrderPres
         }
         map.put("page", page + "");
         map.put("limit", "20");
+        map.put("start_time", getTodayLastYear());
         map.put("staff_id", userBean.getStaff_id());
         map.put("job_name", userBean.getJob_name());
         getPresenter().getAppTestPressureList(userBean.getStaff_token(), map);
     }
 
+    public String getTodayLastYear() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        //过去一年
+        c.setTime(new Date());
+        c.add(Calendar.YEAR, -1);
+        Date y = c.getTime();
+        return format.format(y);
+    }
+
     @Override
-    public void OnGetTestPressureList(List<PressurePageBean> data) {
+    public void OnGetTestPressureList(List<PressurePageBean> data, String total) {
 
     }
 
@@ -147,7 +165,35 @@ public class OrderWorkerChildFragment extends BaseFragment<IOrderView, OrderPres
     }
 
     @Override
-    public void OnGetAppTestPressureList(List<PressurePageBean> data) {
+    public void OnGetAppTestPressureList(List<PressurePageBean> data, String total) {
+
+
+        String tittle = "待接单";
+        int index = 0;
+        switch (type) {
+            case "0":
+                tittle = "待接单";
+                index = 0;
+                break;
+            case "1":
+                index = 1;
+                tittle = "已接单";
+                break;
+            case "2":
+                index = 2;
+                tittle = "待审核";
+                break;
+            case "3":
+                index = 3;
+                tittle = "已完成";
+                break;
+            case "4":
+                index = 4;
+                tittle = "已拒绝";
+                break;
+
+        }
+        ((OrderWorkerFragment) getParentFragment()).setTitleTotal(index, String.format(Locale.CHINA, tittle + "(%s)", total));
         if (page == 1) {
             adapter.clear();
         }

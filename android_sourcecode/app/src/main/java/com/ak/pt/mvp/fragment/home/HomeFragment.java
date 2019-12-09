@@ -153,7 +153,7 @@ public class HomeFragment extends BaseFragment<IHomeView, HomePresenter> impleme
     @Override
     public void initUI() {
 
-        //showChangePwdDialog();
+        showChangePwdDialog();
         list = new ArrayList<>();
         //初始化菜单
         menuList = new ArrayList<>();
@@ -162,142 +162,139 @@ public class HomeFragment extends BaseFragment<IHomeView, HomePresenter> impleme
         recycleView.setLayoutManager(new LinearLayoutManager(context));
         adapter = new MenuListAdapter(context, menuList);
         recycleView.setAdapter(adapter);
-        adapter.setOnClickImgListener(new MenuListAdapter.OnClickImgListener() {
-            @Override
-            public void OnClick(String tittle, int position, int childPosition) {
-                AppPermissionsBean permissionsBean = adapter.getItem(position).getAppHomeMenuBeans().get(childPosition).getAppPermissionsBeans();
-                Intent intent;
-                switch (tittle) {
-                    case "PressureTestAdd"://试压报单
-                        startOrderManagerFragment(permissionsBean);
-                        break;
-                    case "SecurityCheck"://防伪查询
-                        startSecurityCheckFragment(permissionsBean);
-                        break;
-                    case "AddressBook"://通讯录
-                        startBookFragment(permissionsBean);
-                        break;
-                    case "Sign"://签到
-                        intent = new Intent(getActivity(), SignActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
-                    case "Daily"://日报
-                        intent = new Intent(getActivity(), DailyActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
-                    case "Week"://周报
-                        intent = new Intent(getActivity(), WeekActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
-                    case "Month"://月报
-                        intent = new Intent(getActivity(), MonthActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
-                    case "AnnouncementNotice"://公告
-                        startNoticeFragment();
-                        break;
-                    case "PressurePage"://试压记录
-                        startTestPressureFragment(Constants.PRESSURE_RECORD_DEFAULT, permissionsBean);
-                        break;
-                    case "AreaPressurePage"://区域试压排行
-                        startAreaTestPressureFragment(Constants.PRESSURE_RECORD_DEFAULT, permissionsBean);
-                        break;
-                    case "BigAreaPressurePage"://大区试压排行
-                        startBigTestPressureFragment(Constants.PRESSURE_RECORD_DEFAULT);
-                        break;
-                    case "OfficialDocument"://公文
-                        startOfficeDocumentFragment();
-                        break;
-                    case "IntegralView"://积分查询
-                        startIntegralFragment();
-                        break;
-                    case "Document"://文档
-                        startDocumentFragment(permissionsBean);
-                        break;
-                    case "IntegralMall"://积分商城
-                        startMallFragment(permissionsBean);
-                        break;
-                    case "Table"://报表
-                        startTableFragment();
-                        break;
+        adapter.setOnClickImgListener((tittle, position, childPosition) -> {
+            AppPermissionsBean permissionsBean = adapter.getItem(position).getAppHomeMenuBeans().get(childPosition).getAppPermissionsBeans();
+            Intent intent;
+            switch (tittle) {
+                case "PressureTestAdd"://试压报单
+                    startOrderManagerFragment(permissionsBean);
+                    break;
+                case "SecurityCheck"://防伪查询
+                    startSecurityCheckFragment(permissionsBean);
+                    break;
+                case "AddressBook"://通讯录
+                    startBookFragment(permissionsBean);
+                    break;
+                case "Sign"://签到
+                    intent = new Intent(getActivity(), SignActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
+                case "Daily"://日报
+                    intent = new Intent(getActivity(), DailyActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
+                case "Week"://周报
+                    intent = new Intent(getActivity(), WeekActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
+                case "Month"://月报
+                    intent = new Intent(getActivity(), MonthActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
+                case "AnnouncementNotice"://公告
+                    startNoticeFragment();
+                    break;
+                case "PressurePage"://试压记录
+                    startTestPressureFragment(Constants.PRESSURE_RECORD_DEFAULT, permissionsBean);
+                    break;
+                case "AreaPressurePage"://区域试压排行
+                    startAreaTestPressureFragment(Constants.PRESSURE_RECORD_DEFAULT, permissionsBean);
+                    break;
+                case "BigAreaPressurePage"://大区试压排行
+                    startBigTestPressureFragment(Constants.PRESSURE_RECORD_DEFAULT);
+                    break;
+                case "OfficialDocument"://公文
+                    startOfficeDocumentFragment();
+                    break;
+                case "IntegralView"://积分查询
+                    startIntegralFragment();
+                    break;
+                case "Document"://文档
+                    startDocumentFragment(permissionsBean);
+                    break;
+                case "IntegralMall"://积分商城
+                    startMallFragment(permissionsBean);
+                    break;
+                case "Table"://报表
+                    startTableFragment();
+                    break;
 
-                    case "FilterRpReceipt"://滤芯更换回执单
-                        intent = new Intent(getActivity(), FilterReplaceActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
-                    case "RepairRecords"://维修记录表
-                        intent = new Intent(getActivity(), FixRecordActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
-                    case "ProductQFeedback"://产品质量反馈表
-                        intent = new Intent(getActivity(), FeedbackActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
-                    case "WarrantyCard"://电子保修卡
-                        intent = new Intent(getActivity(), WarrantyActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
+                case "FilterRpReceipt"://滤芯更换回执单
+                    intent = new Intent(getActivity(), FilterReplaceActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
+                case "RepairRecords"://维修记录表
+                    intent = new Intent(getActivity(), FixRecordActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
+                case "ProductQFeedback"://产品质量反馈表
+                    intent = new Intent(getActivity(), FeedbackActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
+                case "WarrantyCard"://电子保修卡
+                    intent = new Intent(getActivity(), WarrantyActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
 
-                    case "MonthlySummary"://月度总结
-                        intent = new Intent(getActivity(), MonthlySummaryActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
-                    case "RegionTraining"://区域培训记录
-                        intent = new Intent(getActivity(), RegionActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
-                    case "RegionVisit"://区域走访记录
-                        intent = new Intent(getActivity(), InterviewActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
-                    case "AddPeople"://人员添加申请
-                        Intent intentPeople = new Intent(getActivity(), PeopleActivity.class);
-                        intentPeople.putExtra("permissions", permissionsBean);
-                        startActivity(intentPeople);
-                        break;
-                    case "PressureTesterReturn"://试压仪返修
-                        intent = new Intent(getActivity(), ReworkActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
-                    case "EntryApplication"://入职申请
-                        Intent intentRework = new Intent(getActivity(), EntryActivity.class);
-                        intentRework.putExtra("permissions", permissionsBean);
-                        startActivity(intentRework);
-                        break;
-                    case "LeaveApplication"://离职申请
-                        intent = new Intent(getActivity(), LeaveActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
-                    case "DealerClose"://经销商关闭
-                        intent = new Intent(getActivity(), CloseActivity.class);
-                        intent.putExtra("permissions", permissionsBean);
-                        startActivity(intent);
-                        break;
+                case "MonthlySummary"://月度总结
+                    intent = new Intent(getActivity(), MonthlySummaryActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
+                case "RegionTraining"://区域培训记录
+                    intent = new Intent(getActivity(), RegionActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
+                case "RegionVisit"://区域走访记录
+                    intent = new Intent(getActivity(), InterviewActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
+                case "AddPeople"://人员添加申请
+                    Intent intentPeople = new Intent(getActivity(), PeopleActivity.class);
+                    intentPeople.putExtra("permissions", permissionsBean);
+                    startActivity(intentPeople);
+                    break;
+                case "PressureTesterReturn"://试压仪返修
+                    intent = new Intent(getActivity(), ReworkActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
+                case "EntryApplication"://入职申请
+                    Intent intentRework = new Intent(getActivity(), EntryActivity.class);
+                    intentRework.putExtra("permissions", permissionsBean);
+                    startActivity(intentRework);
+                    break;
+                case "LeaveApplication"://离职申请
+                    intent = new Intent(getActivity(), LeaveActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
+                case "DealerClose"://经销商关闭
+                    intent = new Intent(getActivity(), CloseActivity.class);
+                    intent.putExtra("permissions", permissionsBean);
+                    startActivity(intent);
+                    break;
 
 
-                    case "QF_PressureRecord":   //启飞试压记录
-                        startTestPressureFragment(Constants.PRESSURE_RECORD_QIFEI, permissionsBean);
-                        break;
-                    case "QF_AreaPressurePage": //  启飞区域试压排行
-                        startAreaTestPressureFragment(Constants.PRESSURE_RECORD_QIFEI, permissionsBean);
-                        break;
-                    case "QF_BigPressurePage":  //  启飞大区试压排行
-                        startBigTestPressureFragment(Constants.PRESSURE_RECORD_QIFEI);
-                        break;
-                }
+                case "QF_PressureRecord":   //启飞试压记录
+                    startTestPressureFragment(Constants.PRESSURE_RECORD_QIFEI, permissionsBean);
+                    break;
+                case "QF_AreaPressurePage": //  启飞区域试压排行
+                    startAreaTestPressureFragment(Constants.PRESSURE_RECORD_QIFEI, permissionsBean);
+                    break;
+                case "QF_BigPressurePage":  //  启飞大区试压排行
+                    startBigTestPressureFragment(Constants.PRESSURE_RECORD_QIFEI);
+                    break;
             }
         });
 

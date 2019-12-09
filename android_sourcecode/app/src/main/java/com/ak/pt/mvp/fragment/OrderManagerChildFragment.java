@@ -1,8 +1,10 @@
 package com.ak.pt.mvp.fragment;
 
 import android.os.Bundle;
+
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import com.ak.pt.R;
 import com.ak.pt.bean.AppPermissionsBean;
 import com.ak.pt.bean.FirstEventFilter;
+import com.ak.pt.mvp.fragment.home.NoticeFragment;
 import com.ak.pt.mvp.fragment.statistics.MemoryBean;
 import com.ak.pt.mvp.fragment.statistics.PressurePageBean;
 import com.ak.pt.bean.UserBean;
@@ -26,9 +29,13 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -76,37 +83,28 @@ public class OrderManagerChildFragment extends BaseFragment<IOrderView, OrderPre
         recycleView.setLayoutManager(new LinearLayoutManager(context));
         adapter = new OrderAcceptAdapter(context, list);
         recycleView.setAdapterWithProgress(adapter);
-        adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                deletePosition = position;
-                PressurePageBean item = adapter.getItem(position);
-                //待接单已接单并且指派给自己
-                if (("accept".equals(item.getFlow_state())||"plan".equals(item.getFlow_state()))&&userBean.getStaff_id().equals(item.getPlumber_id())){
-                    startTestPressureDetailFragment(adapter.getItem(position).getDoc_no(), permissionsBean);
-                }else {
-                    startOrderManagerDetailFragment(adapter.getItem(position).getDoc_no(),permissionsBean);
-                }
-
+        adapter.setOnItemClickListener(position -> {
+            deletePosition = position;
+            PressurePageBean item = adapter.getItem(position);
+            //待接单已接单并且指派给自己
+            if (("accept".equals(item.getFlow_state()) || "plan".equals(item.getFlow_state())) && userBean.getStaff_id().equals(item.getPlumber_id())) {
+                startTestPressureDetailFragment(adapter.getItem(position).getDoc_no(), permissionsBean);
+            } else {
+                startOrderManagerDetailFragment(adapter.getItem(position).getDoc_no(), permissionsBean);
             }
+
         });
         adapter.setNoMore(R.layout.view_nomore);
         //下拉刷新
         recycleView.setRefreshingColorResources(R.color.colorPrimaryNew);
-        recycleView.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                page = 1;
-                refresh();
-            }
+        recycleView.setRefreshListener(() -> {
+            page = 1;
+            refresh();
         });
         //上拉加载
-        adapter.setMore(R.layout.view_more, new RecyclerArrayAdapter.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                page++;
-                refresh();
-            }
+        adapter.setMore(R.layout.view_more, () -> {
+            page++;
+            refresh();
         });
 
     }
@@ -123,8 +121,20 @@ public class OrderManagerChildFragment extends BaseFragment<IOrderView, OrderPre
         map.put("is_app", "1");
         map.put("operation", "1000");
         map.put("module_id", permissionsBean.getMenu_id());
+        map.put("start_time", getTodayLastYear());
         page = 1;
         refresh();
+    }
+
+
+    public String getTodayLastYear() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c = Calendar.getInstance();
+        //过去一年
+        c.setTime(new Date());
+        c.add(Calendar.YEAR, -1);
+        Date y = c.getTime();
+        return  format.format(y);
     }
 
     private void refresh() {
@@ -157,12 +167,41 @@ public class OrderManagerChildFragment extends BaseFragment<IOrderView, OrderPre
     }
 
     @Override
-    public void OnGetTestPressureList(List<PressurePageBean> data) {
+    public void OnGetTestPressureList(List<PressurePageBean> data, String total) {
+
+        String tittle = "待发出";
+        int index = 0;
+        switch (type) {
+            case "0":
+                tittle = "待发出";
+                index = 0;
+                break;
+            case "1":
+                index = 1;
+                tittle = "待接单";
+                break;
+            case "2":
+                index = 2;
+                tittle = "已接单";
+                break;
+            case "3":
+                index = 3;
+                tittle = "待审核";
+                break;
+            case "4":
+                index = 4;
+                tittle = "已拒绝";
+                break;
+
+        }
+        ((OrderManagerFragment) getParentFragment()).setTitleTotal(index, String.format(Locale.CHINA, tittle + "(%s)", total));
+
         if (page == 1) {
             adapter.clear();
         }
         adapter.addAll(data);
         adapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -171,7 +210,7 @@ public class OrderManagerChildFragment extends BaseFragment<IOrderView, OrderPre
     }
 
     @Override
-    public void OnGetAppTestPressureList(List<PressurePageBean> data) {
+    public void OnGetAppTestPressureList(List<PressurePageBean> data, String total) {
 
     }
 

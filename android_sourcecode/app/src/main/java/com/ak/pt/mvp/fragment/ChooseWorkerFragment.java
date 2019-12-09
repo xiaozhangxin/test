@@ -84,12 +84,12 @@ public class ChooseWorkerFragment extends BaseFragment<IChooseView, ChoosePresen
         list = new ArrayList<>();
         recycleView.setLayoutManager(new LinearLayoutManager(context));
         adapter = new WorkerListAdapter(context, list);
-        adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                EventBus.getDefault().post(new FirstEventWorker("1", new WorkerBean(adapter.getItem(position).getStaff_id(), adapter.getItem(position).getStaff_name(), adapter.getItem(position).getPhone())));
-                finish();
-            }
+        adapter.setOnItemClickListener(position -> {
+            EventBus.getDefault().post(new FirstEventWorker("1",
+                    new WorkerBean(adapter.getItem(position).getStaff_id(),
+                            adapter.getItem(position).getStaff_name(),
+                            adapter.getItem(position).getPhone())));
+            finish();
         });
         recycleView.setAdapterWithProgress(adapter);
         adapter.setNoMore(R.layout.view_nomore);
@@ -161,6 +161,8 @@ public class ChooseWorkerFragment extends BaseFragment<IChooseView, ChoosePresen
         switch (v.getId()) {
             case R.id.ivLeft:
                 finish();
+
+
                 break;
 
         }

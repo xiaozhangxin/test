@@ -60,7 +60,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             ndk {
                 // 设置支持的SO库架构
-                abiFilters 'armeabi-v7a', 'x86'
+                abiFilters 'armeabi-v7a', 'x86','armeabi'
                 //abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'x86_64'
             }
         }
@@ -135,6 +135,7 @@ dependencies {
 
     //RxJava2Gson适配
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+    implementation "com.squareup.okhttp3:okhttp:3.14.0"
 
     //网络日志拦截
     implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
@@ -174,5 +175,9 @@ dependencies {
 
     implementation 'com.uniquext.android:widget:1.0.1'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+
+    //bugly
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
 }
 

@@ -1,5 +1,6 @@
 package com.ak.pt.mvp.fragment.mall;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -100,6 +101,7 @@ public class ChooseGoodsNormFragment extends BottomSheetDialogFragment {
         return fragment;
     }
 
+    @SuppressLint("WrongConstant")
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -119,20 +121,17 @@ public class ChooseGoodsNormFragment extends BottomSheetDialogFragment {
         recyclerView.addItemDecoration(new SpacesItemDecoration(10));
         recyclerView.setLayoutManager(flowLayoutManager);
         recyclerView.setAdapter(adapter);
-        adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                if (adapter.getItem(position).getSpecification_stock()==0){
-                    return;
-                }
-                List<GoodsSpecificationBeans> allData = adapter.getAllData();
-                for (int i = 0; i < allData.size(); i++) {
-                    allData.get(i).setCheck(false);
-                }
-                adapter.getItem(position).setCheck(true);
-                adapter.notifyDataSetChanged();
-                setTopData(adapter.getItem(position));
+        adapter.setOnItemClickListener(position -> {
+            if (adapter.getItem(position).getSpecification_stock()==0){
+                return;
             }
+            List<GoodsSpecificationBeans> allData = adapter.getAllData();
+            for (int i = 0; i < allData.size(); i++) {
+                allData.get(i).setCheck(false);
+            }
+            adapter.getItem(position).setCheck(true);
+            adapter.notifyDataSetChanged();
+            setTopData(adapter.getItem(position));
         });
 
         adapter.getItem(0).setCheck(true);

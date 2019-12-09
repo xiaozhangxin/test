@@ -65,8 +65,8 @@ public class ImgTwoAdapter extends RecyclerArrayAdapter<PhotoListBean> {
                 @Override
                 protected void convert(com.zhy.adapter.recyclerview.base.ViewHolder holder, final PhotoListBean.PhotosBean photosBean, int position) {
                     Glide.with(mContext)
-
-                            .load(Constants.BASE_URL + photosBean.getImage_url()).placeholder(R.drawable.default_logo)
+                            .load(Constants.BASE_URL + photosBean.getImage_url())
+                            .thumbnail( 0.1f )
                             .error(R.drawable.error_img)
                             .into((ImageView) holder.getView(R.id.item_image));
 

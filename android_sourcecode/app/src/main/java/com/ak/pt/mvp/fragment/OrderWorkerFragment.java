@@ -82,6 +82,8 @@ public class OrderWorkerFragment extends SimpleFragment {
         viewPagerFragmentAdapter = new ViewPagerFragmentAdapter(getChildFragmentManager(), listData, listTitle);
         viewPager.setAdapter(viewPagerFragmentAdapter);
         viewPager.setCurrentItem(0);
+        //设置预加载个数
+        viewPager.setOffscreenPageLimit(4);
         tabLayout.setupWithViewPager(viewPager);
 
     }
@@ -120,6 +122,10 @@ public class OrderWorkerFragment extends SimpleFragment {
         }
     }
 
+    //设置统计数
+    public void setTitleTotal(int index, String total) {
+        tabLayout.getTabAt(index).setText(total);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -23,6 +23,8 @@ import com.ak.pt.Constants;
 import com.ak.pt.R;
 import com.ak.pt.bean.FirstEvent;
 import com.ak.pt.bean.NumOldBean;
+import com.ak.pt.mvp.fragment.comm.Observer;
+import com.ak.pt.mvp.fragment.comm.ObserverManager;
 import com.ak.pt.mvp.fragment.statistics.PressurePageBean;
 import com.ak.pt.mvp.activity.ContentActivity;
 import com.ak.pt.mvp.adapter.NumOldAdapter;
@@ -43,6 +45,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Observable;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,16 +55,14 @@ import static com.ak.pt.Constants.PT_RESULT;
 
 /**
  * Created by admin on 2019/6/11.
+ * 旧试压仪
  */
-@RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
-public class PressureOldActivity extends AppCompatActivity {
+public class PressureOldActivity extends AppCompatActivity implements Observer {
 
     public static final String KEY_DATA = "key_data";
     public static final String PT_BEAN = "ptBean";
     @BindView(R.id.ivLeft)
     ImageView ivLeft;
-//    @BindView(R.id.data)
-//    TextView data;
     @BindView(R.id.fashinon)
     ImageView fashinon;
     @BindView(R.id.tvPV)
@@ -99,7 +100,7 @@ public class PressureOldActivity extends AppCompatActivity {
     private BleDevice bleDevice;
     private BluetoothGattCharacteristic characteristic;
     private PressurePageBean ptBean;
-    String ptValue = "";
+    private String ptValue = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -109,8 +110,24 @@ public class PressureOldActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initView();
         initData();
+        ObserverManager.getInstance().addObserver(this);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Glide.with(getApplicationContext()).pauseRequests();
+        BleManager.getInstance().clearCharacterCallback(bleDevice);
+        ObserverManager.getInstance().deleteObserver(this);
+    }
+
+
+    @Override
+    public void disConnected(BleDevice device) {
+        if (device != null && bleDevice != null && device.getKey().equals(bleDevice.getKey())) {
+            finish();
+        }
+    }
 
     //初始化蓝牙
     private void initData() {
@@ -439,18 +456,12 @@ public class PressureOldActivity extends AppCompatActivity {
     private void isEndPting() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.is_end_pting);
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
+        builder.setNegativeButton(R.string.cancel, (dialog, which) -> {
         });
-        builder.setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                endPressure();
-                ptState = false;
+        builder.setPositiveButton(R.string.sure, (dialog, which) -> {
+            endPressure();
+            ptState = false;
 
-            }
         });
         builder.show();
     }
@@ -475,17 +486,9 @@ public class PressureOldActivity extends AppCompatActivity {
     private void isClosePressureingActivity() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.is_close_pting_view);
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
+        builder.setNegativeButton(R.string.cancel, (dialog, which) -> {
         });
-        builder.setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-        });
+        builder.setPositiveButton(R.string.sure, (dialog, which) -> finish());
         builder.show();
     }
 
@@ -522,33 +525,19 @@ public class PressureOldActivity extends AppCompatActivity {
         BleManager.getInstance().notify(bleDevice, UUIDManager.SERVICE_UUID, UUIDManager.NOTIFY_UUID, new BleNotifyCallback() {
             @Override
             public void onNotifySuccess() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //addText(dataText, "notify success");
-                    }
+                runOnUiThread(() -> {
+                    //addText(dataText, "notify success");
                 });
             }
 
             @Override
             public void onNotifyFailure(final BleException exception) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        showToast(exception.toString());
-                    }
-                });
+                runOnUiThread(() -> showToast(exception.toString()));
             }
 
             @Override
             public void onCharacteristicChanged(byte[] data) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        notifyText();
-                    }
-
-                });
+                runOnUiThread(() -> notifyText());
             }
         });
     }
@@ -569,10 +558,8 @@ public class PressureOldActivity extends AppCompatActivity {
     // 重写activity的onDestroy（）方法，停止该页面的glide的加载请求
 
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Glide.with(getApplicationContext()).pauseRequests();
-        BleManager.getInstance().disconnectAllDevice();
-    }
+
+
+
+
 }

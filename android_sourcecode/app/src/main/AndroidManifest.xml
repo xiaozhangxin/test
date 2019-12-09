@@ -57,8 +57,8 @@
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
         android:theme="@style/BaseAppTheme">
         <activity
             android:name="com.ak.pt.mvp.activity.WelcomeActivity"
@@ -66,7 +66,6 @@
             android:windowSoftInputMode="stateHidden|stateUnchanged">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -80,7 +79,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="stateHidden|stateUnchanged" />
 
-        <activity android:name=".mvp.fragment.ble.PressureeginActivity" />
+        <activity android:name=".mvp.fragment.ble.PressureNewActivity" />
         <activity android:name=".mvp.fragment.ble.PressureOldActivity" />
 
 
@@ -177,8 +176,9 @@
                 <category android:name="com.ak.pt" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.fragment.LoginActivity"
-            android:launchMode="singleTop"/>
+        <activity
+            android:name=".mvp.fragment.LoginActivity"
+            android:launchMode="singleTop" />
         <!-- Required SDK 核心功能-->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
@@ -211,11 +211,11 @@
         </service>
         <!-- since 3.1.0 Required SDK 核心功能-->
 
-<!--        <provider-->
-<!--            android:name="cn.jpush.android.service.DataProvider"-->
-<!--            android:authorities="com.ak.pt.DataProvider"-->
-<!--            android:exported="false"-->
-<!--            android:process=":pushcore" />-->
+        <!--        <provider-->
+        <!--            android:name="cn.jpush.android.service.DataProvider"-->
+        <!--            android:authorities="com.ak.pt.DataProvider"-->
+        <!--            android:exported="false"-->
+        <!--            android:process=":pushcore" />-->
         <!-- Required SDK核心功能-->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
@@ -276,10 +276,8 @@
             android:name="JPUSH_APPKEY"
             android:value="8fbb8391b2eb9d1d719b01ec" />
 
+
     </application>
 
-    <meta-data
-        android:name="BUGLY_APP_CHANNEL"
-        android:value="king" />
 
 </manifest>

@@ -53,7 +53,7 @@ public class OrderPresenter extends BasePresenter<IOrderView> {
                     public void onNext(HttpResult<List<PressurePageBean>> userBeanHttpResult) {
                         if (userBeanHttpResult != null) {
                             if (isViewAttached()) {
-                                getView().OnGetTestPressureList(userBeanHttpResult.getData());
+                                getView().OnGetTestPressureList(userBeanHttpResult.getData(),userBeanHttpResult.getTotal());
                             }
                         }
 
@@ -128,7 +128,7 @@ public class OrderPresenter extends BasePresenter<IOrderView> {
                     public void onNext(HttpResult<List<PressurePageBean>> userBeanHttpResult) {
                         if (userBeanHttpResult != null) {
                             if (isViewAttached()) {
-                                getView().OnGetAppTestPressureList(userBeanHttpResult.getData());
+                                getView().OnGetAppTestPressureList(userBeanHttpResult.getData(),userBeanHttpResult.getTotal());
                             }
                         }
 

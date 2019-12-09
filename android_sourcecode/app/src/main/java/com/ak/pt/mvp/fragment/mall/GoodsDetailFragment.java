@@ -168,12 +168,7 @@ public class GoodsDetailFragment extends BaseFragment<IGoodsDetailView, GoodsDet
         for (int i = 0; i < goodsImgBeans.size(); i++) {
             list.add(Constants.BASE_URL + goodsImgBeans.get(i).getImg_url());
         }
-        banner.setPages(list, new MZHolderCreator<BannerViewHolder>() {
-            @Override
-            public BannerViewHolder createViewHolder() {
-                return new BannerViewHolder();
-            }
-        });
+        banner.setPages(list, (MZHolderCreator<BannerViewHolder>) () -> new BannerViewHolder());
         banner.start();
 
         //详情
@@ -234,30 +229,22 @@ public class GoodsDetailFragment extends BaseFragment<IGoodsDetailView, GoodsDet
 
     private void startChooseGoodsNormFragment() {
         ChooseGoodsNormFragment fragment = ChooseGoodsNormFragment.newInstance(mBean);
-        fragment.setOnOkClickListener(new ChooseGoodsNormFragment.OnOkClickListener() {
-            @Override
-            public void ok(final GoodsSpecificationBeans spBean, final String goodsNum) {
+        fragment.setOnOkClickListener((spBean, goodsNum) -> {
 
-                float v = Float.parseFloat(goodsNum);
-                float v1 = Float.parseFloat(spBean.getSpecification_price());
-                if (!TextUtils.isEmpty(mIntegral)) {
-                    float v2 = Float.parseFloat(mIntegral);
-                    if (v2 > v * v1) {
-                        startConfirmOrderFragment(spBean, goodsNum);
-                    } else {
-                        final CustomDialog.Builder builder = new CustomDialog.Builder(context);
-                        builder.setTitle("提示");
-                        builder.setMessage("您的积分不足以兑换此物品");
-                        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                        builder.onCreate().show();
-                    }
+            float v = Float.parseFloat(goodsNum);
+            float v1 = Float.parseFloat(spBean.getSpecification_price());
+            if (!TextUtils.isEmpty(mIntegral)) {
+                float v2 = Float.parseFloat(mIntegral);
+                if (v2 > v * v1) {
+                    startConfirmOrderFragment(spBean, goodsNum);
+                } else {
+                    final CustomDialog.Builder builder = new CustomDialog.Builder(context);
+                    builder.setTitle("提示");
+                    builder.setMessage("您的积分不足以兑换此物品");
+                    builder.setPositiveButton("确认", (dialog, which) -> dialog.dismiss());
+                    builder.onCreate().show();
                 }
             }
-
         });
 
         fragment.show(getFragmentManager(), GoodsDetailFragment.class.getSimpleName());

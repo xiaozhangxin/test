@@ -21,6 +21,7 @@ import com.bilibili.boxing.BoxingCrop;
 import com.bilibili.boxing.BoxingMediaLoader;
 import com.bilibili.boxing.loader.IBoxingMediaLoader;
 import com.clj.fastble.BleManager;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.smtt.sdk.QbSdk;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
@@ -45,8 +46,6 @@ public class App extends Application {
 
     private static App mApp;
     private static Context mContext;
-    private SQLiteDatabase database;
-
     private List<Activity> activities = new ArrayList<>();
 
     @Override
@@ -101,20 +100,18 @@ public class App extends Application {
         closeAndroidPDialog();
 
         //子线程初始化第三方组件
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(5000);
-                    initTbs();
-                    initJPush();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        new Thread(() -> {
+            try {
+                Thread.sleep(5000);
+                initTbs();
+                initJPush();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-
-
         }).start();
+
+        //bugly初始化
+        CrashReport.initCrashReport(getApplicationContext(), BUGLY_ID, true);
 
         IBoxingMediaLoader loader = new BoxingGlideLoader();
         BoxingMediaLoader.getInstance().init(loader);
@@ -122,18 +119,17 @@ public class App extends Application {
 
         setStrictMode();
 
+        //初始化蓝牙
         BleManager.getInstance().init(this);
         BleManager.getInstance()
-                .enableLog(false)
+                .enableLog(true)
                 .setReConnectCount(1, 5000)
-                .setConnectOverTime(8000)
+                .setConnectOverTime(10000)
                 .setOperateTimeout(5000);
 
         mAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this, Constants.BASE_URL)).build();
 
         ZXingLibrary.initDisplayOpinion(this);
-
-        //CrashReport.initCrashReport(getApplicationContext(), BUGLY_ID, true);
 
         //内存泄露
         //  LeakCanary.install(this);
