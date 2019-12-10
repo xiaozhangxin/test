@@ -80,7 +80,7 @@ public class AlbumTask {
            // bucketCursor = cr.query(Media.EXTERNAL_CONTENT_URI, distinctBucketColumns, "0==0)" + " GROUP BY(" + Media.BUCKET_ID, null,
                     //Media.DATE_MODIFIED + " desc");
 			bucketCursor = cr.query(Media.EXTERNAL_CONTENT_URI, distinctBucketColumns, null, null,
-					Media.DATE_MODIFIED + " desc");
+					Media.DATE_MODIFIED + " desc");		
             if (bucketCursor != null && bucketCursor.moveToFirst()) {
                 do {
                     String buckId = bucketCursor.getString(bucketCursor.getColumnIndex(Media.BUCKET_ID));

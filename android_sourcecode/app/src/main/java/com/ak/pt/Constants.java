@@ -8,9 +8,10 @@ package com.ak.pt;
 public final class Constants {
 
 
-    public static final String BASE_URL = "http://pressuretest.akan.com.cn:81/";
-    //public static final String BASE_URL = "http://pressure.akan.com.cn/";
-    //public static final String BASE_URL = "http://pressure-pre.akan.com.cn:81";
+    // public static final String BASE_URL = "http://pressuretest.akan.com.cn:81/";
+//    public static final String BASE_URL = "http://192.168.0.27:8080/";
+    public static final String BASE_URL = "http://pressure.akan.com.cn/";
+//    public static final String BASE_URL = "http://pressure-pre.akan.com.cn:81";
 
 
     public static final String USER_BEAN = "userbean";

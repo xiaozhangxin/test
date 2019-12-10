@@ -16,7 +16,7 @@ public class HttpResult<T> {
 
     private String total;
 
-    public String  getTotal() {
+    public String getTotal() {
         return total;
     }
 
