@@ -25,12 +25,12 @@ group = "com.bilibili"
 version = "0.7.5"
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 26
+        minSdkVersion 16
+        targetSdkVersion 28
         versionCode 1
         versionName "0.7.5"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
@@ -58,21 +58,14 @@ install {
         // This generates POM.xml with proper paramters
         pom.project {
             packaging 'aar'
-
-            // Add your description here
             name 'boxing-impl'
             url siteUrl
-
-            // Set your license
             licenses {
                 license {
                     name 'The Apache Software License, Version 2.0'
                     url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                 }
             }
-
-
-
             scm {
                 connection gitUrl
                 developerConnection gitUrl
@@ -114,20 +107,13 @@ bintray {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support:design:26.+'
-    compile('com.chensl.rotatephotoview:rotatephotoview:1.0.5') {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation('com.chensl.rotatephotoview:rotatephotoview:1.0.5') {
         exclude group: 'com.android.support', module: 'appcompat'
         exclude group: 'com.android.support', module: 'support-v4'
         exclude module: 'recyclerview-v7'
     }
-    testCompile('junit:junit:4.12')
-    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.2') {
-        exclude group: 'com.android.support', module: 'appcompat'
-        exclude group: 'com.android.support', module: 'support-v4'
-        exclude module: 'recyclerview-v7'
-    }
-    androidTestCompile 'com.android.support.test:runner:0.5'
-    compile project(":boxing")
+    api project(":boxing")
 }

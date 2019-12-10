@@ -48,23 +48,7 @@ public class ProductionOrderBean implements Serializable {
     private String u9_department_id;
     private double complete_qty;
     private int apply_qty;//完工数量
-    private List<BarBean> barList;
 
-    public List<BarBean> getBarList() {
-        return barList;
-    }
-
-    public void setBarList(List<BarBean> barList) {
-        this.barList = barList;
-    }
-
-    public int getApply_qty() {
-        return apply_qty;
-    }
-
-    public void setApply_qty(int apply_qty) {
-        this.apply_qty = apply_qty;
-    }
 
     private int qualified_qty;
     private int scrap_qty;
@@ -104,6 +88,25 @@ public class ProductionOrderBean implements Serializable {
     private String ele_amount;
     private String bar_code;
     private String u9_department_name;
+
+    private List<BarBean> barList;
+
+    public List<BarBean> getBarList() {
+        return barList;
+    }
+
+    public void setBarList(List<BarBean> barList) {
+        this.barList = barList;
+    }
+
+    public int getApply_qty() {
+        return apply_qty;
+    }
+
+    public void setApply_qty(int apply_qty) {
+        this.apply_qty = apply_qty;
+    }
+
 
     public String getU9_department_name() {
         return u9_department_name;
@@ -398,6 +401,9 @@ public class ProductionOrderBean implements Serializable {
     public void setComplete_qty(double complete_qty) {
         this.complete_qty = complete_qty;
     }
+    public double getComplete_qty() {
+        return complete_qty;
+    }
 
     public void setId(String id) {
         this.id = id;
@@ -435,13 +441,8 @@ public class ProductionOrderBean implements Serializable {
         this.status = status;
     }
 
-    public double getComplete_qty() {
-        return complete_qty;
-    }
 
-    public void setComplete_qty(int complete_qty) {
-        this.complete_qty = complete_qty;
-    }
+
 
 
 

@@ -25,12 +25,12 @@ group = "com.bilibili"
 version = "0.7.5"
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '27.0.2'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 26
+        minSdkVersion 16
+        targetSdkVersion 28
         versionCode 1
         versionName "0.7.5"
     }
@@ -57,20 +57,14 @@ install {
         // This generates POM.xml with proper paramters
         pom.project {
             packaging 'aar'
-
-            // Add your description here
             name 'boxing-core'
             url siteUrl
-
-            // Set your license
             licenses {
                 license {
                     name 'The Apache Software License, Version 2.0'
                     url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                 }
             }
-
-
             scm {
                 connection gitUrl
                 developerConnection gitUrl
@@ -111,20 +105,8 @@ bintray {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.android.support:appcompat-v7:26+"
-
-    // Mock
-    testCompile "org.powermock:powermock-module-junit4:1.6.4"
-    testCompile "org.powermock:powermock-module-junit4-rule:1.6.4"
-    testCompile "org.powermock:powermock-api-mockito:1.6.4"
-    testCompile "org.powermock:powermock-classloading-xstream:1.6.4"
-
-    // Robolectric
-    testCompile ("org.robolectric:robolectric:3.1.2") {
-        exclude group: 'commons-logging'
-        exclude group: 'org.apache.httpcomponents'
-    }
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:28.0.0"
 
 
 }

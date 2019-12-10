@@ -1,59 +1,36 @@
 apply plugin: 'com.android.application'
 
 android {
+    useLibrary 'org.apache.http.legacy'
+
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
     }
-/*    configurations.all {
-        resolutionStrategy {
-            eachDependency { details ->
-                // Force all of the primary support libraries to use the same version.
-                if (details.requested.group == 'com.android.support'
-                        && details.requested.name != 'multidex'
-                        && details.requested.name != 'multidex-instrumentation') {
-                    details.useVersion "25.0.0"
-                }
-                // Force all the error-prone dependencies to use the same version.
-                if (details.requested.group == 'com.google.errorprone'
-                        && details.requested.name.startsWith('error_prone_')) {
-                    details.useVersion "25.0.0"
-                }
-            }
-        }
-    }*/
 
-    configurations.all {
-        resolutionStrategy {
-            force 'com.android.support:support-v4:27.1.0'
-            force 'com.android.support:design:27.1.0'
-            force 'com.android.support:appcompat-v7:27.1.0'
-            force 'com.android.support:recyclerview-v7:27.1.0'
-        }
-    }
 
     signingConfigs {
         release {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('F:\\AndroidWorkspace\\wms_repo\\android-wms\\key0.jks')
+            storeFile file('E:\\AndroidStudioProjects\\android-wms\\key0.jks')
             storePassword '123456'
         }
     }
-    compileSdkVersion 26
-    buildToolsVersion '27.0.2'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     sourceSets { main { jniLibs.srcDirs = ['libs'] } }
     defaultConfig {
         applicationId "com.akan.wms"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         ndk {
             // 设置支持的SO库架构
-            abiFilters  'armeabi-v7a' /*'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'*/
+            abiFilters 'armeabi-v7a' /*'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'*/
         }
         // 开启multidex
         multiDexEnabled true
@@ -81,10 +58,16 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation ('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    androidTestImplementation 'junit:junit:4.12'
+    api project(':boxing-impl')
+    api project(':zxinglib')
+
+
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
     implementation 'com.hannesdorfmann.mosby:mvp:2.0.1'
     implementation 'com.hannesdorfmann.mosby:viewstate:2.0.1'
     implementation 'com.jude:easyrecyclerview:4.4.0'
@@ -93,11 +76,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     implementation 'com.google.dagger:dagger:2.9'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
-    compileOnly 'org.glassfish:javax.annotation:10.0-b28'
-   // implementation 'org.greenrobot:greendao:3.2.0'
-    //compileOnly 'org.greenrobot:greendao-generator:3.2.0'
     implementation 'com.king.base:base:2.0'
-    implementation 'com.bigkoo:convenientbanner:2.0.5'
     implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.18'
     // 多dex配置
@@ -111,9 +90,9 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.facebook.fresco:animated-gif:1.0.0'
     implementation 'com.king.thread:nevercrash:1.0.0'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    androidTestImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    /*   debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
+       releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+       androidTestImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'*/
     //布局优化
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     //RxAndroid
@@ -129,7 +108,7 @@ dependencies {
     //网络日志拦截
     implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
     //    compile project(':picture_library')
-    implementation project(':zxinglib')
+
     implementation 'pub.devrel:easypermissions:1.2.0'
     //  compile 'com.githang:status-bar-compat:0.7'
     implementation 'com.tencent.bugly:crashreport:latest.release'
@@ -137,18 +116,17 @@ dependencies {
 
     implementation 'com.contrarywind:Android-PickerView:4.1.5'
     // implementation 'com.qmuiteam:qmui:1.2.0'
-    implementation project(':boxing-impl')
+
     implementation('com.yalantis:ucrop:2.2.0') {
         exclude group: 'com.android.support'
         exclude group: 'com.squareup.okio'
         exclude group: 'com.squareup.okhttp3'
     }
     //鲁班图片压缩
-    compile 'top.zibin:Luban:1.1.3'
+    implementation 'top.zibin:Luban:1.1.3'
     //圆形图片
-    compile 'de.hdodenhof:circleimageview:2.1.0'
-
-    compile 'com.githang:status-bar-compat:0.7'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.githang:status-bar-compat:0.7'
 
 
 }
