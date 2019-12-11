@@ -47,6 +47,8 @@ public class OrderManagerFragment extends SimpleFragment {
     ImageView ivRight;
     @BindView(R.id.tvRight)
     TextView tvRight;
+    @BindView(R.id.ivRightTwo)
+    ImageView ivRightTwo;
     private List<Fragment> listData;
     private List<CharSequence> listTitle;
     private ViewPagerFragmentAdapter viewPagerFragmentAdapter;
@@ -68,10 +70,11 @@ public class OrderManagerFragment extends SimpleFragment {
 
     @Override
     public void initUI() {
-
+        ivRightTwo.setVisibility(View.VISIBLE);
+        ivRightTwo.setImageResource(R.drawable.search);
+        ivRight.setImageResource(R.drawable.order_add);
         if (permissionsBean.getApp_operation().contains("0")) {
-            tvRight.setVisibility(View.VISIBLE);
-            tvRight.setText("新增");
+            ivRight.setVisibility(View.VISIBLE);
         }
         listTitle = new ArrayList<>();
         listData = new ArrayList<>();
@@ -99,18 +102,22 @@ public class OrderManagerFragment extends SimpleFragment {
     }
 
 
-    @OnClick({R.id.ivLeft, R.id.tvRight})
+    @OnClick({R.id.ivLeft, R.id.ivRight, R.id.ivRightTwo})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ivLeft:
                 finish();
                 break;
-            case R.id.tvRight:
+            case R.id.ivRight:
                 startOrderAddFragment(new PressurePageBean(), "0", permissionsBean);
+                break;
+            case R.id.ivRightTwo:
+                startOrderSearchFragment("0",permissionsBean);
                 break;
 
         }
     }
+
 
     //设置统计数
     public void setTitleTotal(int index, String total) {

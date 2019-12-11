@@ -724,6 +724,12 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         intent.putExtra(Constants.PERMISSION_BEAN, permissionsBean);
         startActivity(intent);
     }
+  protected void startOrderSearchFragment(String id,AppPermissionsBean permissionsBean) {
+        Intent intent = getFragmentIntent(Constants.ORDER_SEARCH);
+        intent.putExtra(Constants.PERMISSION_BEAN, permissionsBean);
+        intent.putExtra(Constants.DETAIL_ID, id);
+        startActivity(intent);
+    }
 
     protected void startOrderAddFragment(PressurePageBean bean, String id, AppPermissionsBean permissionsBean) {
         Intent intent = getFragmentIntent(Constants.ORDER_ADD);

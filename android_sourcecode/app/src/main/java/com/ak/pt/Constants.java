@@ -8,10 +8,9 @@ package com.ak.pt;
 public final class Constants {
 
 
-    // public static final String BASE_URL = "http://pressuretest.akan.com.cn:81/";
-//    public static final String BASE_URL = "http://192.168.0.27:8080/";
-    public static final String BASE_URL = "http://pressure.akan.com.cn/";
-//    public static final String BASE_URL = "http://pressure-pre.akan.com.cn:81";
+    public static final String BASE_URL = "http://pressuretest.akan.com.cn:81/";
+    //public static final String BASE_URL = "http://pressure.akan.com.cn/";
+    //public static final String BASE_URL = "http://pressure-pre.akan.com.cn:81";
 
 
     public static final String USER_BEAN = "userbean";
@@ -162,6 +161,7 @@ public final class Constants {
 
     public static final int PRESSURE_QF_DETAIL = 0X110;
     public static final int ORDER_IMG_TWO = 0X111;
+    public static final int ORDER_SEARCH = 0X112;
 
 
     public static final String STATISTICS_TYPE = "STATISTICS_TYPE";

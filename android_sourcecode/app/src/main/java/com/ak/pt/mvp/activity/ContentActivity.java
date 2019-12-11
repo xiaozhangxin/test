@@ -26,6 +26,7 @@ import com.ak.pt.bean.PeopleBean;
 import com.ak.pt.bean.PhotoListBean;
 import com.ak.pt.bean.PressureBackBean;
 import com.ak.pt.bean.PressureDropBean;
+import com.ak.pt.mvp.fragment.OrderSearchFragment;
 import com.ak.pt.mvp.fragment.statistics.PressurePageBean;
 import com.ak.pt.bean.QuitJobBean;
 import com.ak.pt.bean.ShopCloseBean;
@@ -194,6 +195,10 @@ public class ContentActivity extends AppCompatActivity {
                 break;
             case Constants.ORDER_ACCEPT:
                 replaceFragment(OrderWorkerFragment.newInstance(permissionsBean));
+                break;
+             case Constants.ORDER_SEARCH:
+                String searchType = getIntent().getStringExtra(Constants.DETAIL_ID);
+                replaceFragment(OrderSearchFragment.newInstance(searchType,permissionsBean));
                 break;
             case Constants.INTEGRAL:
                 replaceFragment(IntegralFragment.newInstance());

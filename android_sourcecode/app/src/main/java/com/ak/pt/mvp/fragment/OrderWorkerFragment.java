@@ -43,6 +43,8 @@ public class OrderWorkerFragment extends SimpleFragment {
     TextView tvTitle;
     @BindView(R.id.ivRight)
     ImageView ivRight;
+    @BindView(R.id.ivRightTwo)
+    ImageView ivRightTwo;
     @BindView(R.id.tvRight)
     TextView tvRight;
     private List<Fragment> listData;
@@ -67,6 +69,10 @@ public class OrderWorkerFragment extends SimpleFragment {
 
     @Override
     public void initUI() {
+
+        ivRightTwo.setVisibility(View.VISIBLE);
+        ivRightTwo.setImageResource(R.drawable.search);
+        ivRight.setImageResource(R.drawable.order_add);
 
         listTitle = new ArrayList<>();
         listData = new ArrayList<>();
@@ -93,11 +99,10 @@ public class OrderWorkerFragment extends SimpleFragment {
         userBean = SpSingleInstance.getSpSingleInstance().getUserBean();
         //试压工建单用权限控制
         if (isHave("0", permissionsBean.getApp_operation().split(","))) {
-            tvRight.setVisibility(View.VISIBLE);
-            tvRight.setText(R.string.add_new);
+            ivRight.setVisibility(View.VISIBLE);
         } else {
-            tvRight.setVisibility(View.GONE);
-        }
+            ivRight.setVisibility(View.GONE);
+    }
 
     }
     public boolean isHave(String index, String[] split) {
@@ -109,14 +114,17 @@ public class OrderWorkerFragment extends SimpleFragment {
         return false;
     }
 
-    @OnClick({R.id.ivLeft, R.id.tvRight})
+    @OnClick({R.id.ivLeft, R.id.ivRight, R.id.ivRightTwo})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ivLeft:
                 finish();
                 break;
-            case R.id.tvRight:
+            case R.id.ivRight:
                 startOrderAddWorkerFragment(permissionsBean);
+                break;
+                case R.id.ivRightTwo:
+                startOrderSearchFragment("1",permissionsBean);
                 break;
 
         }

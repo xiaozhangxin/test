@@ -22,6 +22,7 @@ import com.ak.pt.util.SpSingleInstance;
 import com.ak.pt.util.ToastUtil;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

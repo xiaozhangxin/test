@@ -179,5 +179,6 @@ dependencies {
     //bugly
     implementation 'com.tencent.bugly:crashreport:latest.release'
     implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+    implementation 'com.google.android:flexbox:1.1.0'
 }
 
