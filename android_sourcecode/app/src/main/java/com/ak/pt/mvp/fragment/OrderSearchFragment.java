@@ -61,7 +61,7 @@ public class OrderSearchFragment extends BaseFragment<IOrderSearchView, OrderSea
     private Map<String, String> map = new HashMap<>();
     private UserBean userBean;
     private int page = 1;
-    private String type;
+    private String type;//0试压报单 1未完成的试压单
     private AppPermissionsBean permissionsBean;
     private RecordSQLiteOpenHelper helper;
     private SQLiteDatabase db;
@@ -212,21 +212,30 @@ public class OrderSearchFragment extends BaseFragment<IOrderSearchView, OrderSea
     public void onResume() {
         super.onResume();
         userBean = SpSingleInstance.getSpSingleInstance().getUserBean();
-        map.put("is_select", "1");
-        map.put("is_app", "1");
-        map.put("operation", "1000");
-        map.put("module_id", permissionsBean.getMenu_id());
+
         //page = 1;
         //refresh();
     }
 
     private void refresh() {
-        map.put("all_select", etName.getText().toString());
+        map.put("doc_no", etName.getText().toString());
         map.put("page", page + "");
         map.put("limit", "20");
-        //map.put("staff_id", userBean.getStaff_id());
-        //map.put("job_name", userBean.getJob_name());
-        getPresenter().getTestPressureList(userBean.getStaff_token(), map);
+        map.put("staff_id", userBean.getStaff_id());
+        map.put("job_name", userBean.getJob_name());
+        switch (type){
+            case "0":
+                map.put("is_select", "1");
+                map.put("is_app", "1");
+                map.put("operation", "1000");
+                map.put("module_id", permissionsBean.getMenu_id());
+                getPresenter().getTestPressureList(userBean.getStaff_token(), map);
+                break;
+            case "1":
+                getPresenter().getAppTestPressureList(userBean.getStaff_token(), map);
+                break;
+        }
+
     }
 
 
