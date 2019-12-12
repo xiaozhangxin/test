@@ -43,12 +43,12 @@ public class IntegralAdapter extends RecyclerArrayAdapter<IntegralBean> {
         @Override
         public void setData(IntegralBean data) {
             super.setData(data);
-            if ("积分兑换".equals(data.getIntegral_type())) {
+            if (data.getIntegral_score().contains("-")) {
                 tvIntegral.setTextColor(getContext().getResources().getColor(R.color.img_color));
                 tvIntegral.setText(data.getIntegral_score());
             } else {
                 tvIntegral.setTextColor(getContext().getResources().getColor(R.color.colorPrimaryNew));
-                tvIntegral.setText("+"+data.getIntegral_score());
+                tvIntegral.setText(data.getIntegral_score());
             }
             tvTittle.setText(data.getIntegral_type());
             tvTime.setText(data.getIntegral_create_time());

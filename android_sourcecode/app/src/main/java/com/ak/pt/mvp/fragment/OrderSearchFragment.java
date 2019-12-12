@@ -4,26 +4,34 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.KeyEvent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ak.pt.R;
 import com.ak.pt.bean.AppPermissionsBean;
 import com.ak.pt.bean.UserBean;
 import com.ak.pt.mvp.adapter.OrderAcceptAdapter;
+import com.ak.pt.mvp.adapter.SearchHistoryAdapter;
 import com.ak.pt.mvp.base.BaseFragment;
 import com.ak.pt.mvp.fragment.statistics.PressurePageBean;
 import com.ak.pt.mvp.presenter.OrderSearchPresenter;
 import com.ak.pt.mvp.view.IOrderSearchView;
+import com.ak.pt.util.MyFlexboxLayoutManager;
 import com.ak.pt.util.RecordSQLiteOpenHelper;
 import com.ak.pt.util.SpSingleInstance;
 import com.ak.pt.util.ToastUtil;
+import com.google.android.flexbox.AlignItems;
+import com.google.android.flexbox.FlexDirection;
+import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayout;
+import com.google.android.flexbox.FlexboxLayoutManager;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.king.base.util.ToastUtils;
@@ -36,6 +44,7 @@ import java.util.Map;
 import java.util.Queue;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -50,14 +59,14 @@ public class OrderSearchFragment extends BaseFragment<IOrderSearchView, OrderSea
     EditText etName;
     @BindView(R.id.cancel)
     TextView cancel;
-    @BindView(R.id.tvClear)
-    TextView tvClear;
     @BindView(R.id.Flexbox)
-    FlexboxLayout Flexbox;
+    RecyclerView Flexbox;
 
 
     private List<PressurePageBean> list;
+    private List<String> fleList;
     private OrderAcceptAdapter adapter;
+    private SearchHistoryAdapter flexAdapter;
     private Map<String, String> map = new HashMap<>();
     private UserBean userBean;
     private int page = 1;
@@ -82,26 +91,52 @@ public class OrderSearchFragment extends BaseFragment<IOrderSearchView, OrderSea
 
     @Override
     public void initUI() {
+
+        fleList = new ArrayList<>();
+        FlexboxLayoutManager flexboxLayoutManager = new MyFlexboxLayoutManager(context);
+        flexboxLayoutManager.setFlexDirection(FlexDirection.ROW);
+        flexboxLayoutManager.setFlexWrap(FlexWrap.WRAP);
+        flexboxLayoutManager.setAlignItems(AlignItems.STRETCH);
+        Flexbox.setLayoutManager(flexboxLayoutManager);
+        flexAdapter = new SearchHistoryAdapter(context, fleList);
+        Flexbox.setAdapter(flexAdapter);
+
+        flexAdapter.setOnItemClickListener(position -> etName.setText(flexAdapter.getItem(position)));
+
+        flexAdapter.addHeader(new RecyclerArrayAdapter.ItemView() {
+            @Override
+            public View onCreateView(ViewGroup parent) {
+                View inflate = LayoutInflater.from(context).inflate(R.layout.item_history_top, null);
+                inflate.findViewById(R.id.tvClear).setOnClickListener(v -> deleteData());
+                return inflate;
+            }
+
+            @Override
+            public void onBindView(View headerView) {
+
+            }
+        });
+
         list = new ArrayList<>();
         recycleView.setLayoutManager(new LinearLayoutManager(context));
         adapter = new OrderAcceptAdapter(context, list);
         recycleView.setAdapterWithProgress(adapter);
         adapter.setOnItemClickListener(position -> {
-            switch (type){
-                case "1":
-                    startTestPressureDetailFragment(adapter.getItem(position).getDoc_no(), permissionsBean);
-                    break;
-                case "0":
-                    PressurePageBean item = adapter.getItem(position);
-                    //待接单已接单并且指派给自己
-                    if (("accept".equals(item.getFlow_state()) || "plan".equals(item.getFlow_state())) && userBean.getStaff_id().equals(item.getPlumber_id())) {
-                        startTestPressureDetailFragment(adapter.getItem(position).getDoc_no(), permissionsBean);
-                    } else {
-                        startOrderManagerDetailFragment(adapter.getItem(position).getDoc_no(), permissionsBean);
+                    switch (type) {
+                        case "1":
+                            startTestPressureDetailFragment(adapter.getItem(position).getDoc_no(), permissionsBean);
+                            break;
+                        case "0":
+                            PressurePageBean item = adapter.getItem(position);
+                            //待接单已接单并且指派给自己
+                            if (("accept".equals(item.getFlow_state()) || "plan".equals(item.getFlow_state())) && userBean.getStaff_id().equals(item.getPlumber_id())) {
+                                startTestPressureDetailFragment(adapter.getItem(position).getDoc_no(), permissionsBean);
+                            } else {
+                                startOrderManagerDetailFragment(adapter.getItem(position).getDoc_no(), permissionsBean);
+                            }
+                            break;
                     }
-                    break;
-            }
-        }
+                }
         );
 
 
@@ -135,10 +170,6 @@ public class OrderSearchFragment extends BaseFragment<IOrderSearchView, OrderSea
             return false;
         });
 
-        tvClear.setOnClickListener(v -> {
-            deleteData();
-            queryData();
-        });
         cancel.setOnClickListener(v -> {
             finish();
         });
@@ -156,7 +187,6 @@ public class OrderSearchFragment extends BaseFragment<IOrderSearchView, OrderSea
         db = helper.getWritableDatabase();
         db.execSQL("insert into records(name) values('" + tempName + "')");
         db.close();
-        queryData();
     }
 
     //检查数据库中是否已经有该条记录
@@ -172,47 +202,26 @@ public class OrderSearchFragment extends BaseFragment<IOrderSearchView, OrderSea
         db = helper.getWritableDatabase();
         db.execSQL("delete from records");
         db.close();
+        flexAdapter.clear();
+        flexAdapter.notifyDataSetChanged();
     }
 
     //查询数据
     private void queryData() {
         Cursor cursor = helper.getReadableDatabase().rawQuery("select * from records order by id asc ", null);
-        Flexbox.removeAllViews();
+        flexAdapter.clear();
         while (cursor.moveToNext()) {
             final String name = cursor.getString(cursor.getColumnIndex("name"));
-            TextView child = createOrGetCacheFlexItemTextView(Flexbox);
-            child.setText(name);
-            child.setOnClickListener(v -> etName.setText(name));
-            Flexbox.addView(child);
+            flexAdapter.add(name);
         }
+        flexAdapter.notifyDataSetChanged();
         cursor.close();
     }
-
-    private Queue<TextView> mFlexItemTextViewCaches = new LinkedList<>();
-
-    private TextView createOrGetCacheFlexItemTextView(FlexboxLayout fbl) {
-        TextView tv = mFlexItemTextViewCaches.poll();
-        if (tv != null) {
-            return tv;
-        }
-        return createFlexItemTextView(fbl);
-    }
-
-    private LayoutInflater mInflater = null;
-
-    private TextView createFlexItemTextView(FlexboxLayout fbl) {
-        if (mInflater == null) {
-            mInflater = LayoutInflater.from(fbl.getContext());
-        }
-        return (TextView) mInflater.inflate(R.layout.item_history, fbl, false);
-    }
-
 
     @Override
     public void onResume() {
         super.onResume();
         userBean = SpSingleInstance.getSpSingleInstance().getUserBean();
-
         //page = 1;
         //refresh();
     }
@@ -223,7 +232,7 @@ public class OrderSearchFragment extends BaseFragment<IOrderSearchView, OrderSea
         map.put("limit", "20");
         map.put("staff_id", userBean.getStaff_id());
         map.put("job_name", userBean.getJob_name());
-        switch (type){
+        switch (type) {
             case "0":
                 map.put("is_select", "1");
                 map.put("is_app", "1");
@@ -241,22 +250,23 @@ public class OrderSearchFragment extends BaseFragment<IOrderSearchView, OrderSea
 
     @Override
     public void OnGetAppTestPressureList(List<PressurePageBean> data, String total) {
-        recycleView.setVisibility(View.VISIBLE);
         if (page == 1) {
             adapter.clear();
         }
         adapter.addAll(data);
         adapter.notifyDataSetChanged();
+        Flexbox.setVisibility(View.GONE);
     }
 
     @Override
     public void OnGetTestPressureList(List<PressurePageBean> data, String total) {
-        recycleView.setVisibility(View.VISIBLE);
         if (page == 1) {
             adapter.clear();
         }
         adapter.addAll(data);
         adapter.notifyDataSetChanged();
+        Flexbox.setVisibility(View.GONE);
+
     }
 
 

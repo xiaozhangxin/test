@@ -97,20 +97,14 @@ public class IntegralFragment extends BaseFragment<IIntegralView, IntegralPresen
         adapter.setNoMore(R.layout.view_nomore);
         //下拉刷新
         recycleView.setRefreshingColorResources(R.color.colorPrimaryNew);
-        recycleView.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                page = 1;
-                refresh();
-            }
+        recycleView.setRefreshListener(() -> {
+            page = 1;
+            refresh();
         });
         //上拉加载
-        adapter.setMore(R.layout.view_more, new RecyclerArrayAdapter.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                page++;
-                refresh();
-            }
+        adapter.setMore(R.layout.view_more, () -> {
+            page++;
+            refresh();
         });
     }
 
@@ -245,14 +239,16 @@ public class IntegralFragment extends BaseFragment<IIntegralView, IntegralPresen
 
     @Override
     public void OnGetIntegralDailyList(List<IntegralBean> data) {
-        if (data.size() > 0) {
-            tvRight.setText("总积分 " + data.get(0).getIntegral_score_total());
-        }
         if (page == 1) {
             adapter.clear();
         }
         adapter.addAll(data);
         adapter.notifyDataSetChanged();
+        if (adapter.getAllData().size()>0){
+            tvRight.setText("总积分 " + adapter.getItem(0).getIntegral_total());
+        }else {
+            tvRight.setText("总积分 0" );
+        }
     }
 
 

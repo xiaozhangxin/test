@@ -47,52 +47,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:id="@+id/rlTop"
-            android:layout_width="match_parent"
-            android:layout_height="40dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="16dp"
-                android:text="搜索历史"
-                android:textColor="@color/colorTextG9"
-                android:textSize="11sp" />
-
-            <TextView
-                android:id="@+id/tvClear"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:gravity="center"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:text="清除"
-                android:textColor="@color/colorTextG3"
-                android:textSize="13sp" />
-
-        </RelativeLayout>
-
-        <com.google.android.flexbox.FlexboxLayout
-            android:id="@+id/Flexbox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rlTop"
-            android:layout_marginLeft="11dp"
-            android:layout_marginRight="11dp"
-            app:alignContent="stretch"
-            app:flexDirection="row"
-            app:flexWrap="wrap" />
-
         <com.jude.easyrecyclerview.EasyRecyclerView
             android:id="@+id/recycleView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:visibility="gone"
             app:layout_empty="@layout/layout_empty" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Flexbox"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="16dp"
+            android:layout_height="match_parent" />
+
 
     </RelativeLayout>
 
