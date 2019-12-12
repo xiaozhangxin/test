@@ -50,7 +50,9 @@ public class IntegralAdapter extends RecyclerArrayAdapter<IntegralBean> {
                 tvIntegral.setTextColor(getContext().getResources().getColor(R.color.colorPrimaryNew));
                 tvIntegral.setText(data.getIntegral_score());
             }
-            tvTittle.setText(data.getIntegral_type());
+            String integralType = data.getIntegral_type();
+            String replace = integralType.replace("$", "\n");
+            tvTittle.setText(replace);
             tvTime.setText(data.getIntegral_create_time());
 
 

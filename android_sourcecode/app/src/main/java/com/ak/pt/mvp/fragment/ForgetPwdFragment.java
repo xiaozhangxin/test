@@ -66,12 +66,15 @@ public class ForgetPwdFragment extends BaseFragment<IChangePwdView, ChangePwdpre
     private Map<String, String> map = new HashMap<>();
 
     private String type;
+    private String  account;
 
-    public static ForgetPwdFragment newInstance(String type) {
+
+    public static ForgetPwdFragment newInstance(String type,String account) {
         Bundle args = new Bundle();
         ForgetPwdFragment fragment = new ForgetPwdFragment();
         fragment.setArguments(args);
         fragment.type = type;
+        fragment.account=account;
         return fragment;
     }
 
@@ -90,6 +93,7 @@ public class ForgetPwdFragment extends BaseFragment<IChangePwdView, ChangePwdpre
 
             case "1":
                 tvTitle.setText("修改密码");
+                registeredNumber.setText(account);
                 break;
         }
 

@@ -101,7 +101,11 @@ public class OrderSearchFragment extends BaseFragment<IOrderSearchView, OrderSea
         flexAdapter = new SearchHistoryAdapter(context, fleList);
         Flexbox.setAdapter(flexAdapter);
 
-        flexAdapter.setOnItemClickListener(position -> etName.setText(flexAdapter.getItem(position)));
+        flexAdapter.setOnItemClickListener(position -> {
+            etName.setText(flexAdapter.getItem(position));
+            page = 1;
+            refresh();
+        });
 
         flexAdapter.addHeader(new RecyclerArrayAdapter.ItemView() {
             @Override

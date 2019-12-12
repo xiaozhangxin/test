@@ -535,7 +535,8 @@ public class ContentActivity extends AppCompatActivity {
                 break;
             case Constants.FORGOT_PWD:
                 String changeType = getIntent().getStringExtra(Constants.DETAIL_ID);
-                replaceFragment(ForgetPwdFragment.newInstance(changeType));
+                String account = getIntent().getStringExtra(Constants.TYPE);
+                replaceFragment(ForgetPwdFragment.newInstance(changeType,account));
                 break;
             case Constants.UP_IMG:
                 String doc_no = getIntent().getStringExtra(Constants.DETAIL_ID);

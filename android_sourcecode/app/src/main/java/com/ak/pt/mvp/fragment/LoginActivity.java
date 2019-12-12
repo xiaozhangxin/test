@@ -172,7 +172,7 @@ public class LoginActivity extends BaseActivity<ILoginView, LoginPresenter> impl
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tvForget:
-                startForgetPwdFragment("0");
+                startForgetPwdFragment("0","");
                 break;
             case R.id.ok:
                 String account = etAccount.getText().toString().trim();
@@ -186,10 +186,10 @@ public class LoginActivity extends BaseActivity<ILoginView, LoginPresenter> impl
                     return;
                 }
 
-                if ("a123456".equals(password)) {
-                    showChangePwdDialog();
+/*                if ("a123456".equals(password)) {
+                    showChangePwdDialog(account);
                     return;
-                }
+                }*/
                 saveLoginInfo(this, account, password);
                 map.put("staff_account", account);
                 map.put("staff_password", password);
@@ -200,11 +200,11 @@ public class LoginActivity extends BaseActivity<ILoginView, LoginPresenter> impl
     }
 
     //密码过于简单弹框
-    private void showChangePwdDialog() {
+    private void showChangePwdDialog(String account) {
             final CustomDialog.Builder builder = new CustomDialog.Builder(this);
             builder.setMessage("您输入的密码为初始密码,请您修改后在进行登录！");
             builder.setPositiveButton(getString(R.string.fix_rightnow), (dialog, which) -> {
-                startForgetPwdFragment("1");
+                startForgetPwdFragment("1",account);
                 dialog.dismiss();
             });
         builder.setNegativeButton("重新输入", (dialog, which) -> {
