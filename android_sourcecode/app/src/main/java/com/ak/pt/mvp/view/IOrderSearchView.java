@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface IOrderSearchView extends BaseView {
     void OnGetAppTestPressureList(List<PressurePageBean> data, String total);
+
+    void OnGetTestPressureList(List<PressurePageBean> data, String total);
 }

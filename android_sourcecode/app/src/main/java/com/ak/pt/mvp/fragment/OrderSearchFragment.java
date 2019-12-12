@@ -25,6 +25,7 @@ import com.ak.pt.util.SpSingleInstance;
 import com.ak.pt.util.ToastUtil;
 import com.google.android.flexbox.FlexboxLayout;
 import com.jude.easyrecyclerview.EasyRecyclerView;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.king.base.util.ToastUtils;
 
 import java.util.ArrayList;
@@ -85,8 +86,25 @@ public class OrderSearchFragment extends BaseFragment<IOrderSearchView, OrderSea
         recycleView.setLayoutManager(new LinearLayoutManager(context));
         adapter = new OrderAcceptAdapter(context, list);
         recycleView.setAdapterWithProgress(adapter);
-        adapter.setOnItemClickListener(position ->
-                startTestPressureDetailFragment(adapter.getItem(position).getDoc_no(), permissionsBean));
+        adapter.setOnItemClickListener(position -> {
+            switch (type){
+                case "1":
+                    startTestPressureDetailFragment(adapter.getItem(position).getDoc_no(), permissionsBean);
+                    break;
+                case "0":
+                    PressurePageBean item = adapter.getItem(position);
+                    //待接单已接单并且指派给自己
+                    if (("accept".equals(item.getFlow_state()) || "plan".equals(item.getFlow_state())) && userBean.getStaff_id().equals(item.getPlumber_id())) {
+                        startTestPressureDetailFragment(adapter.getItem(position).getDoc_no(), permissionsBean);
+                    } else {
+                        startOrderManagerDetailFragment(adapter.getItem(position).getDoc_no(), permissionsBean);
+                    }
+                    break;
+            }
+        }
+        );
+
+
         adapter.setNoMore(R.layout.view_nomore);
         //下拉刷新
         recycleView.setRefreshingColorResources(R.color.colorPrimaryNew);
@@ -194,22 +212,36 @@ public class OrderSearchFragment extends BaseFragment<IOrderSearchView, OrderSea
     public void onResume() {
         super.onResume();
         userBean = SpSingleInstance.getSpSingleInstance().getUserBean();
+        map.put("is_select", "1");
+        map.put("is_app", "1");
+        map.put("operation", "1000");
+        map.put("module_id", permissionsBean.getMenu_id());
         //page = 1;
         //refresh();
     }
 
     private void refresh() {
-        map.put("address", etName.getText().toString());
+        map.put("all_select", etName.getText().toString());
         map.put("page", page + "");
         map.put("limit", "20");
         //map.put("staff_id", userBean.getStaff_id());
         //map.put("job_name", userBean.getJob_name());
-        getPresenter().getAppTestPressureList(userBean.getStaff_token(), map);
+        getPresenter().getTestPressureList(userBean.getStaff_token(), map);
     }
 
 
     @Override
     public void OnGetAppTestPressureList(List<PressurePageBean> data, String total) {
+        recycleView.setVisibility(View.VISIBLE);
+        if (page == 1) {
+            adapter.clear();
+        }
+        adapter.addAll(data);
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void OnGetTestPressureList(List<PressurePageBean> data, String total) {
         recycleView.setVisibility(View.VISIBLE);
         if (page == 1) {
             adapter.clear();

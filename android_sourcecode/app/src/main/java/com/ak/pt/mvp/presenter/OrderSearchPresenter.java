@@ -55,4 +55,43 @@ public class OrderSearchPresenter extends BasePresenter<IOrderSearchView> {
                 });
 
     }
+
+
+    public void getTestPressureList(String token, Map<String, String> parmer) {
+        if (isViewAttached())
+            getView().showProgress();
+        getAppComponent().getAPIService()
+                .getTestPressureList(token, parmer)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<HttpResult<List<PressurePageBean>>>() {
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (isViewAttached())
+                            getView().onError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(HttpResult<List<PressurePageBean>> userBeanHttpResult) {
+                        if (userBeanHttpResult != null) {
+                            if (isViewAttached()) {
+                                getView().OnGetTestPressureList(userBeanHttpResult.getData(), userBeanHttpResult.getTotal());
+                            }
+                        }
+
+                    }
+                });
+
+    }
 }

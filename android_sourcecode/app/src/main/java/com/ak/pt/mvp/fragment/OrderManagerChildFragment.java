@@ -161,8 +161,6 @@ public class OrderManagerChildFragment extends BaseFragment<IOrderView, OrderPre
         map.put("limit", "20");
         map.put("staff_id", userBean.getStaff_id());
         map.put("job_name", userBean.getJob_name());
-
-
         getPresenter().getTestPressureList(userBean.getStaff_token(), map);
     }
 

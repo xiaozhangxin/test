@@ -53,14 +53,16 @@ public class OrderPresenter extends BasePresenter<IOrderView> {
                     public void onNext(HttpResult<List<PressurePageBean>> userBeanHttpResult) {
                         if (userBeanHttpResult != null) {
                             if (isViewAttached()) {
-                                getView().OnGetTestPressureList(userBeanHttpResult.getData(),userBeanHttpResult.getTotal());
+                                getView().OnGetTestPressureList(userBeanHttpResult.getData(), userBeanHttpResult.getTotal());
                             }
                         }
 
                     }
                 });
 
-    }  public void getMemoryList(String token, Map<String, String> parmer) {
+    }
+
+    public void getMemoryList(String token, Map<String, String> parmer) {
         final String type = parmer.get("type");
         if (isViewAttached())
             getView().showProgress();
@@ -128,7 +130,7 @@ public class OrderPresenter extends BasePresenter<IOrderView> {
                     public void onNext(HttpResult<List<PressurePageBean>> userBeanHttpResult) {
                         if (userBeanHttpResult != null) {
                             if (isViewAttached()) {
-                                getView().OnGetAppTestPressureList(userBeanHttpResult.getData(),userBeanHttpResult.getTotal());
+                                getView().OnGetAppTestPressureList(userBeanHttpResult.getData(), userBeanHttpResult.getTotal());
                             }
                         }
 
