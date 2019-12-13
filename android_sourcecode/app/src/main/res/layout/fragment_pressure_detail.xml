@@ -24,10 +24,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:layout_marginEnd="24dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="12dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -48,16 +48,17 @@
                     android:textSize="13sp" />
 
             </LinearLayout>
+
             <include layout="@layout/line_ten" />
 
             <LinearLayout
                 android:id="@+id/llRefuse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:layout_marginEnd="24dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="12dp"
                 android:orientation="horizontal"
                 android:visibility="gone">
 
@@ -84,8 +85,8 @@
                 android:id="@+id/lineRefuse"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:visibility="gone"
-                android:background="@color/colorTextF3" />
+                android:background="@color/colorTextF3"
+                android:visibility="gone" />
 
             <include layout="@layout/pressure_detail_one" />
 
@@ -101,14 +102,19 @@
 
             <include layout="@layout/pressure_detail_four" />
 
+            <include layout="@layout/line_ten" />
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_height="70dp"
+                android:background="@color/colorTextF3" />
         </LinearLayout>
 
 
     </androidx.core.widget.NestedScrollView>
+
     <include layout="@layout/pressure_detail_work" />
+
     <include layout="@layout/pressure_detail_accept" />
 
 </RelativeLayout>

@@ -97,7 +97,7 @@
             <include layout="@layout/line_ten" />
 
             <include layout="@layout/pressure_detail_four" />
-
+            <include layout="@layout/line_ten" />
             <Button
                 android:id="@+id/ok"
                 android:layout_width="match_parent"
