@@ -212,9 +212,9 @@ public class TestPressureDetailFragment extends BaseFragment<IPressureView, Pres
         tvThreeQ.setText(bean.getProject_manager());
         tvfourQ.setText(bean.getProject_manager_tel());
 
-        tvoneW.setText(bean.getQuality_card());
-        twoW.setText(bean.getIntegral_tel());
-        tvtwoW.setText(bean.getIntegral_score());
+      tvoneW.setText(bean.getQuality_card());
+        tvtwoW.setText(bean.getIntegral_tel());
+        tvthreeW.setText(bean.getIntegral_score());
 
         tvOneE.setText(bean.getHydraulic_name());
         tvTwoE.setText(bean.getHydraulic_tel());
