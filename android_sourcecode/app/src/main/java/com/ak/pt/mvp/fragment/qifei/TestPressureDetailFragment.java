@@ -11,6 +11,7 @@ import com.ak.pt.R;
 import com.ak.pt.bean.UserBean;
 import com.ak.pt.mvp.base.BaseFragment;
 import com.ak.pt.util.SpSingleInstance;
+import com.ak.pt.util.ToastUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -212,8 +213,8 @@ public class TestPressureDetailFragment extends BaseFragment<IPressureView, Pres
         tvfourQ.setText(bean.getProject_manager_tel());
 
         tvoneW.setText(bean.getQuality_card());
-        tvoneW.setText(bean.getIntegral_tel());
-        tvoneW.setText(bean.getIntegral_score());
+        twoW.setText(bean.getIntegral_tel());
+        tvtwoW.setText(bean.getIntegral_score());
 
         tvOneE.setText(bean.getHydraulic_name());
         tvTwoE.setText(bean.getHydraulic_tel());
@@ -289,7 +290,7 @@ public class TestPressureDetailFragment extends BaseFragment<IPressureView, Pres
 
     @Override
     public void onError(Throwable e) {
-
+        ToastUtil.showToast(context.getApplicationContext(),e.getMessage());
     }
 
     @Override

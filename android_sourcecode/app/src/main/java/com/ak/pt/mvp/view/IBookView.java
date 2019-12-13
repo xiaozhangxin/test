@@ -10,5 +10,5 @@ import java.util.List;
  */
 
 public interface IBookView extends BaseView{
-    void onGetAddressBookList(List<BookBean> data);
+    void onGetAddressBookList(List<BookBean> data,String total);
 }

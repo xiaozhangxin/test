@@ -124,6 +124,12 @@ public class TestPressureFragment extends BaseFragment<IPressureView, PressurePr
     public void initData() {
         userBean = SpSingleInstance.getSpSingleInstance().getUserBean();
         map.put("group_uuid",userBean.getDepartment_id());
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH, -3);
+        Date starDate = calendar.getTime();
+        String str = formatter.format(starDate);
+        tvStartTime.setText(str);
         refresh();
     }
 

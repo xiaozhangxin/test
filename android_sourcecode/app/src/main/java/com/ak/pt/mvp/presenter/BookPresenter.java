@@ -51,7 +51,7 @@ public class BookPresenter extends BasePresenter<IBookView>{
                     public void onNext(HttpResult<List<BookBean>> userBeanHttpResult) {
                         if (userBeanHttpResult != null) {
                             if (isViewAttached()) {
-                                getView().onGetAddressBookList(userBeanHttpResult.getData());
+                                getView().onGetAddressBookList(userBeanHttpResult.getData(),userBeanHttpResult.getTotal());
                             }
                         }
 

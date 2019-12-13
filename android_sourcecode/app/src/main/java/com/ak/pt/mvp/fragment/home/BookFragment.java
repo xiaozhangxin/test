@@ -60,7 +60,6 @@ import butterknife.Unbinder;
 
 public class BookFragment extends BaseFragment<IBookView, BookPresenter> implements IBookView {
 
-
     Unbinder unbinder;
     @BindView(R.id.ivLeft)
     ImageView ivLeft;
@@ -186,7 +185,8 @@ public class BookFragment extends BaseFragment<IBookView, BookPresenter> impleme
 
 
     @Override
-    public void onGetAddressBookList(List<BookBean> data) {
+    public void onGetAddressBookList(List<BookBean> data,String total) {
+        tvTitle.setText("通讯录("+total+")");
         if (page==1){
             adapter.clear();
         }
