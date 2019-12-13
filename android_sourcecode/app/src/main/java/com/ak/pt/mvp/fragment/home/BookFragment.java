@@ -7,15 +7,18 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,6 +38,7 @@ import com.ak.pt.util.SpSingleInstance;
 import com.ak.pt.util.ToastUtil;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.king.base.util.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -76,11 +80,9 @@ public class BookFragment extends BaseFragment<IBookView, BookPresenter> impleme
     private Map<String, String> map = new HashMap<>();
     private UserBean userBean;
     private BookListAdapter adapter;
-    private List<BookBean> mList = new ArrayList<>();//当前账号下的所有数据
-    private BookNameBean bean;//选择的部门信息
-    private List<BookBean> allList = new ArrayList<>();//选择部门后的所有数据
-    private List<BookBean> timeList = new ArrayList<>();//临时的数据
+    private List<BookBean> mList;
 
+    private int page = 1;
     private AppPermissionsBean permissionsBean;
 
     public static BookFragment newInstance(AppPermissionsBean permissionsBean) {
@@ -100,82 +102,47 @@ public class BookFragment extends BaseFragment<IBookView, BookPresenter> impleme
     public void initUI() {
         tvTitle.setText("通讯录");
         tvRight.setVisibility(View.VISIBLE);
+        mList = new ArrayList<>();
         recycleView.setLayoutManager(new LinearLayoutManager(context));
         adapter = new BookListAdapter(context, mList);
         recycleView.setAdapterWithProgress(adapter);
+
         adapter.setNoMore(R.layout.view_nomore);
-        adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                final String phone = adapter.getItem(position).getPhone();
-                if (!TextUtils.isEmpty(phone)) {
-                    String staff_name = adapter.getItem(position).getStaff_name();
-                    final CustomDialog.Builder builder1 = new CustomDialog.Builder(context);
-                    builder1.setMessage("呼叫" + phone + "(" + staff_name + ")?");
-                    builder1.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            sq(phone);
-                            dialog.dismiss();
-                        }
-                    });
-                    builder1.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    builder1.onCreate().show();
-                }
+        //下拉刷新
+        recycleView.setRefreshingColorResources(R.color.colorPrimaryNew);
+        recycleView.setRefreshListener(() -> {
+            page = 1;
+            refresh();
+        });
+        //上拉加载
+        adapter.setMore(R.layout.view_more, () -> {
+            page++;
+            refresh();
+        });
+
+        adapter.setOnItemClickListener(position -> {
+            final String phone = adapter.getItem(position).getPhone();
+            if (!TextUtils.isEmpty(phone)) {
+                showCallPhonePop(phone, position);
+
             }
         });
 
-        etSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                timeList.clear();
-                if (TextUtils.isEmpty(s.toString())) {
-                    if (bean == null) {
-                        timeList.addAll(mList);
-
-                    } else {
-                        timeList.addAll(allList);
-                    }
-
+        etSearch.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                String toString = etSearch.getText().toString();
+                if (TextUtils.isEmpty(toString)) {
+                    ToastUtils.showToast(context.getApplicationContext(), "请输入内容");
                 } else {
-                    if (bean == null) {
-                        for (int i = 0; i < mList.size(); i++) {
-                            String s1 = mList.get(i).getStaff_name() + mList.get(i).getJob_name() + mList.get(i).getPhone();
-                            if (s1.contains(s.toString())) {
-                                timeList.add(mList.get(i));
-                            }
-                        }
-                    } else {
-                        for (int i = 0; i < allList.size(); i++) {
-                            String s1 = allList.get(i).getStaff_name() + allList.get(i).getJob_name() + allList.get(i).getPhone();
-                            if (s1.contains(s.toString())) {
-                                timeList.add(allList.get(i));
-                            }
-                        }
-                    }
-
-
+                    page = 1;
+                    refresh();
                 }
-
-
-                adapter.clear();
-                adapter.addAll(timeList);
-                adapter.notifyDataSetChanged();
             }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
+            return false;
         });
+
     }
+
 
     @Override
     public void initData() {
@@ -196,6 +163,13 @@ public class BookFragment extends BaseFragment<IBookView, BookPresenter> impleme
         map.put("is_app", "1");
         map.put("operation", "1000");
         map.put("module_id", permissionsBean.getMenu_id());
+        refresh();
+
+    }
+
+    private void refresh() {
+        map.put("all_select", etSearch.getText().toString());
+        map.put("page", String.valueOf(page));
         getPresenter().getAddressBookList(userBean.getStaff_token(), map);
     }
 
@@ -213,15 +187,27 @@ public class BookFragment extends BaseFragment<IBookView, BookPresenter> impleme
 
     @Override
     public void onGetAddressBookList(List<BookBean> data) {
-        mList.clear();
-        adapter.clear();
-        if (data.size() > 0) {
-            mList.addAll(data);
-            adapter.addAll(data);
-            adapter.notifyDataSetChanged();
+        if (page==1){
+            adapter.clear();
         }
+        adapter.addAll(data);
+        adapter.notifyDataSetChanged();
     }
 
+
+
+    //是否拨打电话弹框
+    private void showCallPhonePop(String phone, int position) {
+        String staff_name = adapter.getItem(position).getStaff_name();
+        final CustomDialog.Builder builder1 = new CustomDialog.Builder(context);
+        builder1.setMessage("呼叫" + phone + "(" + staff_name + ")?");
+        builder1.setPositiveButton(getString(R.string.sure), (dialog, which) -> {
+            sq(phone);
+            dialog.dismiss();
+        });
+        builder1.setNegativeButton(getString(R.string.cancel), (dialog, which) -> dialog.dismiss());
+        builder1.onCreate().show();
+    }
 
     private void sq(String phone) {
         if (ContextCompat.checkSelfPermission(getActivity(),
@@ -291,24 +277,14 @@ public class BookFragment extends BaseFragment<IBookView, BookPresenter> impleme
     public void onEventMainThread(FirstEventBook event) {
         switch (event.getType()) {
             case "book":
-                bean = event.getBookNameBean();
+                BookNameBean bean = event.getBookNameBean();
                 String name = bean.getName();
                 String names = bean.getNames();
                 tvRight.setText(names);
-                allList.clear();
-                for (int i = 0; i < mList.size(); i++) {
-                    String s1 = mList.get(i).getDepartment_id();
-                    if (name.contains("," + s1 + ",")) {
-                        allList.add(mList.get(i));
-                    }
-                }
-                if (allList.size() > 0) {
-                    adapter.clear();
-                    adapter.addAll(allList);
-                    adapter.notifyDataSetChanged();
-                } else {
-                    adapter.clear();
-                }
+                map.put("group_parent_uuid", name);
+                page = 1;
+                refresh();
+                recycleView.setRefreshing(true);
                 break;
         }
 

@@ -152,7 +152,7 @@ public class DepartmentPermissionFragment extends BaseFragment<IChoosePermission
                 }
                 switch (type) {
                     case "book":
-                        EventBus.getDefault().post(new FirstEventBook("book", new BookNameBean(sbName.toString(), groupName.toString())));
+                        EventBus.getDefault().post(new FirstEventBook("book", new BookNameBean(groupUUID.toString(), groupName.toString())));
                         break;
                     case "mall":
                         EventBus.getDefault().post(new DepartmentEvent("1", new DepartmentBean(groupName.toString(), departmentNo.toString())));

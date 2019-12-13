@@ -50,7 +50,7 @@ public class PressurePresenter extends BasePresenter<IPressureView>{
                     public void onNext(HttpResult<List<PressurePageBean>> userBeanHttpResult) {
                         if (userBeanHttpResult != null) {
                             if (isViewAttached()) {
-                                getView().OnQueryPressurePage(userBeanHttpResult.getData());
+                                getView().OnQueryPressurePage(userBeanHttpResult.getData(),userBeanHttpResult.getTotal());
                             }
                         }
 

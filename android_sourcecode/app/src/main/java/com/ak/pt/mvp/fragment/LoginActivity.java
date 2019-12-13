@@ -172,7 +172,7 @@ public class LoginActivity extends BaseActivity<ILoginView, LoginPresenter> impl
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tvForget:
-                startForgetPwdFragment("0", "");
+                startForgetPwdFragment("0", etAccount.getText().toString().trim());
                 break;
             case R.id.ok:
                 String account = etAccount.getText().toString().trim();

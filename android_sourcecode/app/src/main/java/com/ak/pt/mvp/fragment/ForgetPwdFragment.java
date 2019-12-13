@@ -89,6 +89,7 @@ public class ForgetPwdFragment extends BaseFragment<IChangePwdView, ChangePwdpre
         switch (type) {
             case "0":
                 tvTitle.setText("忘记密码");
+                registeredNumber.setText(account);
                 break;
 
             case "1":

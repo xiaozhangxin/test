@@ -151,7 +151,7 @@ public class BigTestPressureFragment extends BaseFragment<IPressureView, Pressur
     }
 
     @Override
-    public void OnQueryPressurePage(List<PressurePageBean> data) {
+    public void OnQueryPressurePage(List<PressurePageBean> data,String total) {
 
     }
 

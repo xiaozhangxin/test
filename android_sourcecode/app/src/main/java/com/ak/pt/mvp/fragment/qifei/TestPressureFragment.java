@@ -103,29 +103,19 @@ public class TestPressureFragment extends BaseFragment<IPressureView, PressurePr
         recycleView.setLayoutManager(new LinearLayoutManager(context));
         adapter = new ArePressureListAdapter(context, list);
         recycleView.setAdapterWithProgress(adapter);
-        adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                startQFTestPressureDetailFragment(adapter.getItem(position).getDoc_no());
-            }
-        });
+        adapter.setOnItemClickListener(position ->
+                startQFTestPressureDetailFragment(adapter.getItem(position).getDoc_no()));
         adapter.setNoMore(R.layout.view_nomore);
         //下拉刷新
         recycleView.setRefreshingColorResources(R.color.colorPrimaryNew);
-        recycleView.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                page = 1;
-                refresh();
-            }
+        recycleView.setRefreshListener(() -> {
+            page = 1;
+            refresh();
         });
         //上拉加载
-        adapter.setMore(R.layout.view_more, new RecyclerArrayAdapter.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                page++;
-                refresh();
-            }
+        adapter.setMore(R.layout.view_more, () -> {
+            page++;
+            refresh();
         });
 
     }
@@ -139,7 +129,7 @@ public class TestPressureFragment extends BaseFragment<IPressureView, PressurePr
 
     private void refresh() {
         map.put("area", etName.getText().toString());
-        map.put("doc_no", tvDepartment.getText().toString());
+        map.put("all_select", tvDepartment.getText().toString());
         map.put("start_time", tvStartTime.getText().toString());
         map.put("end_time", tvEndTime.getText().toString());
         map.put("page", page + "");
@@ -154,8 +144,8 @@ public class TestPressureFragment extends BaseFragment<IPressureView, PressurePr
     }
 
     @Override
-    public void OnQueryPressurePage(List<PressurePageBean> data) {
-
+    public void OnQueryPressurePage(List<PressurePageBean> data,String total) {
+        tvTitle.setText("试压记录("+total+")");
         if (page == 1) {
             adapter.clear();
         }

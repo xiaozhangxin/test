@@ -11,7 +11,7 @@ import java.util.List;
 public interface IPressureView extends BaseView {
     void OnQueryAreaCountPressurePage(List<AreaPressureBean> data);
 
-    void OnQueryPressurePage(List<PressurePageBean> data);
+    void OnQueryPressurePage(List<PressurePageBean> data,String total);
 
     void OnQueryDetail(PressurePageBean data);
 
