@@ -378,32 +378,30 @@ public class SalesmanListAdapter extends RecyclerArrayAdapter<AppHomeMenuTreeBea
                                     .transform(new CenterCrop(getContext()), new GlideRoundTransform(getContext(), 16))
                                     .into((ImageView) holder.getView(R.id.ivImg));
                             break;
-
-//                        case "CostPayment":    //  费用付款
-//                            holder.getView(R.id.tvAudit).setVisibility(View.GONE);
-//                            ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_cost_payment);
-//                            break;
-//                        case "CustomerDiscount":    //  客户折扣
-//                            holder.getView(R.id.tvAudit).setVisibility(View.GONE);
-//                            ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_discount);
-//                            break;
-//                        case "DisableMaterial":    //  禁用物料
-//                            holder.getView(R.id.tvAudit).setVisibility(View.GONE);
-//                            ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_material);
-//                            break;
-//                        case "SalesInvoice":    //  销项发票
-//                            holder.getView(R.id.tvAudit).setVisibility(View.GONE);
-//                            ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_sales_invoice);
-//                            break;
-//                        case "SalesInvoiceRefund":    //  销项发票退票
-//                            holder.getView(R.id.tvAudit).setVisibility(View.GONE);
-//                            ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_refund);
-//                            break;
-//                        case "EnterInvoice":    //  进项发票
-//                            holder.getView(R.id.tvAudit).setVisibility(View.GONE);
-//                            ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_enter_invoice);
-//                            break;
-
+                        case "CostPayment":    //  费用付款
+                            holder.getView(R.id.tvAudit).setVisibility(View.GONE);
+                            ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_cost_payment);
+                            break;
+                        case "CustomerDiscount":    //  客户折扣
+                            holder.getView(R.id.tvAudit).setVisibility(View.GONE);
+                            ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_discount);
+                            break;
+                        case "DisableMaterial":    //  禁用物料
+                            holder.getView(R.id.tvAudit).setVisibility(View.GONE);
+                            ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_material);
+                            break;
+                        case "SalesInvoice":    //  销项发票
+                            holder.getView(R.id.tvAudit).setVisibility(View.GONE);
+                            ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_sales_invoice);
+                            break;
+                        case "SalesInvoiceRefund":    //  销项发票退票
+                            holder.getView(R.id.tvAudit).setVisibility(View.GONE);
+                            ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_refund);
+                            break;
+                        case "EnterInvoice":    //  进项发票
+                            holder.getView(R.id.tvAudit).setVisibility(View.GONE);
+                            ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_enter_invoice);
+                            break;
                         case "New_PressurePage":    //  试压记录
                             holder.getView(R.id.tvAudit).setVisibility(View.GONE);
                             ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_pressure_record);
@@ -416,7 +414,6 @@ public class SalesmanListAdapter extends RecyclerArrayAdapter<AppHomeMenuTreeBea
                             holder.getView(R.id.tvAudit).setVisibility(View.GONE);
                             ((ImageView) holder.getView(R.id.ivImg)).setImageResource(R.mipmap.icon_big_area_pressure);
                             break;
-
                     }
 
                     holder.setText(R.id.tvName, appHomeMenuBeansBean.getMenu_title());

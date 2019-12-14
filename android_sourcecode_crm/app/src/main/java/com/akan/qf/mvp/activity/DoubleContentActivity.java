@@ -86,6 +86,18 @@ import com.akan.qf.mvp.fragment.hchannel.ProjectAddFragment;
 import com.akan.qf.mvp.fragment.hchannel.ProjectListFragment;
 import com.akan.qf.mvp.fragment.hchannel.WaterAddFragment;
 import com.akan.qf.mvp.fragment.hchannel.WaterListFragment;
+import com.akan.qf.mvp.fragment.polygon.CostPaymentAddFragment;
+import com.akan.qf.mvp.fragment.polygon.CostPaymentListFragment;
+import com.akan.qf.mvp.fragment.polygon.CustomerDiscountAddFragment;
+import com.akan.qf.mvp.fragment.polygon.CustomerDiscountListFragment;
+import com.akan.qf.mvp.fragment.polygon.DisableMaterialAddFragment;
+import com.akan.qf.mvp.fragment.polygon.DisableMaterialListFragment;
+import com.akan.qf.mvp.fragment.polygon.EnterInvoiceAddFragment;
+import com.akan.qf.mvp.fragment.polygon.EnterInvoiceListFragment;
+import com.akan.qf.mvp.fragment.polygon.SalesInvoiceAddFragment;
+import com.akan.qf.mvp.fragment.polygon.SalesInvoiceListFragment;
+import com.akan.qf.mvp.fragment.polygon.SalesInvoiceRefundAddFragment;
+import com.akan.qf.mvp.fragment.polygon.SalesInvoiceRefundListFragment;
 
 import java.util.List;
 
@@ -98,10 +110,10 @@ public class DoubleContentActivity extends PureActivity {
     @BindView(R.id.rg)
     RadioGroup rg;
 
-    private Fragment signFragment;
-    private Fragment signRecordFragment;
+    private Fragment mAddFragment;
+    private Fragment mListFragment;
 
-    private PermissionsBean permissionsBean;
+    private PermissionsBean mPBean;
     private List<LableBean> signList;
 
     @Override
@@ -112,11 +124,11 @@ public class DoubleContentActivity extends PureActivity {
     @Override
     public void initUI() {
         ButterKnife.bind(this);
-        permissionsBean = (PermissionsBean) getIntent().getSerializableExtra("permissions");
+        mPBean = (PermissionsBean) getIntent().getSerializableExtra("permissions");
         signList = (List<LableBean>) getIntent().getSerializableExtra("signList");
         String fragmentKey = getIntent().getStringExtra(Constants.KEY_FRAGMENT);
 
-        boolean isDouble = isHave("0", permissionsBean.getApp_operation().split(","));
+        boolean isDouble = isHave("0", mPBean.getApp_operation().split(","));
 
         switchFragments(isDouble, fragmentKey);
         attachFragments();
@@ -126,122 +138,144 @@ public class DoubleContentActivity extends PureActivity {
         rg.setVisibility(isDouble ? View.VISIBLE : View.GONE);
         switch (fragmentKey) {
             case Constants.SIGN_ACTIVITY:
-                // TODO: 2019/10/23 会改变位置
-                ((RadioButton)rg.getChildAt(0)).setText("签到");
-                ((RadioButton)rg.getChildAt(0)).setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.btn_tabbar_home_selector_sign, 0, 0);
-                signFragment = isDouble ? SignFragment.newInstance(permissionsBean) : null;
-                signRecordFragment = SignRecordFragment.newInstance(permissionsBean,signList);
+                ((RadioButton) rg.getChildAt(0)).setText("签到");
+                ((RadioButton) rg.getChildAt(0)).setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.btn_tabbar_home_selector_sign, 0, 0);
+                mAddFragment = isDouble ? SignFragment.newInstance(mPBean) : null;
+                mListFragment = SignRecordFragment.newInstance(mPBean, signList);
                 break;
             case Constants.LEAVE_ACTIVITY:
-                signFragment = isDouble ? LeaveAddFragment.newInstance(new LeaveBean(), "0", permissionsBean) : null;
-                signRecordFragment = LeaveListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? LeaveAddFragment.newInstance(new LeaveBean(), "0", mPBean) : null;
+                mListFragment = LeaveListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.DAILY_ACTIVITY:
-                ((RadioButton)rg.getChildAt(0)).setText("日报");
-                signFragment = isDouble ? DailyAddFragment.newInstance(new DailyBean(), "0", permissionsBean) : null;
-                signRecordFragment = DailyListFragment.newInstance(permissionsBean, signList);
+                ((RadioButton) rg.getChildAt(0)).setText("日报");
+                mAddFragment = isDouble ? DailyAddFragment.newInstance(new DailyBean(), "0", mPBean) : null;
+                mListFragment = DailyListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.WEEK_ACTIVITY:
-                ((RadioButton)rg.getChildAt(0)).setText("周报");
-                signFragment = isDouble ? WeeklyAddFragment.newInstance(new DailyBean(), "0", permissionsBean) : null;
-                signRecordFragment = WeeklyListFragment.newInstance(permissionsBean, signList);
+                ((RadioButton) rg.getChildAt(0)).setText("周报");
+                mAddFragment = isDouble ? WeeklyAddFragment.newInstance(new DailyBean(), "0", mPBean) : null;
+                mListFragment = WeeklyListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.MONTH_ACTIVITY:
-                ((RadioButton)rg.getChildAt(0)).setText("月报");
-                signFragment = isDouble ? MonthAddFragment.newInstance(new DailyBean(), "0", permissionsBean) : null;
-                signRecordFragment = MonthListFragment.newInstance(permissionsBean, signList);
+                ((RadioButton) rg.getChildAt(0)).setText("月报");
+                mAddFragment = isDouble ? MonthAddFragment.newInstance(new DailyBean(), "0", mPBean) : null;
+                mListFragment = MonthListFragment.newInstance(mPBean, signList);
                 break;
 
             case Constants.POLICY_APPLY_ACTIVITY:
-                signFragment = isDouble ? PolicyAddFragment.newInstance(new PolicyBean(), "0", permissionsBean) : null;
-                signRecordFragment = PolicyListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? PolicyAddFragment.newInstance(new PolicyBean(), "0", mPBean) : null;
+                mListFragment = PolicyListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.TEMPORARY_SUPPORT_ACTIVITY:
-                signFragment = isDouble ? TemporaryAddFragment.newInstance(new TemporaryBean(), "0", permissionsBean) : null;
-                signRecordFragment = TemporaryListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? TemporaryAddFragment.newInstance(new TemporaryBean(), "0", mPBean) : null;
+                mListFragment = TemporaryListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.PAY_APPLY_ACTIVITY:
-                signFragment = isDouble ? PayRequestAddFragment.newInstance(new PayApplyBean(), "0", permissionsBean) : null;
-                signRecordFragment = PayRequestListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? PayRequestAddFragment.newInstance(new PayApplyBean(), "0", mPBean) : null;
+                mListFragment = PayRequestListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.EXPENSE_REIMBURSEMENT_ACTIVITY:
-                signFragment = isDouble ? ReimburseAddFragment.newInstance(new ReimbursementInfoBean(), "0", permissionsBean) : null;
-                signRecordFragment = ReimburseListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? ReimburseAddFragment.newInstance(new ReimbursementInfoBean(), "0", mPBean) : null;
+                mListFragment = ReimburseListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.DEBT_APPLY_ACTIVITY:
-                signFragment = isDouble ? ArrearsAddFragment.newInstance(new DebtApplyBean(),"0",permissionsBean) : null;
-                signRecordFragment = ArrearsListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? ArrearsAddFragment.newInstance(new DebtApplyBean(), "0", mPBean) : null;
+                mListFragment = ArrearsListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.COST_STATISTICS_ACTIVITY:
-                signFragment = isDouble ? CostStatisticsAddFragment.newInstance(new FinancialBean(),"0",permissionsBean) : null;
-                signRecordFragment = CostStatisticsListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? CostStatisticsAddFragment.newInstance(new FinancialBean(), "0", mPBean) : null;
+                mListFragment = CostStatisticsListFragment.newInstance(mPBean, signList);
                 break;
 
             case Constants.RECRUITMENT_ACTIVITY:
-                signFragment = isDouble ? PeopleJoinAddFragment.newInstance(new PeopleJionBean(),"0",permissionsBean) : null;
-                signRecordFragment = PeopleJoinListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? PeopleJoinAddFragment.newInstance(new PeopleJionBean(), "0", mPBean) : null;
+                mListFragment = PeopleJoinListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.NEWCOMER_ACTIVITY:
-                signFragment = isDouble ? PeopleNewAddFragment.newInstance(new PeopleNewBean(),"0",permissionsBean) : null;
-                signRecordFragment = PeopleNewListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? PeopleNewAddFragment.newInstance(new PeopleNewBean(), "0", mPBean) : null;
+                mListFragment = PeopleNewListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.RESIGNATION_LETTER_ACTIVITY:
-                signFragment = isDouble ? PeopleLeaveAddFragment.newInstance(new PeopleLeaveBean(),"0",permissionsBean) : null;
-                signRecordFragment = PeopleLeaveListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? PeopleLeaveAddFragment.newInstance(new PeopleLeaveBean(), "0", mPBean) : null;
+                mListFragment = PeopleLeaveListFragment.newInstance(mPBean, signList);
                 break;
-
             case Constants.PROJECT_ACTIVITY:
-                signFragment = isDouble ? ReportAddFragment.newInstance(new ReprotedBean(),"0",permissionsBean) : null;
-                signRecordFragment = ReportListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? ReportAddFragment.newInstance(new ReprotedBean(), "0", mPBean) : null;
+                mListFragment = ReportListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.NEW_APPLY_ACTIVITY:
-                signFragment = isDouble ? ProblemAddFragment.newInstance(new NewApplyBean(),"0",permissionsBean) : null;
-                signRecordFragment = ProblemListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? ProblemAddFragment.newInstance(new NewApplyBean(), "0", mPBean) : null;
+                mListFragment = ProblemListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.GOOD_APPLY_ACTIVITY:
-                signFragment = isDouble ? ReturnAddFragment.newInstance(new RetnrnBean(),"0",permissionsBean) : null;
-                signRecordFragment = ReturnListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? ReturnAddFragment.newInstance(new RetnrnBean(), "0", mPBean) : null;
+                mListFragment = ReturnListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.VISITOR_ACTIVITY:
-                signFragment = isDouble ? VisitAddFragment.newInstance(new VisitorBean(),"0",permissionsBean) : null;
-                signRecordFragment = VisitListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? VisitAddFragment.newInstance(new VisitorBean(), "0", mPBean) : null;
+                mListFragment = VisitListFragment.newInstance(mPBean, signList);
                 break;
-
             case Constants.CONTRACT_APPLY:
-                signFragment = isDouble ? CustomerContractAddFragment.newInstance(new ContractApplyBean(),"0",permissionsBean) : null;
-                signRecordFragment = CustomerContractListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? CustomerContractAddFragment.newInstance(new ContractApplyBean(), "0", mPBean) : null;
+                mListFragment = CustomerContractListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.CHANNEL_CUSTOMER:
-                signFragment = isDouble ? CompanyAddFragment.newInstance(new CompanyBean(),"0",permissionsBean) : null;
-                signRecordFragment = CompanyListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? CompanyAddFragment.newInstance(new CompanyBean(), "0", mPBean) : null;
+                mListFragment = CompanyListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.CHANNEL_WATER:
-                signFragment = isDouble ? WaterAddFragment.newInstance(new WaterBean(),"0",permissionsBean) : null;
-                signRecordFragment = WaterListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? WaterAddFragment.newInstance(new WaterBean(), "0", mPBean) : null;
+                mListFragment = WaterListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.CHANNEL_DISTRIBUTION:
-                signFragment = isDouble ? DistributionAddFragment.newInstance(new NetworkBean(),"0",permissionsBean) : null;
-                signRecordFragment = DistributionListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? DistributionAddFragment.newInstance(new NetworkBean(), "0", mPBean) : null;
+                mListFragment = DistributionListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.NUAN_TONG:
-                signFragment = isDouble ? ProjectAddFragment.newInstance(new CompanyBean(),"0",permissionsBean) : null;
-                signRecordFragment = ProjectListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? ProjectAddFragment.newInstance(new CompanyBean(), "0", mPBean) : null;
+                mListFragment = ProjectListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.PROJECT:
-                signFragment = isDouble ? EngineerAddFragment.newInstance(new StoreApplyBean(),"0",permissionsBean) : null;
-                signRecordFragment = EngineerListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? EngineerAddFragment.newInstance(new StoreApplyBean(), "0", mPBean) : null;
+                mListFragment = EngineerListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.SHOP_ADVERTISEMENT:
-                signFragment = isDouble ? ADShopAddFragment.newInstance(new AdManagementBean(),"0",permissionsBean) : null;
-                signRecordFragment = ADShopListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? ADShopAddFragment.newInstance(new AdManagementBean(), "0", mPBean) : null;
+                mListFragment = ADShopListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.IMAGE_ADVERTISEMENT:
-                signFragment = isDouble ? ADImageAddFragment.newInstance(new AdManagementBean(), "0",permissionsBean) : null;
-                signRecordFragment = ADImageListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? ADImageAddFragment.newInstance(new AdManagementBean(), "0", mPBean) : null;
+                mListFragment = ADImageListFragment.newInstance(mPBean, signList);
                 break;
             case Constants.PROMOTION_ADVERTISEMENT:
-                signFragment = isDouble ? ADPromotionAddFragment.newInstance(new AdManagementBean(),"0",permissionsBean) : null;
-                signRecordFragment = ADPromotionListFragment.newInstance(permissionsBean, signList);
+                mAddFragment = isDouble ? ADPromotionAddFragment.newInstance(new AdManagementBean(), "0", mPBean) : null;
+                mListFragment = ADPromotionListFragment.newInstance(mPBean, signList);
+                break;
+
+            case Constants.COST_PAYMENT://费用付款
+                mAddFragment = isDouble ? CostPaymentAddFragment.newInstance(new AdManagementBean(), "0", mPBean) : null;
+                mListFragment = CostPaymentListFragment.newInstance(mPBean, signList);
+                break;
+            case Constants.CUSTOMER_DISCOUNT://客户折扣
+                mAddFragment = isDouble ? CustomerDiscountAddFragment.newInstance(new AdManagementBean(), "0", mPBean) : null;
+                mListFragment = CustomerDiscountListFragment.newInstance(mPBean, signList);
+                break;
+            case Constants.DISABLE_MATERIAL://禁用物料
+                mAddFragment = isDouble ? DisableMaterialAddFragment.newInstance(new AdManagementBean(), "0", mPBean) : null;
+                mListFragment = DisableMaterialListFragment.newInstance(mPBean, signList);
+                break;
+            case Constants.SALES_INVIOCE://销项发票
+                mAddFragment = isDouble ? SalesInvoiceAddFragment.newInstance(new AdManagementBean(), "0", mPBean) : null;
+                mListFragment = SalesInvoiceListFragment.newInstance(mPBean, signList);
+                break;
+            case Constants.SALES_INVIOCE_REFUND://销项发票退票
+                mAddFragment = isDouble ? SalesInvoiceRefundAddFragment.newInstance(new AdManagementBean(), "0", mPBean) : null;
+                mListFragment = SalesInvoiceRefundListFragment.newInstance(mPBean, signList);
+                break;
+            case Constants.ENTER_INVIOCE://进项发票
+                mAddFragment = isDouble ? EnterInvoiceAddFragment.newInstance(new AdManagementBean(), "0", mPBean) : null;
+                mListFragment = EnterInvoiceListFragment.newInstance(mPBean, signList);
                 break;
 
             default:
@@ -253,12 +287,12 @@ public class DoubleContentActivity extends PureActivity {
 
     private void attachFragments() {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.fragmentContent, signRecordFragment);
-        if (signFragment != null) {
-            fragmentTransaction.add(R.id.fragmentContent, signFragment)
-                    .hide(signRecordFragment).show(signFragment);
+        fragmentTransaction.add(R.id.fragmentContent, mListFragment);
+        if (mAddFragment != null) {
+            fragmentTransaction.add(R.id.fragmentContent, mAddFragment)
+                    .hide(mListFragment).show(mAddFragment);
         } else {
-            fragmentTransaction.show(signRecordFragment);
+            fragmentTransaction.show(mListFragment);
         }
         fragmentTransaction.commit();
     }
@@ -275,12 +309,12 @@ public class DoubleContentActivity extends PureActivity {
 
     public void showSignFragment() {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.hide(signRecordFragment).show(signFragment).commit();
+        fragmentTransaction.hide(mListFragment).show(mAddFragment).commit();
     }
 
     public void showSignRecordFragment() {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.hide(signFragment).show(signRecordFragment).commit();
+        fragmentTransaction.hide(mAddFragment).show(mListFragment).commit();
     }
 
     @OnClick({R.id.sign, R.id.signRecord})

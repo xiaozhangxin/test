@@ -7,56 +7,42 @@ repositories {
 }
 
 
-
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
-    //将so库打包到apk内
-    sourceSets { main { jniLibs.srcDirs = ['libs'] } }
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
-        applicationId "com.akan.qf"
-        minSdkVersion 17
-        targetSdkVersion 27
-        versionCode 7
-        versionName "1.1.2"
-        multiDexEnabled true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        applicationId rootProject.ext.android["applicationId"]
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        multiDexEnabled rootProject.ext.android["multiDexEnabled"]
+        testInstrumentationRunner rootProject.ext.android["testInstrumentationRunner"]
         ndk {
-            //配置so库架构 真机：arm  模拟器：x86
-            //abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'x86_64'
-            abiFilters  'armeabi-v7a', 'x86'
+            abiFilters 'armeabi-v7a'
         }
-        //JPush上注册的包名对应的appkey.
+        //JPush上注册的包名对应的key
         manifestPlaceholders = [
                 JPUSH_PKGNAME: applicationId,
                 JPUSH_APPKEY : "309b096fa91403d46616e9ca",
                 JPUSH_CHANNEL: "developer-default",
         ]
-
     }
 
-    configurations.all {
-        resolutionStrategy {
-            force 'com.android.support:support-v4:27.1.0'
-            force 'com.android.support:design:27.1.0'
-            force 'com.android.support:appcompat-v7:27.1.0'
-            force 'com.android.support:recyclerview-v7:27.1.0'
-        }
-    }
-
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
-    }
     signingConfigs {
         release {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('akan.jks')
+            storeFile file('E:\\MyProject\\android_sourcecode_crm\\app\\akan.jks')
+            storePassword '123456'
+        }
+        debug {
+            keyAlias 'key0'
+            keyPassword '123456'
+            storeFile file('E:\\MyProject\\android_sourcecode_crm\\app\\akan.jks')
             storePassword '123456'
         }
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -66,124 +52,98 @@ android {
         }
         debug {
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
     }
 
+    lintOptions {
+        // lint 时候终止错误上报，防止编译的时候莫名的失败
+        abortOnError false
+        checkReleaseBuilds false
+    }
+    sourceSets { main { jniLibs.srcDirs = ['libs'] } }
 }
 
 
-
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testCompile 'junit:junit:4.12'
+    //编译lib 目录下的 jar 文件
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation rootProject.ext.dependencies["junit"]
+    implementation rootProject.ext.dependencies["support"]
+    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["appcompat"]
+    implementation rootProject.ext.dependencies["recyclerview"]
+    implementation rootProject.ext.dependencies["constraint-layout"]
     //架构
-    compile 'com.king.base:base:2.0'
-    compile 'com.hannesdorfmann.mosby:mvp:2.0.1'
-    compile 'com.hannesdorfmann.mosby:viewstate:2.0.1'
+    implementation rootProject.ext.dependencies["base"]
+    implementation rootProject.ext.dependencies["mvp"]
+    implementation rootProject.ext.dependencies["viewstate"]
+    implementation rootProject.ext.dependencies["status-bar-compat"]
+    implementation rootProject.ext.dependencies["multidex"]
     //dagger
-    compile 'com.google.dagger:dagger:2.9'
-    implementation 'com.google.dagger:dagger:2.9'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
-    provided 'org.glassfish:javax.annotation:10.0-b28'
-    //RxAndroid
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    //RxJava2
-    compile 'io.reactivex.rxjava2:rxjava:2.0.7'
-    //Retrofit2的RxJava适配
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
-    //Retrofit2
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
-    //RxJava2Gson适配
-    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
-    //网络日志拦截
-    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
-    //图片加载
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'jp.wasabeef:glide-transformations:2.0.1'
-    //事物总线
-    compile 'org.greenrobot:eventbus:3.1.1'
-    //黄油刀
-    compile 'com.jakewharton:butterknife:8.5.1'
-    implementation 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    implementation rootProject.ext.dependencies["dagger"]
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+    implementation rootProject.ext.dependencies["annotation"]
+    //Rx系列
+    implementation rootProject.ext.dependencies["rxandroid"]
+    implementation rootProject.ext.dependencies["rxjava"]
+    implementation rootProject.ext.dependencies["rxjava2"]
+    implementation rootProject.ext.dependencies["retrofit"]
+    implementation rootProject.ext.dependencies["converter-gson"]
+    implementation rootProject.ext.dependencies["interceptor"]
+    //图片
+    implementation rootProject.ext.dependencies["glide"]
+    implementation rootProject.ext.dependencies["transformations"]
+    implementation rootProject.ext.dependencies["picasso"]
+    implementation rootProject.ext.dependencies["animated-gif"]
+    implementation rootProject.ext.dependencies["fresco"]
+    implementation rootProject.ext.dependencies["circleimageview"]
+    implementation rootProject.ext.dependencies["eventbus"]
+    implementation rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    //列表以及刷新
+    implementation rootProject.ext.dependencies["easyrecyclerview"]
+    implementation rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
+    implementation rootProject.ext.dependencies["rvadapter"]
+    implementation rootProject.ext.dependencies["SmartRefreshLayout"]
+    implementation rootProject.ext.dependencies["SmartRefreshHeader"]
+    //view
+    implementation rootProject.ext.dependencies["LoadingDialog"]
+    implementation rootProject.ext.dependencies["PickerView"]
+    implementation rootProject.ext.dependencies["citypickerview"]
+    //极光推送
+    implementation rootProject.ext.dependencies["jpush"]
+    implementation rootProject.ext.dependencies["jcore"]
+    //banner
+    implementation rootProject.ext.dependencies["convenientbanner"]
+    //异常捕获
+    implementation rootProject.ext.dependencies["nevercrash"]
+    //扫码
+    implementation rootProject.ext.dependencies["zxing-library"]
+    //图表
+    implementation rootProject.ext.dependencies["MPAndroidChart"]
+    //压缩
+    implementation rootProject.ext.dependencies["Luban"]
+    implementation rootProject.ext.dependencies["PhotoView"]
 
-    //图片选择裁剪
-    compile project(':boxing-impl')
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.facebook.fresco:animated-gif:1.0.0'
-    compile('com.facebook.fresco:fresco:1.0.0') {
-        exclude group: 'com.android.support'
-    }
-    compile('com.yalantis:ucrop:2.2.0') {
+    //图片选择
+    api project(':boxing-impl')
+    implementation('com.yalantis:ucrop:2.2.0') {
         exclude group: 'com.android.support'
         exclude group: 'com.squareup.okio'
         exclude group: 'com.squareup.okhttp3'
     }
-
-    //列表
-    compile 'com.jude:easyrecyclerview:4.4.0'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.18'
-    compile 'com.zhy:base-rvadapter:3.0.3'
-
-    //compile 'org.greenrobot:greendao:3.2.0'
-    // provided 'org.greenrobot:greendao-generator:3.2.0'
-    //圆形图片
-    compile 'de.hdodenhof:circleimageview:2.1.0'
-
-    //compile 'com.king.view:flutteringlayout:1.1.0'
-    //轮播图
-    compile 'com.bigkoo:convenientbanner:2.0.5'
-    // compile 'com.qiniu:happy-dns:0.2.8'
-
-    //compile 'com.dou361.statusbar:jjdxm-statusbar:1.0.0'
-    compile 'com.android.support:multidex:1.0.1'
-
-    //compile 'com.github.ctiao:dfm:0.4.4'
-    //compile 'com.miguelcatalan:materialsearchview:1.4.0'
-    //异常捕获
-    compile 'com.king.thread:nevercrash:1.0.0'
-    //leakcanaryn内存泄漏检测
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    //compile 'com.google.android:flexbox:latest.release'
-
-    //compile 'com.crystal:crystalrangeseekbar:1.1.1'
+    implementation files('libs/AMap_Location_V4.1.0_20180619.jar')
+    implementation files('libs/umeng-common-1.5.4.jar')
+    implementation files('libs/umeng-share-core-6.9.4.jar')
+    implementation files('libs/umeng-share-QQ-simplify-6.9.4.jar')
+    implementation files('libs/umeng-share-wechat-simplify-6.9.4.jar')
+    implementation files('libs/umeng-sharetool-6.9.4.jar')
+    //TBS文件预览
+    implementation files('libs/tbs_sdk_thirdapp_v4.3.0.1020_43633_sharewithdownload_withoutGame_obfs_20190111_105200.jar')
 
 
-    compile 'com.github.gittjy:LoadingDialog:1.0.2'
-    // compile 'com.ashokvarma.android:bottom-navigation-bar:2.0.5'
-    compile 'com.githang:status-bar-compat:0.7'
-    //选择器
-    compile 'com.contrarywind:Android-PickerView:4.1.5'
-    compile 'liji.library.dev:citypickerview:1.1.0'
-    //定位
-    compile files('libs/AMap_Location_V4.1.0_20180619.jar')
-    //图片压缩
-    compile 'top.zibin:Luban:1.1.3'
-    //下拉刷新框架
-    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
-    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
-    //扫码
-    compile 'cn.yipianfengye.android:zxing-library:2.2'
-    //条形图
-    compile 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
-    //友盟分享
-    compile files('libs/umeng-common-1.5.4.jar')
-    compile files('libs/umeng-share-core-6.9.4.jar')
-    compile files('libs/umeng-share-QQ-simplify-6.9.4.jar')
-    compile files('libs/umeng-share-wechat-simplify-6.9.4.jar')
-    compile files('libs/umeng-sharetool-6.9.4.jar')
-    //极光推送
-    compile 'cn.jiguang.sdk:jpush:3.1.6'
-    compile 'cn.jiguang.sdk:jcore:1.2.5'
-    //tbs文件预览
-    compile files('libs/tbs_sdk_thirdapp_v4.3.0.1020_43633_sharewithdownload_withoutGame_obfs_20190111_105200.jar')
 }
 

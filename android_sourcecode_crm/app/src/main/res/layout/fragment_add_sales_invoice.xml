@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_back_title_bar" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/line_ten" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:gravity="center_vertical"
+                    android:text="所属公司"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvEOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入收款人姓名"
+                    android:paddingLeft="11dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:gravity="center_vertical"
+                    android:text="所属公司"
+                    android:textColor="@color/colorTextG9"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvTopOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="end|center_vertical"
+                    android:paddingLeft="16dp"
+                    android:textColor="@color/colorTextG9"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <include layout="@layout/line_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:gravity="center_vertical"
+                    android:text="部门"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvTopTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/right"
+                    android:drawablePadding="8dp"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择"
+                    android:paddingLeft="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <include layout="@layout/line_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:gravity="center_vertical"
+                    android:text="申请人"
+                    android:textColor="@color/colorTextG9"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvTopThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="end|center_vertical"
+                    android:paddingLeft="16dp"
+                    android:textColor="@color/colorTextG9"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <include layout="@layout/line_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img_not"
+                    android:gravity="center_vertical"
+                    android:text="申请日期"
+                    android:textColor="@color/colorTextG9"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvTopFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="end|center_vertical"
+                    android:paddingLeft="16dp"
+                    android:textColor="@color/colorTextG9"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <include layout="@layout/line_ten" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:gravity="center_vertical"
+                    android:text="金额"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvQOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入金额(元)"
+                    android:paddingLeft="11dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <include layout="@layout/line_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:gravity="center_vertical"
+                    android:text="要求付款日期"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvQTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/right"
+                    android:drawablePadding="8dp"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择"
+                    android:paddingLeft="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <include layout="@layout/line_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:gravity="center_vertical"
+                    android:text="付款分类"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvQThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/right"
+                    android:drawablePadding="8dp"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择"
+                    android:paddingLeft="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <include layout="@layout/line_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:gravity="center_vertical"
+                    android:text="由谁付款"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvQFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/right"
+                    android:drawablePadding="8dp"
+                    android:gravity="end|center_vertical"
+                    android:hint="请选择"
+                    android:paddingLeft="16dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <include layout="@layout/line_ten" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:drawableLeft="@drawable/must_img"
+                    android:gravity="center_vertical"
+                    android:text="付款事由"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvWOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="请输入付款事由"
+                    android:paddingBottom="24dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <include layout="@layout/line_ten" />
+
+
+
+
+            <include layout="@layout/line_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:gravity="center_vertical"
+                    android:text="公司名称"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvETwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入公司名称"
+                    android:paddingLeft="11dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <include layout="@layout/line_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:gravity="center_vertical"
+                    android:text="开户行"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvEThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入开户行"
+                    android:paddingLeft="11dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <include layout="@layout/line_one" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/must_img"
+                    android:gravity="center_vertical"
+                    android:text="银行账户"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/tvEFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:gravity="end|center_vertical"
+                    android:hint="请输入银行账户"
+                    android:paddingLeft="11dp"
+                    android:textColor="@color/colorTextG3"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <include layout="@layout/line_ten" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="16dp"
+                android:gravity="center_vertical"
+                android:text="添加凭证"
+                android:textColor="@color/colorTextG3"
+                android:textSize="13sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp" />
+
+            <include layout="@layout/button_ok" />
+
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

@@ -6,14 +6,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.akan.qf.Constants;
 import com.akan.qf.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.github.chrisbanes.photoview.OnOutsidePhotoTapListener;
+import com.github.chrisbanes.photoview.OnPhotoTapListener;
+import com.github.chrisbanes.photoview.PhotoView;
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
 
-import uk.co.senab.photoview.PhotoView;
-import uk.co.senab.photoview.PhotoViewAttacher;
 
 /**
  * Created by taoh on 2017/11/16.
@@ -81,14 +84,10 @@ public class ImageFragment extends Fragment {
     }
 
 
-    private class PhotoTapListener implements PhotoViewAttacher.OnPhotoTapListener {
-        @Override
-        public void onPhotoTap(View view, float v, float v1) {
-            getActivity().finish();
-        }
+    private class PhotoTapListener implements OnPhotoTapListener {
 
         @Override
-        public void onOutsidePhotoTap() {
+        public void onPhotoTap(ImageView view, float x, float y) {
             getActivity().finish();
         }
     }

@@ -25,6 +25,7 @@ import com.akan.qf.mvp.fragment.fsales.SaleForecastActivity;
 import com.akan.qf.mvp.presenter.home.HomePresenter;
 import com.akan.qf.mvp.view.home.IHomeView;
 import com.akan.qf.util.SpSingleInstance;
+import com.akan.qf.util.ToastUtil;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -195,6 +196,7 @@ public class CustomerFragment extends BaseFragment<IHomeView, HomePresenter> imp
 
     @Override
     public void onError(Throwable e) {
+        ToastUtil.showToast(context.getApplicationContext(),e.getMessage());
 
     }
 

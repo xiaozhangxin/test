@@ -125,20 +125,6 @@ public class SalesmanFragment extends BaseFragment<IHomeView, HomePresenter> imp
                     case "Contact"://通讯录
                         startBookListFragment(permissionsBean);
                         break;
-
-//                    case "CostPayment":    //  费用付款
-//                        break;
-//                    case "CustomerDiscount":    //  客户折扣
-//                        break;
-//                    case "DisableMaterial":    //  禁用物料
-//                        break;
-//                    case "SalesInvoice":    //  销项发票
-//                        break;
-//                    case "SalesInvoiceRefund":    //  销项发票退票
-//                        break;
-//                    case "EnterInvoice":    //  进项发票
-//                        break;
-
                     default:
                         intent = new Intent(getActivity(), DoubleContentActivity.class);
                         intent.putExtra("permissions", permissionsBean);

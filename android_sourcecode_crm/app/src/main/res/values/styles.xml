@@ -81,7 +81,7 @@
             <enum name="behind" value="1" />
         </attr>
     </declare-styleable>
-    <declare-styleable name="MagicTextView">
+<!--    <declare-styleable name="MagicTextView">
         <attr name="innerShadowColor" format="color" />
         <attr name="innerShadowRadius" format="float" />
         <attr name="innerShadowDx" format="float" />
@@ -100,7 +100,7 @@
             <enum name="bevel" value="1" />
             <enum name="round" value="2" />
         </attr>
-    </declare-styleable>
+    </declare-styleable>-->
 
 
     <style name="AnimTopRight" parent="@android:style/Animation">

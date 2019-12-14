@@ -2,10 +2,9 @@ package com.akan.qf;
 
 public final class Constants {
 
-//    public static final String BASE_URL = "http://crmtest.akan.com.cn:81/";
-//    public static final String BASE_URL = "http://192.168.0.178:8081/";
-//    public static final String BASE_URL = "http://crm-pre.akan.com.cn:81/";
-    public static final String BASE_URL = "http://crm.akan.com.cn/";
+    public static final String BASE_URL = "http://crmtest.akan.com.cn:81/";
+    // public static final String BASE_URL = "http://crm-pre.akan.com.cn:81/";
+    // public static final String BASE_URL = "http://crm.akan.com.cn/";
     public static final String KEY_FRAGMENT = "key_fragment";
     public static final String KEY_TITLE = "key_title";
     public static final String KEY_SLUG = "key_slug";
@@ -151,34 +150,42 @@ public final class Constants {
     public static final int CHOOSE_DEPARTMENT_PERMISSION = 0X111;
     public static final int BOOK_LIST = 0X112;
 
-    public static final String SIGN_ACTIVITY                    =   "Sign";                     //  签到
-    public static final String LEAVE_ACTIVITY                   =   "AskLeave";                 //  请假
-    public static final String DAILY_ACTIVITY                   =   "Daily";                    //  日报
-    public static final String WEEK_ACTIVITY                    =   "Week";                     //  周报
-    public static final String MONTH_ACTIVITY                   =   "Month";                    //  月报
-    public static final String POLICY_APPLY_ACTIVITY            =   "PolicyApply";              //  政策申请
-    public static final String TEMPORARY_SUPPORT_ACTIVITY       =   "TemporarySupport";         //  借支申请
-    public static final String PAY_APPLY_ACTIVITY               =   "PayApply";                 //  付款申请
-    public static final String EXPENSE_REIMBURSEMENT_ACTIVITY   =   "ExpenseReimbursement";     //  报销申请
-    public static final String DEBT_APPLY_ACTIVITY              =   "DebtApply";                //  欠款申请
-    public static final String COST_STATISTICS_ACTIVITY         =   "CostStatistics";           //  费用统计
-    public static final String RECRUITMENT_ACTIVITY             =   "Recruitment";              //  招人申请
-    public static final String NEWCOMER_ACTIVITY                =   "NewcomerJoin";             //  新人入职
-    public static final String RESIGNATION_LETTER_ACTIVITY      =   "ResignationLetter";        //  离职登记
-    public static final String PROJECT_ACTIVITY                 =   "ProjectApply";             //  工程报备
-    public static final String NEW_APPLY_ACTIVITY               =   "NewApply";                 //  问题建议/新品申请
-    public static final String GOOD_APPLY_ACTIVITY              =   "GoodsApply";               //  退货申请
-    public static final String VISITOR_ACTIVITY                 =   "VisitorApply";             //  客户来访
+    public static final String SIGN_ACTIVITY = "Sign";                     //签到
+    public static final String LEAVE_ACTIVITY = "AskLeave";                 //请假
+    public static final String DAILY_ACTIVITY = "Daily";                    //日报
+    public static final String WEEK_ACTIVITY = "Week";                     //周报
+    public static final String MONTH_ACTIVITY = "Month";                    //月报
+    public static final String POLICY_APPLY_ACTIVITY = "PolicyApply";              //政策申请
+    public static final String TEMPORARY_SUPPORT_ACTIVITY = "TemporarySupport";         //借支申请
+    public static final String PAY_APPLY_ACTIVITY = "PayApply";                 //付款申请
+    public static final String EXPENSE_REIMBURSEMENT_ACTIVITY = "ExpenseReimbursement";     //报销申请
+    public static final String DEBT_APPLY_ACTIVITY = "DebtApply";                //欠款申请
+    public static final String COST_STATISTICS_ACTIVITY = "CostStatistics";           //费用统计
+    public static final String RECRUITMENT_ACTIVITY = "Recruitment";              //招人申请
+    public static final String NEWCOMER_ACTIVITY = "NewcomerJoin";             //新人入职
+    public static final String RESIGNATION_LETTER_ACTIVITY = "ResignationLetter";        //离职登记
+    public static final String PROJECT_ACTIVITY = "ProjectApply";             //工程报备
+    public static final String NEW_APPLY_ACTIVITY = "NewApply";                 //问题建议/新品申请
+    public static final String GOOD_APPLY_ACTIVITY = "GoodsApply";               //退货申请
+    public static final String VISITOR_ACTIVITY = "VisitorApply";             //客户来访
 
-    public static final String CONTRACT_APPLY                   =   "ContractApply";            //  客户合同
-    public static final String CHANNEL_CUSTOMER                 =   "ChannelCustomer";          //  家装公司
-    public static final String CHANNEL_WATER                    =   "ChannelWater";             //  工长信息
-    public static final String CHANNEL_DISTRIBUTION             =   "ChannelDistribution";      //  分销网点
-    public static final String NUAN_TONG                        =   "NuantongCompany";          //  暖通公司
-    public static final String PROJECT                          =   "project";                  //  工程项目
-    public static final String SHOP_ADVERTISEMENT               =   "ShopAdv";                  //  店招广告
-    public static final String IMAGE_ADVERTISEMENT              =   "ImageAdv";                 //  形象广告
-    public static final String PROMOTION_ADVERTISEMENT          =   "PromotionAdv";             //  推广广告
+    public static final String CONTRACT_APPLY = "ContractApply";            //客户合同
+    public static final String CHANNEL_CUSTOMER = "ChannelCustomer";          //家装公司
+    public static final String CHANNEL_WATER = "ChannelWater";             //工长信息
+    public static final String CHANNEL_DISTRIBUTION = "ChannelDistribution";      //分销网点
+    public static final String NUAN_TONG = "NuantongCompany";          //暖通公司
+    public static final String PROJECT = "project";                  //工程项目
+    public static final String SHOP_ADVERTISEMENT = "ShopAdv";                  //店招广告
+    public static final String IMAGE_ADVERTISEMENT = "ImageAdv";                 //形象广告
+    public static final String PROMOTION_ADVERTISEMENT = "PromotionAdv";             //推广广告
+
+    public static final String COST_PAYMENT = "CostPayment";   //费用付款
+    public static final String CUSTOMER_DISCOUNT = "CustomerDiscount";    //客户折扣
+    public static final String DISABLE_MATERIAL = "DisableMaterial";    //禁用物料
+    public static final String SALES_INVIOCE = "SalesInvoice";     //销项发票
+    public static final String SALES_INVIOCE_REFUND = "SalesInvoiceRefund";   //销项发票退票
+    public static final String ENTER_INVIOCE = "EnterInvoice";   //  进项发票
+
 
     public static final String STATISTICS_TYPE = "STATISTICS_TYPE";
     public static final int PRESSURE_RECORD_DEFAULT = 0;
