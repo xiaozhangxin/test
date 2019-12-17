@@ -2,6 +2,7 @@ package com.akan.wms.mvp.fragment.in;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -58,7 +59,7 @@ public class StockListFragment extends BaseFragment<IStockView, StockPresenter> 
 
     private List<PurchaseBean> list;
     private StockistAdapter adapter;
-  //  private int page = 1;
+    private int page = 1;
     private Map<String, String> map = new HashMap<>();
     private Map<String, String> map1 = new HashMap<>();
     private UserBean userBean;
@@ -66,11 +67,11 @@ public class StockListFragment extends BaseFragment<IStockView, StockPresenter> 
     private String supId;
     private String stokType;
 
-    public static StockListFragment newInstance(String supId,String stokType) {
+    public static StockListFragment newInstance(String supId, String stokType) {
         Bundle args = new Bundle();
         StockListFragment fragment = new StockListFragment();
         fragment.supId = supId;
-        fragment.stokType=stokType;
+        fragment.stokType = stokType;
         fragment.setArguments(args);
         return fragment;
     }
@@ -90,11 +91,12 @@ public class StockListFragment extends BaseFragment<IStockView, StockPresenter> 
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                startStockChildFragment(adapter.getItem(position),stokType);
+                startStockChildFragment(adapter.getItem(position), stokType);
             }
         });
         adapter.setNoMore(R.layout.view_nomore);
         recyclerView.setRefreshingColorResources(R.color.colorPrimary);
+
 /*
         recyclerView.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -106,7 +108,6 @@ public class StockListFragment extends BaseFragment<IStockView, StockPresenter> 
         });
 
 
-
         adapter.setMore(R.layout.view_more, new RecyclerArrayAdapter.OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
@@ -115,6 +116,7 @@ public class StockListFragment extends BaseFragment<IStockView, StockPresenter> 
             }
         });
 */
+
 
         adapter.setError(R.layout.view_error, new RecyclerArrayAdapter.OnErrorListener() {
             @Override
@@ -146,7 +148,7 @@ public class StockListFragment extends BaseFragment<IStockView, StockPresenter> 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getPresenter().importPurchaseData(userBean.getStaff_token(),map1);
+                getPresenter().importPurchaseData(userBean.getStaff_token(), map1);
             }
         });
         SonnyJackDragView build = new SonnyJackDragView.Builder()
@@ -169,12 +171,13 @@ public class StockListFragment extends BaseFragment<IStockView, StockPresenter> 
     private void refresh() {
         map.put("org_id", userBean.getOrg_id());
         map.put("supplier_id", supId);
+        map.put("doc_no", etSearch.getText().toString());
         getPresenter().queryPurchaseLists(userBean.getStaff_token(), map);
     }
 
     @Override
     public void onQueryPurchaseLists(List<PurchaseBean> data) {
-            adapter.clear();
+        adapter.clear();
         adapter.addAll(data);
         adapter.notifyDataSetChanged();
     }

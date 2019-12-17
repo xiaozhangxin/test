@@ -44,7 +44,7 @@ public class CompleteChooseAdapter extends RecyclerArrayAdapter<ProductionOrderB
             tvNo.setText(data.getDoc_type_name() + "(" + data.getDoc_no() + ")");
             tvName.setText(data.getItem_name());
             tvSpe.setText(data.getItem_spec());
-            tvNum.setText(data.getComplete_qty() + "");
+            tvNum.setText(data.getPro_qty() + "");
             tvCode.setText(data.getItem_code() + "");
             tvUnit.setText(data.getItem_sku() + "(单位)");
             tvCar.setText("生产车间：" + data.getU9_department_name() + "");

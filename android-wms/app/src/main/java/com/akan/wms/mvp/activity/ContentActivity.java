@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.akan.wms.Constants;
 import com.akan.wms.R;
 import com.akan.wms.bean.BarBean;
+import com.akan.wms.bean.BarMsgBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.InforListBean;
 import com.akan.wms.bean.OutSaleRtuBean;
@@ -35,6 +36,7 @@ import com.akan.wms.mvp.fragment.base.StockFindFragment;
 import com.akan.wms.mvp.fragment.base.SupplierBaseFragment;
 import com.akan.wms.mvp.fragment.home.AllFunctionFragment;
 import com.akan.wms.mvp.fragment.home.ChooseDepotFragment;
+import com.akan.wms.mvp.fragment.home.HomeScanResultFragment;
 import com.akan.wms.mvp.fragment.home.InventoryWarningFragment;
 import com.akan.wms.mvp.fragment.in.ChooseCompleteParamFragment;
 import com.akan.wms.mvp.fragment.in.ChooseGoodsMoreFragment;
@@ -299,7 +301,7 @@ public class ContentActivity extends AppCompatActivity {
             case Constants.CHOOSE_BUY_RETURN_LIST:
                 String supId = getIntent().getStringExtra(Constants.DETAIL_ID);
                 String inReturnType = getIntent().getStringExtra(Constants.DETAIL_TYPE);
-                replaceFragment(ChooseBuyReturnListFragment.newInstance(supId,inReturnType));
+                replaceFragment(ChooseBuyReturnListFragment.newInstance(supId, inReturnType));
                 break;
             case Constants.OUT_TRANSFER_DETAIL:
                 String outId = getIntent().getStringExtra(Constants.DETAIL_ID);
@@ -341,7 +343,7 @@ public class ContentActivity extends AppCompatActivity {
             case Constants.STOCK_LIST:
                 String supllId = getIntent().getStringExtra(Constants.DETAIL_ID);
                 String stokType = getIntent().getStringExtra(Constants.DETAIL_TYPE);
-                replaceFragment(StockListFragment.newInstance(supllId,stokType));
+                replaceFragment(StockListFragment.newInstance(supllId, stokType));
                 break;
             case Constants.CHANGE_PWD://修改密码
                 replaceFragment(ChangePwdFragment.newIntance());
@@ -452,7 +454,11 @@ public class ContentActivity extends AppCompatActivity {
             case Constants.STOCK_CHILD:
                 PurchaseBean pushBean = (PurchaseBean) intent.getSerializableExtra(Constants.BEAN);
                 String childType = getIntent().getStringExtra(Constants.DETAIL_TYPE);
-                replaceFragment(StockChildFragment.newInstance(pushBean,childType));
+                replaceFragment(StockChildFragment.newInstance(pushBean, childType));
+                break;
+            case Constants.HOME_SCAN:
+                BarMsgBean scanBean= (BarMsgBean) intent.getSerializableExtra(Constants.BEAN);
+                replaceFragment(HomeScanResultFragment.newInstance(scanBean));
                 break;
 
             case Constants.SCAN_IN_BUY:
@@ -474,7 +480,7 @@ public class ContentActivity extends AppCompatActivity {
                 String outReturnChildId = getIntent().getStringExtra(Constants.DETAIL_ID);
                 String inReturnChildType = getIntent().getStringExtra(Constants.DETAIL_TYPE);
                 OutSaleRtuBean applyedRtnBean = (OutSaleRtuBean) getIntent().getSerializableExtra(Constants.BEAN);
-                replaceFragment(ChooseBuyReturnChildFragment.newInstance(applyedRtnBean, outReturnChildId,inReturnChildType));
+                replaceFragment(ChooseBuyReturnChildFragment.newInstance(applyedRtnBean, outReturnChildId, inReturnChildType));
                 break;
             case Constants.CHOOSE_OUT_PLAN_CHILD:
                 ShipPlanBean shipPlanBean = (ShipPlanBean) getIntent().getSerializableExtra(Constants.BEAN);

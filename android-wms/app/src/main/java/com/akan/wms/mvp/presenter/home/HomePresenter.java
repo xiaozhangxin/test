@@ -1,6 +1,7 @@
 package com.akan.wms.mvp.presenter.home;
 
 import com.akan.wms.App;
+import com.akan.wms.bean.BarMsgBean;
 import com.akan.wms.bean.WarnTwoBean;
 import com.akan.wms.http.HttpResult;
 import com.akan.wms.mvp.base.BasePresenter;
@@ -49,6 +50,44 @@ public class HomePresenter extends BasePresenter<IHomeView>{
                         if (userBeanHttpResult != null) {
                             if (isViewAttached()) {
                                 getView().onQueryBoardWarnings(userBeanHttpResult.getData());
+                            }
+                        }
+
+                    }
+                });
+
+    }
+
+    public void selectItemBarMsgList( Map<String, String> parmer) {
+        if (isViewAttached())
+            getView().showProgress();
+        getAppComponent().getAPIService()
+                .selectItemBarMsgList(parmer)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<HttpResult<BarMsgBean>>() {
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (isViewAttached())
+                            getView().onError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(HttpResult<BarMsgBean> userBeanHttpResult) {
+                        if (userBeanHttpResult != null) {
+                            if (isViewAttached()) {
+                                getView().onSelectItemBarMsgList(userBeanHttpResult.getData());
                             }
                         }
 

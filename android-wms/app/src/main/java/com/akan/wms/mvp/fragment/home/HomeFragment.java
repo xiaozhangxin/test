@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.akan.wms.R;
+import com.akan.wms.bean.BarMsgBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.UserBean;
 import com.akan.wms.bean.WarnTwoBean;
@@ -175,7 +176,10 @@ public class HomeFragment extends BaseFragment<IHomeView, HomePresenter> impleme
             switch (requestCode) {
                 case REQUEST_CODE_SCAN:
                     String result = data.getStringExtra(Intents.Scan.RESULT);
-                    ToastUtil.showToast(context.getApplicationContext(), result);
+                    map.clear();
+                    map.put("barCode",result);
+                    getPresenter().selectItemBarMsgList(map);
+                   // ToastUtil.showToast(context.getApplicationContext(), result);
                     break;
             }
         }
@@ -187,8 +191,8 @@ public class HomeFragment extends BaseFragment<IHomeView, HomePresenter> impleme
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ivScan:
-                ToastUtil.showToast(context.getApplicationContext(), getString(R.string.no_function));
-                //  checkCameraPermissions();
+                //ToastUtil.showToast(context.getApplicationContext(), getString(R.string.no_function));
+                 checkCameraPermissions();
                 break;
             case R.id.tvSearch:
                // startStockFindListFragment();
@@ -273,6 +277,13 @@ public class HomeFragment extends BaseFragment<IHomeView, HomePresenter> impleme
         adapter.addAll(data);
         adapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void onSelectItemBarMsgList(BarMsgBean data) {
+        startHomeScanResultFragment(data);
+    }
+
+
 
     @Override
     public void showProgress() {

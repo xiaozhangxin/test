@@ -47,6 +47,16 @@ public class ProductionOrderBean implements Serializable {
     private String group_id;
     private String u9_department_id;
     private double complete_qty;
+    private double pro_qty;
+
+    public double getPro_qty() {
+        return pro_qty;
+    }
+
+    public void setPro_qty(double pro_qty) {
+        this.pro_qty = pro_qty;
+    }
+
     private int apply_qty;//完工数量
 
 

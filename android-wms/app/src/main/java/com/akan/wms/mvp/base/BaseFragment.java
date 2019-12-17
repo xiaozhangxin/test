@@ -15,6 +15,7 @@ import android.widget.EditText;
 import com.akan.wms.App;
 import com.akan.wms.Constants;
 import com.akan.wms.bean.BarBean;
+import com.akan.wms.bean.BarMsgBean;
 import com.akan.wms.bean.InforListBean;
 import com.akan.wms.bean.OutSaleRtuBean;
 import com.akan.wms.bean.ProductionOrderBean;
@@ -227,6 +228,11 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         Intent intent = getFragmentIntent(Constants.SCAN_BEAN);
         intent.putExtra(Constants.BEAN, bean);
         intent.putExtra(Constants.DETAIL_ID, detail_id);
+        startActivity(intent);
+    }
+    protected void startHomeScanResultFragment(BarMsgBean bean) {
+        Intent intent = getFragmentIntent(Constants.HOME_SCAN);
+        intent.putExtra(Constants.BEAN, bean);
         startActivity(intent);
     }
 

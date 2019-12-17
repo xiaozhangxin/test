@@ -145,4 +145,5 @@ public final class Constants {
     public static final int OUT_SALE_ADD_NEW = 0X107;
     public static final int OUT_TRANSFER_ADD_NEW = 0X108;
     public static final int COMPLETE_ADD_NEW = 0X109;
+    public static final int HOME_SCAN = 0X110;
 }

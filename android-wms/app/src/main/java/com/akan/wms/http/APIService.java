@@ -2,6 +2,7 @@ package com.akan.wms.http;
 
 import com.akan.wms.bean.AppVersionBean;
 import com.akan.wms.bean.BarBean;
+import com.akan.wms.bean.BarMsgBean;
 import com.akan.wms.bean.ClassTeamBean;
 import com.akan.wms.bean.CompleteDecBean;
 import com.akan.wms.bean.CustomBean;
@@ -57,6 +58,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 
@@ -137,7 +139,9 @@ public interface APIService {
      */
     @FormUrlEncoded
     @POST("api/miscShipController/getWareHouseList")
-    Observable<HttpResult<List<WareHouseBean>>> getWareHouseList(@Header("Authorization") String token, @FieldMap Map<String, String> parmer);/**
+    Observable<HttpResult<List<WareHouseBean>>> getWareHouseList(@Header("Authorization") String token, @FieldMap Map<String, String> parmer);
+
+    /**
      * 查找存储地点
      */
     @FormUrlEncoded
@@ -327,7 +331,8 @@ public interface APIService {
     @FormUrlEncoded
     @POST("api/miscShipController/updateMiscShipCode")
     Observable<HttpResult<String>> updateMiscShipCode(@Header("Authorization") String token, @FieldMap Map<String, String> parmer);
-   /**
+
+    /**
      * 领料删除
      */
     @FormUrlEncoded
@@ -355,7 +360,7 @@ public interface APIService {
     @POST("api/shipPlanController/sendSaleShip")
     Observable<HttpResult<String>> sendSaleShip(@Header("Authorization") String token, @FieldMap Map<String, String> parmer);
 
-   /**
+    /**
      * 删除出库单
      */
     @FormUrlEncoded
@@ -391,7 +396,7 @@ public interface APIService {
     @POST("api/miscRcvController/updateMiscRcvCode")
     Observable<HttpResult<String>> updateMiscRcvCode(@Header("Authorization") String token, @FieldMap Map<String, String> parmer);
 
-   /**
+    /**
      * 退料删除
      */
     @FormUrlEncoded
@@ -518,7 +523,8 @@ public interface APIService {
     @FormUrlEncoded
     @POST("api/rtnedGoodsController/invalidRtnedGoods")
     Observable<HttpResult<String>> invalidRtnedGoods(@Header("Authorization") String token, @FieldMap Map<String, String> parmer);
-   /**
+
+    /**
      * 退货单删除
      */
     @FormUrlEncoded
@@ -604,7 +610,8 @@ public interface APIService {
     @FormUrlEncoded
     @POST("api/inventoryController/updateInventoryStatus")
     Observable<HttpResult<String>> updateInventoryStatus(@Header("Authorization") String token, @FieldMap Map<String, String> parmer);
-   /**
+
+    /**
      * 盘点删除
      */
     @FormUrlEncoded
@@ -809,7 +816,7 @@ public interface APIService {
      * 查询操作工
      */
     @GET("api/completeDecController/queryOperatorStaffList")
-    Observable<HttpResult<List<OperatorStaffBean>>> queryOperatorStaffList (@Header("Authorization") String token, @QueryMap Map<String, String> parmer);
+    Observable<HttpResult<List<OperatorStaffBean>>> queryOperatorStaffList(@Header("Authorization") String token, @QueryMap Map<String, String> parmer);
 
     /**
      * 查询班组
@@ -870,7 +877,8 @@ public interface APIService {
     @FormUrlEncoded
     @POST("api/storagingProController/invalidStoragingPro")
     Observable<HttpResult<String>> invalidStoragingPro(@Header("Authorization") String token, @FieldMap Map<String, String> parmer);
-   /**
+
+    /**
      * 删除成品入库单
      */
     @FormUrlEncoded
@@ -997,4 +1005,11 @@ public interface APIService {
     @FormUrlEncoded
     @POST("api/taskController/importRtnData")
     Observable<HttpResult<String>> importRtnData(@Header("Authorization") String token, @FieldMap Map<String, String> parmer);
+
+    /**
+     * 采购退货(退货申请同步)
+     */
+    @FormUrlEncoded
+    @POST("api/itemCodeController/selectItemBarMsgList")
+    Observable<HttpResult<BarMsgBean>> selectItemBarMsgList(@FieldMap Map<String, String> parmer);
 }

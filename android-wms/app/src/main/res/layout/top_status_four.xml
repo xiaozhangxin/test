@@ -31,7 +31,7 @@
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:src="@drawable/state_y"
-        app:layout_constraintEnd_toStartOf="@+id/ivFour"
+        app:layout_constraintRight_toLeftOf="@+id/ivFour"
         app:layout_constraintLeft_toRightOf="@+id/ivTwo"
         app:layout_constraintTop_toTopOf="@+id/ivOne" />
 
