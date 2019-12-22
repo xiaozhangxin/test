@@ -57,17 +57,27 @@ public class ProductionOrderBean implements Serializable {
         this.pro_qty = pro_qty;
     }
 
-    private int apply_qty;//完工数量
+    private double apply_qty;//完工数量
 
 
-    private int qualified_qty;
-    private int scrap_qty;
+    private double qualified_qty;
+    private double scrap_qty;
     private String scrap_weight;
     private String eve_weight;
 
 
     private int is_valid;
     private int send_qty;
+    private int wh_qty;
+
+    public int getWh_qty() {
+        return wh_qty;
+    }
+
+    public void setWh_qty(int wh_qty) {
+        this.wh_qty = wh_qty;
+    }
+
     private String modify_time;
     private String group_name;
     private String item_code;
@@ -109,11 +119,11 @@ public class ProductionOrderBean implements Serializable {
         this.barList = barList;
     }
 
-    public int getApply_qty() {
+    public double getApply_qty() {
         return apply_qty;
     }
 
-    public void setApply_qty(int apply_qty) {
+    public void setApply_qty(double apply_qty) {
         this.apply_qty = apply_qty;
     }
 
@@ -231,19 +241,19 @@ public class ProductionOrderBean implements Serializable {
         this.eve_weight = eve_weight;
     }
 
-    public int getQualified_qty() {
+    public double getQualified_qty() {
         return qualified_qty;
     }
 
-    public void setQualified_qty(int qualified_qty) {
+    public void setQualified_qty(double qualified_qty) {
         this.qualified_qty = qualified_qty;
     }
 
-    public int getScrap_qty() {
+    public double getScrap_qty() {
         return scrap_qty;
     }
 
-    public void setScrap_qty(int scrap_qty) {
+    public void setScrap_qty(double scrap_qty) {
         this.scrap_qty = scrap_qty;
     }
 

@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -162,10 +163,7 @@ public class ChooseOutPlanListFragment extends BaseFragment<IOutPlanView, OutPla
         });
         SonnyJackDragView build = new SonnyJackDragView.Builder()
                 .setActivity(getActivity())
-                .setDefaultLeft(100)
-                .setDefaultTop(100)
                 .setNeedNearEdge(false)
-                .setSize(160)
                 .setView(imageView)
                 .build();
     }
@@ -185,6 +183,7 @@ public class ChooseOutPlanListFragment extends BaseFragment<IOutPlanView, OutPla
         map.put("doc_type_name", mId);
         map.put("doc_no", etSearch.getText().toString());
         map.put("page", page + "");
+        Log.e("ZZZ1",mId);
         getPresenter().queryShipPlanPage(userBean.getStaff_token(), map);
     }
 

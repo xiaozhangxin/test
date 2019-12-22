@@ -9,6 +9,7 @@ public final class Constants {
 
 
     public static final String BASE_URL = "http://wms.akan.com.cn:9999/";
+    //public static final String BASE_URL = "https://testflight.apple.com/";
 
     public static final String KEY_FRAGMENT = "key_fragment";
 

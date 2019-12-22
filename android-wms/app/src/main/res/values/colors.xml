@@ -67,4 +67,5 @@
     <color name="gray">#cccccc</color>
     <color name="color_yellow">#FCAC3B</color>
     <color name="colorTextF8">#F5F5F5</color>
+    <color name="red_num">#F85208</color>
 </resources>

@@ -196,8 +196,8 @@ public class SonnyJackDragView implements View.OnTouchListener {
     public static class Builder {
         private Activity activity;
         private int size = FrameLayout.LayoutParams.WRAP_CONTENT;
-        private int defaultTop = 0;
-        private int defaultLeft = 0;
+        private int defaultTop = 100;
+        private int defaultLeft = 100;
         private boolean needNearEdge = false;
         private View view;
 

@@ -182,7 +182,6 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
         adapterRecord = new RecordAdapter(context, this.listRecord);
         recordRecyclerView.setAdapter(adapterRecord);
 
-
         initPop();
     }
 
@@ -348,14 +347,20 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
             List<SupplierReceivesBeanDetail> receives = allData.get(i).getSupplier_receives();
             String pur_id = allData.get(i).getPur_id();
             String wh_id = receives.get(i).getWh_id();
-            for (int m = 0; m < receives.size(); m++) {
+       /*     for (int m = 0; m < receives.size(); m++) {
                 SupplierReceivesBeanDetail beanDetail = receives.get(m);
                 if (beanDetail.getIn_qty() < beanDetail.getQualified_qty()) {
                     showNotDialog(beanDetail.getItem_name());
                     return;
                 }
-            }
+            }*/
             List<BarBean> barList = allData.get(i).getBarList();
+            if (barList==null||barList.size()<=0){
+                map.clear();
+                map.put("id", mBean.getId());
+                getPresenter().pastWh(userBean.getStaff_token(), map);
+                return;
+            }
             for (int j = 0; j < barList.size(); j++) {
                 BarBean barBean = barList.get(j);
                 BarListBean mBarBean = new BarListBean();
@@ -371,11 +376,11 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
                 mBarList.add(mBarBean);
             }
         }
+        map.clear();
         Gson gson = new Gson();
         String jsonBar = gson.toJson(mBarList);
-        map.clear();
-        map.put("id", mBean.getId());
         map.put("barList", jsonBar);
+        map.put("id", mBean.getId());
         getPresenter().pastWh(userBean.getStaff_token(), map);
     }
 

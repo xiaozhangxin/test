@@ -167,10 +167,7 @@ public class ChooseGoodsMoreFragment extends BaseFragment<IChooseView, ChoosePre
         });
         SonnyJackDragView build = new SonnyJackDragView.Builder()
                 .setActivity(getActivity())
-                .setDefaultLeft(100)
-                .setDefaultTop(100)
                 .setNeedNearEdge(false)
-                .setSize(200)
                 .setView(imageView)
                 .build();
 

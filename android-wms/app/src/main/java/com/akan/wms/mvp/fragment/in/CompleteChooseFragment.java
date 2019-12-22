@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,16 +84,53 @@ public class CompleteChooseFragment extends BaseFragment<ICompleteChooseView, Co
     @Override
     public void initUI() {
         tvTitle.setText("生产订单列表");
+
+        initAdapter();
+
+        //搜索订单
+        etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    page = 1;
+                    refresh();
+                    hideInputMethod();
+                }
+                return false;
+            }
+        });
+
+
+        //悬浮可拖动按钮
+        ImageView imageView = new ImageView(getActivity());
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setImageResource(R.drawable.sync);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getPresenter().syncProduction(userBean.getStaff_token(), map1);
+            }
+        });
+        SonnyJackDragView build = new SonnyJackDragView.Builder()
+                .setActivity(getActivity())
+                .setNeedNearEdge(false)
+                .setView(imageView)
+                .build();
+    }
+
+    //初始化列表
+    private void initAdapter() {
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        adapter = new CompleteChooseAdapter(context, list);
+        adapter = new CompleteChooseAdapter(context, list ,addType);
         recyclerView.setAdapterWithProgress(adapter);
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 if ("home".equals(addType)){
-                    startCompleteAddNewFragment(adapter.getItem(position));
-                    finish();
+                    //startCompleteAddNewFragment(adapter.getItem(position));
+                   //finish();
                 }else {
                     EventBus.getDefault().post(new FirstEvent("18", adapter.getItem(position)));
                     finish();
@@ -100,7 +138,6 @@ public class CompleteChooseFragment extends BaseFragment<ICompleteChooseView, Co
 
             }
         });
-
         adapter.setNoMore(R.layout.view_nomore);
         recyclerView.setRefreshingColorResources(R.color.colorPrimary);
         recyclerView.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -131,40 +168,6 @@ public class CompleteChooseFragment extends BaseFragment<ICompleteChooseView, Co
                 adapter.resumeMore();
             }
         });
-
-
-        etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    page = 1;
-                    refresh();
-                    hideInputMethod();
-                }
-                return false;
-            }
-        });
-
-
-        //悬浮可拖动按钮
-        ImageView imageView = new ImageView(getActivity());
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageResource(R.drawable.sync);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getPresenter().syncProduction(userBean.getStaff_token(), map1);
-            }
-        });
-        SonnyJackDragView build = new SonnyJackDragView.Builder()
-                .setActivity(getActivity())
-                .setDefaultLeft(100)
-                .setDefaultTop(100)
-                .setNeedNearEdge(false)
-                .setSize(160)
-                .setView(imageView)
-                .build();
     }
 
 
@@ -174,6 +177,7 @@ public class CompleteChooseFragment extends BaseFragment<ICompleteChooseView, Co
         refresh();
     }
 
+    //刷新请求数据
     private void refresh() {
         map.put("org_id", userBean.getOrg_id());
         map.put("doc_no", etSearch.getText().toString());

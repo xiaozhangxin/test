@@ -19,7 +19,6 @@
             android:layout_marginRight="32dp"
             android:layout_marginTop="10dp"
             android:layout_toLeftOf="@+id/tvNum"
-            android:text="褐色接头卡视角的哈市阿斯顿哈吉\n斯口红大空间很大卡上的"
             android:textColor="@color/colorTextG3"
             android:textSize="13sp" />
 
@@ -31,8 +30,7 @@
             android:layout_toLeftOf="@+id/tvUnit"
             android:text="1600"
             android:textColor="@color/colorTextG3"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/tvUnit"
@@ -246,6 +244,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="16dp"
             android:gravity="end"
+            android:enabled="false"
             android:inputType="number"
             android:hint="输入数量"
             android:textColor="@color/colorTextG3"

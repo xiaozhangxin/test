@@ -10,4 +10,6 @@ public interface ITransferApplyView extends BaseView{
     void onQueryApplyDocNo(TransferUnCompleteBean data);
 
     void onQueryUnClosedApplyPage(List<TransferUnCompleteBean> data);
+
+    void onSync(String data);
 }

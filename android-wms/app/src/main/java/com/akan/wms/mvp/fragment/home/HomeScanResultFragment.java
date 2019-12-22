@@ -34,7 +34,7 @@ public class HomeScanResultFragment extends SimpleFragment {
 
     @Override
     public void initUI() {
-        tvTitle.setText("查询结果");
+        tvTitle.setText("物流信息");
     }
 
     @Override

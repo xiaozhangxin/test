@@ -242,7 +242,7 @@ public class FinishAddFragment extends BaseFragment<IFinishView, FinishPresenter
                 showNotDialog("料品（" + orderBean.getItem_name() + "）请扫码加入入库数量");
                 return;
             }
-            if (orderBean.getSend_qty() > orderBean.getComplete_qty()) {
+            if (orderBean.getSend_qty() > orderBean.getWh_qty()) {
                 showNotDialog("料品（" + orderBean.getItem_name() + "）入库数量大于可入库数量,请修改条码");
                 return;
             }

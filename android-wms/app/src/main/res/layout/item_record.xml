@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/line"
-        android:layout_width="6dp"
-        android:layout_height="50dp"
+        android:layout_width="3dp"
+        android:layout_height="35dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
         android:background="@color/colorActivityBackgroundTwo" />
@@ -21,6 +22,8 @@
             android:id="@+id/ivImg"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/colorActivityBackgroundTwo"
             android:src="@drawable/scan_detail" />
 
         <TextView
@@ -31,7 +34,7 @@
             android:layout_toRightOf="@+id/ivImg"
             android:text="配货"
             android:textColor="@color/colorTextG3"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tvName"
@@ -39,11 +42,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvType"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/ivImg"
             android:text="ak127"
             android:textColor="@color/colorTextG6"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tvTime"
@@ -53,7 +56,7 @@
             android:layout_marginRight="16dp"
             android:text="2104-34-34"
             android:textColor="@color/colorTextG9"
-            android:textSize="12sp" />
+            android:textSize="11sp" />
 
     </RelativeLayout>
 </LinearLayout>

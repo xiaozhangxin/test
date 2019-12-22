@@ -89,6 +89,23 @@ public class ChooseCompleteParamFragment extends BaseFragment<IChooseCompletePar
         switch (mType) {
             case "1"://选择操作工
                 tvTitle.setText(R.string.choose_operator);
+
+                etSearch.setVisibility(View.VISIBLE);
+                SpannableString s = new SpannableString("请输入名称搜索");
+                etSearch.setHint(s);
+                etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                            map.put("staff_name",etSearch.getText().toString());
+                            page=1;
+                            refresh();
+                            hideInputMethod();
+                        }
+                        return false;
+                    }
+                });
                 listOne = new ArrayList<>();
                 adapterOne = new OperatorAdapter(context, listOne);
                 recyclerView.setAdapterWithProgress(adapterOne);
@@ -151,8 +168,8 @@ public class ChooseCompleteParamFragment extends BaseFragment<IChooseCompletePar
                 break;
             case "3"://选择模具编号
                etSearch.setVisibility(View.VISIBLE);
-                SpannableString s = new SpannableString("请输入名称搜索");
-                etSearch.setHint(s);
+                SpannableString s1 = new SpannableString("请输入名称搜索");
+                etSearch.setHint(s1);
                 etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                     @Override
                     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

@@ -234,6 +234,7 @@
                         android:drawablePadding="5dp"
                         android:drawableRight="@drawable/right"
                         android:gravity="end"
+                        android:text="普通"
                         android:hint="请选择调拨方向"
                         android:textColor="@color/colorTextG3"
                         android:textSize="13sp" />

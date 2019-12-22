@@ -16,6 +16,7 @@ import com.akan.wms.R;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.ProductionOrderBean;
 import com.akan.wms.bean.UserBean;
+import com.akan.wms.mvp.adapter.FinishChooseAdapter;
 import com.akan.wms.mvp.adapter.home.CompleteChooseAdapter;
 import com.akan.wms.mvp.base.BaseFragment;
 import com.akan.wms.mvp.presenter.home.CompleteChoosePresenter;
@@ -53,7 +54,7 @@ public class FinishChooseFragment extends BaseFragment<ICompleteChooseView, Comp
     EasyRecyclerView recyclerView;
 
     private List<ProductionOrderBean> list;
-    private CompleteChooseAdapter adapter;
+    private FinishChooseAdapter adapter;
     private int page = 1;
     private Map<String, String> map = new HashMap<>();
     private UserBean userBean;
@@ -74,15 +75,14 @@ public class FinishChooseFragment extends BaseFragment<ICompleteChooseView, Comp
 
     @Override
     public void initUI() {
-        tvTitle.setText("生产订单列表");
+        tvTitle.setText("生产订单列表(可入库)");
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        adapter = new CompleteChooseAdapter(context, list);
+        adapter = new FinishChooseAdapter(context, list);
         recyclerView.setAdapterWithProgress(adapter);
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-
                 EventBus.getDefault().post(new FirstEvent("18",adapter.getItem(position)));
                 finish();
             }

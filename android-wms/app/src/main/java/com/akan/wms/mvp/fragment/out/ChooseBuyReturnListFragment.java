@@ -147,10 +147,7 @@ public class ChooseBuyReturnListFragment extends BaseFragment<IChooseBuyReturnVi
         });
         SonnyJackDragView build = new SonnyJackDragView.Builder()
                 .setActivity(getActivity())
-                .setDefaultLeft(100)
-                .setDefaultTop(100)
                 .setNeedNearEdge(false)
-                .setSize(160)
                 .setView(imageView)
                 .build();
 

@@ -77,7 +77,7 @@ public class ReceiveMixListFragment extends BaseFragment<IReceiveMixView, Receiv
     private Map<String, String> map1 = new HashMap<>();
     private UserBean userBean;
 
-    private String headers[] = {"全部状态", "条件筛选"};
+    private String headers[] = {"审核中", "条件筛选"};
     private String mOne[] = {"全部", "审核中", "已审核"};
     private List<View> popupViews = new ArrayList<>();
     private GirdDropDownAdapter oneAdapter;
@@ -157,10 +157,7 @@ public class ReceiveMixListFragment extends BaseFragment<IReceiveMixView, Receiv
         });
         SonnyJackDragView build = new SonnyJackDragView.Builder()
                 .setActivity(getActivity())
-                .setDefaultLeft(100)
-                .setDefaultTop(100)
                 .setNeedNearEdge(false)
-                .setSize(160)
                 .setView(imageView)
                 .build();
     }
@@ -194,7 +191,6 @@ public class ReceiveMixListFragment extends BaseFragment<IReceiveMixView, Receiv
                 oneAdapter.setCheckItem(position);
                 dropDownMenu.setTabText(position == 0 ? headers[0] : mOne[position]);
                 dropDownMenu.closeMenu();
-
                 switch (mOne[position]) {
                     case "全部":
                         map.put("status", "");
@@ -214,6 +210,7 @@ public class ReceiveMixListFragment extends BaseFragment<IReceiveMixView, Receiv
             }
         });
 
+
         tvOne = twoView.findViewById(R.id.tvOne);
         tvStartTime = twoView.findViewById(R.id.tvStartTime);
         tvEndTime = twoView.findViewById(R.id.tvEndTime);
@@ -224,6 +221,10 @@ public class ReceiveMixListFragment extends BaseFragment<IReceiveMixView, Receiv
         tvClear.setOnClickListener(this);
         tvOk.setOnClickListener(this);
         dropDownMenu.setDropDownMenu(Arrays.asList(headers), popupViews);
+
+        oneAdapter.setCheckItem(1);
+        dropDownMenu.setTabText("审核中");
+        map.put("status", "1");
     }
 
     @Override

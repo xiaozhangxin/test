@@ -166,10 +166,7 @@ public class OutTransferListFragment extends BaseFragment<IOutTransferView, OutT
         });
         SonnyJackDragView build = new SonnyJackDragView.Builder()
                 .setActivity(getActivity())
-                .setDefaultLeft(100)
-                .setDefaultTop(100)
                 .setNeedNearEdge(false)
-                .setSize(160)
                 .setView(imageView)
                 .build();
     }

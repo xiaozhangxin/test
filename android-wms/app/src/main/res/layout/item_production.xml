@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     android:background="@drawable/setbar_white"
     android:orientation="vertical">
 
@@ -14,17 +16,17 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:text="生产订单BHL3249723604"
         android:textColor="@color/colorTextG3"
-        android:textSize="14sp" />
+        android:textSize="13sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -32,10 +34,10 @@
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="品名"
             android:textColor="@color/colorTextG3"
-            android:textSize="14sp" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/tvSpe"
@@ -51,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:layout_weight="1"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -59,10 +61,10 @@
         <TextView
             android:id="@+id/tvCode"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="品名"
-            android:textColor="@color/colorTextG3"
-            android:textSize="14sp" />
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/tvUnit"
@@ -70,7 +72,7 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:text="HI0924321"
-            android:textColor="@color/colorTextG6"
+            android:textColor="@color/colorTextG9"
             android:textSize="13sp" />
     </LinearLayout>
     <TextView
@@ -79,14 +81,14 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:text="生产订单BHL3249723604"
-        android:textColor="@color/colorTextG3"
-        android:textSize="14sp" />
+        android:textColor="@color/colorTextG9"
+        android:textSize="13sp" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:gravity="center_vertical">
@@ -100,6 +102,16 @@
             android:textColor="@color/colorSendName4"
             android:textSize="15sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvNumType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/tvNum"
+            android:layout_centerVertical="true"
+            android:textColor="@color/colorTextG9"
+            android:textSize="13sp" />
 
 
         <TextView

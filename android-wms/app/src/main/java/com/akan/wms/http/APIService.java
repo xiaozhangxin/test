@@ -1007,9 +1007,9 @@ public interface APIService {
     Observable<HttpResult<String>> importRtnData(@Header("Authorization") String token, @FieldMap Map<String, String> parmer);
 
     /**
-     * 采购退货(退货申请同步)
+     * 物流信息查询
      */
     @FormUrlEncoded
-    @POST("api/itemCodeController/selectItemBarMsgList")
+    @POST("api/logisticsController/logistics")
     Observable<HttpResult<BarMsgBean>> selectItemBarMsgList(@FieldMap Map<String, String> parmer);
 }

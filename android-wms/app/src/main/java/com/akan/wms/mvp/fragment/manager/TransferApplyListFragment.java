@@ -1,5 +1,6 @@
 package com.akan.wms.mvp.fragment.manager;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,6 +23,8 @@ import com.akan.wms.mvp.presenter.home.TransferApplyPresenter;
 import com.akan.wms.mvp.view.home.ITransferApplyView;
 import com.akan.wms.util.SpSingleInstance;
 import com.akan.wms.util.ToastUtil;
+import com.akan.wms.view.CustomDialog;
+import com.akan.wms.view.SonnyJackDragView;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
@@ -59,7 +62,7 @@ public class TransferApplyListFragment extends BaseFragment<ITransferApplyView, 
     private int page = 1;
     private Map<String, String> map = new HashMap<>();
     private UserBean userBean;
-
+    private Map<String, String> map1 = new HashMap<>();
     private String type;
     private String mIn;
 
@@ -136,6 +139,22 @@ public class TransferApplyListFragment extends BaseFragment<ITransferApplyView, 
                 return false;
             }
         });
+
+        //悬浮可拖动按钮
+        ImageView imageView = new ImageView(getActivity());
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setImageResource(R.drawable.sync);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getPresenter().sync(userBean.getStaff_token(),map1);
+            }
+        });
+        SonnyJackDragView build = new SonnyJackDragView.Builder()
+                .setActivity(getActivity())
+                .setNeedNearEdge(false)
+                .setView(imageView)
+                .build();
     }
 
 
@@ -231,5 +250,18 @@ public class TransferApplyListFragment extends BaseFragment<ITransferApplyView, 
         }
         adapter.addAll(data);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onSync(String data) {
+        final CustomDialog.Builder builder = new CustomDialog.Builder(context);
+        builder.setTitle(getString(R.string.point));
+        builder.setMessage(getString(R.string.sync_success));
+        builder.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.onCreate().show();
     }
 }

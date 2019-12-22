@@ -107,7 +107,7 @@ public class InBuyDetailAdapter extends RecyclerArrayAdapter<PurchasesBean> {
 
                     EditText tvActual = holder.getView(R.id.tvActual);
                     EditText tvPass = holder.getView(R.id.tvPass);
-                    EditText tvNotPass = holder.getView(R.id.tvNotPass);
+                    final EditText tvNotPass = holder.getView(R.id.tvNotPass);
 
                     tvActual.setText(bean.getArrive_qty() + "");
                     tvPass.setText(bean.getQualified_qty() + "");
@@ -199,7 +199,17 @@ public class InBuyDetailAdapter extends RecyclerArrayAdapter<PurchasesBean> {
                             if (TextUtils.isEmpty(toString)) {
                                 bean.setQualified_qty(0);
                             } else {
-                                bean.setQualified_qty(Integer.parseInt(toString));
+                                int totalInt = bean.getArrive_qty();
+                                int passInt = Integer.parseInt(toString);
+                                bean.setQualified_qty(passInt);
+                                if (passInt>totalInt){
+                                    tvNotPass.setText("0");
+
+                                }else {
+                                    tvNotPass.setText(String.valueOf(totalInt-passInt));
+                                }
+
+
                             }
                         }
 

@@ -169,8 +169,10 @@ public class CompleteAddAdapter extends RecyclerArrayAdapter<ProductionOrderBean
             });
 
 
-            tvCompleteNum.setText(data.getApply_qty() + "");//完工数量
-            tvPassNum.setText(data.getQualified_qty()+"");//合格数量
+            tvCompleteNum.setText(String.valueOf(data.getApply_qty()));//完工数量
+            tvPassNum.setText(String.valueOf(data.getQualified_qty()));//合格数量
+            tvNotPassNum.setText(String.valueOf(data.getScrap_qty()));//报废数量
+
             tvPassNum.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -180,23 +182,23 @@ public class CompleteAddAdapter extends RecyclerArrayAdapter<ProductionOrderBean
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     String passS = s.toString();
+                    Double mPass = 0.0;
                     if (TextUtils.isEmpty(passS)){
                         data.setQualified_qty(0);
                     }else {
-                        int parseInt = Integer.parseInt(passS);
-                        data.setQualified_qty(parseInt);
+                         mPass = Double.valueOf(passS);
+                        data.setQualified_qty(mPass);
                     }
-                    int total = data.getQualified_qty() + data.getScrap_qty();
+                    double total = data.getScrap_qty() + mPass;
                     data.setApply_qty(total);
                     tvCompleteNum.setText(total+"");
-
                 }
 
                 @Override
                 public void afterTextChanged(Editable s) {
                 }
             });
-            tvNotPassNum.setText(data.getScrap_qty()+"");//报废数量
+
             tvNotPassNum.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -205,17 +207,19 @@ public class CompleteAddAdapter extends RecyclerArrayAdapter<ProductionOrderBean
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    String passS = s.toString();
-                    if (TextUtils.isEmpty(passS)){
+                    String notPass = s.toString();
+                    Double mNotPass=0.0;
+                    if (TextUtils.isEmpty(notPass)){
                         data.setScrap_qty(0);
                     }else {
-                        int parseInt = Integer.parseInt(passS);
-                        data.setScrap_qty(parseInt);
+                        mNotPass = Double.valueOf(notPass);
+                        data.setScrap_qty(mNotPass);
+
+
                     }
-                    int total = data.getQualified_qty() + data.getScrap_qty();
+                    double total = data.getQualified_qty() + mNotPass;
                     data.setApply_qty(total);
                     tvCompleteNum.setText(total+"");
-
                 }
 
                 @Override

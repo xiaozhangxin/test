@@ -152,6 +152,7 @@ public class ChooseItemFragment extends BaseFragment<IChooseItemView, ChooseItem
 
     }
 
+    //刷新请求数据
     private void refresh() {
         String mAllSelect = etSearch.getText().toString();
         map.put("all_select", mAllSelect);
@@ -170,12 +171,6 @@ public class ChooseItemFragment extends BaseFragment<IChooseItemView, ChooseItem
                 finish();
                 break;
             case R.id.ivLog:
-                if (chooseList.size() <= 0) {
-                    ToastUtil.showToast(context.getApplicationContext(), "请选择商品");
-                    return;
-                }
-                startChooseMoreChildFragment(chooseList);
-                break;
             case R.id.tvChooseNum:
                 if (chooseList.size() <= 0) {
                     ToastUtil.showToast(context.getApplicationContext(), "请选择商品");

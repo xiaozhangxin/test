@@ -185,7 +185,6 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
                     return;
                 }
 
-
                 if (adapter.getAllData().size() <= 0) {
                     ToastUtil.showToast(context.getApplicationContext(), "请添加调拨申请");
                     return;
@@ -229,7 +228,12 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
                 showSingleDialog();
                 break;
             case R.id.llAdd:
-                startTransferApplyListFragment(tvFour.getText().toString(),"add");
+                String mtvFour = tvFour.getText().toString();
+                if (TextUtils.isEmpty(mtvFour)){
+                    ToastUtil.showToast(context.getApplicationContext(),"请选择调入组织");
+                    return;
+                }
+                startTransferApplyListFragment(mtvFour,"add");
                 break;
         }
     }

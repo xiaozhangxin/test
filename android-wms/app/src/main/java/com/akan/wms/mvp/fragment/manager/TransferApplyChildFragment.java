@@ -153,6 +153,11 @@ public class TransferApplyChildFragment extends BaseFragment<ITransferApplyView,
 
     }
 
+    @Override
+    public void onSync(String data) {
+
+    }
+
 
     private void addData(TransferUnCompleteBean data) {
         tvtittle.setText(data.getDoc_type_name());
