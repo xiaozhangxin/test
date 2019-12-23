@@ -8,10 +8,9 @@ package com.akan.wms;
 public final class Constants {
 
 
-//    public static final String BASE_URL = "http://192.168.0.34:8091/";//耿清
-    //public static final String BASE_URL = "http://192.168.0.105:8081/";//李志伟
-    //public static final String BASE_URL = "http://192.168.0.163:8081/";//陈艳涛
-    public static final String BASE_URL = "http://wms.akan.com.cn:9999/";
+
+    //public static final String BASE_URL = "http://wms.akan.com.cn:9999/";   //测试服务
+	public static final String BASE_URL = "http://akwms.akan.com.cn/";	//集团试用服
     //public static final String BASE_URL = "http://180.167.240.180:8091/";
 
     public static final String KEY_FRAGMENT = "key_fragment";
