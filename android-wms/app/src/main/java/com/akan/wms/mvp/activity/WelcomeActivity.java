@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,7 +16,6 @@ import com.akan.wms.bean.UserBean;
 import com.akan.wms.util.SPUtils;
 import com.akan.wms.util.SpSingleInstance;
 import com.king.base.SplashActivity;
-import com.king.base.util.LogUtils;
 
 import static com.akan.wms.Constants.LOGIN_FRAGMENT;
 
@@ -62,11 +60,8 @@ public class WelcomeActivity extends SplashActivity {
                     finish();
                 } else {
                     UserBean userBean = SPUtils.getObj1(WelcomeActivity.this, Constants.USER_BEAN);
-                    Log.e("ZZZ",userBean.getStaff_token());
-                    Log.e("ZZZ",userBean.getOrg_id());
                     if (userBean == null) {
                         startLogin();
-
                     } else {
                         SPUtils.saveObJ1(context, Constants.USER_BEAN, userBean);
                         SpSingleInstance.getSpSingleInstance().setUserBean(userBean);
