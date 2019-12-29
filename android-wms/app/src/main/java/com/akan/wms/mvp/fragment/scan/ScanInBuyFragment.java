@@ -107,6 +107,7 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
                 .fullScreenScan(true)//全屏扫码
                 .supportVerticalCode(false)//支持扫垂直条码，建议有此需求时才使用。
                 .continuousScan(true)
+                .supportAutoZoom(true)
                 .autoRestartPreviewAndDecode(false);
         if (oldList.get(0).getBarList() != null) {
             barList.addAll(oldList.get(0).getBarList());
@@ -162,6 +163,8 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
                     case "out_sale_add"://销售出库(新增)
                     case "in_transfer_add"://调拨入库(新增)
                     case "out_transfer_add"://调拨出库(新增)
+                    case "finish_check"://成品入库(审核)
+                    case "finish_add"://成品入库(添加)
                         int number1 = scanInfoBean.getArrive_qty();
                         if (number1 >= scanInfoBean.getSend_qty()) {
                             showMoreDialog(scanInfoBean.getItem_name());
@@ -182,18 +185,6 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
                         scanInfoBean.setBar_code(bean.getBar_code());
                         scanInfoBean.setIn_qty(number2 + qty);
                         bean.setOld_num(scanInfoBean.getArrive_qty());
-                        isIn = true;
-                        break;
-                    case "finish_check"://成品入库(审核)
-                    case "finish_add"://成品入库(添加)
-                        int number3 = scanInfoBean.getArrive_qty();
-                        if (number3 >= scanInfoBean.getSend_qty()) {
-                            showMoreDialog(scanInfoBean.getItem_name());
-                            return;
-                        }
-                        scanInfoBean.setBar_code(bean.getBar_code());
-                        scanInfoBean.setArrive_qty(number3 + qty);
-                        bean.setOld_num(scanInfoBean.getSend_qty());
                         isIn = true;
                         break;
                     case "check_add":

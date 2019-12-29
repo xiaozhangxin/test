@@ -1,5 +1,8 @@
-package com.akan.wms.mvp.fragment.part;
+package com.akan.wms.mvp.fragment.Part;
 
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +10,8 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -49,6 +54,8 @@ public class PartFragment extends BaseFragment<IMessageView, MessagePresenter> i
     private int page = 1;
     private Map<String, String> map = new HashMap<>();
     private UserBean userBean;
+
+
 
     public static PartFragment newInstance() {
         Bundle args = new Bundle();

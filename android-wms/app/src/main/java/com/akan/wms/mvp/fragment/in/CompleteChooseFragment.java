@@ -84,9 +84,7 @@ public class CompleteChooseFragment extends BaseFragment<ICompleteChooseView, Co
     @Override
     public void initUI() {
         tvTitle.setText("生产订单列表");
-
         initAdapter();
-
         //搜索订单
         etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

@@ -62,7 +62,7 @@ public class FinishAddAdapter extends RecyclerArrayAdapter<ProductionOrderBean> 
             });
             tvNo.setText(data.getDoc_no());
             tvOne.setText(data.getItem_name() + "/" + data.getItem_spec());
-            tvTwo.setText(data.getWh_qty()+"");
+            tvTwo.setText(data.getQualified_qty()+"");
             tvThree.setText(data.getSend_qty()+"");//扫码数量
          /*   tvThree.addTextChangedListener(new TextWatcher() {
                 @Override

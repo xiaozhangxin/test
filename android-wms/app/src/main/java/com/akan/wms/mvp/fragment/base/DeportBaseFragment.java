@@ -178,5 +178,10 @@ public class DeportBaseFragment extends BaseFragment<IChooseDeportView, ChooseDe
         adapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void getWareHouseById(List<WareHouseBean> data) {
+
+    }
+
 
 }

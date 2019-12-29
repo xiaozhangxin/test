@@ -2,6 +2,7 @@ package com.akan.wms.mvp.presenter.home;
 
 import com.akan.wms.App;
 import com.akan.wms.bean.StoragingProBean;
+import com.akan.wms.bean.StoragingProListBean;
 import com.akan.wms.http.HttpResult;
 import com.akan.wms.mvp.base.BasePresenter;
 import com.akan.wms.mvp.view.home.IFinishView;
@@ -26,7 +27,7 @@ public class FinishPresenter extends BasePresenter<IFinishView>{
                 .queryStoragingProList(token, parmer)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<HttpResult<List<StoragingProBean>>>() {
+                .subscribe(new Observer<HttpResult<List<StoragingProListBean>>>() {
 
                     @Override
                     public void onError(Throwable e) {
@@ -45,7 +46,7 @@ public class FinishPresenter extends BasePresenter<IFinishView>{
                     }
 
                     @Override
-                    public void onNext(HttpResult<List<StoragingProBean>> userBeanHttpResult) {
+                    public void onNext(HttpResult<List<StoragingProListBean>> userBeanHttpResult) {
                         if (userBeanHttpResult != null) {
                             if (isViewAttached()) {
                                 getView().onQueryStoragingProList(userBeanHttpResult.getData());

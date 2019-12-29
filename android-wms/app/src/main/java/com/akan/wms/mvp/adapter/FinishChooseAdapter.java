@@ -46,8 +46,7 @@ public class FinishChooseAdapter extends RecyclerArrayAdapter<ProductionOrderBea
             tvNo.setText(data.getDoc_type_name() + "(" + data.getDoc_no() + ")");
             tvName.setText(data.getItem_name());
             tvSpe.setText(data.getItem_spec());
-            tvNum.setText(String.valueOf(data.getWh_qty()));
-            tvNumType.setText("(wh_qty)");
+            tvNum.setText(String.valueOf(data.getQualified_qty()));
             tvCode.setText(String.valueOf(data.getItem_code()));
             tvUnit.setText(data.getItem_sku() + "(单位)");
             tvCar.setText("生产车间：" + data.getU9_department_name() + "");

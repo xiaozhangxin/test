@@ -43,6 +43,16 @@ public class WarnTwoBean implements Serializable {
     private String remain_status;
     private String remain_status_name;
 
+    public String getWarning_time() {
+        return warning_time;
+    }
+
+    public void setWarning_time(String warning_time) {
+        this.warning_time = warning_time;
+    }
+
+    private String warning_time;
+
     public String getId() {
         return id;
     }

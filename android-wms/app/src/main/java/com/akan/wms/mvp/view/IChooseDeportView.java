@@ -9,4 +9,6 @@ import java.util.List;
 public interface IChooseDeportView extends BaseView{
 
     void getWareHouseList(List<WareHouseBean> data);
+
+    void getWareHouseById(List<WareHouseBean> data);
 }

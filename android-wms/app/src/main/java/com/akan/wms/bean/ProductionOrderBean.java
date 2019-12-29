@@ -68,13 +68,13 @@ public class ProductionOrderBean implements Serializable {
 
     private int is_valid;
     private int send_qty;
-    private int wh_qty;
+    private double wh_qty;
 
-    public int getWh_qty() {
+    public double getWh_qty() {
         return wh_qty;
     }
 
-    public void setWh_qty(int wh_qty) {
+    public void setWh_qty(double wh_qty) {
         this.wh_qty = wh_qty;
     }
 

@@ -8,24 +8,15 @@ package com.akan.wms;
 public final class Constants {
 
 
-
-    //public static final String BASE_URL = "http://wms.akan.com.cn:9999/";   //测试服务
-	public static final String BASE_URL = "http://akwms.akan.com.cn/";	//集团试用服
-    //public static final String BASE_URL = "http://180.167.240.180:8091/";
+    public static final String BASE_URL = "http://wms.akan.com.cn:9999/";
+    //public static final String BASE_URL = "https://testflight.apple.com/";
 
     public static final String KEY_FRAGMENT = "key_fragment";
 
     public static final String KEY_TITLE = "key_title";
 
-    public static final String KEY_IS_TAB_LIVE = "key_is_tab_live";
-
-
     public static final String KEY_SLUG = "key_type";
-
     public static final String KEY_URL = "key_url";
-
-    public static final String KEY_COVER = "key_cover";
-
     public static final String USER_BEAN = "userbean";
     public static final String DETAIL_ID = "detail_id";
     public static final String BEAN = "bean";
@@ -156,4 +147,7 @@ public final class Constants {
     public static final int OUT_TRANSFER_ADD_NEW = 0X108;
     public static final int COMPLETE_ADD_NEW = 0X109;
     public static final int HOME_SCAN = 0X110;
+    public static final int CHOOSE_DEPORT_BY_ID = 0X111;
+    public static final int SCAN_RESULT_CHILD = 0X112;
+    public static final int HOME_SCAN_INPUT = 0X113;
 }

@@ -54,6 +54,7 @@
             android:name=".mvp.activity.ContentActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity android:name=".mvp.fragment.home.HomeScanActivity"/>
         <!-- 头像裁剪 -->
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"

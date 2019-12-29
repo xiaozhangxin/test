@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.akan.wms.R;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.StoragingProBean;
+import com.akan.wms.bean.StoragingProListBean;
 import com.akan.wms.bean.UserBean;
 import com.akan.wms.mvp.adapter.home.FinishListtAdapter;
 import com.akan.wms.mvp.base.BaseFragment;
@@ -64,7 +65,7 @@ public class FinishListFragment extends BaseFragment<IFinishView, FinishPresente
     @BindView(R.id.dropDownMenu)
     DropDownMenu dropDownMenu;
 
-    private List<StoragingProBean> list;
+    private List<StoragingProListBean> list;
     private FinishListtAdapter adapter;
     private int page = 1;
     private Map<String, String> map = new HashMap<>();
@@ -370,7 +371,7 @@ public class FinishListFragment extends BaseFragment<IFinishView, FinishPresente
 
 
     @Override
-    public void onQueryStoragingProList(List<StoragingProBean> data) {
+    public void onQueryStoragingProList(List<StoragingProListBean> data) {
         if (page == 1) {
             adapter.clear();
         }

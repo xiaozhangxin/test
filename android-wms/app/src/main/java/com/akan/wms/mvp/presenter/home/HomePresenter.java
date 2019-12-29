@@ -58,11 +58,11 @@ public class HomePresenter extends BasePresenter<IHomeView>{
 
     }
 
-    public void selectItemBarMsgList( Map<String, String> parmer) {
+    public void selectItemBarMsgList( String ut,Map<String, String> parmer) {
         if (isViewAttached())
             getView().showProgress();
         getAppComponent().getAPIService()
-                .selectItemBarMsgList(parmer)
+                .selectItemBarMsgList(ut,parmer)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<HttpResult<BarMsgBean>>() {

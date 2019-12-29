@@ -56,8 +56,18 @@ public class FinishDetailAdapter extends RecyclerArrayAdapter<StoragingProBean.S
                         onStockListener.onScan(getDataPosition(),mState);
                     }
                 });
+               tvFour.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
+               tvFour.setEnabled(true);
+               tvFour.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       onStockListener.onChooseWh(getDataPosition(),data.getItem_id());
+                   }
+               });
             } else {
                tvScan.setVisibility(View.GONE);
+               tvFour.setTextColor(getContext().getResources().getColor(R.color.colorTextG6));
+               tvFour.setEnabled(false);
             }
             tvOne.setText(data.getItem_name()+"/"+data.getItem_spec());
             tvTwo.setText(data.getComplete_qty());
@@ -72,6 +82,7 @@ public class FinishDetailAdapter extends RecyclerArrayAdapter<StoragingProBean.S
 
     public interface onSelectStockClickListener {
         void onScan(int position,String state);
+        void onChooseWh(int position,String state);
     }
 
     private onSelectStockClickListener onStockListener;

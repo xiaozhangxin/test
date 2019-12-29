@@ -82,6 +82,11 @@ public class ScanInBuyResultFragment extends SimpleFragment {
 
     @Override
     public void initUI() {
+        for (int i=0;i<barList.size();i++){
+            barList.get(i).setMax_num(barList.get(i).getQty());
+        }
+
+
         recyclerView.setNestedScrollingEnabled(false);
         childRecyclerView.setNestedScrollingEnabled(false);
         tvTitle.setText("扫码数据");
@@ -114,9 +119,6 @@ public class ScanInBuyResultFragment extends SimpleFragment {
                 topFour.setText("配货数量");
                 break;
             case "out_buy_detail"://采购退货(核定)
-                topThree.setText("配货数量");
-                topFour.setText("核定数量");
-                break;
             case "out_sale_add"://销售出库(新增)
                 topThree.setText("配货数量");
                 topFour.setText("核定数量");

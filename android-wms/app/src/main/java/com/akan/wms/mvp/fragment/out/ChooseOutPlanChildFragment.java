@@ -160,7 +160,7 @@ public class ChooseOutPlanChildFragment extends BaseFragment<IOutPlanView, OutPl
     }
 
     private void addData(ShipPlanBean data) {
-        tvtittle.setText(data.getDoc_type_name());
+        tvtittle.setText("订单号："+data.getSrc_doc_no());
         tvNo.setText(data.getDoc_no());
         adapter.clear();
         adapter.addAll(data.getPlanLineBeans());

@@ -24,6 +24,7 @@ import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.ProductionOrderBean;
 import com.akan.wms.bean.ScanInfoBean;
 import com.akan.wms.bean.StoragingProBean;
+import com.akan.wms.bean.StoragingProListBean;
 import com.akan.wms.bean.UserBean;
 import com.akan.wms.bean.WareHouseBean;
 import com.akan.wms.mvp.adapter.home.FinishAddAdapter;
@@ -242,7 +243,7 @@ public class FinishAddFragment extends BaseFragment<IFinishView, FinishPresenter
                 showNotDialog("料品（" + orderBean.getItem_name() + "）请扫码加入入库数量");
                 return;
             }
-            if (orderBean.getSend_qty() > orderBean.getWh_qty()) {
+            if (orderBean.getSend_qty() > orderBean.getQualified_qty()) {
                 showNotDialog("料品（" + orderBean.getItem_name() + "）入库数量大于可入库数量,请修改条码");
                 return;
             }
@@ -397,8 +398,9 @@ public class FinishAddFragment extends BaseFragment<IFinishView, FinishPresenter
     }
 
 
+
     @Override
-    public void onQueryStoragingProList(List<StoragingProBean> data) {
+    public void onQueryStoragingProList(List<StoragingProListBean> data) {
 
     }
 

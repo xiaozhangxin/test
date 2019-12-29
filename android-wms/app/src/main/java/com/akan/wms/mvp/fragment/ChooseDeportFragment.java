@@ -163,6 +163,11 @@ public class ChooseDeportFragment extends BaseFragment<IChooseDeportView, Choose
 
     }
 
+    @Override
+    public void getWareHouseById(List<WareHouseBean> data) {
+
+    }
+
 
     @OnClick({R.id.ivLeft})
     public void onClick(View v) {

@@ -8,14 +8,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.akan.wms.R;
-import com.akan.wms.bean.StoragingProBean;
+import com.akan.wms.bean.StoragingProListBean;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
 import java.util.List;
 
-public class FinishListtAdapter extends RecyclerArrayAdapter<StoragingProBean> {
-    public FinishListtAdapter(Context context, List<StoragingProBean> list) {
+public class FinishListtAdapter extends RecyclerArrayAdapter<StoragingProListBean> {
+    public FinishListtAdapter(Context context, List<StoragingProListBean> list) {
         super(context, list);
     }
 
@@ -24,7 +24,7 @@ public class FinishListtAdapter extends RecyclerArrayAdapter<StoragingProBean> {
         return new FinishListtAdapter.ViewHolder(parent, viewType);
     }
 
-    public class ViewHolder extends BaseViewHolder<StoragingProBean> {
+    public class ViewHolder extends BaseViewHolder<StoragingProListBean> {
         private TextView tvNo, tvState, tvOne, tvTwo, tvThree;
         private ImageView ivInvalid;
         public ViewHolder(ViewGroup parent, @LayoutRes int res) {
@@ -38,7 +38,7 @@ public class FinishListtAdapter extends RecyclerArrayAdapter<StoragingProBean> {
         }
 
         @Override
-        public void setData(StoragingProBean data) {
+        public void setData(StoragingProListBean data) {
             super.setData(data);
             tvNo.setText(data.getDoc_no());
             tvOne.setText("单据类型：" + data.getReport_name());

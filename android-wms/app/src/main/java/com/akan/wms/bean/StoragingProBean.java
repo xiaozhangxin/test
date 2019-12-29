@@ -230,7 +230,7 @@ public class StoragingProBean implements Serializable {
         private String scrap_qty;
         private int wh_qty;
         private int check_qty;
-        private long wh_id;
+        private String wh_id;
         private String wh_name;
         private String wh_type;
         private Object operator_id;
@@ -374,11 +374,11 @@ public class StoragingProBean implements Serializable {
             this.wh_qty = wh_qty;
         }
 
-        public long getWh_id() {
+        public String getWh_id() {
             return wh_id;
         }
 
-        public void setWh_id(long wh_id) {
+        public void setWh_id(String wh_id) {
             this.wh_id = wh_id;
         }
 

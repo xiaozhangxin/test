@@ -192,4 +192,9 @@ public class ChooseDepotFragment extends BaseFragment<IChooseDeportView, ChooseD
         adapter.addAll(data);
         adapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void getWareHouseById(List<WareHouseBean> data) {
+
+    }
 }

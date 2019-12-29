@@ -22,7 +22,11 @@ import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.RecordsBean;
 import com.akan.wms.bean.ScanInfoBean;
 import com.akan.wms.bean.StoragingProBean;
+import com.akan.wms.bean.StoragingProListBean;
 import com.akan.wms.bean.UserBean;
+import com.akan.wms.bean.WareHouseBean;
+import com.akan.wms.bean.WhAndIdBean;
+import com.akan.wms.bean.WhBean;
 import com.akan.wms.mvp.adapter.RecordAdapter;
 import com.akan.wms.mvp.adapter.home.FinishDetailAdapter;
 import com.akan.wms.mvp.base.BaseFragment;
@@ -97,7 +101,7 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
     private String mId;
     private BottomPopWindow popWindow;
     private int mScanPosition;
-
+    private int mDeportPosition;//选择仓库
     public static FinishDetailFragment newInstance(String id) {
         Bundle args = new Bundle();
         FinishDetailFragment fragment = new FinishDetailFragment();
@@ -126,6 +130,12 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
             public void onScan(int position, String state) {
                 mScanPosition = position;
                 checkCameraPermissions("finish_check");
+            }
+
+            @Override
+            public void onChooseWh(int position, String itemId) {
+                mDeportPosition = position;
+                startChooseDeportByIdFragment(itemId);
             }
         });
 
@@ -318,8 +328,10 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
 
         List<StoragingProBean.StoragingProLinesBean> allData = adapter.getAllData();
         List<BarListBean> mBarList = new ArrayList<>();
+        List<WhAndIdBean> mWhList = new ArrayList<>();
         for (int i = 0; i < allData.size(); i++) {
             StoragingProBean.StoragingProLinesBean linesBean = allData.get(i);
+
             if (linesBean.getWh_qty() > linesBean.getCheck_qty()) {
                 showNotDialog(linesBean.getItem_name());
                 return;
@@ -338,14 +350,19 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
                 mBarBean.setQty(barBean.getQty() + "");
                 mBarList.add(mBarBean);
             }
-
+            WhAndIdBean whAndIdBean = new WhAndIdBean();
+            whAndIdBean.setId(linesBean.getId()+"");
+            whAndIdBean.setWh_id(linesBean.getWh_id());
+            mWhList.add(whAndIdBean);
         }
 
         Gson gson = new Gson();
         String jsonBar = gson.toJson(mBarList);
+        String jsonWh = gson.toJson(mWhList);
         map.clear();
         map.put("id", mId);
         map.put("barList", jsonBar);
+        map.put("storagingProLines", jsonWh);
         getPresenter().pastStoragingPro(userBean.getStaff_token(), map);
 
     }
@@ -431,6 +448,12 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
                 List<BarBean> barList = event.getmScanListBean().getList();
                 adapter.getItem(mScanPosition).setBarList(barList);
                 break;
+            case "6"://选择仓库
+                WareHouseBean houseBean = event.getmWareHouseBean();
+                adapter.getItem(mDeportPosition).setWh_name(houseBean.getWarehouse_name());
+                adapter.getItem(mDeportPosition).setWh_id(houseBean.getWarehouse_id());
+                adapter.notifyDataSetChanged();
+                break;
 
         }
     }
@@ -452,7 +475,7 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
 
 
     @Override
-    public void onQueryStoragingProList(List<StoragingProBean> data) {
+    public void onQueryStoragingProList(List<StoragingProListBean> data) {
 
     }
 

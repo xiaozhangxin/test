@@ -31,7 +31,17 @@ public class ShipPlanBean implements Serializable{
     private String update_time;
     private String status;
     private String ship_org_name;
+
+    public String getSrc_doc_no() {
+        return src_doc_no;
+    }
+
+    public void setSrc_doc_no(String src_doc_no) {
+        this.src_doc_no = src_doc_no;
+    }
+
     private String status_show;
+    private String src_doc_no;
     private List<PlanLineBean> planLineBeans;
 
     public List<BarBean> getBarList() {

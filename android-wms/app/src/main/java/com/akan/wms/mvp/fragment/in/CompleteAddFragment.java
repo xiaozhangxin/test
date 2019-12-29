@@ -296,7 +296,7 @@ public class CompleteAddFragment extends BaseFragment<ICompleteView, CompletePre
                 ToastUtil.showToast(context.getApplicationContext(), "请选择班组");
                 return;
             }
-            if (orderBean.getComplete_qty() <= 0) {
+            if (orderBean.getApply_qty() <= 0) {
                 ToastUtil.showToast(context.getApplicationContext(), "完工数量不能为0");
                 return;
             }

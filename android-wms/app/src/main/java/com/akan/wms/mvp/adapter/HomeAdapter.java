@@ -94,7 +94,7 @@ public class HomeAdapter extends RecyclerArrayAdapter<WarnTwoBean> {
             tvFour.setText(data.getQty() + "/" + data.getCeiling_qty());
  /*           int i = new Double(data.getQty()).intValue();
             tvFive.setProgress( i / data.getCeiling_qty());*/
-            //tvSix.setText(data.getWh_time());
+            tvSix.setText(data.getWarning_time());
             tvEight.setText(data.getStatus_name());
 
 

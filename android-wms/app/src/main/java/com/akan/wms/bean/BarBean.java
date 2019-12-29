@@ -40,6 +40,15 @@ public class BarBean implements Serializable{
     private String source;
     private String create_time;
     private int old_num;
+    private int max_num;
+
+    public int getMax_num() {
+        return max_num;
+    }
+
+    public void setMax_num(int max_num) {
+        this.max_num = max_num;
+    }
 
     public String getBar_code() {
         return bar_code;

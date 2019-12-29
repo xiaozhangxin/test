@@ -24,12 +24,12 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/setbar_home_one"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="PE管件仓库"
-        android:paddingBottom="1dp"
         android:paddingTop="1dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="1dp"
+        android:text="PE管件仓库"
         android:textColor="@color/white"
-        android:textSize="14sp" />
+        android:textSize="13sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -99,7 +99,6 @@
             android:layout_marginLeft="16dp"
             android:layout_toLeftOf="@+id/tvSeven"
             android:text="2019-9-02"
-            android:visibility="invisible"
             android:textColor="@color/colorTextG3"
             android:textSize="13sp" />
 

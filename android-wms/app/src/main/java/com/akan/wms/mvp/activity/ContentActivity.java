@@ -21,6 +21,7 @@ import com.akan.wms.bean.ShipPlanBean;
 import com.akan.wms.bean.TransferOutBean;
 import com.akan.wms.bean.TransferUnCompleteBean;
 import com.akan.wms.bean.WarnTwoBean;
+import com.akan.wms.mvp.fragment.ChooseDeportByIdFragment;
 import com.akan.wms.mvp.fragment.ChooseDeportFragment;
 import com.akan.wms.mvp.fragment.ChooseMfcFragment;
 import com.akan.wms.mvp.fragment.ChooseOrganizationFragment;
@@ -36,6 +37,8 @@ import com.akan.wms.mvp.fragment.base.StockFindFragment;
 import com.akan.wms.mvp.fragment.base.SupplierBaseFragment;
 import com.akan.wms.mvp.fragment.home.AllFunctionFragment;
 import com.akan.wms.mvp.fragment.home.ChooseDepotFragment;
+import com.akan.wms.mvp.fragment.home.HomeScanChildResultFragment;
+import com.akan.wms.mvp.fragment.home.HomeScanInputFragment;
 import com.akan.wms.mvp.fragment.home.HomeScanResultFragment;
 import com.akan.wms.mvp.fragment.home.InventoryWarningFragment;
 import com.akan.wms.mvp.fragment.in.ChooseCompleteParamFragment;
@@ -178,6 +181,8 @@ public class ContentActivity extends AppCompatActivity {
                 break;
             case Constants.DEPORT_BASE:
                 replaceFragment(DeportBaseFragment.newInstance());
+                break;  case Constants.HOME_SCAN_INPUT:
+                replaceFragment(HomeScanInputFragment.newInstance());
                 break;
             case Constants.COMPLETE_CHOOSE:
                 String reportType = getIntent().getStringExtra(Constants.DETAIL_ID);
@@ -271,6 +276,10 @@ public class ContentActivity extends AppCompatActivity {
                 break;
             case Constants.CHOOSE_DEPORT:
                 replaceFragment(ChooseDeportFragment.newInstance("", ""));
+                break;
+            case Constants.CHOOSE_DEPORT_BY_ID:
+                String departItemId = getIntent().getStringExtra(Constants.DETAIL_ID);
+                replaceFragment(ChooseDeportByIdFragment.newInstance(departItemId, ""));
                 break;
             case Constants.PURCHASE_RECEIVE_ADD:
                 replaceFragment(ProduceReceiveAddFragment.newInstance());
@@ -457,7 +466,7 @@ public class ContentActivity extends AppCompatActivity {
                 replaceFragment(StockChildFragment.newInstance(pushBean, childType));
                 break;
             case Constants.HOME_SCAN:
-                BarMsgBean scanBean= (BarMsgBean) intent.getSerializableExtra(Constants.BEAN);
+                BarMsgBean scanBean = (BarMsgBean) intent.getSerializableExtra(Constants.BEAN);
                 replaceFragment(HomeScanResultFragment.newInstance(scanBean));
                 break;
 
@@ -465,6 +474,10 @@ public class ContentActivity extends AppCompatActivity {
                 List<ScanInfoBean> scanInfoList = (List<ScanInfoBean>) getIntent().getSerializableExtra(Constants.LIST_DATA);
                 String scanInfoType = getIntent().getStringExtra(Constants.DETAIL_ID);
                 replaceFragment(ScanInBuyFragment.newInstance(scanInfoList, scanInfoType));
+                break;
+            case Constants.SCAN_RESULT_CHILD:
+                List<String> scanChildCode = (List<String>) getIntent().getSerializableExtra(Constants.LIST_DATA);
+                replaceFragment(HomeScanChildResultFragment.newInstance(scanChildCode));
                 break;
             case Constants.SCAN_IN_BUY_RESULT:
                 List<ScanInfoBean> inBuyList = (List<ScanInfoBean>) getIntent().getSerializableExtra(Constants.LIST_DATA);

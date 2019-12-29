@@ -84,7 +84,10 @@ public class OutSaleDetailFragment extends BaseFragment<IOutSaleView, OutSalePre
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.tvTittle)
-    TextView tvTittle;
+    TextView tvTittle;    @BindView(R.id.tvNoOne)
+    TextView tvNoOne;    @BindView(R.id.tvNoTwo)
+    TextView tvNoTwo;    @BindView(R.id.tvNoThree)
+    TextView tvNoThree;
     @BindView(R.id.tvDelete)
     ImageView tvDelete;
     @BindView(R.id.tvScan)
@@ -213,7 +216,9 @@ public class OutSaleDetailFragment extends BaseFragment<IOutSaleView, OutSalePre
                 isValidImg.setVisibility(View.GONE);
             }
         }
-        tvTittle.setText("出货计划单 " + data.getShip_plan_no());
+        tvNoOne.setText(  data.getShip_plan_no());
+        tvNoTwo.setText( data.getU9_code());
+        tvNoThree.setText( data.getShip_src_plan_no());
         tvOne.setText(data.getDoc_no());
         tvTwo.setText(data.getCreate_name());
         tvThree.setText(data.getCreate_time());

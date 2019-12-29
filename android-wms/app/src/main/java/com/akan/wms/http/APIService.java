@@ -34,6 +34,7 @@ import com.akan.wms.bean.ShipPlanBean;
 import com.akan.wms.bean.StaffGroupBean;
 import com.akan.wms.bean.StaffOrgsBean;
 import com.akan.wms.bean.StoragingProBean;
+import com.akan.wms.bean.StoragingProListBean;
 import com.akan.wms.bean.SupplierBean;
 import com.akan.wms.bean.TransferBean;
 import com.akan.wms.bean.TransferInBean;
@@ -835,7 +836,7 @@ public interface APIService {
      * 成品入库单列表
      */
     @GET("api/storagingProController/queryStoragingProList")
-    Observable<HttpResult<List<StoragingProBean>>> queryStoragingProList(@Header("Authorization") String token, @QueryMap Map<String, String> parmer);
+    Observable<HttpResult<List<StoragingProListBean>>> queryStoragingProList(@Header("Authorization") String token, @QueryMap Map<String, String> parmer);
 
 
     /**
@@ -1011,5 +1012,5 @@ public interface APIService {
      */
     @FormUrlEncoded
     @POST("api/logisticsController/logistics")
-    Observable<HttpResult<BarMsgBean>> selectItemBarMsgList(@FieldMap Map<String, String> parmer);
+    Observable<HttpResult<BarMsgBean>> selectItemBarMsgList(@Header("Authorization") String token,@FieldMap Map<String, String> parmer);
 }

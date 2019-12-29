@@ -7,7 +7,13 @@
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
-    <include layout="@layout/home_tittle_bar" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/white"/>
+
+    <include layout="@layout/home_tittle_bar"
+       />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/refreshLayout"
@@ -26,10 +32,10 @@
                 <com.akan.wms.util.shadow.ShadowLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    app:yc_cornerRadius="8dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    app:yc_cornerRadius="6dp"
                     app:yc_dx="0dp"
                     app:yc_dy="0dp"
                     app:yc_shadowColor="#55329FF9"
@@ -44,7 +50,9 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
                             android:orientation="horizontal">
 
 
@@ -74,7 +82,7 @@
                             android:layout_marginBottom="16dp"
                             android:layout_marginLeft="24dp"
                             android:layout_marginRight="24dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="24dp"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
@@ -142,8 +150,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="16dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
@@ -212,8 +220,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_height="wrap_content">
 
                     <com.akan.wms.util.shadow.ShadowLayout
                         android:id="@+id/shaOne"

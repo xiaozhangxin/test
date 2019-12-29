@@ -55,6 +55,42 @@ public class ChooseDeportPresenter extends BasePresenter<IChooseDeportView>{
                     }
                 });
 
+    }  public void getWareHouseById(String token, Map<String, String> parmer) {
+        if (isViewAttached())
+            getView().showProgress();
+        getAppComponent().getAPIService()
+                .getWareHouseList(token,parmer)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<HttpResult<List<WareHouseBean>>>() {
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (isViewAttached())
+                            getView().onError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(HttpResult<List<WareHouseBean>> userBeanHttpResult) {
+                        if (userBeanHttpResult != null) {
+                            if (isViewAttached()) {
+                                getView().getWareHouseById(userBeanHttpResult.getData());
+                            }
+                        }
+
+                    }
+                });
+
     }
 
 }

@@ -30,6 +30,25 @@ public class SaleShipBean implements Serializable{
     private long doc_type_id;
     private String doc_type_name;
     private String u9_id;
+
+    public String getU9_code() {
+        return u9_code;
+    }
+
+    public void setU9_code(String u9_code) {
+        this.u9_code = u9_code;
+    }
+
+    public String getShip_src_plan_no() {
+        return ship_src_plan_no;
+    }
+
+    public void setShip_src_plan_no(String ship_src_plan_no) {
+        this.ship_src_plan_no = ship_src_plan_no;
+    }
+
+    private String u9_code;
+    private String ship_src_plan_no;
     private String doc_no;
     private String create_id;
     private String create_time;

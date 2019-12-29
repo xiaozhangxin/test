@@ -128,6 +128,22 @@ public class ProduceChooseFragment extends BaseFragment<IProduceChooseView, Prod
                 });
                 break;
             case "2":
+                etSearch.setVisibility(View.VISIBLE);
+                SpannableString s1 = new SpannableString("请输入姓名搜索");
+                etSearch.setHint(s1);
+                etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                            page = 1;
+                            map.put("operator_name", etSearch.getText().toString());
+                            refresh();
+                        }
+                        return false;
+                    }
+                });
+
                 tvTitle.setText("选择库管员");
                 listTwo = new ArrayList<>();
                 adapterTwo = new ProduceTwoAdapter(context, listTwo);
@@ -159,6 +175,7 @@ public class ProduceChooseFragment extends BaseFragment<IProduceChooseView, Prod
                 });
                 break;
             case "3":
+
                 tvTitle.setText("选择受益组织");
                 listThree = new ArrayList<>();
                 adapterThree = new ProduceThreeAdapter(context, listThree);
@@ -171,7 +188,21 @@ public class ProduceChooseFragment extends BaseFragment<IProduceChooseView, Prod
                     }
                 });
                 adapterThree.setNoMore(R.layout.view_nomore);
+                etSearch.setVisibility(View.VISIBLE);
+                SpannableString s4 = new SpannableString("请输入名称搜索");
+                etSearch.setHint(s4);
+                etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
+                        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                            page = 1;
+                            map.put("name", etSearch.getText().toString());
+                            refresh();
+                        }
+                        return false;
+                    }
+                });
                 break;
 
             case "4":
@@ -284,8 +315,8 @@ public class ProduceChooseFragment extends BaseFragment<IProduceChooseView, Prod
                 });
 
                 etSearch.setVisibility(View.VISIBLE);
-                SpannableString s2 = new SpannableString("请输入名称搜索");
-                etSearch.setHint(s2);
+                SpannableString s3 = new SpannableString("请输入名称搜索");
+                etSearch.setHint(s3);
                 etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                     @Override
                     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

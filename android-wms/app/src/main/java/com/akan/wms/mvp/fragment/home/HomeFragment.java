@@ -3,6 +3,8 @@ package com.akan.wms.mvp.fragment.home;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,7 +32,6 @@ import com.akan.wms.util.ToastUtil;
 import com.akan.wms.util.shadow.ShadowLayout;
 import com.bilibili.boxing_impl.view.SpacesItemDecoration;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
-import com.king.zxing.CaptureActivity;
 import com.king.zxing.Intents;
 
 import org.greenrobot.eventbus.EventBus;
@@ -93,6 +96,8 @@ public class HomeFragment extends BaseFragment<IHomeView, HomePresenter> impleme
     private List<WarnTwoBean> list;
     private HomeAdapter adapter;
     private int page = 1;
+
+
 
     public static HomeFragment newInstance() {
         Bundle args = new Bundle();
@@ -165,25 +170,10 @@ public class HomeFragment extends BaseFragment<IHomeView, HomePresenter> impleme
      * 扫码
      */
     private void startScan() {
-        Intent intent = new Intent(getActivity(), CaptureActivity.class);
+        Intent intent = new Intent(getActivity(), HomeScanActivity.class);
         startActivityForResult(intent, REQUEST_CODE_SCAN);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            switch (requestCode) {
-                case REQUEST_CODE_SCAN:
-                    String result = data.getStringExtra(Intents.Scan.RESULT);
-                    map.clear();
-                    map.put("barCode",result);
-                    getPresenter().selectItemBarMsgList(map);
-                   // ToastUtil.showToast(context.getApplicationContext(), result);
-                    break;
-            }
-        }
-    }
 
 
     @OnClick({R.id.ivScan, R.id.ivMsg, R.id.tvSearch, R.id.tvSOne, R.id.tvSTwo, R.id.tvSThree,
@@ -237,6 +227,39 @@ public class HomeFragment extends BaseFragment<IHomeView, HomePresenter> impleme
 
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case REQUEST_CODE_SCAN:
+                    String result = data.getStringExtra(Intents.Scan.RESULT);
+                    map.clear();
+                    map.put("barCode","16973520629638839978");
+                    getPresenter().selectItemBarMsgList(userBean.getStaff_token(),map);
+                    break;
+            }
+        }
+    }
+
+    @Override
+    public void onSelectItemBarMsgList(BarMsgBean data) {
+        startHomeScanResultFragment(data);
+    }
+
+    @Override
+    public void onQueryBoardWarnings(List<WarnTwoBean> data) {
+        refreshLayout.setRefreshing(false);
+        adapter.clear();
+        adapter.addAll(data);
+        adapter.notifyDataSetChanged();
+    }
+
+
+
+
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
@@ -270,18 +293,6 @@ public class HomeFragment extends BaseFragment<IHomeView, HomePresenter> impleme
 
     }
 
-    @Override
-    public void onQueryBoardWarnings(List<WarnTwoBean> data) {
-        refreshLayout.setRefreshing(false);
-        adapter.clear();
-        adapter.addAll(data);
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onSelectItemBarMsgList(BarMsgBean data) {
-        startHomeScanResultFragment(data);
-    }
 
 
 

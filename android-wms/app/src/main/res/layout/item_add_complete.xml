@@ -245,7 +245,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="16dp"
             android:text="完工数量"
             android:textColor="@color/colorTextG9"
@@ -363,7 +363,7 @@
             android:layout_marginLeft="16dp"
             android:background="@null"
             android:gravity="end"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:hint="请输入废品重量"
             android:paddingRight="16dp"
             android:textColor="@color/colorTextG3"
@@ -512,7 +512,7 @@
             android:layout_marginLeft="16dp"
             android:background="@null"
             android:gravity="end"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:hint="请输入机台准备工时"
             android:paddingRight="16dp"
             android:textColor="@color/colorTextG3"
@@ -551,7 +551,7 @@
             android:background="@null"
             android:gravity="end"
             android:hint="请输入机台时作工时"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:paddingRight="16dp"
             android:textColor="@color/colorTextG3"
             android:textSize="13sp" />

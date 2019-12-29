@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_alignTop="@+id/rg"
+        android:background="@color/bg_lien"
+        app:layout_constraintBottom_toTopOf="@+id/rg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
     <RadioGroup
         android:id="@+id/rg"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
         android:checkedButton="@+id/rbHome"
         android:orientation="horizontal"
-        android:padding="5dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
@@ -72,14 +80,4 @@
 
     </RadioGroup>
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0.1dp"
-        android:layout_alignTop="@+id/rg"
-        android:background="@color/bg_lien"
-        app:layout_constraintBottom_toTopOf="@+id/rg"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

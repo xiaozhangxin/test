@@ -1,5 +1,8 @@
 package com.akan.wms.mvp.fragment.part;
 
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +10,8 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -53,6 +58,7 @@ public class UpcomFragment extends BaseFragment<IChooseItemView, ChooseItemPrese
     private int page = 1;
     private Map<String, String> map = new HashMap<>();
     private UserBean userBean;
+
 
     public static UpcomFragment newInstance() {
         Bundle args = new Bundle();

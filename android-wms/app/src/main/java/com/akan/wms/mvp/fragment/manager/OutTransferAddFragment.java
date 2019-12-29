@@ -94,7 +94,7 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
     private UserBean userBean;
     private String mDoc_type_id;//单据类型id
     private String in_org_id;//组织id
-    private String transfer_direction;//调拨方向
+    private String transfer_direction="0";//调拨方向
 
     private int mDeletePosition;
     private int mPosition;
@@ -171,11 +171,11 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
                 showCloseDialog();
                 break;
             case R.id.tvRight:
-                if (TextUtils.isEmpty(mDoc_type_id)) {
+                if (TextUtils.isEmpty(tvThree.getText().toString().trim())) {
                     ToastUtil.showToast(context.getApplicationContext(), "请选择单据类型");
                     return;
                 }
-                if (TextUtils.isEmpty(in_org_id)) {
+                if (TextUtils.isEmpty(tvFour.getText().toString().trim() )) {
                     ToastUtil.showToast(context.getApplicationContext(), "请选择调入组织");
                     return;
                 }
@@ -197,7 +197,6 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
             case R.id.tvFour://选择调入组织
                 if (adapter.getAllData().size() > 0) {
                     //操作确认弹框
-
                     final AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("提示");
                     builder.setMessage("重新选择调入组织会清空已选申请单,是否继续？");
@@ -229,11 +228,11 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
                 break;
             case R.id.llAdd:
                 String mtvFour = tvFour.getText().toString();
-                if (TextUtils.isEmpty(mtvFour)){
+/*                if (TextUtils.isEmpty(mtvFour)){
                     ToastUtil.showToast(context.getApplicationContext(),"请选择调入组织");
                     return;
-                }
-                startTransferApplyListFragment(mtvFour,"add");
+                }*/
+                startTransferApplyListFragment("","add");
                 break;
         }
     }
@@ -321,12 +320,12 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
         TransferUnCompleteBean applyBean = allData.get(0);
         map.clear();
         map.put("org_id", userBean.getOrg_id());
-        map.put("doc_type_id", mDoc_type_id);
+        map.put("doc_type_id", mChooseBean.getDoc_type_id());
         map.put("doc_type_name", tvThree.getText().toString());
-        map.put("apply_id", applyBean.getId() + "");
-        map.put("apply_no", applyBean.getDoc_no());
-        map.put("in_org_id", in_org_id);
+        map.put("in_org_id", mChooseBean.getIn_org_id());
         map.put("in_org_name", tvFour.getText().toString());
+        map.put("apply_id", mChooseBean.getId());
+        map.put("apply_no", mChooseBean.getDoc_no());
         map.put("remark", tvSix.getText().toString());
         map.put("transfer_direction", transfer_direction);
 
@@ -490,6 +489,12 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
                 mChooseBean.setDoc_no(bean.getDoc_no());
                 mChooseBean.setId(bean.getId());
                 mChooseBean.setDoc_type_name(bean.getDoc_type_name());
+                mChooseBean.setDoc_type_id(bean.getDoc_type_id());
+                mChooseBean.setIn_org_id(bean.getIn_org_id());
+                mChooseBean.setIn_org_name(bean.getIn_org_name());
+                tvFour.setText(bean.getIn_org_name());
+                tvThree.setText(bean.getDoc_type_name());
+
                 List<TransferUnCompleteBean.LineBeanListBean> list = new ArrayList<>();
                 for (int i = 0; i < bean.getLineBeanList().size(); i++) {
                     if (bean.getLineBeanList().get(i).isCheck()) {

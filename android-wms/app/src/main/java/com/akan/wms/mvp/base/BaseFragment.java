@@ -230,6 +230,7 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         intent.putExtra(Constants.DETAIL_ID, detail_id);
         startActivity(intent);
     }
+
     protected void startHomeScanResultFragment(BarMsgBean bean) {
         Intent intent = getFragmentIntent(Constants.HOME_SCAN);
         intent.putExtra(Constants.BEAN, bean);
@@ -241,6 +242,12 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         intent.putExtra(Constants.LIST_DATA, (Serializable) list);
         intent.putExtra(Constants.LIST_DATA_TWO, (Serializable) barList);
         intent.putExtra(Constants.DETAIL_ID, detail_id);
+        startActivity(intent);
+    }
+
+    protected void startHomeScanChildResultFragment(List<String> list) {
+        Intent intent = getFragmentIntent(Constants.SCAN_RESULT_CHILD);
+        intent.putExtra(Constants.LIST_DATA, (Serializable) list);
         startActivity(intent);
     }
 
@@ -291,14 +298,14 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         startActivity(intent);
     }
 
-    protected void startChooseBuyReturnListFragment(String id,String inType) {
+    protected void startChooseBuyReturnListFragment(String id, String inType) {
         Intent intent = getFragmentIntent(Constants.CHOOSE_BUY_RETURN_LIST);
         intent.putExtra(Constants.DETAIL_ID, id);
         intent.putExtra(Constants.DETAIL_TYPE, inType);
         startActivity(intent);
     }
 
-    protected void startStockListFragment(String id,String type) {
+    protected void startStockListFragment(String id, String type) {
         Intent intent = getFragmentIntent(Constants.STOCK_LIST);
         intent.putExtra(Constants.DETAIL_ID, id);
         intent.putExtra(Constants.DETAIL_TYPE, type);
@@ -360,6 +367,12 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
 
     protected void startChooseDeportFragment() {
         Intent intent = getFragmentIntent(Constants.CHOOSE_DEPORT);
+        startActivity(intent);
+    }
+
+    protected void startChooseDeportByIdFragment(String id) {
+        Intent intent = getFragmentIntent(Constants.CHOOSE_DEPORT_BY_ID);
+        intent.putExtra(Constants.DETAIL_ID, id);
         startActivity(intent);
     }
 
@@ -660,7 +673,7 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
     }
 
 
-    protected void startStockChildFragment(PurchaseBean bean,String childType) {
+    protected void startStockChildFragment(PurchaseBean bean, String childType) {
         Intent intent = getFragmentIntent(Constants.STOCK_CHILD);
         intent.putExtra(Constants.BEAN, bean);
         intent.putExtra(Constants.DETAIL_TYPE, childType);
@@ -714,7 +727,7 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         startActivity(intent);
     }
 
-    protected void startChooseBuyReturnChildFragment(OutSaleRtuBean bean, String id,String inReturnType) {
+    protected void startChooseBuyReturnChildFragment(OutSaleRtuBean bean, String id, String inReturnType) {
         Intent intent = getFragmentIntent(Constants.CHOOSE_BUY_RETURN_CHILD);
         intent.putExtra(Constants.DETAIL_ID, id);
         intent.putExtra(Constants.DETAIL_TYPE, inReturnType);
