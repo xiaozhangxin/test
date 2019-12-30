@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.akan.wms.R;
 import com.akan.wms.bean.BarBean;
 import com.akan.wms.util.ToastUtil;
-import com.akan.wms.view.MaxEditText;
+//import com.akan.wms.view.MaxEditText;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
