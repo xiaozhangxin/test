@@ -345,7 +345,21 @@ public class ProduceReceiveAddFragment extends BaseFragment<IProduceReceiveView,
         switch (msg) {
             case "2"://选择料品
                 List<ItemInfoBean> list = event.getGoodsListBean().getList();
-                adapter.addAll(list);
+                List<ItemInfoBean> allData = adapter.getAllData();
+                if (allData.size() > 0) {
+                    for (int i = 0; i < allData.size(); i++) {
+                        for (int j = 0; j < list.size(); j++) {
+                            if (allData.get(i).getItem_id().equals(list.get(j).getItem_id())) {
+                                allData.get(i).setNum(Integer.parseInt(allData.get(i).getNum()) + Integer.parseInt(list.get(j).getNum()) + "");
+                                list.remove(j);
+                            }
+                        }
+                    }
+                    adapter.addAll(list);
+                    adapter.notifyDataSetChanged();
+                } else {
+                    adapter.addAll(list);
+                }
                 break;
             case "6"://选择仓库
                 WareHouseBean houseBean = event.getmWareHouseBean();

@@ -75,8 +75,6 @@ public class WelcomeActivity extends SplashActivity {
                     finish();
                 } else {
                     UserBean userBean = SPUtils.getObj1(WelcomeActivity.this, Constants.USER_BEAN);
-                    Log.e("ZZZ",userBean.getStaff_token());
-                    Log.e("ZZZ",userBean.getOrg_id());
                     if (userBean == null) {
                         startLogin();
 

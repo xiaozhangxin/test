@@ -200,13 +200,13 @@ public class OutSaleAddNewFragment extends BaseFragment<IOutSaleView, OutSalePre
                 showDialog("完成");
                 break;
             case R.id.tvFour://选择单据类型
-                startChooseSaleTypeFragment();
+               // startChooseSaleTypeFragment();
                 break;
             case R.id.llAdd:
-                if (TextUtils.isEmpty(mDoc_type_id)) {
+/*                if (TextUtils.isEmpty(mDoc_type_id)) {
                     ToastUtil.showToast(context.getApplicationContext(), "请选择单据类型");
                     return;
-                }
+                }*/
                 startChooseOutPlanListFragment(tvFour.getText().toString());
                 break;
         }
@@ -468,6 +468,8 @@ public class OutSaleAddNewFragment extends BaseFragment<IOutSaleView, OutSalePre
                 break;
             case "2"://选择出货计划
                 ShipPlanBean bean = event.getmShipPlanBean();
+                tvFour.setText(bean.getDoc_type_name());
+                mDoc_type_id = bean.getDoc_type_id();
                 mChooseBean.setPlanLineBeans(bean.getPlanLineBeans());
                 mChooseBean.setId(bean.getId());
                 mChooseBean.setDoc_no(bean.getDoc_no());
@@ -487,6 +489,8 @@ public class OutSaleAddNewFragment extends BaseFragment<IOutSaleView, OutSalePre
                     PlanLineBean lineBean = list.get(0);
                     tvThree.setText(lineBean.getCustomer_name());
                     mCustomer_id = lineBean.getCustomer_id() + "";
+
+
                 }
                 break;
             case "6"://选择仓库

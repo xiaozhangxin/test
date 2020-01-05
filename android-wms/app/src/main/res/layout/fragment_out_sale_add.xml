@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -115,9 +115,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="3dp"
-                        android:drawableRight="@drawable/must_img"
                         android:text="单据类型"
-                        android:textColor="@color/colorTextG3"
+                        android:textColor="@color/colorTextG9"
                         android:textSize="13sp" />
 
                     <TextView
@@ -125,9 +124,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawablePadding="5dp"
-                        android:drawableRight="@drawable/right"
                         android:gravity="end"
-                        android:hint="请选择"
+                        android:hint="单据类型"
                         android:textColor="@color/colorTextG3"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -161,7 +159,7 @@
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:gravity="end"
-                        android:hint="选择出货计划自动添加"
+                        android:hint="客户"
                         android:textColor="@color/colorTextG3"
                         android:textSize="13sp" />
                 </LinearLayout>

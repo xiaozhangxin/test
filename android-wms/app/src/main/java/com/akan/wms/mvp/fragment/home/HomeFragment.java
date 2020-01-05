@@ -2,11 +2,13 @@ package com.akan.wms.mvp.fragment.home;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,6 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.akan.wms.R;
+import com.akan.wms.bean.AppVersionBean;
 import com.akan.wms.bean.BarMsgBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.UserBean;
@@ -92,6 +95,7 @@ public class HomeFragment extends BaseFragment<IHomeView, HomePresenter> impleme
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
     private Map<String, String> map = new HashMap<>();
+    private Map<String, String> map1= new HashMap<>();
     private UserBean userBean;
     private List<WarnTwoBean> list;
     private HomeAdapter adapter;
@@ -140,6 +144,8 @@ public class HomeFragment extends BaseFragment<IHomeView, HomePresenter> impleme
     @Override
     public void initData() {
         userBean = SpSingleInstance.getSpSingleInstance().getUserBean();
+        map1.put("version_type", "android");
+        getPresenter().getAppVersionDetail(map1);
         refresh();
     }
 
@@ -245,6 +251,40 @@ public class HomeFragment extends BaseFragment<IHomeView, HomePresenter> impleme
     public void onSelectItemBarMsgList(BarMsgBean data) {
         startHomeScanResultFragment(data);
     }
+
+    @Override
+    public void OnGetAppVersionDetail(AppVersionBean data) {
+        if (data.needUpdate()){
+            showDialogUpdate(data.getVersion_no(), data.getUpdate_content(), data.getMust_update());//弹出提示版本更新的对话框
+        }
+    }
+
+    /**
+     * 提示版本更新的对话框
+     */
+    private void showDialogUpdate(String versionName, String content, String mustUpdate) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("发现新版本" + versionName + "！").
+                setIcon(R.mipmap.ic_launcher).
+                setMessage(content).
+                setPositiveButton("立刻更新", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startSaftwareFragment();
+                    }
+                });
+        if ("0".equals(mustUpdate)) {
+            // 设置取消按钮,null是什么都不做，并关闭对话框
+            builder.setNegativeButton(getString(R.string.cancel), null);
+        }
+        builder.setCancelable(false);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+
+    }
+
 
     @Override
     public void onQueryBoardWarnings(List<WarnTwoBean> data) {

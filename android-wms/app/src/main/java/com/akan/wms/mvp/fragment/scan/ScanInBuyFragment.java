@@ -141,7 +141,20 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
     //查询条码返回
     @Override
     public void OnQueryBar(BarBean data) {
-        ResultProcess(data);
+        String itemCode = data.getItem_code();
+        boolean isHave = false;
+        for (int i = 0; i < barList.size(); i++) {
+            if (itemCode.equals(barList.get(i).getItem_code())) {
+                isHave = true;
+            }
+
+        }
+        if (isHave) {
+            showHaveDialog(data);
+        } else {
+            ResultProcess(data);
+        }
+
     }
 
     //扫码结果处理
@@ -207,6 +220,22 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
             showNotDialog(bean.getItem_name());
         }
 
+    }
+
+
+    //重复提示框
+    private void showHaveDialog(BarBean data) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("扫码重复");
+        builder.setMessage("商品［" + data.getItem_name() + "］的条码［" + data.getItem_code() + "］\n已经扫过了，请勿重复扫码");
+        builder.setCancelable(false);
+        builder.setPositiveButton("继续", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mCaptureHelper.restartPreviewAndDecode();
+            }
+        });
+        builder.create().show();
     }
 
 

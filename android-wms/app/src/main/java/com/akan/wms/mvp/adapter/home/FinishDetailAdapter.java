@@ -70,7 +70,7 @@ public class FinishDetailAdapter extends RecyclerArrayAdapter<StoragingProBean.S
                tvFour.setEnabled(false);
             }
             tvOne.setText(data.getItem_name()+"/"+data.getItem_spec());
-            tvTwo.setText(data.getComplete_qty());
+            tvTwo.setText(data.getQualified_qty());
             tvThree.setText(data.getWh_qty()+"");
             tvFour.setText(data.getWh_name());
             tvNo.setText(data.getDoc_no());

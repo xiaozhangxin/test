@@ -27,6 +27,7 @@ import android.widget.TextView;
 
 import com.akan.wms.Constants;
 import com.akan.wms.R;
+import com.akan.wms.bean.AppVersionBean;
 import com.akan.wms.bean.BarMsgBean;
 import com.akan.wms.bean.UserBean;
 import com.akan.wms.bean.WarnTwoBean;
@@ -150,9 +151,10 @@ public class HomeScanActivity extends BaseActivity <IHomeView, HomePresenter> im
         startActivity(intent);
     }
 
+    @Override
+    public void OnGetAppVersionDetail(AppVersionBean data) {
 
-
-
+    }
 
 
     @OnClick({R.id.ivBack, R.id.llInput, R.id.llLight})

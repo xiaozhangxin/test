@@ -5,7 +5,6 @@ import android.support.annotation.LayoutRes;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -14,8 +13,6 @@ import android.widget.TextView;
 
 import com.akan.wms.R;
 import com.akan.wms.bean.BarBean;
-import com.akan.wms.util.ToastUtil;
-//import com.akan.wms.view.MaxEditText;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 

@@ -152,6 +152,8 @@ public class OutTransferAddNewFragment extends BaseFragment<IOutTransferView, Ou
         });
 
         TransferUnCompleteBean completeBean = new TransferUnCompleteBean();
+        tvFour.setText(mChooseBean.getIn_org_name());
+        tvThree.setText(mChooseBean.getDoc_type_name());
         List<TransferUnCompleteBean.LineBeanListBean> list = new ArrayList<>();
         for (int i = 0; i < mChooseBean.getLineBeanList().size(); i++) {
             if (mChooseBean.getLineBeanList().get(i).isCheck()) {
@@ -329,11 +331,11 @@ public class OutTransferAddNewFragment extends BaseFragment<IOutTransferView, Ou
         TransferUnCompleteBean applyBean = allData.get(0);
         map.clear();
         map.put("org_id", userBean.getOrg_id());
-        map.put("doc_type_id", mDoc_type_id);
+        map.put("doc_type_id", mChooseBean.getDoc_type_id());
         map.put("doc_type_name", tvThree.getText().toString());
         map.put("apply_id", applyBean.getId() + "");
         map.put("apply_no", applyBean.getDoc_no());
-        map.put("in_org_id", in_org_id);
+        map.put("in_org_id", mChooseBean.getIn_org_id());
         map.put("in_org_name", tvFour.getText().toString());
         map.put("remark", tvSix.getText().toString());
         map.put("transfer_direction", transfer_direction);
@@ -498,6 +500,8 @@ public class OutTransferAddNewFragment extends BaseFragment<IOutTransferView, Ou
                 mChooseBean.setDoc_no(bean.getDoc_no());
                 mChooseBean.setId(bean.getId());
                 mChooseBean.setDoc_type_name(bean.getDoc_type_name());
+                tvFour.setText(bean.getIn_org_name());
+                tvThree.setText(bean.getDoc_type_name());
                 List<TransferUnCompleteBean.LineBeanListBean> list = new ArrayList<>();
                 for (int i = 0; i < bean.getLineBeanList().size(); i++) {
                     if (bean.getLineBeanList().get(i).isCheck()) {

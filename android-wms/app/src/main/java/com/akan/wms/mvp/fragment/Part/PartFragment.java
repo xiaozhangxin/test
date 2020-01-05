@@ -78,7 +78,6 @@ public class PartFragment extends BaseFragment<IMessageView, MessagePresenter> i
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-
                 // startChooseSaleReturnChildFragment(adapter.getItem(position));
             }
         });

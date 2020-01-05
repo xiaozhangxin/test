@@ -1,6 +1,7 @@
 package com.akan.wms.mvp.presenter.home;
 
 import com.akan.wms.App;
+import com.akan.wms.bean.AppVersionBean;
 import com.akan.wms.bean.BarMsgBean;
 import com.akan.wms.bean.WarnTwoBean;
 import com.akan.wms.http.HttpResult;
@@ -18,6 +19,44 @@ import io.reactivex.schedulers.Schedulers;
 public class HomePresenter extends BasePresenter<IHomeView>{
     public HomePresenter(App app) {
         super(app);
+    }
+
+    public void getAppVersionDetail( Map<String, String> parmer) {
+        if (isViewAttached())
+            getView().showProgress();
+        getAppComponent().getAPIService()
+                .getAppVersionDetail( parmer)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<HttpResult<AppVersionBean>>() {
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (isViewAttached())
+                            getView().onError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(HttpResult<AppVersionBean> userBeanHttpResult) {
+                        if (userBeanHttpResult != null) {
+                            if (isViewAttached()) {
+                                getView().OnGetAppVersionDetail(userBeanHttpResult.getData());
+                            }
+                        }
+
+                    }
+                });
+
     }
 
     public void queryBoardWarnings(String token, Map<String, String> parmer) {

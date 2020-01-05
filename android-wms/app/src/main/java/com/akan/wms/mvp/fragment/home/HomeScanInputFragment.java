@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.akan.wms.Constants;
 import com.akan.wms.R;
+import com.akan.wms.bean.AppVersionBean;
 import com.akan.wms.bean.BarMsgBean;
 import com.akan.wms.bean.UserBean;
 import com.akan.wms.bean.WarnTwoBean;
@@ -223,6 +224,11 @@ public class HomeScanInputFragment extends BaseFragment<IHomeView, HomePresenter
         intent.putExtra(Constants.KEY_FRAGMENT, HOME_SCAN);
         intent.putExtra("bean",data);
         startActivity(intent);
+    }
+
+    @Override
+    public void OnGetAppVersionDetail(AppVersionBean data) {
+
     }
 
     @Override

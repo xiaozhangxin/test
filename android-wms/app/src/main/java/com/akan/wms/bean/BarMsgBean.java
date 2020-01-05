@@ -300,7 +300,7 @@ public class BarMsgBean implements Serializable {
         private String item_code;
         private String item_spec;
         private String item_sku;
-        private int in_out_type;
+        private String in_out_type;
         private String qty;
         private String create_time;
         private String custom_name;
@@ -409,11 +409,11 @@ public class BarMsgBean implements Serializable {
             this.item_sku = item_sku;
         }
 
-        public int getIn_out_type() {
+        public String getIn_out_type() {
             return in_out_type;
         }
 
-        public void setIn_out_type(int in_out_type) {
+        public void setIn_out_type(String in_out_type) {
             this.in_out_type = in_out_type;
         }
 
