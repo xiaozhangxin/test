@@ -14,8 +14,10 @@ import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import java.util.List;
 
 public class TransferApplyChildAdapter extends RecyclerArrayAdapter<TransferUnCompleteBean.LineBeanListBean> {
-    public TransferApplyChildAdapter(Context context, List<TransferUnCompleteBean.LineBeanListBean> list) {
+    private String mType;
+    public TransferApplyChildAdapter(Context context, List<TransferUnCompleteBean.LineBeanListBean> list,String type) {
         super(context, list);
+        this.mType=type;
     }
 
     @Override
@@ -41,6 +43,11 @@ public class TransferApplyChildAdapter extends RecyclerArrayAdapter<TransferUnCo
         @Override
         public void setData(TransferUnCompleteBean.LineBeanListBean data) {
             super.setData(data);
+            if ("home".equals(mType)){
+                ckTop.setVisibility(ViewGroup.GONE);
+            }else {
+                ckTop.setVisibility(ViewGroup.VISIBLE);
+            }
             if (data.isCheck()) {
                 ckTop.setChecked(true);
             } else {

@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.SurfaceView;
@@ -141,13 +142,15 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
     //查询条码返回
     @Override
     public void OnQueryBar(BarBean data) {
-        String itemCode = data.getItem_code();
+        //通过item_id判断是否重复扫码
+        String itemCode = data.getBar_code();
         boolean isHave = false;
-        for (int i = 0; i < barList.size(); i++) {
-            if (itemCode.equals(barList.get(i).getItem_code())) {
-                isHave = true;
+        if (barList.size()>0){
+            for (int i = 0; i < barList.size(); i++) {
+                if (itemCode.equals(barList.get(i).getBar_code())) {
+                    isHave = true;
+                }
             }
-
         }
         if (isHave) {
             showHaveDialog(data);
@@ -161,9 +164,9 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
     private void ResultProcess(BarBean bean) {
         boolean isIn = false;
         for (int i = 0; i < oldList.size(); i++) {
-            if (oldList.get(i).getItem_id().equals(bean.getItem_code())) {
-
+            if (oldList.get(i).getItem_code().equals(bean.getItem_code())) {
                 int qty = bean.getQty();//条码里的数量
+                bean.setMax_num(bean.getQty());
                 ScanInfoBean scanInfoBean = oldList.get(i);
                 switch (type) {
                     case "in_buy_point"://采购入库(点收)
@@ -241,17 +244,23 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
 
     //扫码成功弹框
     private void showRightDialog(String result) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        new Handler().postDelayed(new Runnable(){
+            public void run(){
+                mCaptureHelper.restartPreviewAndDecode();
+            }
+        },500);
+
+/*        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("扫描成功");
         builder.setMessage(result + "\n已加入扫描记录");
         builder.setCancelable(false);
         builder.setPositiveButton("继续", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                mCaptureHelper.restartPreviewAndDecode();
+
             }
         });
-        builder.create().show();
+        builder.create().show();*/
 
     }
 

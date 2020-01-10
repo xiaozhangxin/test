@@ -393,7 +393,8 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
             List<ScanInfoBean> scanList = new ArrayList<>();
             ScanInfoBean scanBean = new ScanInfoBean();
             StoragingProBean.StoragingProLinesBean detail = adapter.getItem(mScanPosition);
-            scanBean.setItem_id(detail.getItem_code());
+            scanBean.setItem_code(detail.getItem_code());
+            scanBean.setItem_id(detail.getItem_id());
             scanBean.setItem_name(detail.getItem_name());
             scanBean.setItem_spec(detail.getItem_spec());
             scanBean.setSend_qty(detail.getWh_qty());//入库数量
@@ -437,7 +438,7 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
                 List<ScanInfoBean> list = event.getmScanInBuyBean().getList();
                 StoragingProBean.StoragingProLinesBean adapterItem = adapter.getItem(mScanPosition);
                 for (int j = 0; j < list.size(); j++) {
-                    if (adapterItem.getItem_code().equals(list.get(j).getItem_id())) {
+                    if (adapterItem.getItem_code().equals(list.get(j).getItem_code())) {
                         adapterItem.setCheck_qty(list.get(j).getArrive_qty());
                         adapterItem.setBar_code(list.get(j).getBar_code());
                     }

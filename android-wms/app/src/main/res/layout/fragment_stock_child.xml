@@ -65,15 +65,15 @@
 
         <CheckBox
             android:id="@+id/ckTop"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+            android:layout_width="16dp"
+            android:layout_height="15dp"
             android:layout_marginRight="16dp"
-            android:clickable="false"
             android:background="@drawable/selector_checkbox"
+            android:button="@null"
+            android:clickable="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:button="@null" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </android.support.constraint.ConstraintLayout>

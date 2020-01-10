@@ -344,7 +344,8 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
                 RtnLinesBean detail = rtnLines.get(i);
                 ScanInfoBean scanBean = new ScanInfoBean();
                 scanBean.setItem_spec(detail.getItem_spec());
-                scanBean.setItem_id(detail.getItem_code());
+                scanBean.setItem_code(detail.getItem_code());
+                scanBean.setItem_id(detail.getItem_id());
                 scanBean.setItem_name(detail.getItem_name());
                 scanBean.setSend_qty((int)detail.getRtn_qty());//申请数量
                 scanBean.setArrive_qty(detail.getSend_qty());//配货数量
@@ -446,7 +447,7 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
                 List<RtnLinesBean> rtn_lines = adapter.getItem(mScanPosition).getRtn_lines();
                 for (int i = 0; i < rtn_lines.size(); i++) {
                     for (int j = 0; j < listScan.size(); j++) {
-                        if (rtn_lines.get(i).getItem_code().equals(listScan.get(j).getItem_id())) {
+                        if (rtn_lines.get(i).getItem_code().equals(listScan.get(j).getItem_code())) {
                             rtn_lines.get(i).setSend_qty(listScan.get(j).getArrive_qty());
                             rtn_lines.get(i).setItem_code(listScan.get(j).getBar_code());
                         }

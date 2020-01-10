@@ -283,7 +283,7 @@ public class OutSaleAddFragment extends BaseFragment<IOutSaleView, OutSalePresen
                 mList.add(mBean);
                 for (int m=0;m<barList.size();m++){
                     BarBean barBean = barList.get(m);
-                    if (barBean.getItem_id().equals(planLineBean.getItem_id())){
+                    if (barBean.getItem_code().equals(planLineBean.getItem_code())){
                         BarListBean mBarbean = new BarListBean();
                         mBarbean.setItem_bar(barBean.getBar_code());
                         mBarbean.setItem_id(barBean.getItem_id());
@@ -337,7 +337,8 @@ public class OutSaleAddFragment extends BaseFragment<IOutSaleView, OutSalePresen
             for (int i = 0; i < rtn_lines.size(); i++) {
                 ScanInfoBean scanBean = new ScanInfoBean();
                 PlanLineBean detail = rtn_lines.get(i);
-                scanBean.setItem_id(detail.getItem_code());//料品id
+                scanBean.setItem_code(detail.getItem_code());//料品code
+                scanBean.setItem_id(detail.getItem_id());//料品id
                 scanBean.setItem_name(detail.getItem_name());//料品名称
                 scanBean.setItem_spec(detail.getItem_spec());//料品规格
                 scanBean.setSend_qty((int)detail.getPlan_qty());//申请数量
@@ -481,7 +482,7 @@ public class OutSaleAddFragment extends BaseFragment<IOutSaleView, OutSalePresen
                 List<PlanLineBean> rtn_lines = adapter.getItem(mScanPosition).getPlanLineBeans();
                 for (int i = 0; i < rtn_lines.size(); i++) {
                     for (int j = 0; j < listScan.size(); j++) {
-                        if (rtn_lines.get(i).getItem_code().equals(listScan.get(j).getItem_id())) {
+                        if (rtn_lines.get(i).getItem_code().equals(listScan.get(j).getItem_code())) {
                             rtn_lines.get(i).setAdd_qty(listScan.get(j).getArrive_qty());
                             rtn_lines.get(i).setBar_code(listScan.get(j).getBar_code());
                         }

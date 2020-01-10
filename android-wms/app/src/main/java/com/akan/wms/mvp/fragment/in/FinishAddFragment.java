@@ -231,7 +231,6 @@ public class FinishAddFragment extends BaseFragment<IFinishView, FinishPresenter
 
     //提交数据
     private void toCommit() {
-
         AddStoragingProBean mBean = new AddStoragingProBean();
         mBean.setRemark(tvSix.getText().toString());
         List<ProductionOrderBean> allData = adapter.getAllData();

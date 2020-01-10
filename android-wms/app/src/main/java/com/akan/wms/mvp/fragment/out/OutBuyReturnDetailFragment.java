@@ -344,7 +344,8 @@ public class OutBuyReturnDetailFragment extends BaseFragment<IOutBuyReturnView, 
             for (int i = 0; i < rtn_lines.size(); i++) {
                 ScanInfoBean scanBean = new ScanInfoBean();
                 RtnedLinesBean.RtnedGodsLinesBean detail = rtn_lines.get(i);
-                scanBean.setItem_id(detail.getItem_code());
+                scanBean.setItem_code(detail.getItem_code());
+                scanBean.setItem_id(detail.getItem_id());
                 scanBean.setItem_name(detail.getItem_name());
                 scanBean.setItem_spec(detail.getItem_spec());
                 scanBean.setSend_qty(detail.getAlloc_qty());//配货数量

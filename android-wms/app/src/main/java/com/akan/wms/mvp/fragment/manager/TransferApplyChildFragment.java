@@ -94,31 +94,43 @@ public class TransferApplyChildFragment extends BaseFragment<ITransferApplyView,
     @Override
     public void initUI() {
         tvTitle.setText("调拨申请详情");
+        if ("home".equals(mIn)){
+            llBottom.setVisibility(View.GONE);
+            ckTop.setVisibility(View.GONE);
+        }else {
+            llBottom.setVisibility(View.VISIBLE);
+            ckTop.setVisibility(View.VISIBLE);
+        }
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        adapter = new TransferApplyChildAdapter(context, list);
+        adapter = new TransferApplyChildAdapter(context, list,mIn);
         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                boolean check = adapter.getItem(position).isCheck();
-                adapter.getItem(position).setCheck(!check);
-                adapter.notifyItemChanged(position);
-                checkNum = 0;
-                List<TransferUnCompleteBean.LineBeanListBean> allData = adapter.getAllData();
-                for (int i = 0; i < allData.size(); i++) {
-                    if (allData.get(i).isCheck()) {
-                        checkNum++;
+                if ("home".equals(mIn)){
+                    return;
+                }else {
+                    boolean check = adapter.getItem(position).isCheck();
+                    adapter.getItem(position).setCheck(!check);
+                    adapter.notifyItemChanged(position);
+                    checkNum = 0;
+                    List<TransferUnCompleteBean.LineBeanListBean> allData = adapter.getAllData();
+                    for (int i = 0; i < allData.size(); i++) {
+                        if (allData.get(i).isCheck()) {
+                            checkNum++;
+                        }
+                    }
+                    tvChooseNum.setText("已选择(" + checkNum + ")");
+                    if (checkNum == allData.size()) {
+                        ckTop.setChecked(true);
+                        isAllCheck = true;
+                    } else {
+                        ckTop.setChecked(false);
+                        isAllCheck = false;
                     }
                 }
-                tvChooseNum.setText("已选择(" + checkNum + ")");
-                if (checkNum == allData.size()) {
-                    ckTop.setChecked(true);
-                    isAllCheck = true;
-                } else {
-                    ckTop.setChecked(false);
-                    isAllCheck = false;
-                }
+
 
             }
         });

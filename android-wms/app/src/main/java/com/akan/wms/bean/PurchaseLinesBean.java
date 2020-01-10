@@ -27,9 +27,19 @@ public class PurchaseLinesBean implements Serializable {
     private String item_id;
     private String item_name;
     private double pur_qty;
+    private double perOfOvertopQty;
     private String wh_name;
     private String wh_id;
     private String mfc;
+
+    public double getPerOfOvertopQty() {
+        return perOfOvertopQty;
+    }
+
+    public void setPerOfOvertopQty(double perOfOvertopQty) {
+        this.perOfOvertopQty = perOfOvertopQty;
+    }
+
     private String mfc_name;
 
     public String getMfc() {

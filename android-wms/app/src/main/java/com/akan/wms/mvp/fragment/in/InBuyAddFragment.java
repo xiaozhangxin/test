@@ -124,6 +124,7 @@ public class InBuyAddFragment extends BaseFragment<IInBuyView, InBuyPresenter> i
         lineTwo.setVisibility(View.VISIBLE);
         llThree.setVisibility(View.VISIBLE);
         llFour.setVisibility(View.VISIBLE);
+        tvFour.setEnabled(false);
         tvRight.setText("完成");
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -305,7 +306,7 @@ public class InBuyAddFragment extends BaseFragment<IInBuyView, InBuyPresenter> i
                     ToastUtil.showToast(context.getApplicationContext(), "请输入送货数量");
                     return;
                 }
-                if (linesBean.getSend_qty() > linesBean.getPur_qty()) {
+                if (linesBean.getSend_qty() > linesBean.getPerOfOvertopQty()) {
                     ToastUtil.showToast(context.getApplicationContext(), "送货数量大于采购数量");
                     return;
                 }
@@ -313,7 +314,7 @@ public class InBuyAddFragment extends BaseFragment<IInBuyView, InBuyPresenter> i
                 receivesBean.setItem_id(linesBean.getItem_id());
                 receivesBean.setMfc(linesBean.getMfc());
                 receivesBean.setPur_id(linesBean.getPur_id() + "");
-                receivesBean.setPur_qty(linesBean.getPur_qty() + "");
+                receivesBean.setPur_qty(linesBean.getPerOfOvertopQty() + "");
                 receivesBean.setSend_qty(linesBean.getSend_qty() + "");
                 receivesBean.setWh_id(linesBean.getWh_id());
                 receivesBean.setWh_staff_id(linesBean.getWh_manager_id());
@@ -449,7 +450,7 @@ public class InBuyAddFragment extends BaseFragment<IInBuyView, InBuyPresenter> i
             case "9"://选择库管员
                 OperatorBean operatorBean = event.getmOperatorBean();
                 adapter.getItem(mWhPosition).getPurchase_lines().get(mWhCChildPosition).setWh_manager(operatorBean.getOperator_name());
-                adapter.getItem(mWhPosition).getPurchase_lines().get(mWhCChildPosition).setMfc(operatorBean.getOperator_code());
+                adapter.getItem(mWhPosition).getPurchase_lines().get(mWhCChildPosition).setWh_manager_id(operatorBean.getOperator_code());
                 adapter.notifyDataSetChanged();
                 break;
         }

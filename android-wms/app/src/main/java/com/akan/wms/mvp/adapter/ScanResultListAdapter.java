@@ -53,7 +53,7 @@ public class ScanResultListAdapter extends RecyclerArrayAdapter<BarBean> {
             tvName.setText(data.getItem_name());
             tvType.setText(data.getItem_spec());
             tvNum.setText(data.getQty() + "");
-            tvScanNum.setText(data.getOld_num() + "");
+            tvScanNum.setText(data.getMax_num() + "");
             tvPosition.setText((getDataPosition() + 1) + "");
             tvDelete.setOnClickListener(new View.OnClickListener() {
                 @Override

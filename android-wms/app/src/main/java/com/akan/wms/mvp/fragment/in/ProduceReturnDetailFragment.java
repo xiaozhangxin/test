@@ -418,7 +418,7 @@ public class ProduceReturnDetailFragment extends BaseFragment<IProduceReturnView
             ArrayList<CodeListBean> childList = new ArrayList<>();
             for (int m = 0; m < barList.size(); m++) {
                 BarBean barBean = barList.get(m);
-                if (barBean.getItem_id().equals(listBean.getItem_id())) {
+                if (barBean.getItem_code().equals(listBean.getItem_code())) {
                     CodeListBean codeListBean = new CodeListBean();
                     codeListBean.setInfo_id(info_id);
                     codeListBean.setBar_code(barBean.getBar_code());
@@ -494,7 +494,8 @@ public class ProduceReturnDetailFragment extends BaseFragment<IProduceReturnView
                         ScanInfoBean scanBean = new ScanInfoBean();
                         InforListBean detail = allData.get(i);
                         scanBean.setItem_spec(detail.getInfo_spec());
-                        scanBean.setItem_id(detail.getItem_code());
+                        scanBean.setItem_code(detail.getItem_code());
+                        scanBean.setItem_id(detail.getItem_id());
                         scanBean.setItem_name(detail.getInfo_name());
                         scanBean.setSend_qty(detail.getNumber());//申请数量
                         scanBean.setArrive_qty(detail.getScan_num());//核定数量
@@ -510,7 +511,8 @@ public class ProduceReturnDetailFragment extends BaseFragment<IProduceReturnView
                         ScanInfoBean scanBean = new ScanInfoBean();
                         InforListBean detail = allData1.get(i);
                         scanBean.setItem_spec(detail.getInfo_spec());
-                        scanBean.setItem_id(detail.getItem_code());
+                        scanBean.setItem_code(detail.getItem_code());
+                        scanBean.setItem_id(detail.getItem_id());
                         scanBean.setItem_name(detail.getInfo_name());
                         scanBean.setSend_qty(detail.getNumber());//申请数量
                         scanBean.setArrive_qty(detail.getCheck_num());//核定数量
@@ -584,9 +586,9 @@ public class ProduceReturnDetailFragment extends BaseFragment<IProduceReturnView
                 for (int i = 0; i < allData.size(); i++) {
                     InforListBean listBean = allData.get(i);
                     for (int m = 0; m < listTwo.size(); m++) {
-                        if (listBean.getItem_code().equals(listTwo.get(m).getItem_id())) {
+                        if (listBean.getItem_code().equals(listTwo.get(m).getItem_code())) {
                             listBean.setScan_num(listTwo.get(m).getArrive_qty());
-                            listBean.setBar_code(listTwo.get(m).getItem_code());
+                            listBean.setBar_code(listTwo.get(m).getBar_code());
                         }
                     }
                 }

@@ -581,7 +581,8 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
                     for (int i = 0; i < supplierReceives.size(); i++) {
                         ScanInfoBean scanBean = new ScanInfoBean();
                         SupplierReceivesBeanDetail detail = supplierReceives.get(i);
-                        scanBean.setItem_id(detail.getItem_code());
+                        scanBean.setItem_code(detail.getItem_code());
+                        scanBean.setItem_id(detail.getItem_id());
                         scanBean.setItem_name(detail.getItem_name());
                         scanBean.setItem_spec(detail.getItem_spec());
                         scanBean.setSend_qty(detail.getSend_qty());//送货数量
@@ -599,7 +600,8 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
                         SupplierReceivesBeanDetail detail = supplierReceives1.get(j);
 
                         ScanInfoBean scanBean = new ScanInfoBean();
-                        scanBean.setItem_id(detail.getItem_code());
+                        scanBean.setItem_code(detail.getItem_code());
+                        scanBean.setItem_id(detail.getItem_id());
                         scanBean.setItem_name(detail.getItem_name());
                         scanBean.setItem_spec(detail.getItem_spec());
                         scanBean.setArrive_qty(detail.getQualified_qty());//合格数量
@@ -658,7 +660,7 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
                 List<SupplierReceivesBeanDetail> receives = adapter.getItem(mScanPosition).getSupplier_receives();
                 for (int i = 0; i < receives.size(); i++) {
                     for (int j = 0; j < list.size(); j++) {
-                        if (receives.get(i).getItem_code().equals(list.get(j).getItem_id())) {
+                        if (receives.get(i).getItem_code().equals(list.get(j).getItem_code())) {
                             receives.get(i).setArrive_qty(list.get(j).getArrive_qty());
                             receives.get(i).setBar_code(list.get(j).getBar_code());
                         }
@@ -673,7 +675,7 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
                     List<SupplierReceivesBeanDetail> supplier_receives = allData.get(i).getSupplier_receives();
                     for (int j = 0; j < supplier_receives.size(); j++) {
                         for (int m = 0; m < listTwo.size(); m++) {
-                            if (supplier_receives.get(j).getItem_code().equals(listTwo.get(m).getItem_id())) {
+                            if (supplier_receives.get(j).getItem_code().equals(listTwo.get(m).getItem_code())) {
                                 supplier_receives.get(j).setIn_qty(listTwo.get(m).getIn_qty());
                                 supplier_receives.get(j).setBar_code(listTwo.get(m).getBar_code());
                             }

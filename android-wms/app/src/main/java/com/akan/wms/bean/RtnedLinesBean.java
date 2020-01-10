@@ -81,7 +81,7 @@ public class RtnedLinesBean implements Serializable{
         private long id;
         private long rtned_goods_id;
         private String rtned_goods_line_id;
-        private long item_id;
+        private String item_id;
         private String item_code;
         private String item_name;
         private String item_spec;
@@ -147,11 +147,11 @@ public class RtnedLinesBean implements Serializable{
             this.rtned_goods_line_id = rtned_goods_line_id;
         }
 
-        public long getItem_id() {
+        public String getItem_id() {
             return item_id;
         }
 
-        public void setItem_id(long item_id) {
+        public void setItem_id(String item_id) {
             this.item_id = item_id;
         }
 

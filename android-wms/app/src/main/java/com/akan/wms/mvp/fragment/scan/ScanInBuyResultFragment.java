@@ -82,10 +82,6 @@ public class ScanInBuyResultFragment extends SimpleFragment {
 
     @Override
     public void initUI() {
-        for (int i=0;i<barList.size();i++){
-            barList.get(i).setMax_num(barList.get(i).getQty());
-        }
-
 
         recyclerView.setNestedScrollingEnabled(false);
         childRecyclerView.setNestedScrollingEnabled(false);
@@ -170,7 +166,7 @@ public class ScanInBuyResultFragment extends SimpleFragment {
                 List<ScanInfoBean> topAllData = adapterTop.getAllData();
                 for (int i = 0; i < topAllData.size(); i++) {
                     ScanInfoBean infoBean = topAllData.get(i);
-                    if (infoBean.getItem_id().equals(name)) {
+                    if (infoBean.getItem_code().equals(name)) {
                         switch (type) {
                             case "in_buy_point":
                             case "finish_check":
@@ -220,14 +216,14 @@ public class ScanInBuyResultFragment extends SimpleFragment {
                 List<ScanInfoBean> allData = adapterTop.getAllData();
                 if ("in_buy_agree".equals(type)){
                     for (int i = 0; i < allData.size(); i++) {
-                        if (adapter.getItem(position).getItem_code().equals(allData.get(i).getItem_id())) {
+                        if (adapter.getItem(position).getItem_code().equals(allData.get(i).getItem_code())) {
                             allData.get(i).setIn_qty(allData.get(i).getIn_qty() - adapter.getItem(position).getQty());
                             adapterTop.notifyItemChanged(i);
                         }
                     }
                 }else {
                     for (int i = 0; i < allData.size(); i++) {
-                        if (adapter.getItem(position).getItem_code().equals(allData.get(i).getItem_id())) {
+                        if (adapter.getItem(position).getItem_code().equals(allData.get(i).getItem_code())) {
                             allData.get(i).setArrive_qty(allData.get(i).getArrive_qty() - adapter.getItem(position).getQty());
                             adapterTop.notifyItemChanged(i);
                         }
@@ -341,8 +337,8 @@ public class ScanInBuyResultFragment extends SimpleFragment {
                 }
                 EventBus.getDefault().post(new FirstEvent("24", new ScanListBean(adapter.getAllData())));
                 EventBus.getDefault().post(new FirstEventTwo("24", new ScanListBean(adapter.getAllData())));
-                EventBus.getDefault().post(new FirstEvent(type, new ScanInBuyBean(mList)));
-                EventBus.getDefault().post(new FirstEventTwo(type, new ScanInBuyBean(mList)));
+                EventBus.getDefault().post(new FirstEvent(type, new ScanInBuyBean(allData)));
+                EventBus.getDefault().post(new FirstEventTwo(type, new ScanInBuyBean(allData)));
                 EventBus.getDefault().post(new FirstEvent("scan_finish"));
                 finish();
                 break;

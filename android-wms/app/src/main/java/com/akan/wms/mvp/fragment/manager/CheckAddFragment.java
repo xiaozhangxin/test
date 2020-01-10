@@ -286,7 +286,7 @@ public class CheckAddFragment extends BaseFragment<ICheckView, CheckPresenter> i
 
                     for (int m = 0; m < barBeanList.size(); m++) {
                         BarBean barBean = barBeanList.get(m);
-                        if (barBean.getItem_id().equals(adapterBean.getItem_id())) {
+                        if (barBean.getItem_code().equals(adapterBean.getItem_code())) {
                             InfoCodeBean mBarBean = new InfoCodeBean();
                             mBarBean.setItem_id(barBean.getItem_id());
                             mBarBean.setCode_num(barBean.getQty() + "");
@@ -331,7 +331,8 @@ public class CheckAddFragment extends BaseFragment<ICheckView, CheckPresenter> i
             for (int i = 0; i < allData.size(); i++) {
                 ScanInfoBean scanBean = new ScanInfoBean();
                 ItemWhQohBean detail = allData.get(i);
-                scanBean.setItem_id(detail.getItem_code());
+                scanBean.setItem_code(detail.getItem_code());
+                scanBean.setItem_id(detail.getItem_id());
                 scanBean.setItem_name(detail.getItem_name());
                 scanBean.setItem_spec(detail.getItem_spec());
                 scanBean.setArrive_qty(detail.getNum());
@@ -419,9 +420,9 @@ public class CheckAddFragment extends BaseFragment<ICheckView, CheckPresenter> i
                 for (int i = 0; i < allData1.size(); i++) {
                     ItemWhQohBean listBean = allData1.get(i);
                     for (int m = 0; m < listTwo.size(); m++) {
-                        if (listBean.getItem_code().equals(listTwo.get(m).getItem_id())) {
+                        if (listBean.getItem_code().equals(listTwo.get(m).getItem_code())) {
                             listBean.setNum(listTwo.get(m).getArrive_qty());
-                            listBean.setItem_code(listTwo.get(m).getItem_code());
+                            listBean.setItem_code(listTwo.get(m).getBar_code());
                         }
                     }
                 }

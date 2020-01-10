@@ -63,7 +63,7 @@ public class SendAddAdapter extends RecyclerArrayAdapter<PurchaseBean> {
                 @Override
                 protected void convert(com.zhy.adapter.recyclerview.base.ViewHolder holder, final PurchaseLinesBean bean, final int position) {
                     holder.setText(R.id.tvName, bean.getItem_name() + "\n" + bean.getItem_spec());
-                    holder.setText(R.id.tvNum, bean.getPur_qty() + "");
+                    holder.setText(R.id.tvNum, bean.getPerOfOvertopQty() + "");
                     holder.setText(R.id.tvUnit, "");
                     TextView tvSend = holder.getView(R.id.tvSend);
 

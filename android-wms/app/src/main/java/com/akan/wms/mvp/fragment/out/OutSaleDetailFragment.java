@@ -389,7 +389,8 @@ public class OutSaleDetailFragment extends BaseFragment<IOutSaleView, OutSalePre
             for (int i = 0; i < allData.size(); i++) {
                 ScanInfoBean scanBean = new ScanInfoBean();
                 PlanLineBeanDetail detail = allData.get(i);
-                scanBean.setItem_id(detail.getItem_code());
+                scanBean.setItem_code(detail.getItem_code());
+                scanBean.setItem_id(detail.getItem_id());
                 scanBean.setItem_name(detail.getItem_name());
                 scanBean.setItem_spec(detail.getItem_spec());
                 scanBean.setSend_qty(detail.getQty());

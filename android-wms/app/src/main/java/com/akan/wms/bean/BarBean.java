@@ -21,15 +21,6 @@ public class BarBean implements Serializable{
 
     private String bar_code;
     private String org_id;
-
-    public int getOld_num() {
-        return old_num;
-    }
-
-    public void setOld_num(int old_num) {
-        this.old_num = old_num;
-    }
-
     private String item_id;
     private String item_code;
     private String item_name;
@@ -45,7 +36,13 @@ public class BarBean implements Serializable{
     public int getMax_num() {
         return max_num;
     }
+    public int getOld_num() {
+        return old_num;
+    }
 
+    public void setOld_num(int old_num) {
+        this.old_num = old_num;
+    }
     public void setMax_num(int max_num) {
         this.max_num = max_num;
     }

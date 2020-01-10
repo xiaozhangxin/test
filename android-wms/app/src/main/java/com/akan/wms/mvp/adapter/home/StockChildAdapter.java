@@ -53,7 +53,7 @@ public class StockChildAdapter extends RecyclerArrayAdapter<PurchaseLinesBean> {
             }
             tvName.setText(data.getItem_name());
             tvType.setText(data.getItem_spec());
-            tvNo.setText(data.getPur_qty() + "");
+            tvNo.setText(data.getPerOfOvertopQty() + "");
 
         }
     }

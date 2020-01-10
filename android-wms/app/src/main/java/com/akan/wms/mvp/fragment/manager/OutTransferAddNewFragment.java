@@ -368,7 +368,7 @@ public class OutTransferAddNewFragment extends BaseFragment<IOutTransferView, Ou
 
             for (int m = 0; m < barList.size(); m++) {
                 BarBean barBean = barList.get(m);
-                if (barBean.getItem_id().equals(lineBeanListBean.getItem_id())) {
+                if (barBean.getItem_code().equals(lineBeanListBean.getItem_code())) {
                     BarListBean mBarbean = new BarListBean();
                     mBarbean.setItem_bar(barBean.getBar_code());
                     mBarbean.setItem_id(barBean.getItem_id());
@@ -419,7 +419,8 @@ public class OutTransferAddNewFragment extends BaseFragment<IOutTransferView, Ou
             for (int j = 0; j < detailList.size(); j++) {
                 TransferUnCompleteBean.LineBeanListBean detail = detailList.get(j);
                 ScanInfoBean scanBean = new ScanInfoBean();
-                scanBean.setItem_id(detail.getItem_code());
+                scanBean.setItem_code(detail.getItem_code());
+                scanBean.setItem_id(detail.getItem_id());
                 scanBean.setItem_spec(detail.getItem_spec());
                 scanBean.setItem_name(detail.getItem_name());
                 scanBean.setSend_qty(detail.getApply_qty());
@@ -527,9 +528,9 @@ public class OutTransferAddNewFragment extends BaseFragment<IOutTransferView, Ou
                     List<TransferUnCompleteBean.LineBeanListBean> rtn_lines = allData.get(0).getLineBeanList();
                     for (int i = 0; i < rtn_lines.size(); i++) {
                         for (int j = 0; j < listScan.size(); j++) {
-                            if (rtn_lines.get(i).getItem_code().equals(listScan.get(j).getItem_id())) {
+                            if (rtn_lines.get(i).getItem_code().equals(listScan.get(j).getItem_code())) {
                                 rtn_lines.get(i).setSend_qty(listScan.get(j).getArrive_qty());
-                                rtn_lines.get(i).setItem_bar(listScan.get(j).getItem_bar());
+                                rtn_lines.get(i).setItem_bar(listScan.get(j).getBar_code());
                             }
                         }
                     }
