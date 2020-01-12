@@ -57,12 +57,6 @@ public class BoxingUcrop implements IBoxingCrop {
         UCrop.of(uri, cropConfig.getDestination())
                 .withOptions(crop)
                 .start(context, fragment, requestCode);
-
-
-
-        UCrop.of(uri, cropConfig.getDestination())
-                .withOptions(crop)
-                .start(context, fragment, requestCode);
     }
 
     @Override

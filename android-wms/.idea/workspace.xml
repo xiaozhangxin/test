@@ -48,7 +48,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/akan/wms/mvp/adapter/home/OutPlanListAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
@@ -57,6 +57,15 @@
                 <element signature="e#537#538#0" expanded="true" />
                 <element signature="e#573#574#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/akan/wms/impl/BoxingUcrop.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="59" selection-start-line="59" selection-end-line="59" />
             </state>
           </provider>
         </entry>
@@ -143,7 +152,6 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/com/akan/wms/App.java" />
         <option value="$PROJECT_DIR$/boxing-impl/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/akan/wms/impl/BoxingUcrop.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/akan/wms/mvp/fragment/mine/PersonalInfoFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_scan_result.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/akan/wms/mvp/fragment/scan/ScanInBuyResultFragment.java" />
@@ -166,6 +174,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/akan/wms/mvp/fragment/out/ChooseOutPlanChildFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_stock_child.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_stock.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/akan/wms/impl/BoxingUcrop.java" />
       </list>
     </option>
   </component>
@@ -201,6 +210,13 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="wms" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="android-wms" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="wms" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="android-wms" type="1abcf292:AndroidViewProjectNode" />
@@ -338,7 +354,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2062" height="1126" extended-state="6" />
+    <frame x="-7" y="-7" width="2062" height="1126" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49899396" visible="true" weight="0.32984033" />
@@ -433,13 +450,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/akan/wms/impl/BoxingUcrop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="54" column="91" selection-start-line="54" selection-start-column="91" selection-end-line="54" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/boxing-impl/src/main/java/com/bilibili/boxing_impl/ui/BoxingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -824,6 +834,13 @@
             <element signature="e#537#538#0" expanded="true" />
             <element signature="e#573#574#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/akan/wms/impl/BoxingUcrop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
         </state>
       </provider>
     </entry>
