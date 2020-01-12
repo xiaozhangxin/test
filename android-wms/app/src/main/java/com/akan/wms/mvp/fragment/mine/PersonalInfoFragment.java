@@ -239,6 +239,7 @@ public class PersonalInfoFragment extends BaseFragment<IPersonalInfoView, Person
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_CALL); // 设置动作
         Uri data = Uri.parse("tel:" + phone); // 设置数据
+
         intent.setData(data);
         startActivity(intent); // 激活Activity组件
     }

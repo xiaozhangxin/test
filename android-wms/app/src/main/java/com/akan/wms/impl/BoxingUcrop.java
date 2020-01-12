@@ -22,8 +22,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 
+import com.akan.wms.R;
 import com.bilibili.boxing.loader.IBoxingCrop;
 import com.bilibili.boxing.model.config.BoxingCropOption;
 import com.yalantis.ucrop.UCrop;
@@ -46,8 +48,17 @@ public class BoxingUcrop implements IBoxingCrop {
         // do not copy exif information to crop pictures
         // because png do not have exif and png is not Distinguishable
         crop.setCompressionFormat(Bitmap.CompressFormat.PNG);
-        crop.withMaxResultSize(cropConfig.getMaxWidth(), cropConfig.getMaxHeight());
-        crop.withAspectRatio(cropConfig.getAspectRatioX(), cropConfig.getAspectRatioY());
+        crop. setHideBottomControls(false);//影藏图片下面的操作控制的界面
+        crop.withMaxResultSize(cropConfig.getMaxWidth(), cropConfig.getMaxHeight());//最终的剪裁尺寸
+        crop.withAspectRatio(cropConfig.getAspectRatioX(), cropConfig.getAspectRatioY());//剪裁的比例
+        crop.setStatusBarColor(ActivityCompat.getColor(context, R.color.colorPrimary));//设置状态栏颜色
+        crop.setToolbarColor(context.getResources().getColor(R.color.colorPrimary));//是指toolbar颜色
+        crop.setShowCropGrid(true);//是否显示网格线
+        UCrop.of(uri, cropConfig.getDestination())
+                .withOptions(crop)
+                .start(context, fragment, requestCode);
+
+
 
         UCrop.of(uri, cropConfig.getDestination())
                 .withOptions(crop)

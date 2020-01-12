@@ -204,7 +204,7 @@ public class StoragingProBean implements Serializable {
          * bar_code : null
          */
 
-        private long id;
+        private String id;
         private long storaging_pro_id;
         private String line_no;
         private String doc_no;
@@ -230,6 +230,25 @@ public class StoragingProBean implements Serializable {
         private String scrap_qty;
         private int wh_qty;
         private int check_qty;
+        private int qualify_qty;
+
+        public int getQualify_qty() {
+            return qualify_qty;
+        }
+
+        public void setQualify_qty(int qualify_qty) {
+            this.qualify_qty = qualify_qty;
+        }
+
+        public int getUn_qualify_qty() {
+            return un_qualify_qty;
+        }
+
+        public void setUn_qualify_qty(int un_qualify_qty) {
+            this.un_qualify_qty = un_qualify_qty;
+        }
+
+        private int un_qualify_qty;
         private String wh_id;
         private String wh_name;
         private String wh_type;
@@ -254,11 +273,11 @@ public class StoragingProBean implements Serializable {
             this.check_qty = check_qty;
         }
 
-        public long getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(long id) {
+        public void setId(String id) {
             this.id = id;
         }
 

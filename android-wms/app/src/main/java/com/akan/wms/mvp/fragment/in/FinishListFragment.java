@@ -72,7 +72,7 @@ public class FinishListFragment extends BaseFragment<IFinishView, FinishPresente
     private UserBean userBean;
 
     private String headers[] = {"全部状态", "条件筛选"};
-    private String mOne[] = {"全部", "未处理", "已审核"};
+    private String mOne[] = {"全部", "未处理", "已质检", "已审核"};
     private List<View> popupViews = new ArrayList<>();
     private GirdDropDownAdapter oneAdapter;
     private EditText tvOne;
@@ -180,8 +180,11 @@ public class FinishListFragment extends BaseFragment<IFinishView, FinishPresente
                     case "未处理":
                         map.put("status", "0");
                         break;
-                    case "已审核":
+                    case "已质检":
                         map.put("status", "1");
+                        break;
+                    case "已审核":
+                        map.put("status", "2");
                         break;
 
                 }
@@ -401,6 +404,11 @@ public class FinishListFragment extends BaseFragment<IFinishView, FinishPresente
 
     @Override
     public void onDelStoragingPro(String data) {
+
+    }
+
+    @Override
+    public void onValidStoragingPro(String data) {
 
     }
 }

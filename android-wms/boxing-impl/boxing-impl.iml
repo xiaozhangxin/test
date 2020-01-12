@@ -126,5 +126,8 @@
     <orderEntry type="library" name="Gradle: android.arch.core:runtime:1.1.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.chensl.rotatephotoview:rotatephotoview:1.0.5@aar" level="project" />
     <orderEntry type="module" module-name="boxing" />
+    <orderEntry type="module" module-name="boxing" />
+    <orderEntry type="module" module-name="boxing" />
+    <orderEntry type="module" module-name="boxing" />
   </component>
 </module>

@@ -82,68 +82,12 @@ public class ScanInBuyResultFragment extends SimpleFragment {
 
     @Override
     public void initUI() {
-
-        recyclerView.setNestedScrollingEnabled(false);
-        childRecyclerView.setNestedScrollingEnabled(false);
-        tvTitle.setText("扫码数据");
-        switch (type) {
-            case "in_buy_point"://采购入库点收
-                topThree.setText("送货数量");
-                topFour.setText("实收数量");
-                break;
-            case "in_buy_agree"://采购入库同意入库
-                topThree.setText("合格数量");
-                topFour.setText("核定数量");
-                break;
-            case "finish_check"://成品入库(审核)
-                topThree.setText("入库数量");
-                topFour.setText("核定数量");
-                break;
-            case "finish_add"://成品入库(添加)
-                topThree.setText("可入库数量");
-                topFour.setText("入库数量");
-                break;
-            case "pro_return_point"://生产退料(点收)
-            case "pro_return_in"://生产退料(入库)
-            case "pro_receive_point"://生产领料(点收)
-            case "pro_receive_out"://生产领料(出库)
-                topThree.setText("申请数量");
-                topFour.setText("核定数量");
-                break;
-            case "out_buy_add"://采购退货(新增)
-                topThree.setText("申请数量");
-                topFour.setText("配货数量");
-                break;
-            case "out_buy_detail"://采购退货(核定)
-            case "out_sale_add"://销售出库(新增)
-                topThree.setText("配货数量");
-                topFour.setText("核定数量");
-                break;
-            case "check_add"://盘点新增
-                topThree.setText("盘点数量");
-                topFour.setVisibility(View.GONE);
-                break;
-            case "transfer_add"://同组织调拨新增
-                topThree.setText("配货数量");
-                topFour.setVisibility(View.GONE);
-                break;
-            case "in_transfer_add"://调拨出库(新增)
-                topThree.setText("申请数量");
-                topFour.setText("调出数量");
-                break;
-            case "out_transfer_add":
-                topThree.setText("调拨数量");
-                topFour.setText("配货数量");
-                break;
-
-
-        }
-        childRecyclerView.setNestedScrollingEnabled(false);
+        initTittle();
         childRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapterTop = new ScanInBuyResultAdapter(getContext(), mList, type);
         childRecyclerView.setAdapter(adapterTop);
 
-        recyclerView.setNestedScrollingEnabled(false);
+        //条码列表
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new ScanResultListAdapter(getContext(), barList);
         recyclerView.setAdapter(adapter);
@@ -197,6 +141,62 @@ public class ScanInBuyResultFragment extends SimpleFragment {
         });
 
 
+    }
+
+    private void initTittle() {
+        tvTitle.setText("扫码数据");
+        switch (type) {
+            case "in_buy_point"://采购入库点收
+                topThree.setText("送货数量");
+                topFour.setText("实收数量");
+                break;
+            case "in_buy_agree"://采购入库同意入库
+                topThree.setText("合格数量");
+                topFour.setText("核定数量");
+                break;
+            case "finish_check"://成品入库(审核)
+                topThree.setText("入库数量");
+                topFour.setText("核定数量");
+                break;
+            case "finish_add"://成品入库(添加)
+                topThree.setText("可入库数量");
+                topFour.setText("入库数量");
+                break;
+            case "pro_return_point"://生产退料(点收)
+            case "pro_return_in"://生产退料(入库)
+            case "pro_receive_point"://生产领料(点收)
+            case "pro_receive_out"://生产领料(出库)
+                topThree.setText("申请数量");
+                topFour.setText("核定数量");
+                break;
+            case "out_buy_add"://采购退货(新增)
+                topThree.setText("申请数量");
+                topFour.setText("配货数量");
+                break;
+            case "out_buy_detail"://采购退货(核定)
+            case "out_sale_add"://销售出库(新增)
+                topThree.setText("配货数量");
+                topFour.setText("核定数量");
+                break;
+            case "check_add"://盘点新增
+                topThree.setText("盘点数量");
+                topFour.setVisibility(View.GONE);
+                break;
+            case "transfer_add"://同组织调拨新增
+                topThree.setText("配货数量");
+                topFour.setVisibility(View.GONE);
+                break;
+            case "in_transfer_add"://调拨出库(新增)
+                topThree.setText("申请数量");
+                topFour.setText("调出数量");
+                break;
+            case "out_transfer_add":
+                topThree.setText("调拨数量");
+                topFour.setText("配货数量");
+                break;
+
+
+        }
     }
 
     @Override

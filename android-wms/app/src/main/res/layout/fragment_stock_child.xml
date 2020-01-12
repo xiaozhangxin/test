@@ -57,8 +57,8 @@
             android:layout_marginBottom="8dp"
             android:drawablePadding="5dp"
             android:text="BHL3249723604"
-            android:textColor="@color/colorTextG3"
-            android:textSize="13sp"
+            android:textColor="@color/colorTextG6"
+            android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvtittle"
             app:layout_constraintTop_toBottomOf="@+id/tvtittle" />

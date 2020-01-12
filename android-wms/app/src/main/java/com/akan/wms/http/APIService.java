@@ -871,6 +871,12 @@ public interface APIService {
     @FormUrlEncoded
     @POST("api/storagingProController/pastStoragingPro")
     Observable<HttpResult<String>> pastStoragingPro(@Header("Authorization") String token, @FieldMap Map<String, String> parmer);
+    /**
+     * 质检成品入库单
+     */
+    @FormUrlEncoded
+    @POST("api/storagingProController/validStoragingPro")
+    Observable<HttpResult<String>> validStoragingPro(@Header("Authorization") String token, @FieldMap Map<String, String> parmer);
 
     /**
      * 作废成品入库单

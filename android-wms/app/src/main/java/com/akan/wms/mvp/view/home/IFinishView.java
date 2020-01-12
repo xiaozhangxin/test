@@ -18,4 +18,6 @@ public interface IFinishView extends BaseView{
     void onInvalidStoragingPro(String data);
 
     void onDelStoragingPro(String data);
+
+    void onValidStoragingPro(String data);
 }

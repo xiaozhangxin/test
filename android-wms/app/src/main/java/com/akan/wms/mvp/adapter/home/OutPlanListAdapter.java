@@ -35,8 +35,8 @@ public class OutPlanListAdapter extends RecyclerArrayAdapter<ShipPlanBean> {
         @Override
         public void setData(ShipPlanBean data) {
             super.setData(data);
-            tvNo.setText(data.getDoc_no());
-            tvtittle.setText(data.getSrc_doc_no());
+            tvtittle.setText(data.getDoc_no());
+            tvNo.setText("订单号:"+data.getSrc_doc_no());
         }
     }
 

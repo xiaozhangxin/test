@@ -15,7 +15,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class FinishPresenter extends BasePresenter<IFinishView>{
+public class FinishPresenter extends BasePresenter<IFinishView> {
     public FinishPresenter(App app) {
         super(app);
     }
@@ -170,7 +170,47 @@ public class FinishPresenter extends BasePresenter<IFinishView>{
                     }
                 });
 
-    }  public void invalidStoragingPro(String token, Map<String, String> parmer) {
+    }
+
+    public void validStoragingPro(String token, Map<String, String> parmer) {
+        if (isViewAttached())
+            getView().showProgress();
+        getAppComponent().getAPIService()
+                .validStoragingPro(token, parmer)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<HttpResult<String>>() {
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (isViewAttached())
+                            getView().onError(e);
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(HttpResult<String> userBeanHttpResult) {
+                        if (userBeanHttpResult != null) {
+                            if (isViewAttached()) {
+                                getView().onValidStoragingPro(userBeanHttpResult.getData());
+                            }
+                        }
+
+                    }
+                });
+
+    }
+
+    public void invalidStoragingPro(String token, Map<String, String> parmer) {
         if (isViewAttached())
             getView().showProgress();
         getAppComponent().getAPIService()
@@ -206,7 +246,9 @@ public class FinishPresenter extends BasePresenter<IFinishView>{
                     }
                 });
 
-    }  public void delStoragingPro(String token, Map<String, String> parmer) {
+    }
+
+    public void delStoragingPro(String token, Map<String, String> parmer) {
         if (isViewAttached())
             getView().showProgress();
         getAppComponent().getAPIService()

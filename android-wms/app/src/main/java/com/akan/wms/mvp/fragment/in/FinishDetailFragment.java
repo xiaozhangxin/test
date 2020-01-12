@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.akan.wms.R;
 import com.akan.wms.bean.BarBean;
 import com.akan.wms.bean.BarListBean;
+import com.akan.wms.bean.FinishNumBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.RecordsBean;
 import com.akan.wms.bean.ScanInfoBean;
@@ -26,7 +27,6 @@ import com.akan.wms.bean.StoragingProListBean;
 import com.akan.wms.bean.UserBean;
 import com.akan.wms.bean.WareHouseBean;
 import com.akan.wms.bean.WhAndIdBean;
-import com.akan.wms.bean.WhBean;
 import com.akan.wms.mvp.adapter.RecordAdapter;
 import com.akan.wms.mvp.adapter.home.FinishDetailAdapter;
 import com.akan.wms.mvp.base.BaseFragment;
@@ -68,12 +68,20 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
     ImageView ivOne;
     @BindView(R.id.stateOne)
     TextView stateOne;
-    @BindView(R.id.lineOne)
-    View lineOne;
+    @BindView(R.id.stateLineOne)
+    TextView stateLineOne;
     @BindView(R.id.ivTwo)
     ImageView ivTwo;
     @BindView(R.id.stateTwo)
     TextView stateTwo;
+    @BindView(R.id.stateLineTwo)
+    TextView stateLineTwo;
+    @BindView(R.id.ivThree)
+    ImageView ivThree;
+    @BindView(R.id.stateThree)
+    TextView stateThree;
+    @BindView(R.id.addImg)
+    ConstraintLayout addImg;
     @BindView(R.id.tvOne)
     TextView tvOne;
     @BindView(R.id.tvTwo)
@@ -86,8 +94,6 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
     TextView tvSeven;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-    @BindView(R.id.addImg)
-    ConstraintLayout addImg;
     @BindView(R.id.recordRecyclerView)
     RecyclerView recordRecyclerView;
 
@@ -102,6 +108,7 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
     private BottomPopWindow popWindow;
     private int mScanPosition;
     private int mDeportPosition;//选择仓库
+
     public static FinishDetailFragment newInstance(String id) {
         Bundle args = new Bundle();
         FinishDetailFragment fragment = new FinishDetailFragment();
@@ -112,14 +119,16 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
 
     @Override
     public int getRootViewId() {
-        return R.layout.fragment_detail_complete;
+        return R.layout.fragment_detail_finish;
     }
 
     @Override
     public void initUI() {
         tvTitle.setText("成品入库详情");
         stateOne.setText("未处理");
-        stateTwo.setText("已审核");
+        stateTwo.setText("已质检");
+        stateThree.setText("已审核");
+
         list = new ArrayList<>();
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -234,22 +243,39 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
     private void updateState(String mState) {
         switch (mState) {
             case "0":
-                adapter.setState("1");
+                adapter.setState("0");
                 tvRight.setVisibility(View.VISIBLE);
-                tvRight.setText("操作");
+                tvRight.setText("质检");
                 ivOne.setScaleY(1.5f);
                 ivOne.setScaleX(1.5f);
                 break;
             case "1":
                 adapter.setState("2");
-                tvRight.setVisibility(View.GONE);
+                tvRight.setVisibility(View.VISIBLE);
+                tvRight.setText("操作");
                 ivTwo.setImageResource(R.drawable.state_h);
                 ivOne.setScaleY(1.5f);
                 ivOne.setScaleX(1.5f);
                 ivTwo.setScaleY(1.5f);
                 ivTwo.setScaleX(1.5f);
-                lineOne.setBackgroundResource(R.color.colorPrimary);
+                stateLineOne.setBackgroundResource(R.color.colorPrimary);
                 stateTwo.setTextColor(getResources().getColor(R.color.colorPrimary));
+                break;
+            case "2":
+                adapter.setState("3");
+                tvRight.setVisibility(View.GONE);
+                ivTwo.setImageResource(R.drawable.state_h);
+                ivThree.setImageResource(R.drawable.state_h);
+                ivOne.setScaleY(1.5f);
+                ivOne.setScaleX(1.5f);
+                ivTwo.setScaleY(1.5f);
+                ivTwo.setScaleX(1.5f);
+                ivThree.setScaleY(1.5f);
+                ivThree.setScaleX(1.5f);
+                stateLineOne.setBackgroundResource(R.color.colorPrimary);
+                stateTwo.setTextColor(getResources().getColor(R.color.colorPrimary));
+                stateLineTwo.setBackgroundResource(R.color.colorPrimary);
+                stateThree.setTextColor(getResources().getColor(R.color.colorPrimary));
                 break;
         }
     }
@@ -266,12 +292,52 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
                     case "删除":
                         showDialog("删除");
                         break;
+                    case "完成":
+                        toFinish();
+                        break;
+                    case "质检":
+                        tvRight.setText("完成");
+                        adapter.setState("1");
+                        adapter.notifyDataSetChanged();
+                        break;
                     case "操作":
                         popWindow.showAtLocation(tvRight, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                         break;
                 }
                 break;
         }
+    }
+
+
+    //质检
+    private void toFinish() {
+        List<StoragingProBean.StoragingProLinesBean> allData = adapter.getAllData();
+        List<FinishNumBean> mNumList = new ArrayList<>();
+        List<WhAndIdBean> mWhList = new ArrayList<>();
+        for (int i = 0; i < allData.size(); i++) {
+            StoragingProBean.StoragingProLinesBean linesBean = allData.get(i);
+
+            FinishNumBean numBean = new FinishNumBean();
+            numBean.setId(linesBean.getId());
+            numBean.setQualify_qty(linesBean.getQualify_qty()+"");
+            numBean.setUn_qualify_qty(linesBean.getUn_qualify_qty()+"");
+            mNumList.add(numBean);
+
+            WhAndIdBean whAndIdBean = new WhAndIdBean();
+            whAndIdBean.setId(linesBean.getId() + "");
+            whAndIdBean.setWh_id(linesBean.getWh_id());
+            mWhList.add(whAndIdBean);
+        }
+
+        Gson gson = new Gson();
+        String jsonNum = gson.toJson(mNumList);
+        String jsonWh = gson.toJson(mWhList);
+        map.clear();
+        map.put("id", mId);
+        map.put("storagingProLineQty", jsonNum);
+        map.put("storagingProLines", jsonWh);
+        getPresenter().validStoragingPro(userBean.getStaff_token(), map);
+
     }
 
 
@@ -299,7 +365,6 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
                 switch (type) {
                     case "同意":
                         onAgree();
-
                         break;
                     case "作废":
                         map.clear();
@@ -351,7 +416,7 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
                 mBarList.add(mBarBean);
             }
             WhAndIdBean whAndIdBean = new WhAndIdBean();
-            whAndIdBean.setId(linesBean.getId()+"");
+            whAndIdBean.setId(linesBean.getId() + "");
             whAndIdBean.setWh_id(linesBean.getWh_id());
             mWhList.add(whAndIdBean);
         }
@@ -505,5 +570,12 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
         EventBus.getDefault().post(new FirstEvent("delete"));
         ToastUtil.showToast(context.getApplicationContext(), data);
         finish();
+    }
+
+    @Override
+    public void onValidStoragingPro(String data) {
+        EventBus.getDefault().post(new FirstEvent("refresh"));
+        ToastUtil.showToast(context.getApplicationContext(), data);
+        getData();
     }
 }

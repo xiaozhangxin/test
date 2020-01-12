@@ -182,16 +182,22 @@ public class CompleteAddAdapter extends RecyclerArrayAdapter<ProductionOrderBean
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     String passS = s.toString();
-                    Double mPass = 0.0;
-                    if (TextUtils.isEmpty(passS)){
-                        data.setQualified_qty(0);
+                    if (passS.startsWith(".")){
+                        tvPassNum.setText("0");
+                        return;
                     }else {
-                         mPass = Double.valueOf(passS);
-                        data.setQualified_qty(mPass);
+                        Double mPass = 0.0;
+                        if (TextUtils.isEmpty(passS)){
+                            data.setQualified_qty(0);
+                        }else {
+                            mPass = Double.valueOf(passS);
+                            data.setQualified_qty(mPass);
+                        }
+                        double total = data.getScrap_qty() + mPass;
+                        data.setApply_qty(total);
+                        tvCompleteNum.setText(total+"");
                     }
-                    double total = data.getScrap_qty() + mPass;
-                    data.setApply_qty(total);
-                    tvCompleteNum.setText(total+"");
+
                 }
 
                 @Override
@@ -208,18 +214,23 @@ public class CompleteAddAdapter extends RecyclerArrayAdapter<ProductionOrderBean
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     String notPass = s.toString();
-                    Double mNotPass=0.0;
-                    if (TextUtils.isEmpty(notPass)){
-                        data.setScrap_qty(0);
+                    if (notPass.startsWith(".")){
+                        tvNotPassNum.setText("0");
+                        return;
                     }else {
-                        mNotPass = Double.valueOf(notPass);
-                        data.setScrap_qty(mNotPass);
+                        Double mNotPass=0.0;
+                        if (TextUtils.isEmpty(notPass)){
+                            data.setScrap_qty(0);
+                        }else {
+                            mNotPass = Double.valueOf(notPass);
+                            data.setScrap_qty(mNotPass);
 
 
+                        }
+                        double total = data.getQualified_qty() + mNotPass;
+                        data.setApply_qty(total);
+                        tvCompleteNum.setText(total+"");
                     }
-                    double total = data.getQualified_qty() + mNotPass;
-                    data.setApply_qty(total);
-                    tvCompleteNum.setText(total+"");
                 }
 
                 @Override
