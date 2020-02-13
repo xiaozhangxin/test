@@ -166,8 +166,8 @@ public class StockListFragment extends BaseFragment<IStockView, StockPresenter> 
     }
 
     private void refresh() {
+        map.put("staff_id", userBean.getStaff_id());
         map.put("org_id", userBean.getOrg_id());
-        map.put("supplier_id", supId);
         map.put("doc_no", etSearch.getText().toString());
         getPresenter().queryPurchaseLists(userBean.getStaff_token(), map);
     }

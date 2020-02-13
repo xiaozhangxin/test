@@ -149,8 +149,8 @@ public class ChooseTransferOutChildFragment extends BaseFragment<IOutTransferVie
  
 
     private void addData(TransferOutBean data) {
-        tvtittle.setText(data.getDoc_type_name());
-        tvNo.setText(data.getDoc_no());
+        tvNo.setText("调出组织:"+data.getOut_org_name());
+        tvtittle.setText(data.getDoc_no());
         adapter.clear();
         adapter.addAll(data.getLineBeanList());
         adapter.notifyDataSetChanged();

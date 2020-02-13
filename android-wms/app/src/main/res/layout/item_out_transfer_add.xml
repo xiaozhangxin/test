@@ -16,8 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="采购单1 "
             android:layout_toLeftOf="@+id/tvScan"
+            android:text="采购单1 "
             android:textColor="@color/colorTextG3"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -32,20 +32,20 @@
             android:paddingRight="16dp"
             android:src="@drawable/delete_big"
             android:textColor="@color/colorTextG6"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <ImageView
             android:id="@+id/tvScan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/tvDelete"
-            android:paddingBottom="8dp"
             android:paddingLeft="16dp"
-            android:paddingRight="16dp"
             android:paddingTop="8dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp"
             android:src="@drawable/scan_detail"
             android:textColor="@color/colorTextG6"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
     </RelativeLayout>
 
@@ -58,8 +58,8 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
         android:background="@drawable/setbar_gray_top3"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -71,7 +71,7 @@
             android:gravity="center"
             android:text="品名/规格"
             android:textColor="@color/colorTextG3"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <View
             android:layout_width="0.5dp"
@@ -79,13 +79,14 @@
             android:background="@color/colorActivityBackgroundTwo" />
 
         <TextView
+            android:id="@+id/tvTwoTittle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="调拨数量"
+            android:text="已调拨数量/申请数量"
             android:textColor="@color/colorTextG3"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <View
             android:layout_width="0.5dp"
@@ -93,13 +94,14 @@
             android:background="@color/colorActivityBackgroundTwo" />
 
         <TextView
+            android:id="@+id/tvThreeTittle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:text="点收数量"
             android:textColor="@color/colorTextG3"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <View
             android:layout_width="0.5dp"
@@ -113,7 +115,21 @@
             android:gravity="center"
             android:text="仓库"
             android:textColor="@color/colorTextG3"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorActivityBackgroundTwo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="厂牌"
+            android:textColor="@color/colorTextG3"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -121,9 +137,9 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/setbar_gray_line3" />
 
 </LinearLayout>

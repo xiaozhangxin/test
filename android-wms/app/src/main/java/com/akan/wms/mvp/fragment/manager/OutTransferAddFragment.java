@@ -336,7 +336,7 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
         for (int j = 0; j < lineBeanList.size(); j++) {
             TransferUnCompleteBean.LineBeanListBean lineBeanListBean = lineBeanList.get(j);
 
-            if (lineBeanListBean.getSend_qty() <= 0) {
+            if (lineBeanListBean.getPoint_qty() <= 0) {
                 showNotDialog("料品（" + lineBeanListBean.getItem_name() + "）配货数量为0,请扫码");
                 return;
             }
@@ -350,7 +350,7 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
             mBean.setItem_id(lineBeanListBean.getItem_id() + "");
             mBean.setApply_line_id(lineBeanListBean.getId() + "");
             mBean.setWh_id(lineBeanListBean.getOut_wh() + "");
-            mBean.setQty(lineBeanListBean.getSend_qty() + "");
+            mBean.setQty(lineBeanListBean.getPoint_qty() + "");
             mBean.setWh_name(lineBeanListBean.getOut_wh_name() + "");
             mList.add(mBean);
 
@@ -413,7 +413,7 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
                 scanBean.setItem_spec(detail.getItem_spec());
                 scanBean.setItem_name(detail.getItem_name());
                 scanBean.setSend_qty(detail.getApply_qty());
-                scanBean.setArrive_qty(detail.getSend_qty());
+                scanBean.setArrive_qty(detail.getPoint_qty());
                 scanBean.setBarList(item.getBarList());//历史条码
                 scanList.add(scanBean);
 
@@ -522,7 +522,7 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
                     for (int i = 0; i < rtn_lines.size(); i++) {
                         for (int j = 0; j < listScan.size(); j++) {
                             if (rtn_lines.get(i).getItem_code().equals(listScan.get(j).getItem_code())) {
-                                rtn_lines.get(i).setSend_qty(listScan.get(j).getArrive_qty());
+                                rtn_lines.get(i).setPoint_qty(listScan.get(j).getArrive_qty());
                                 rtn_lines.get(i).setItem_bar(listScan.get(j).getBar_code());
                             }
                         }

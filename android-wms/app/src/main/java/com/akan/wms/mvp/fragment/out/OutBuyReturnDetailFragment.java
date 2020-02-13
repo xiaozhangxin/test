@@ -17,11 +17,15 @@ import android.widget.TextView;
 
 import com.akan.wms.R;
 import com.akan.wms.bean.BarBean;
+import com.akan.wms.bean.BarListBean;
 import com.akan.wms.bean.FirstEvent;
+import com.akan.wms.bean.PastRtnedGoodsBean;
+import com.akan.wms.bean.PurchasesBean;
 import com.akan.wms.bean.RecordsBean;
 import com.akan.wms.bean.RtnedGoodsBean;
 import com.akan.wms.bean.RtnedLinesBean;
 import com.akan.wms.bean.ScanInfoBean;
+import com.akan.wms.bean.SupplierReceivesBeanDetail;
 import com.akan.wms.bean.UserBean;
 import com.akan.wms.mvp.adapter.RecordAdapter;
 import com.akan.wms.mvp.adapter.home.OutBuyReturnDetailAdapter;
@@ -31,6 +35,7 @@ import com.akan.wms.mvp.view.home.IOutBuyReturnView;
 import com.akan.wms.util.SpSingleInstance;
 import com.akan.wms.util.ToastUtil;
 import com.akan.wms.view.BottomPopWindow;
+import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -227,12 +232,41 @@ public class OutBuyReturnDetailFragment extends BaseFragment<IOutBuyReturnView, 
 
     }
 
-
     //同意出库
     private void agreeOut() {
+        PastRtnedGoodsBean bean = new PastRtnedGoodsBean();
+        bean.setSupplier_code(bean.getSupplier_code());
+        ArrayList<PastRtnedGoodsBean.RtnedLinesBean> linesBeanArrayList = new ArrayList<>();
+        List<RtnedLinesBean> allData = adapter.getAllData();
+        for (int i = 0; i < allData.size(); i++) {
+            RtnedLinesBean mLinesBean = allData.get(i);
+            PastRtnedGoodsBean.RtnedLinesBean linesBean = new PastRtnedGoodsBean.RtnedLinesBean();
+            linesBean.setRtn_id(mLinesBean.getRtn_id());
+            ArrayList<PastRtnedGoodsBean.RtnedLinesBean.RtnedGodsLinesBean> rtnedGodsLinesBeans = new ArrayList<>();
+            List<RtnedLinesBean.RtnedGodsLinesBean> mRtnedGodsLines = mLinesBean.getRtned_gods_lines();
+            for (int j = 0; j < mRtnedGodsLines.size(); j++) {
+                RtnedLinesBean.RtnedGodsLinesBean mRtnedGodsLinesBean = mRtnedGodsLines.get(j);
+                PastRtnedGoodsBean.RtnedLinesBean.RtnedGodsLinesBean rtnedGodsLinesBean = new PastRtnedGoodsBean.RtnedLinesBean.RtnedGodsLinesBean();
+                rtnedGodsLinesBean.setDeliver_line_id(mRtnedGodsLinesBean.getRtned_goods_line_id());
+                rtnedGodsLinesBean.setItem_id(mRtnedGodsLinesBean.getItem_id());
+                rtnedGodsLinesBean.setItem_name(mRtnedGodsLinesBean.getItem_name());
+                rtnedGodsLinesBean.setLine_no(mRtnedGodsLinesBean.getRtn_line_no());
+                rtnedGodsLinesBean.setId(mRtnedGodsLinesBean.getId());
+                rtnedGodsLinesBean.setWh_id(mRtnedGodsLinesBean.getWh_id());
+                rtnedGodsLinesBeans.add(rtnedGodsLinesBean);
+            }
+            linesBean.setRtned_gods_lines(rtnedGodsLinesBeans);
+            linesBeanArrayList.add(linesBean);
+
+        }
+
+        Gson gson = new Gson();
+        String jsonBar = gson.toJson(bean);
         map.clear();
         map.put("id", mId);
+        map.put("pastRtnedGoods", jsonBar);
         getPresenter().pastRtnedGoods(userBean.getStaff_token(), map);
+
     }
 
     //作废

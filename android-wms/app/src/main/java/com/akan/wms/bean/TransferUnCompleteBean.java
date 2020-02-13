@@ -261,8 +261,27 @@ public class TransferUnCompleteBean implements Serializable{
         private String status_show;
         private String out_wh_name;
         private String item_bar;
+        private String supplier_name;
         private  boolean isCheck;
+
+        public String getSupplier_name() {
+            return supplier_name;
+        }
+
+        public void setSupplier_name(String supplier_name) {
+            this.supplier_name = supplier_name;
+        }
+
         private int send_qty;
+        private int point_qty;
+
+        public int getPoint_qty() {
+            return point_qty;
+        }
+
+        public void setPoint_qty(int point_qty) {
+            this.point_qty = point_qty;
+        }
 
         public String getItem_bar() {
             return item_bar;

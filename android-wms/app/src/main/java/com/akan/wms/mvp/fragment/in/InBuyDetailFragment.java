@@ -355,7 +355,7 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
                 }
             }*/
             List<BarBean> barList = allData.get(i).getBarList();
-            if (barList==null||barList.size()<=0){
+            if (barList == null || barList.size() <= 0) {
                 map.clear();
                 map.put("id", mBean.getId());
                 getPresenter().pastWh(userBean.getStaff_token(), map);
@@ -365,12 +365,11 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
                 BarBean barBean = barList.get(j);
                 BarListBean mBarBean = new BarListBean();
                 mBarBean.setPur_id(pur_id);
+                mBarBean.setWh_id(wh_id);
                 mBarBean.setItem_code(barBean.getItem_code());
                 mBarBean.setItem_spec(barBean.getItem_spec());
-                mBarBean.setWh_id(wh_id);
                 mBarBean.setItem_id(barBean.getItem_id());
                 mBarBean.setItem_name(barBean.getItem_name());
-                mBarBean.setItem_code(barBean.getItem_code());
                 mBarBean.setItem_bar(barBean.getBar_code());
                 mBarBean.setQty(barBean.getQty() + "");
                 mBarList.add(mBarBean);
@@ -687,6 +686,7 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
             case "24":
                 List<BarBean> barList = event.getmScanListBean().getList();
                 adapter.getItem(mScanPosition).setBarList(barList);
+                adapter.notifyDataSetChanged();
                 break;
             case "9"://选择库管员
                 OperatorBean operatorBean = event.getmOperatorBean();

@@ -22,7 +22,7 @@
         android:paddingTop="2dp"
         android:text="采购入库"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,16 +30,16 @@
         android:id="@+id/tvOne"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:maxLines="1"
+        android:layout_marginLeft="10dp"
         android:ellipsize="end"
+        android:maxLines="1"
         android:textColor="@color/colorTextG5"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/tvType"
         app:layout_constraintEnd_toStartOf="@+id/tvNum"
-        app:layout_constraintLeft_toRightOf="@+id/tvType"
+        app:layout_constraintStart_toEndOf="@+id/tvType"
         app:layout_constraintTop_toTopOf="@+id/tvType" />
 
     <TextView

@@ -184,8 +184,5 @@
     <orderEntry type="module" module-name="boxing-impl" />
     <orderEntry type="module" module-name="zxinglib" />
     <orderEntry type="module" module-name="boxing" />
-    <orderEntry type="module" module-name="boxing-impl" />
-    <orderEntry type="module" module-name="zxinglib" />
-    <orderEntry type="module" module-name="boxing" />
   </component>
 </module>

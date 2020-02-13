@@ -22,7 +22,7 @@ public class OutSaleRtuBean implements Serializable{
 
     private String id;
     private String doc_no;
-    private int supplier_code;
+    private String supplier_code;
     private String supplier_name;
     private String business_date;
     private String org;
@@ -57,11 +57,11 @@ public class OutSaleRtuBean implements Serializable{
         this.doc_no = doc_no;
     }
 
-    public int getSupplier_code() {
+    public String getSupplier_code() {
         return supplier_code;
     }
 
-    public void setSupplier_code(int supplier_code) {
+    public void setSupplier_code(String supplier_code) {
         this.supplier_code = supplier_code;
     }
 

@@ -89,7 +89,8 @@ public class StockChildFragment extends SimpleFragment {
             ckTop.setVisibility(View.GONE);
 
         }
-        tvNo.setText(mBean.getDoc_no());
+        tvtittle.setText(mBean.getDoc_no());
+        tvNo.setText("供应商："+mBean.getSupplier_name());
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         adapter = new StockChildAdapter(context, mBean.getPurchase_lines(), childType);
         recyclerView.setAdapter(adapter);

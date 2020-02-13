@@ -172,8 +172,8 @@ public class TransferApplyChildFragment extends BaseFragment<ITransferApplyView,
 
 
     private void addData(TransferUnCompleteBean data) {
-        tvtittle.setText(data.getDoc_type_name());
-        tvNo.setText(data.getDoc_no());
+        tvtittle.setText(data.getDoc_no());
+        tvNo.setText("调入组织:"+data.getIn_org_name()+"\n调出组织:"+data.getOut_org_name());
         adapter.clear();
         adapter.addAll(data.getLineBeanList());
         adapter.notifyDataSetChanged();

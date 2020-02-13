@@ -172,7 +172,7 @@ public class InBuyListFragment extends BaseFragment<IInBuyView, InBuyPresenter> 
                 dropDownMenu.closeMenu();
                 switch (mOne[position]) {
                     case "全部":
-                        map.put("status", " ");
+                        map.clear();
                         break;
                     case "已发货":
                         map.put("status", "0");

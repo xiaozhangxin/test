@@ -85,7 +85,7 @@ public class PurchaseLinesBean implements Serializable {
     }
 
     private int send_qty;
-    private int receive_qty;
+    private double receive_qty;
     private int rtn_deduct_qty;
     private int rtn_fill_qty;
     private int status;
@@ -169,11 +169,11 @@ public class PurchaseLinesBean implements Serializable {
         this.pur_qty = pur_qty;
     }
 
-    public int getReceive_qty() {
+    public double getReceive_qty() {
         return receive_qty;
     }
 
-    public void setReceive_qty(int receive_qty) {
+    public void setReceive_qty(double receive_qty) {
         this.receive_qty = receive_qty;
     }
 

@@ -29,7 +29,6 @@ public class WarningAdapter extends RecyclerArrayAdapter<WarnTwoBean> {
         private TextView tvOne, tvTwo, tvThree, tvFour, tvSix, tvSeven, tvEight;
         private LinearLayout llbg;
         private SeekBar tvFive;
-        private View line;
 
         public ViewHolder(ViewGroup parent, @LayoutRes int res) {
             super(parent, R.layout.item_warining);
@@ -43,7 +42,6 @@ public class WarningAdapter extends RecyclerArrayAdapter<WarnTwoBean> {
             tvSix = $(R.id.tvSix);
             tvSeven = $(R.id.tvSeven);
             tvEight = $(R.id.tvEight);
-            line = $(R.id.line);
             //禁止seekBar滑动点击
             tvFive.setClickable(false);
             tvFive.setEnabled(false);
@@ -55,21 +53,19 @@ public class WarningAdapter extends RecyclerArrayAdapter<WarnTwoBean> {
         @Override
         public void setData(WarnTwoBean data) {
             super.setData(data);
-            if (0 == getDataPosition()) {
-                line.setVisibility(View.GONE);
-            } else {
-                line.setVisibility(View.VISIBLE);
-            }
-
             //状态 1过低 2过高
             switch (data.getStatus()) {
+                case "0":
+                    tvFive.setProgress(0);
+                    tvEight.setBackgroundResource(R.drawable.setbar_home_one);
+                    tvFive.setProgressDrawable(getContext().getResources().getDrawable(R.drawable.setbar_seekbar_one));
+                    break;
                 case "1":
                     if (data.getQty()==0){
                         tvFive.setProgress(0);
                     }else {
                         tvFive.setProgress(30);
                     }
-
                     tvSeven.setBackgroundResource(R.drawable.setbar_home_three);
                     tvEight.setBackgroundResource(R.drawable.setbar_home_two);
                     tvFive.setProgressDrawable(getContext().getResources().getDrawable(R.drawable.setbar_seekbar_two));

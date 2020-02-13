@@ -331,6 +331,16 @@ public class TransferOutBean implements Serializable{
 
         private int qty;
         private int send_qty;
+        private int point_qty;
+
+        public int getPoint_qty() {
+            return point_qty;
+        }
+
+        public void setPoint_qty(int point_qty) {
+            this.point_qty = point_qty;
+        }
+
         private String remark;
         private String wh_id;
         private String wh_name;

@@ -74,20 +74,12 @@ public class InBuyAddFragment extends BaseFragment<IInBuyView, InBuyPresenter> i
     TextView tvOne;
     @BindView(R.id.tvTwo)
     TextView tvTwo;
-    @BindView(R.id.lineOne)
-    View lineOne;
-    @BindView(R.id.tvThreeTittle)
-    TextView tvThreeTittle;
     @BindView(R.id.tvThree)
     TextView tvThree;
     @BindView(R.id.llThree)
     LinearLayout llThree;
-    @BindView(R.id.lineTwo)
-    View lineTwo;
-    @BindView(R.id.tvFourTittle)
-    TextView tvFourTittle;
     @BindView(R.id.tvFour)
-    EditText tvFour;
+    TextView tvFour;
     @BindView(R.id.llFour)
     LinearLayout llFour;
 
@@ -120,11 +112,6 @@ public class InBuyAddFragment extends BaseFragment<IInBuyView, InBuyPresenter> i
     public void initUI() {
         tvTitle.setText("新增送货单");
         tvRight.setVisibility(View.VISIBLE);
-        lineOne.setVisibility(View.VISIBLE);
-        lineTwo.setVisibility(View.VISIBLE);
-        llThree.setVisibility(View.VISIBLE);
-        llFour.setVisibility(View.VISIBLE);
-        tvFour.setEnabled(false);
         tvRight.setText("完成");
         list = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -208,17 +195,17 @@ public class InBuyAddFragment extends BaseFragment<IInBuyView, InBuyPresenter> i
 
     }
 
-    @OnClick({R.id.ivLeft, R.id.tvRight, R.id.tvThree, R.id.llAdd})
+    @OnClick({R.id.ivLeft, R.id.tvRight, R.id.llAdd})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ivLeft:
                 showCloseDialog();
                 break;
             case R.id.tvRight:
-                if (TextUtils.isEmpty(mSupplier_id)) {
+/*                if (TextUtils.isEmpty(mSupplier_id)) {
                     ToastUtil.showToast(context.getApplicationContext(), "请选择供应商");
                     return;
-                }
+                }*/
                 if (adapter.getAllData().size() <= 0) {
                     ToastUtil.showToast(context.getApplicationContext(), "请选择采购单");
                     return;
@@ -226,19 +213,18 @@ public class InBuyAddFragment extends BaseFragment<IInBuyView, InBuyPresenter> i
 
                 showDialog("完成");
                 break;
-            case R.id.tvThree:
-
+/*            case R.id.tvThree:
                 if (TextUtils.isEmpty(mSupplier_id) && adapter.getAllData().size() > 0) {
                     showDialog("供应商");
                     return;
                 }
                 startChooseSupplierFragment();
-                break;
+                break;*/
             case R.id.llAdd:
-                if (TextUtils.isEmpty(mSupplier_id)) {
+/*                if (TextUtils.isEmpty(mSupplier_id)) {
                     ToastUtil.showToast(context.getApplicationContext(), "请选择供应商");
                     return;
-                }
+                }*/
                 startStockListFragment(mSupplier_id,"add");
                 break;
         }
@@ -417,14 +403,17 @@ public class InBuyAddFragment extends BaseFragment<IInBuyView, InBuyPresenter> i
     public void onEventMainThread(FirstEvent event) {
         String msg = event.getMsg();
         switch (msg) {
-            case "4"://选择供应商
+  /*          case "4"://选择供应商
                 SupplierBean bean = event.getmSupplierBean();
                 tvThree.setText(bean.getName());
                 tvFour.setText(bean.getCode());
                 mSupplier_id = bean.getCode();
-                break;
+                break;*/
             case "5"://选择采购单
                 PurchaseBean purchaseBean = event.getmPurchaseBean();
+                tvThree.setText(purchaseBean.getSupplier_name());
+                tvFour.setText(purchaseBean.getSupplier_code());
+                mSupplier_id=purchaseBean.getSupplier_id();
                 List<PurchaseBean> allData = adapter.getAllData();
                 for (int i = 0; i < allData.size(); i++) {
                     if (purchaseBean.getDoc_no().equals(allData.get(i).getDoc_no())) {

@@ -93,6 +93,7 @@ public class ChooseReceiptReportFragment extends BaseFragment<IChooseReceiptRepo
     public void initData() {
         userBean = SpSingleInstance.getSpSingleInstance().getUserBean();
         map.put("org_id", userBean.getOrg_id());
+        map.put("item_id", itemId);
         getPresenter().queryWh(userBean.getStaff_token(), map);
     }
 

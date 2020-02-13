@@ -11,7 +11,7 @@ public class RtnedLinesBean implements Serializable{
      * rtned_gods_lines : [{"id":1190719140535651,"rtned_goods_id":1190719140535680,"rtned_goods_line_id":"","item_id":1001812190210713,"item_code":"00.01.013.0001","item_name":"白色PPR色母(R1610C)","item_spec":"","src_doc_type":0,"src_doc_no":null,"doc_no":null,"rtn_qty":0,"rtn_order_qty":0,"rtn_ar_qty":0,"alloc_qty":1,"rtn":1001907170049096,"wh_id":123,"wh_code":0,"wh_name":null,"rtn_line_no":0,"org_id":1001512200010027,"org_name":null,"bar_code":"1001b","description":"1001a","status":0,"status_name":"已配货"}]
      */
 
-    private long rtn_id;
+    private String rtn_id;
     private String doc_no;
 
     public String getDoc_no() {
@@ -33,11 +33,11 @@ public class RtnedLinesBean implements Serializable{
     private List<BarBean> barList;
     private List<RtnedGodsLinesBean> rtned_gods_lines;
 
-    public long getRtn_id() {
+    public String getRtn_id() {
         return rtn_id;
     }
 
-    public void setRtn_id(long rtn_id) {
+    public void setRtn_id(String rtn_id) {
         this.rtn_id = rtn_id;
     }
 
@@ -78,7 +78,7 @@ public class RtnedLinesBean implements Serializable{
          * status_name : 已配货
          */
 
-        private long id;
+        private String id;
         private long rtned_goods_id;
         private String rtned_goods_line_id;
         private String item_id;
@@ -123,11 +123,11 @@ public class RtnedLinesBean implements Serializable{
         private String status_name;
         private String mfc_name;
 
-        public long getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(long id) {
+        public void setId(String id) {
             this.id = id;
         }
 

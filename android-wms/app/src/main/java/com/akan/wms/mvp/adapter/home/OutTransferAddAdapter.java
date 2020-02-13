@@ -30,7 +30,7 @@ public class OutTransferAddAdapter extends RecyclerArrayAdapter<TransferUnComple
     }
 
     public class ViewHolder extends BaseViewHolder<TransferUnCompleteBean> {
-        private TextView tvTittle;
+        private TextView tvTittle,tvTwoTittle,tvThreeTittle;
         private ImageView tvDelete, tvScan;
         private RecyclerView recyclerView;
 
@@ -39,6 +39,8 @@ public class OutTransferAddAdapter extends RecyclerArrayAdapter<TransferUnComple
             tvTittle = $(R.id.tvTittle);
             tvDelete = $(R.id.tvDelete);
             tvScan = $(R.id.tvScan);
+            tvTwoTittle = $(R.id.tvTwoTittle);
+            tvThreeTittle = $(R.id.tvThreeTittle);
             recyclerView = $(R.id.recyclerView);
 
 
@@ -48,6 +50,8 @@ public class OutTransferAddAdapter extends RecyclerArrayAdapter<TransferUnComple
         public void setData(TransferUnCompleteBean data) {
             super.setData(data);
             tvTittle.setText("调拨申请单  " + data.getDoc_no());
+            tvTwoTittle.setText("已调拨数量/调拨数量");
+            tvThreeTittle.setText("配货数量");
             tvDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -73,9 +77,10 @@ public class OutTransferAddAdapter extends RecyclerArrayAdapter<TransferUnComple
                         holder.setText(R.id.tvOne, bean.getItem_name() + "/" + bean.getItem_spec());
                     }
 
-                    holder.setText(R.id.tvTwo, bean.getApply_qty() + "");
+                    holder.setText(R.id.tvTwo, bean.getSend_qty()+ "/"+bean.getApply_qty() );
+                    holder.setText(R.id.tvFive, bean.getSupplier_name() );
                     EditText tvSend = holder.getView(R.id.tvThree);
-                    tvSend.setText(bean.getSend_qty() + "");
+                    tvSend.setText(bean.getPoint_qty() + "");
 /*                    tvSend.addTextChangedListener(new TextWatcher() {
                         @Override
                         public void beforeTextChanged(CharSequence s, int start, int count, int after) {

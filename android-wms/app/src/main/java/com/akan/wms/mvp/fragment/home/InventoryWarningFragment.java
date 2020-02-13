@@ -141,7 +141,7 @@ public class InventoryWarningFragment extends BaseFragment<IInventoryWarningView
     public void initData() {
         userBean = SpSingleInstance.getSpSingleInstance().getUserBean();
         refresh();
-        map.put("status", "3");
+        map.put("status", "0");
     }
 
     private void refresh() {
@@ -167,7 +167,7 @@ public class InventoryWarningFragment extends BaseFragment<IInventoryWarningView
                 dropDownMenu.closeMenu();
                 switch (mOne[position]) {
                     case "全部":
-                        map.put("status", "3");
+                        map.put("status", "0");
                         break;
                     case "过低":
                         map.put("status", "1");

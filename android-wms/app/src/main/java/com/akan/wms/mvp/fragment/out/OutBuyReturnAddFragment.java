@@ -76,9 +76,8 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
     @BindView(R.id.tvThree)
     TextView tvThree;
     @BindView(R.id.tvFour)
-    EditText tvFour;
-    @BindView(R.id.tvFive)
-    EditText tvFive;
+    TextView tvFour;
+
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.llAdd)
@@ -94,7 +93,7 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
     private int mDeletePosition;
     private int mMfcPosition;
     private int mMfcChildPosition;
-    private String mSupplier_id;//供应商code
+    private String mSupplier_id="";//供应商code
     private int mScanPosition;
 
     public static OutBuyReturnAddFragment newInstance() {
@@ -168,31 +167,31 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
     }
 
 
-    @OnClick({R.id.ivLeft, R.id.tvRight, R.id.tvThree, R.id.llAdd})
+    @OnClick({R.id.ivLeft, R.id.tvRight,  R.id.llAdd})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ivLeft:
                 showCloseDialog();
                 break;
             case R.id.tvRight:
-                if (TextUtils.isEmpty(mSupplier_id)) {
+/*                if (TextUtils.isEmpty(mSupplier_id)) {
                     ToastUtil.showToast(context.getApplicationContext(), "请选择供应商");
                     return;
-                }
+                }*/
                 if (adapter.getAllData().size() <= 0) {
-                    ToastUtil.showToast(context.getApplicationContext(), "请添加出货计划");
+                    ToastUtil.showToast(context.getApplicationContext(), "请添加退货申请单");
                     return;
                 }
                 showDialog("完成");
                 break;
-            case R.id.tvThree://选择供应商
+/*            case R.id.tvThree://选择供应商
                 startChooseSupplierFragment();
-                break;
+                break;*/
             case R.id.llAdd:
-                if (TextUtils.isEmpty(mSupplier_id)) {
+/*                if (TextUtils.isEmpty(mSupplier_id)) {
                     ToastUtil.showToast(context.getApplicationContext(), "请选择供应商");
                     return;
-                }
+                }*/
                 startChooseBuyReturnListFragment(mSupplier_id,"add");
                 break;
         }
@@ -246,9 +245,7 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
     //提交数据
     private void toCommit() {
         List<OutSaleRtuBean> allData = adapter.getAllData();
-
         AddRtnedGoodsBean mAddBean = new AddRtnedGoodsBean();
-        mAddBean.setRtn_memo(tvFive.getText().toString());
         mAddBean.setSupplier_code(mSupplier_id);
         ArrayList<AddRtnedGoodsBean.RtnedLinesBean> mList = new ArrayList<>();
         List<BarListBean> mBarList = new ArrayList<>();
@@ -423,6 +420,9 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
                 break;
             case "12"://选择出货计划
                 OutSaleRtuBean bean = event.getmOutSaleRtuBean();
+                tvThree.setText(bean.getSupplier_name());
+                tvFour.setText(bean.getSupplier_code());
+                mSupplier_id=bean.getSupplier_code();
                 mChooseBean.setRtn_lines(bean.getRtn_lines());
                 mChooseBean.setDoc_no(bean.getDoc_no());
                 List<RtnLinesBean> list = new ArrayList<>();

@@ -22,9 +22,28 @@ public class PurchaseBean implements Serializable{
     private long id;
     private String doc_no;
     private long doc_type;
-    private int supplier_id;
+    private String supplier_id;
+    private String supplier_name;
+    private String supplier_code;
     private String business_date;
     private String description;
+
+    public String getSupplier_code() {
+        return supplier_code;
+    }
+
+    public void setSupplier_code(String supplier_code) {
+        this.supplier_code = supplier_code;
+    }
+
+    public String getSupplier_name() {
+        return supplier_name;
+    }
+
+    public void setSupplier_name(String supplier_name) {
+        this.supplier_name = supplier_name;
+    }
+
     private int doc_status;
     private long org_id;
     private String tag;
@@ -54,11 +73,11 @@ public class PurchaseBean implements Serializable{
         this.doc_type = doc_type;
     }
 
-    public int getSupplier_id() {
+    public String getSupplier_id() {
         return supplier_id;
     }
 
-    public void setSupplier_id(int supplier_id) {
+    public void setSupplier_id(String supplier_id) {
         this.supplier_id = supplier_id;
     }
 

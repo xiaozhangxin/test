@@ -66,9 +66,9 @@ public class InTransferAddAdapter extends RecyclerArrayAdapter<TransferOutBean> 
                 @Override
                 protected void convert(com.zhy.adapter.recyclerview.base.ViewHolder holder, final TransferOutBean.LineBeanListBean bean, final int position) {
                     holder.setText(R.id.tvOne, bean.getItem_name() + "/" + bean.getItem_spec());
-                    holder.setText(R.id.tvTwo, bean.getQty() + "");
+                    holder.setText(R.id.tvTwo, bean.getSend_qty() + "/"+bean.getQty());
                     EditText tvSend = holder.getView(R.id.tvThree);
-                    tvSend.setText(bean.getSend_qty() + "");
+                    tvSend.setText(bean.getPoint_qty() + "");
 /*                    tvSend.addTextChangedListener(new TextWatcher() {
                         @Override
                         public void beforeTextChanged(CharSequence s, int start, int count, int after) {

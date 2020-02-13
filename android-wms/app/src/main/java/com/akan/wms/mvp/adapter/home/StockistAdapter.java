@@ -35,7 +35,8 @@ public class StockistAdapter extends RecyclerArrayAdapter<PurchaseBean> {
         @Override
         public void setData(PurchaseBean data) {
             super.setData(data);
-            tvNo.setText(data.getDoc_no());
+            tvtittle.setText(data.getDoc_no());
+            tvNo.setText("供应商："+data.getSupplier_name());
 
         }
     }
