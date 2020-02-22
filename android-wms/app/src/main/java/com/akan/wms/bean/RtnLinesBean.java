@@ -39,7 +39,7 @@ public class RtnLinesBean implements Serializable {
     private String rtn;
     private String wh_id;
     private String wh_name;
-    private int rtn_line_no;
+    private String rtn_line_no;
     private String org_id;
     private String item_bar;
     private String mfc;
@@ -187,11 +187,11 @@ public class RtnLinesBean implements Serializable {
         this.wh_name = wh_name;
     }
 
-    public int getRtn_line_no() {
+    public String  getRtn_line_no() {
         return rtn_line_no;
     }
 
-    public void setRtn_line_no(int rtn_line_no) {
+    public void setRtn_line_no(String rtn_line_no) {
         this.rtn_line_no = rtn_line_no;
     }
 

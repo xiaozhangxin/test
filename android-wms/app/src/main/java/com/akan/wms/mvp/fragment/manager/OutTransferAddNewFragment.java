@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.akan.wms.R;
 import com.akan.wms.bean.BarBean;
 import com.akan.wms.bean.BarListBean;
+import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.OutSaleLineBean;
 import com.akan.wms.bean.OutTypeLBean;
@@ -429,7 +430,7 @@ public class OutTransferAddNewFragment extends BaseFragment<IOutTransferView, Ou
                 scanList.add(scanBean);
 
             }
-            startInBuyScanFragment(scanList, type);
+            startInBuyScanFragment(scanList, type,new ArrayList<BarVerificationListsBean>());
 
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.permission_camera), RC_CAMERA, perms);

@@ -10,7 +10,6 @@
         android:background="@color/colorActivityBackground" />
 
     <LinearLayout
-        android:id="@+id/llbg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
@@ -20,13 +19,12 @@
             android:id="@+id/tvOne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:text="PV奥"
+            android:text="品类/规格"
             android:textColor="@color/colorTextG6"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <View
             android:layout_width="0.5dp"
@@ -37,28 +35,28 @@
             android:id="@+id/tvTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="3dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="黄色"
+            android:text="0"
             android:textColor="@color/colorTextG6"
-
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <View
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:background="@color/colorActivityBackgroundTwo" />
 
-        <TextView
+        <EditText
             android:id="@+id/tvThree"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:inputType="number"
-            android:text="请扫码"
+            android:text="0"
+            android:enabled="false"
             android:textColor="@color/colorTextG6"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <View
             android:layout_width="0.5dp"
@@ -71,23 +69,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="1000"
-            android:textColor="@color/colorTextG6"
-            android:textSize="13sp" />        <View
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorActivityBackgroundTwo" />
-
-        <TextView
-            android:id="@+id/tvMfc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:hint="-"
-            android:textColor="@color/colorTextG6"
-            android:textSize="13sp" />
-
+            android:hint="请选择"
+            android:textColor="@color/colorPrimary"
+            android:textColorHint="@color/colorPrimary"
+            android:textSize="12sp" />
 
     </LinearLayout>
 

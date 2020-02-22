@@ -13,8 +13,17 @@ public class BarMsgBean implements Serializable {
      */
 
     private LinfoBean linfo;
+    private SlaesBean sales;
     private List<LogisticsBean> logistics;
     private List<String> barCodes;
+
+    public SlaesBean getSales() {
+        return sales;
+    }
+
+    public void setSales(SlaesBean sales) {
+        this.sales = sales;
+    }
 
     public List<String> getBarCodes() {
         return barCodes;

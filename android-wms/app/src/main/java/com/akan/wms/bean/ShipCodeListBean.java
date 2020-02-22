@@ -13,7 +13,7 @@ public class ShipCodeListBean implements Serializable{
      */
 
     private String info_id;
-    private int num;
+    private String  num;
     private List<CodeListBean> codeList;
 
     public String getInfo_id() {
@@ -24,11 +24,11 @@ public class ShipCodeListBean implements Serializable{
         this.info_id = info_id;
     }
 
-    public int getNum() {
+    public String getNum() {
         return num;
     }
 
-    public void setNum(int num) {
+    public void setNum(String num) {
         this.num = num;
     }
 

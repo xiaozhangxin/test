@@ -9,8 +9,8 @@ public final class Constants {
 
 
 
-    //public static final String BASE_URL = "http://wms.akan.com.cn:9999/";   //测试服务
-	public static final String BASE_URL = "http://akwms.akan.com.cn/";	//集团试用服
+    public static final String BASE_URL = "http://wms.akan.com.cn:9999/";   //测试服务
+	//public static final String BASE_URL = "http://akwms.akan.com.cn/";	//集团试用服
     //public static final String BASE_URL = "http://180.167.240.180:8091/";
 
     public static final String KEY_FRAGMENT = "key_fragment";
@@ -30,6 +30,7 @@ public final class Constants {
     public static final String DETAIL_ID = "detail_id";
     public static final String BEAN = "bean";
     public static final String LIST_DATA = "list_data";
+    public static final String LIST_BAR = "list_bar";
     public static final String LIST_DATA_TWO = "list_data_two";
     public static final String DETAIL_TYPE = "detail_type";
     public static final String STATE = "state";
@@ -159,4 +160,5 @@ public final class Constants {
     public static final int CHOOSE_DEPORT_BY_ID = 0X111;
     public static final int SCAN_RESULT_CHILD = 0X112;
     public static final int HOME_SCAN_INPUT = 0X113;
+    public static final int HOME_SCAN_OUT_SALE = 0X114;
 }

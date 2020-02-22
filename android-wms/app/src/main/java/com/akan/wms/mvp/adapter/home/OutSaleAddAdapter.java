@@ -63,34 +63,13 @@ public class OutSaleAddAdapter extends RecyclerArrayAdapter<ShipPlanBean> {
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-            CommonAdapter<PlanLineBean> commonAdapter = new CommonAdapter<PlanLineBean>(getContext(), R.layout.item_out_sale_child, data.getPlanLineBeans()) {
+            CommonAdapter<PlanLineBean> commonAdapter = new CommonAdapter<PlanLineBean>(getContext(), R.layout.item_out_sale_child_two, data.getPlanLineBeans()) {
                 @Override
                 protected void convert(com.zhy.adapter.recyclerview.base.ViewHolder holder, final PlanLineBean bean, final int position) {
                     holder.setText(R.id.tvOne, bean.getItem_name() + "/" + bean.getItem_spec());
                     holder.setText(R.id.tvTwo, bean.getPlan_qty() + "");
                     EditText tvSend = holder.getView(R.id.tvThree);
                     tvSend.setText(bean.getAdd_qty() + "");
-/*                    tvSend.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                        }
-
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            String toString = s.toString();
-                            if (toString == null || TextUtils.isEmpty(toString) || "0".equals(toString)) {
-                                bean.setDis_qty(0);
-                            } else {
-                                bean.setDis_qty(Integer.parseInt(toString));
-                            }
-                        }
-
-                        @Override
-                        public void afterTextChanged(Editable s) {
-
-                        }
-                    });*/
                     TextView tvDeport = holder.getView(R.id.tvFour);
                     tvDeport.setText(bean.getDefault_wh_name());
                     tvDeport.setOnClickListener(new View.OnClickListener() {

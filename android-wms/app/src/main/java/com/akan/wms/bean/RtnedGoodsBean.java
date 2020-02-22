@@ -45,6 +45,15 @@ public class RtnedGoodsBean implements Serializable {
     private Object rtned_gods_lines;
     private List<RtnedLinesBean> rtned_lines;
     private List<RecordsBean> recordsBeans;
+    private List<BarVerificationListsBean> bar_lists;
+
+    public List<BarVerificationListsBean> getBar_lists() {
+        return bar_lists;
+    }
+
+    public void setBar_lists(List<BarVerificationListsBean> bar_lists) {
+        this.bar_lists = bar_lists;
+    }
 
     public List<RecordsBean> getRecordsBeans() {
         return recordsBeans;

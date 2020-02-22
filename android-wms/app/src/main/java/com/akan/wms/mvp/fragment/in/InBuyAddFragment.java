@@ -132,7 +132,7 @@ public class InBuyAddFragment extends BaseFragment<IInBuyView, InBuyPresenter> i
                 mChildPosition = childPosition;
                 //影藏软键盘
                 //hideInputMethod();
-                startChooseReceiptReportFragment(itemId);
+                startChooseReceiptReportFragment("");
             }
 
             @Override

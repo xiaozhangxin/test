@@ -102,5 +102,6 @@
     <string name="produce_order">生产订单</string>
     <string name="transfer_apply">调拨申请</string>
     <string name="buy_apply">采购申请</string>
+    <string name="please_choose_librarian">请选择库管员</string>
 
 </resources>

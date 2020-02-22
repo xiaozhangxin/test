@@ -180,7 +180,6 @@ public class ChooseOutPlanListFragment extends BaseFragment<IOutPlanView, OutPla
 
     private void refresh() {
         map.put("org_id", userBean.getOrg_id());
-        map.put("doc_type_name", mId);
         map.put("doc_no", etSearch.getText().toString());
         map.put("page", page + "");
         getPresenter().queryShipPlanPage(userBean.getStaff_token(), map);
@@ -292,9 +291,6 @@ public class ChooseOutPlanListFragment extends BaseFragment<IOutPlanView, OutPla
         String msg = event.getmMsg();
         switch (msg) {
             case "list_finish":
-                if (TextUtils.isEmpty(mId)) {
-                    return;
-                }
                 finish();
                 break;
 

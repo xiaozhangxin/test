@@ -48,7 +48,7 @@
 
     <color name="transparent">#00000000</color>
     <color name="colorActivityBackground">#F3F3F3</color>
-    <color name="colorActivityBackgroundTwo">#E0E0E0</color>
+    <color name="colorActivityBackgroundTwo">#F3F3F3</color>
     <color name="colorTextF5">#11FFFFFF</color>
 
     <color name="window_background">#eaeaea</color>

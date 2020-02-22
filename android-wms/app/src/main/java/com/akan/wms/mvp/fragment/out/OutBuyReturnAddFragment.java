@@ -17,9 +17,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.akan.wms.R;
+import com.akan.wms.bean.AddBuyRturnGoodsBean;
 import com.akan.wms.bean.AddRtnedGoodsBean;
 import com.akan.wms.bean.BarBean;
 import com.akan.wms.bean.BarListBean;
+import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.MfcBean;
 import com.akan.wms.bean.OutSaleRtuBean;
@@ -58,7 +60,7 @@ import butterknife.Unbinder;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, OutBuyReturnPresenter> implements IOutBuyReturnView , FragmentBackHandler {
+public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, OutBuyReturnPresenter> implements IOutBuyReturnView, FragmentBackHandler {
 
     Unbinder unbinder;
     @BindView(R.id.ivLeft)
@@ -93,7 +95,7 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
     private int mDeletePosition;
     private int mMfcPosition;
     private int mMfcChildPosition;
-    private String mSupplier_id="";//供应商code
+    private String mSupplier_id = "";//供应商code
     private int mScanPosition;
 
     public static OutBuyReturnAddFragment newInstance() {
@@ -120,7 +122,7 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
         adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                startChooseBuyReturnChildFragment(mChooseBean, "1","add");
+                startChooseBuyReturnChildFragment(mChooseBean, "1", "add");
             }
         });
         adapter.setOnStockListener(new OutBuyReturnAddAdapter.onSelectStockClickListener() {
@@ -167,32 +169,21 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
     }
 
 
-    @OnClick({R.id.ivLeft, R.id.tvRight,  R.id.llAdd})
+    @OnClick({R.id.ivLeft, R.id.tvRight, R.id.llAdd})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ivLeft:
                 showCloseDialog();
                 break;
             case R.id.tvRight:
-/*                if (TextUtils.isEmpty(mSupplier_id)) {
-                    ToastUtil.showToast(context.getApplicationContext(), "请选择供应商");
-                    return;
-                }*/
                 if (adapter.getAllData().size() <= 0) {
                     ToastUtil.showToast(context.getApplicationContext(), "请添加退货申请单");
                     return;
                 }
                 showDialog("完成");
                 break;
-/*            case R.id.tvThree://选择供应商
-                startChooseSupplierFragment();
-                break;*/
             case R.id.llAdd:
-/*                if (TextUtils.isEmpty(mSupplier_id)) {
-                    ToastUtil.showToast(context.getApplicationContext(), "请选择供应商");
-                    return;
-                }*/
-                startChooseBuyReturnListFragment(mSupplier_id,"add");
+                startChooseBuyReturnListFragment("", "add");
                 break;
         }
     }
@@ -245,18 +236,21 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
     //提交数据
     private void toCommit() {
         List<OutSaleRtuBean> allData = adapter.getAllData();
-        AddRtnedGoodsBean mAddBean = new AddRtnedGoodsBean();
-        mAddBean.setSupplier_code(mSupplier_id);
-        ArrayList<AddRtnedGoodsBean.RtnedLinesBean> mList = new ArrayList<>();
-        List<BarListBean> mBarList = new ArrayList<>();
+        AddBuyRturnGoodsBean mAddBean = new AddBuyRturnGoodsBean();
+        ArrayList<AddBuyRturnGoodsBean.RtnedLinesBean> mList = new ArrayList<>();//退货清单列表
+        List<BarListBean> mBarList = new ArrayList<>();//条码列表
+
         for (int i = 0; i < allData.size(); i++) {
+            String wh_id="";
             OutSaleRtuBean shipPlanBean = allData.get(i);
-            AddRtnedGoodsBean.RtnedLinesBean mBean = new AddRtnedGoodsBean.RtnedLinesBean();
-            String rtn_id = shipPlanBean.getId();
+            AddBuyRturnGoodsBean.RtnedLinesBean mBean = new AddBuyRturnGoodsBean.RtnedLinesBean();//退货bean
             List<RtnLinesBean> rtnLines = shipPlanBean.getRtn_lines();
-            mBean.setRtn_id(rtn_id);
-            ArrayList<AddRtnedGoodsBean.RtnedLinesBean.RtnedGodsLinesBean> mChilList = new ArrayList<>();
-            for (int j=0;j<rtnLines.size();j++){
+            if (rtnLines.size()>0){
+                wh_id=rtnLines.get(0).getWh_id();
+            }
+
+            ArrayList<AddBuyRturnGoodsBean.RtnedLinesBean.RtnedGodsLinesBean> mChilList = new ArrayList<>();
+            for (int j = 0; j < rtnLines.size(); j++) {
                 RtnLinesBean linesBean = rtnLines.get(j);
                 if (linesBean.getSend_qty() > linesBean.getRtn_qty()) {
                     showNotDialog("料品（" + linesBean.getItem_name() + "）配货数量大于申请数量,请扫码");
@@ -266,43 +260,45 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
                     showNotDialog("料品（" + linesBean.getItem_name() + "）配货数量为0,请扫码");
                     return;
                 }
-
-                AddRtnedGoodsBean.RtnedLinesBean.RtnedGodsLinesBean mChildBean = new AddRtnedGoodsBean.RtnedLinesBean.RtnedGodsLinesBean();
-                mChildBean.setDeliver_line_id(linesBean.getRtn_line_no());
+                AddBuyRturnGoodsBean.RtnedLinesBean.RtnedGodsLinesBean mChildBean = new AddBuyRturnGoodsBean.RtnedLinesBean.RtnedGodsLinesBean();
                 mChildBean.setId(linesBean.getId());
-                mChildBean.setItem_id(linesBean.getItem_id());
-                mChildBean.setItem_name(linesBean.getItem_name());
-                mChildBean.setMfc(linesBean.getMfc());//厂牌
-                mChildBean.setLine_no(linesBean.getRtn_line_no());
+                mChildBean.setWh_id(linesBean.getWh_id());
                 mChildBean.setAlloc_qty(linesBean.getSend_qty() + "");//配货数量
-                mChildBean.setWh_id(linesBean.getWh_id() + "");
+                mChildBean.setRtn_line_no(linesBean.getRtn_line_no());
+                mChildBean.setRtn(linesBean.getRtn());
+                mChildBean.setWh_name(linesBean.getWh_name());
+                mChildBean.setItem_id(linesBean.getItem_id());
+                mChildBean.setItem_code(linesBean.getItem_code());
                 mChilList.add(mChildBean);
 
             }
+            mBean.setRtn_id(shipPlanBean.getId());
             mBean.setRtned_gods_lines(mChilList);
             mList.add(mBean);
-
             List<BarBean> barList = shipPlanBean.getBarList();
-            for (int m=0;m<barList.size();m++){
+            for (int m = 0; m < barList.size(); m++) {
                 BarBean barBean = barList.get(m);
                 BarListBean mBarBean = new BarListBean();
-                mBarBean.setItem_bar(barBean.getBar_code());
-                mBarBean.setQty(barBean.getQty() + "");
+                mBarBean.setRtn_id(shipPlanBean.getId());
                 mBarBean.setItem_id(barBean.getItem_id());
                 mBarBean.setItem_code(barBean.getItem_code());
                 mBarBean.setItem_name(barBean.getItem_name());
                 mBarBean.setItem_spec(barBean.getItem_spec());
-                mBarBean.setRtn_id(rtn_id);
+                mBarBean.setItem_bar(barBean.getBar_code());
+                mBarBean.setQty(barBean.getQty() + "");
+                mBarBean.setWh_id(wh_id);
                 mBarList.add(mBarBean);
             }
-
-
         }
+        mAddBean.setSupplier_code(tvFour.getText().toString());
         mAddBean.setRtned_lines(mList);
 
         Gson gson = new Gson();
         String json = gson.toJson(mAddBean);
         String barJson = gson.toJson(mBarList);
+        map.clear();
+        map.put("staff_id", userBean.getStaff_id());
+        map.put("org_id", userBean.getOrg_id());
         map.put("addRtnedGoods", json);
         map.put("barList", barJson);
         getPresenter().addRtnedGoods(userBean.getStaff_token(), map);
@@ -344,12 +340,12 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
                 scanBean.setItem_code(detail.getItem_code());
                 scanBean.setItem_id(detail.getItem_id());
                 scanBean.setItem_name(detail.getItem_name());
-                scanBean.setSend_qty((int)detail.getRtn_qty());//申请数量
+                scanBean.setSend_qty((int) detail.getRtn_qty());//申请数量
                 scanBean.setArrive_qty(detail.getSend_qty());//配货数量
                 scanBean.setBarList(item.getBarList());//历史条码
                 scanList.add(scanBean);
             }
-            startInBuyScanFragment(scanList, type);
+            startInBuyScanFragment(scanList, type,new ArrayList<BarVerificationListsBean>());
 
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.permission_camera), RC_CAMERA, perms);
@@ -406,11 +402,11 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
     public void onEventMainThread(FirstEvent event) {
         String msg = event.getmMsg();
         switch (msg) {
-            case "4"://选择供应商
-                SupplierBean sbean = event.getmSupplierBean();
-                tvThree.setText(sbean.getName());
-                tvFour.setText(sbean.getCode());
-                mSupplier_id = sbean.getCode();
+            case "6"://选择仓库
+                WareHouseBean houseBean = event.getmWareHouseBean();
+                adapter.getItem(mPosition).getRtn_lines().get(mChildPosition).setWh_name(houseBean.getWarehouse_name());
+                adapter.getItem(mPosition).getRtn_lines().get(mChildPosition).setWh_id(houseBean.getWarehouse_id());
+                adapter.notifyDataSetChanged();
                 break;
             case "23"://选择厂牌
                 MfcBean mfcBean = event.getmMfcBean();
@@ -422,7 +418,7 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
                 OutSaleRtuBean bean = event.getmOutSaleRtuBean();
                 tvThree.setText(bean.getSupplier_name());
                 tvFour.setText(bean.getSupplier_code());
-                mSupplier_id=bean.getSupplier_code();
+                mSupplier_id = bean.getSupplier_code();
                 mChooseBean.setRtn_lines(bean.getRtn_lines());
                 mChooseBean.setDoc_no(bean.getDoc_no());
                 List<RtnLinesBean> list = new ArrayList<>();
@@ -436,12 +432,6 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
                 adapter.add(bean);
                 adapter.notifyDataSetChanged();
                 break;
-            case "6"://选择仓库
-                WareHouseBean houseBean = event.getmWareHouseBean();
-                adapter.getItem(mPosition).getRtn_lines().get(mChildPosition).setWh_name(houseBean.getWarehouse_name());
-                adapter.getItem(mPosition).getRtn_lines().get(mChildPosition).setWh_id(houseBean.getWarehouse_id() + "");
-                adapter.notifyDataSetChanged();
-                break;
             case "out_buy_add"://扫码返回
                 List<ScanInfoBean> listScan = event.getmScanInBuyBean().getList();
                 List<RtnLinesBean> rtn_lines = adapter.getItem(mScanPosition).getRtn_lines();
@@ -449,13 +439,12 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
                     for (int j = 0; j < listScan.size(); j++) {
                         if (rtn_lines.get(i).getItem_code().equals(listScan.get(j).getItem_code())) {
                             rtn_lines.get(i).setSend_qty(listScan.get(j).getArrive_qty());
-                            rtn_lines.get(i).setItem_code(listScan.get(j).getBar_code());
+                            rtn_lines.get(i).setItem_bar(listScan.get(j).getBar_code());
                         }
                     }
                 }
                 adapter.notifyItemChanged(mScanPosition);
                 break;
-
             case "24":
                 List<BarBean> barBeanList = event.getmScanListBean().getList();
                 adapter.getItem(mScanPosition).setBarList(barBeanList);

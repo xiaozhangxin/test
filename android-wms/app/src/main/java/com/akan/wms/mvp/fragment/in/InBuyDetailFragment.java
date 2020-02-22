@@ -20,6 +20,8 @@ import com.akan.wms.R;
 import com.akan.wms.bean.AddDeliverGoodsBean;
 import com.akan.wms.bean.BarBean;
 import com.akan.wms.bean.BarListBean;
+import com.akan.wms.bean.BarListInBuyPointBean;
+import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.DeliverGoodsBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.OperatorBean;
@@ -339,84 +341,21 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
 
     }
 
-    //同意入库
-    private void agreeOut() {
-        List<PurchasesBean> allData = adapter.getAllData();
-        List<BarListBean> mBarList = new ArrayList<>();
-        for (int i = 0; i < allData.size(); i++) {
-            List<SupplierReceivesBeanDetail> receives = allData.get(i).getSupplier_receives();
-            String pur_id = allData.get(i).getPur_id();
-            String wh_id = receives.get(i).getWh_id();
-       /*     for (int m = 0; m < receives.size(); m++) {
-                SupplierReceivesBeanDetail beanDetail = receives.get(m);
-                if (beanDetail.getIn_qty() < beanDetail.getQualified_qty()) {
-                    showNotDialog(beanDetail.getItem_name());
-                    return;
-                }
-            }*/
-            List<BarBean> barList = allData.get(i).getBarList();
-            if (barList == null || barList.size() <= 0) {
-                map.clear();
-                map.put("id", mBean.getId());
-                getPresenter().pastWh(userBean.getStaff_token(), map);
-                return;
-            }
-            for (int j = 0; j < barList.size(); j++) {
-                BarBean barBean = barList.get(j);
-                BarListBean mBarBean = new BarListBean();
-                mBarBean.setPur_id(pur_id);
-                mBarBean.setWh_id(wh_id);
-                mBarBean.setItem_code(barBean.getItem_code());
-                mBarBean.setItem_spec(barBean.getItem_spec());
-                mBarBean.setItem_id(barBean.getItem_id());
-                mBarBean.setItem_name(barBean.getItem_name());
-                mBarBean.setItem_bar(barBean.getBar_code());
-                mBarBean.setQty(barBean.getQty() + "");
-                mBarList.add(mBarBean);
-            }
-        }
-        map.clear();
-        Gson gson = new Gson();
-        String jsonBar = gson.toJson(mBarList);
-        map.put("barList", jsonBar);
-        map.put("id", mBean.getId());
-        getPresenter().pastWh(userBean.getStaff_token(), map);
-    }
-
-    //扫码不完整弹框
-    private void showNotDialog(String result) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("提示");
-        builder.setMessage("料品（" + result + "）扫码数量小于质检合格数量,请扫码");
-        builder.setCancelable(false);
-        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-        builder.create().show();
-
-    }
-
-
     //点收
     private void toAccept() {
         AddDeliverGoodsBean bean = new AddDeliverGoodsBean();
-        bean.setId(mBean.getId() + "");
+        bean.setId(mBean.getId());
         bean.setOrg_id(userBean.getOrg_id());
         bean.setSupplier_id(mBean.getSupplier_id());
         List<PurchasesBean> allData = adapter.getAllData();
-
         List<SupplierReceivesBean> mList = new ArrayList<>();//储存料品信息
-        List<BarListBean> mBarList = new ArrayList<>();//储存条码信息
-
+        List<BarListInBuyPointBean> mBarList = new ArrayList<>();//储存条码信息
         for (int i = 0; i < allData.size(); i++) {
-            String pur_id = allData.get(i).getPur_id();
             List<SupplierReceivesBeanDetail> receives = allData.get(i).getSupplier_receives();//获取料品信息
+            String wh_id = receives.get(i).getWh_id();
             for (int j = 0; j < receives.size(); j++) {
                 SupplierReceivesBean receivesBean = new SupplierReceivesBean();
                 SupplierReceivesBeanDetail beanDetail = receives.get(j);
-                int sendNum = beanDetail.getSend_qty();//送货数量
                 int arriveNum = beanDetail.getArrive_qty();//实收数量
                 if (arriveNum <= 0) {
                     ToastUtil.showToast(context.getApplicationContext(), getString(R.string.actual_more_send));
@@ -427,36 +366,35 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
                     return;
                 }
                 if (TextUtils.isEmpty(beanDetail.getWh_staff_id())) {
-                    ToastUtil.showToast(context.getApplicationContext(), "请选择库管员");
+                    ToastUtil.showToast(context.getApplicationContext(), getString(R.string.please_choose_librarian));
                     return;
                 }
-                receivesBean.setPur_id(pur_id);
-                receivesBean.setId(beanDetail.getId() + "");
-                receivesBean.setItem_id(beanDetail.getItem_id() + "");
-                receivesBean.setWh_id(beanDetail.getWh_id() + "");
-                receivesBean.setPur_qty(beanDetail.getPur_qty() + "");
-                receivesBean.setSend_qty(sendNum + "");
-                receivesBean.setArrive_qty(arriveNum + "");
-                receivesBean.setWh_staff_id(beanDetail.getWh_staff_id() + "");
+                receivesBean.setPur_id(beanDetail.getPur_id());
+                receivesBean.setId(beanDetail.getId());
+                receivesBean.setArrive_qty(String.valueOf(arriveNum));
+                receivesBean.setWh_staff_id(beanDetail.getWh_staff_id());
+                receivesBean.setWh_staff_name(beanDetail.getWh_staff_name());
+                receivesBean.setItem_id(beanDetail.getItem_id());
+                receivesBean.setWh_id(beanDetail.getWh_id());
                 mList.add(receivesBean);
             }
 
             List<BarBean> barList = allData.get(i).getBarList();//获取条码信息
             if (barList == null) {
-                ToastUtil.showToast(context.getApplicationContext(), "条码为空!");
+                ToastUtil.showToast(context.getApplicationContext(), "请先扫码点收！");
                 return;
             }
 
             for (int m = 0; m < barList.size(); m++) {
                 BarBean barBean = barList.get(m);
-                BarListBean mBarBean = new BarListBean();
-                mBarBean.setPur_id(pur_id);
+                BarListInBuyPointBean mBarBean = new BarListInBuyPointBean();
+                mBarBean.setItem_code(barBean.getItem_code());
+                mBarBean.setQty(String.valueOf(barBean.getQty()));
+                mBarBean.setItem_name(barBean.getItem_name());
+                mBarBean.setWh_id(wh_id);
                 mBarBean.setItem_id(barBean.getItem_id());
                 mBarBean.setItem_spec(barBean.getItem_spec());
-                mBarBean.setName(barBean.getItem_name());
-                mBarBean.setCode(barBean.getBar_code());
-                mBarBean.setItem_code(barBean.getItem_code());
-                mBarBean.setQty(barBean.getQty() + "");
+                mBarBean.setItem_bar(barBean.getBar_code());
                 mBarList.add(mBarBean);
             }
 
@@ -467,16 +405,19 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
         String json = gson.toJson(bean);
         String jsonBar = gson.toJson(mBarList);
         map.clear();
+        map.put("staff_id", userBean.getStaff_id());
+        map.put("org_id", userBean.getOrg_id());
         map.put("addReceiveGoods", json);
         map.put("barList", jsonBar);
         getPresenter().addReceiveGoods(userBean.getStaff_token(), map);
     }
 
+
     //质检
     private void toQuality() {
         AddDeliverGoodsBean bean = new AddDeliverGoodsBean();
-        bean.setId(mBean.getId() + "");
-        bean.setOrg_id(userBean.getOrg_id());
+        bean.setId(mBean.getId());
+        bean.setOrg_id(mBean.getOrg_id());
         bean.setSupplier_id(mBean.getSupplier_id());
         List<PurchasesBean> allData = adapter.getAllData();
         List<SupplierReceivesBean> mList = new ArrayList<>();
@@ -502,17 +443,14 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
                     ToastUtil.showToast(context.getApplicationContext(), getString(R.string.check_actual_different));
                     return;
                 }
-
+                receivesBean.setArrive_qty(String.valueOf(arriveNum));
+                receivesBean.setQualified_qty(String.valueOf(passNum));
+                receivesBean.setUnqualified_qty(String.valueOf(notPassNum));
                 receivesBean.setId(beanDetail.getId());
                 receivesBean.setItem_id(beanDetail.getItem_id());
                 receivesBean.setPur_id(beanDetail.getPur_id());
-                receivesBean.setPur_qty(beanDetail.getPur_qty() + "");
-                receivesBean.setSend_qty(sendNum + "");
-                receivesBean.setArrive_qty(arriveNum + "");
-                receivesBean.setQualified_qty(passNum + "");
-                receivesBean.setUnqualified_qty(notPassNum + "");
-                receivesBean.setWh_id(beanDetail.getWh_id() + "");
-                receivesBean.setWh_staff_id(beanDetail.getWh_staff_id() + "");
+                receivesBean.setWh_id(beanDetail.getWh_id());
+                receivesBean.setWh_staff_id(beanDetail.getWh_staff_id());
                 mList.add(receivesBean);
             }
         }
@@ -522,10 +460,70 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
         Gson gson = new Gson();
         String json = gson.toJson(bean);
         map.clear();
+        map.put("staff_id", userBean.getStaff_id());
+        map.put("org_id", userBean.getOrg_id());
         map.put("qualityReceiveGoods", json);
         getPresenter().qualityReceiveGoods(userBean.getStaff_token(), map);
     }
 
+
+    //同意入库
+    private void agreeOut() {
+        List<PurchasesBean> allData = adapter.getAllData();
+        List<BarListBean> mBarList = new ArrayList<>();
+        for (int i = 0; i < allData.size(); i++) {
+            String wh_id="";
+            PurchasesBean purchasesBean = allData.get(i);
+            String pur_id = purchasesBean.getPur_id();
+            List<SupplierReceivesBeanDetail> receives = purchasesBean.getSupplier_receives();
+            if (receives.size() > 0) {
+                 wh_id = receives.get(0).getWh_id();
+            }
+            List<BarBean> barList = allData.get(i).getBarList();
+            if (barList == null || barList.size() <= 0) {
+                map.clear();
+                map.put("id", mBean.getId());
+                getPresenter().pastWh(userBean.getStaff_token(), map);
+                return;
+            }
+            for (int j = 0; j < barList.size(); j++) {
+                BarBean barBean = barList.get(j);
+                BarListBean mBarBean = new BarListBean();
+                mBarBean.setPur_id(pur_id);
+                mBarBean.setWh_id(wh_id);
+                mBarBean.setItem_code(barBean.getItem_code());
+                mBarBean.setQty(String.valueOf(barBean.getQty()));
+                mBarBean.setItem_spec(barBean.getItem_spec());
+                mBarBean.setItem_id(barBean.getItem_id());
+                mBarBean.setItem_name(barBean.getItem_name());
+                mBarBean.setItem_bar(barBean.getBar_code());
+                mBarList.add(mBarBean);
+            }
+        }
+        map.clear();
+        Gson gson = new Gson();
+        String jsonBar = gson.toJson(mBarList);
+        map.put("id", mBean.getId());
+        map.put("staff_id", userBean.getStaff_id());
+        map.put("org_id", userBean.getOrg_id());
+        map.put("barList", jsonBar);
+        getPresenter().pastWh(userBean.getStaff_token(), map);
+    }
+
+    //扫码不完整弹框
+    private void showNotDialog(String result) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("提示");
+        builder.setMessage("请先扫码");
+        builder.setCancelable(false);
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.create().show();
+
+    }
 
     //按钮点击事件
     @OnClick({R.id.ivLeft, R.id.tvRight})
@@ -589,7 +587,7 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
                         scanBean.setBarList(adapterItem.getBarList());//历史条码
                         scanList.add(scanBean);
                     }
-                    startInBuyScanFragment(scanList, type);
+                    startInBuyScanFragment(scanList, type,new ArrayList<BarVerificationListsBean>());
                     break;
                 case "in_buy_agree":
                     PurchasesBean adapterItemTwo = adapter.getItem(mScanPosition);
@@ -609,7 +607,7 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
                         scanListTwo.add(scanBean);
 
                     }
-                    startInBuyScanFragment(scanListTwo, type);
+                    startInBuyScanFragment(scanListTwo, type,new ArrayList<BarVerificationListsBean>());
                     break;
 
 

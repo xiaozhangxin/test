@@ -72,16 +72,25 @@ public class MiscRcvBean implements Serializable{
 
     private List<RecordsBean> recordsBeans;
 
-    public List<BarBean> getBarList() {
+    public List<BarVerificationListsBean> getBarList() {
         return barList;
     }
 
-    public void setBarList(List<BarBean> barList) {
+    public void setBarList(List<BarVerificationListsBean> barList) {
         this.barList = barList;
     }
 
     private String is_valid;
-    private List<BarBean> barList;
+    private List<BarVerificationListsBean> barList;
+    private List<BarBean> barScanList;
+
+    public List<BarBean> getBarScanList() {
+        return barScanList;
+    }
+
+    public void setBarScanList(List<BarBean> barScanList) {
+        this.barScanList = barScanList;
+    }
 
     public String getIs_valid() {
         return is_valid;

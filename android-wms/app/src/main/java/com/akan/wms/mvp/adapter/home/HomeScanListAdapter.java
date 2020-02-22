@@ -3,6 +3,7 @@ package com.akan.wms.mvp.adapter.home;
 import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -24,7 +25,7 @@ public class HomeScanListAdapter extends RecyclerArrayAdapter<BarMsgBean.Logisti
     }
 
     public class ViewHolder extends BaseViewHolder<BarMsgBean.LogisticsBean> {
-        private TextView tvOne,tvTwo,tvThree,tvAddOne,tvAddTwo,tvType;
+        private TextView tvOne, tvTwo, tvThree, tvAddOne, tvAddTwo, tvType;
 
         public ViewHolder(ViewGroup parent, @LayoutRes int res) {
             super(parent, R.layout.item_home_scan);
@@ -40,14 +41,27 @@ public class HomeScanListAdapter extends RecyclerArrayAdapter<BarMsgBean.Logisti
         @Override
         public void setData(BarMsgBean.LogisticsBean data) {
             super.setData(data);
-            if ("0".equals(data.getIn_out_type())){
+            if ("0".equals(data.getIn_out_type())) {
                 tvType.setText("入");
-            }else {
+            } else {
                 tvType.setText("出");
             }
 
+            if ("XSCK".equals(data.getInventory_type())) {
+                tvAddTwo.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
+
+                tvAddTwo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onDetailListener.onDetail();
+                    }
+                });
+            }else {
+                tvAddTwo.setTextColor(getContext().getResources().getColor(R.color.colorTextG9));
+            }
+
             tvOne.setText(data.getOrg_name());
-           //tvTwo.setText(data.get);
+            tvTwo.setText(data.getWh_name());
             tvThree.setText(data.getCreate_time());
             tvAddOne.setText(data.getWh_name());
             tvAddTwo.setText(data.getInventory_type_name());
@@ -55,5 +69,13 @@ public class HomeScanListAdapter extends RecyclerArrayAdapter<BarMsgBean.Logisti
 
         }
     }
+    public interface OnDetailListener{
+        void onDetail();
 
+    }
+    private OnDetailListener onDetailListener;
+
+    public void setOnDetailListener(OnDetailListener onDetailListener){
+        this.onDetailListener=onDetailListener;
+    }
 }

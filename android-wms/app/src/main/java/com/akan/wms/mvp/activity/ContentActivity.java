@@ -10,6 +10,7 @@ import com.akan.wms.Constants;
 import com.akan.wms.R;
 import com.akan.wms.bean.BarBean;
 import com.akan.wms.bean.BarMsgBean;
+import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.InforListBean;
 import com.akan.wms.bean.OutSaleRtuBean;
@@ -41,6 +42,7 @@ import com.akan.wms.mvp.fragment.home.HomeScanChildResultFragment;
 import com.akan.wms.mvp.fragment.home.HomeScanInputFragment;
 import com.akan.wms.mvp.fragment.home.HomeScanResultFragment;
 import com.akan.wms.mvp.fragment.home.InventoryWarningFragment;
+import com.akan.wms.mvp.fragment.home.OutSaleCodeDetail;
 import com.akan.wms.mvp.fragment.in.ChooseCompleteParamFragment;
 import com.akan.wms.mvp.fragment.in.ChooseGoodsMoreFragment;
 import com.akan.wms.mvp.fragment.in.ChooseReceiptReportFragment;
@@ -105,7 +107,6 @@ import com.akan.wms.mvp.fragment.out.OutBuyReturnAddFragment;
 import com.akan.wms.mvp.fragment.out.OutBuyReturnDetailFragment;
 import com.akan.wms.mvp.fragment.out.OutBuyReturnListFragment;
 import com.akan.wms.mvp.fragment.out.OutSaleAddFragment;
-import com.akan.wms.mvp.fragment.out.OutSaleAddNewFragment;
 import com.akan.wms.mvp.fragment.out.OutSaleDetailFragment;
 import com.akan.wms.mvp.fragment.out.OutSaleListFragment;
 import com.akan.wms.mvp.fragment.out.ProduceChooseFragment;
@@ -181,7 +182,8 @@ public class ContentActivity extends AppCompatActivity {
                 break;
             case Constants.DEPORT_BASE:
                 replaceFragment(DeportBaseFragment.newInstance());
-                break;  case Constants.HOME_SCAN_INPUT:
+                break;
+            case Constants.HOME_SCAN_INPUT:
                 replaceFragment(HomeScanInputFragment.newInstance());
                 break;
             case Constants.COMPLETE_CHOOSE:
@@ -465,6 +467,10 @@ public class ContentActivity extends AppCompatActivity {
                 String childType = getIntent().getStringExtra(Constants.DETAIL_TYPE);
                 replaceFragment(StockChildFragment.newInstance(pushBean, childType));
                 break;
+            case Constants.HOME_SCAN_OUT_SALE:
+                BarMsgBean scanOutSaleBean = (BarMsgBean) intent.getSerializableExtra(Constants.BEAN);
+                replaceFragment(OutSaleCodeDetail.newInstance(scanOutSaleBean));
+                break;
             case Constants.HOME_SCAN:
                 BarMsgBean scanBean = (BarMsgBean) intent.getSerializableExtra(Constants.BEAN);
                 replaceFragment(HomeScanResultFragment.newInstance(scanBean));
@@ -472,8 +478,9 @@ public class ContentActivity extends AppCompatActivity {
 
             case Constants.SCAN_IN_BUY:
                 List<ScanInfoBean> scanInfoList = (List<ScanInfoBean>) getIntent().getSerializableExtra(Constants.LIST_DATA);
+                List<BarVerificationListsBean> BarVerificationList = (List<BarVerificationListsBean>) getIntent().getSerializableExtra(Constants.LIST_BAR);
                 String scanInfoType = getIntent().getStringExtra(Constants.DETAIL_ID);
-                replaceFragment(ScanInBuyFragment.newInstance(scanInfoList, scanInfoType));
+                replaceFragment(ScanInBuyFragment.newInstance(scanInfoList, scanInfoType,BarVerificationList));
                 break;
             case Constants.SCAN_RESULT_CHILD:
                 List<String> scanChildCode = (List<String>) getIntent().getSerializableExtra(Constants.LIST_DATA);
@@ -515,10 +522,6 @@ public class ContentActivity extends AppCompatActivity {
             case Constants.STOCK_FIND_DETAIL:
                 WarnTwoBean warnBean = (WarnTwoBean) getIntent().getSerializableExtra(Constants.BEAN);
                 replaceFragment(StockFindDetailFragment.newInstance(warnBean));
-                break;
-            case Constants.OUT_SALE_ADD_NEW:
-                ShipPlanBean outPlanAddBean = (ShipPlanBean) getIntent().getSerializableExtra(Constants.BEAN);
-                replaceFragment(OutSaleAddNewFragment.newInstance(outPlanAddBean));
                 break;
             case Constants.OUT_TRANSFER_ADD_NEW:
                 TransferUnCompleteBean outTransferAddBean = (TransferUnCompleteBean) getIntent().getSerializableExtra(Constants.BEAN);

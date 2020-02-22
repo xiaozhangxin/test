@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.akan.wms.R;
 import com.akan.wms.bean.BarBean;
+import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.ScanInfoBean;
 import com.akan.wms.bean.UserBean;
@@ -72,6 +73,7 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
     private UserBean userBean;
     private String mCode = "";
     private String type;
+    private List<BarVerificationListsBean> BarVerificationList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,11 +85,12 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
         }
     }
 
-    public static ScanInBuyFragment newInstance(List<ScanInfoBean> scanInfoList, String type) {
+    public static ScanInBuyFragment newInstance(List<ScanInfoBean> scanInfoList, String type, List<BarVerificationListsBean> BarVerificationList) {
         Bundle args = new Bundle();
         ScanInBuyFragment fragment = new ScanInBuyFragment();
         fragment.oldList = scanInfoList;
         fragment.type = type;
+        fragment.BarVerificationList = BarVerificationList;
         fragment.setArguments(args);
         return fragment;
     }
@@ -127,7 +130,24 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
     @Override
     public boolean onResultCallback(String result) {
         mCode = result;
-        queryBar(result);
+
+        if (BarVerificationList.size() > 0) {
+            boolean isInList = false;
+            for (int i = 0; i < BarVerificationList.size(); i++) {
+                if (result.equals(BarVerificationList.get(i).getItem_bar())) {
+                    isInList = true;
+                }
+            }
+            if (isInList) {
+                queryBar(result);
+            } else {
+                showNotInDialog(result);
+            }
+        } else {
+            queryBar(result);
+        }
+
+
         return true;
     }
 
@@ -145,7 +165,7 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
         //通过item_id判断是否重复扫码
         String itemCode = data.getBar_code();
         boolean isHave = false;
-        if (barList.size()>0){
+        if (barList.size() > 0) {
             for (int i = 0; i < barList.size(); i++) {
                 if (itemCode.equals(barList.get(i).getBar_code())) {
                     isHave = true;
@@ -229,7 +249,7 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
     //重复提示框
     private void showHaveDialog(BarBean data) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("扫码重复");
+        builder.setTitle("扫码结果");
         builder.setMessage("商品［" + data.getItem_name() + "］的条码［" + data.getItem_code() + "］\n已经扫过了，请勿重复扫码");
         builder.setCancelable(false);
         builder.setPositiveButton("继续", new DialogInterface.OnClickListener() {
@@ -244,11 +264,11 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
 
     //扫码成功弹框
     private void showRightDialog(String result) {
-        new Handler().postDelayed(new Runnable(){
-            public void run(){
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
                 mCaptureHelper.restartPreviewAndDecode();
             }
-        },500);
+        }, 500);
 
 /*        AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("扫描成功");
@@ -264,11 +284,26 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
 
     }
 
+    //条码不在单子内
+    private void showNotInDialog(String result) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("扫码结果");
+        builder.setMessage("条码" + "\n" + result + "\n不在此单内");
+        builder.setCancelable(false);
+        builder.setPositiveButton("继续", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mCaptureHelper.restartPreviewAndDecode();
+            }
+        });
+        builder.create().show();
+
+    }
 
     //扫码失败弹框
     private void showNotDialog(String result) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("扫描失败");
+        builder.setTitle("扫码结果");
         builder.setMessage(result + "\n该商品不在此单内");
         builder.setCancelable(false);
         builder.setPositiveButton("继续", new DialogInterface.OnClickListener() {

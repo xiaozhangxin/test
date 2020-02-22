@@ -3,16 +3,27 @@ package com.akan.wms.bean;
 import java.io.Serializable;
 
 public class SupplierReceivesBean implements Serializable {
-
-    private String send_qty;
-    private String wh_id;
-    private String pur_qty;
+    private String unqualified_qty;
+    private String id;
+    private String qualified_qty;
+    private String arrive_qty;
     private String pur_id;
     private String item_id;
-    private String arrive_qty;
-    private String id;
-    private String mfc;
+
     private String wh_staff_id;
+    private String wh_staff_name;
+    private String wh_id;
+    private String send_qty;
+    private String pur_qty;
+    private String mfc;
+
+    public String getWh_staff_name() {
+        return wh_staff_name;
+    }
+
+    public void setWh_staff_name(String wh_staff_name) {
+        this.wh_staff_name = wh_staff_name;
+    }
 
 
     public String getWh_staff_id() {
@@ -55,8 +66,7 @@ public class SupplierReceivesBean implements Serializable {
         this.unqualified_qty = unqualified_qty;
     }
 
-    private String qualified_qty;
-    private String unqualified_qty;
+
 
     public String getArrive_qty() {
         return arrive_qty;

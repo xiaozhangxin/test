@@ -17,46 +17,10 @@ public class PastRtnedGoodsBean implements Serializable {
      * supplier_code : 13003
      */
 
-    private String bar_code;
-    private String business_date;
-    private String description;
-    private String doc_no;
+
     private String id;
-    private String rtn_memo;
     private String supplier_code;
     private List<RtnedLinesBean> rtned_lines;
-
-    public String getBar_code() {
-        return bar_code;
-    }
-
-    public void setBar_code(String bar_code) {
-        this.bar_code = bar_code;
-    }
-
-    public String getBusiness_date() {
-        return business_date;
-    }
-
-    public void setBusiness_date(String business_date) {
-        this.business_date = business_date;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDoc_no() {
-        return doc_no;
-    }
-
-    public void setDoc_no(String doc_no) {
-        this.doc_no = doc_no;
-    }
 
     public String getId() {
         return id;
@@ -64,14 +28,6 @@ public class PastRtnedGoodsBean implements Serializable {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getRtn_memo() {
-        return rtn_memo;
-    }
-
-    public void setRtn_memo(String rtn_memo) {
-        this.rtn_memo = rtn_memo;
     }
 
     public String getSupplier_code() {
@@ -136,6 +92,13 @@ public class PastRtnedGoodsBean implements Serializable {
              */
 
             private String id;
+            private String wh_id;
+            private String alloc_qty;
+            private String rtn_line_no;
+            private String rtn;
+            private String wh_name;
+            private String item_id;
+            private String item_code;
 
             public String getId() {
                 return id;
@@ -145,46 +108,6 @@ public class PastRtnedGoodsBean implements Serializable {
                 this.id = id;
             }
 
-            private String bar_code;
-            private String wh_id;
-            private String deliver_line_id;
-            private String description;
-            private String item_id;
-            private String item_name;
-            private String line_no;
-            private String pur_id;
-            private String alloc_qty;
-            private String receive_qty;
-            private String rtn_deduct_qty;
-            private String rtn_fill_qty;
-            private String send_qty;
-            private String specs;
-            private String un_receive_qty;
-            private String wh_qty;
-
-            public String getBar_code() {
-                return bar_code;
-            }
-
-            public void setBar_code(String bar_code) {
-                this.bar_code = bar_code;
-            }
-
-            public String getDeliver_line_id() {
-                return deliver_line_id;
-            }
-
-            public void setDeliver_line_id(String deliver_line_id) {
-                this.deliver_line_id = deliver_line_id;
-            }
-
-            public String getDescription() {
-                return description;
-            }
-
-            public void setDescription(String description) {
-                this.description = description;
-            }
 
             public String getItem_id() {
                 return item_id;
@@ -194,28 +117,36 @@ public class PastRtnedGoodsBean implements Serializable {
                 this.item_id = item_id;
             }
 
-            public String getItem_name() {
-                return item_name;
+            public String getRtn_line_no() {
+                return rtn_line_no;
             }
 
-            public void setItem_name(String item_name) {
-                this.item_name = item_name;
+            public void setRtn_line_no(String rtn_line_no) {
+                this.rtn_line_no = rtn_line_no;
             }
 
-            public String getLine_no() {
-                return line_no;
+            public String getRtn() {
+                return rtn;
             }
 
-            public void setLine_no(String line_no) {
-                this.line_no = line_no;
+            public void setRtn(String rtn) {
+                this.rtn = rtn;
             }
 
-            public String getPur_id() {
-                return pur_id;
+            public String getWh_name() {
+                return wh_name;
             }
 
-            public void setPur_id(String pur_id) {
-                this.pur_id = pur_id;
+            public void setWh_name(String wh_name) {
+                this.wh_name = wh_name;
+            }
+
+            public String getItem_code() {
+                return item_code;
+            }
+
+            public void setItem_code(String item_code) {
+                this.item_code = item_code;
             }
 
             public String getAlloc_qty() {
@@ -226,53 +157,7 @@ public class PastRtnedGoodsBean implements Serializable {
                 this.alloc_qty = alloc_qty;
             }
 
-            public String getReceive_qty() {
-                return receive_qty;
-            }
 
-            public void setReceive_qty(String receive_qty) {
-                this.receive_qty = receive_qty;
-            }
-
-            public String getRtn_deduct_qty() {
-                return rtn_deduct_qty;
-            }
-
-            public void setRtn_deduct_qty(String rtn_deduct_qty) {
-                this.rtn_deduct_qty = rtn_deduct_qty;
-            }
-
-            public String getRtn_fill_qty() {
-                return rtn_fill_qty;
-            }
-
-            public void setRtn_fill_qty(String rtn_fill_qty) {
-                this.rtn_fill_qty = rtn_fill_qty;
-            }
-
-            public String getSend_qty() {
-                return send_qty;
-            }
-
-            public void setSend_qty(String send_qty) {
-                this.send_qty = send_qty;
-            }
-
-            public String getSpecs() {
-                return specs;
-            }
-
-            public void setSpecs(String specs) {
-                this.specs = specs;
-            }
-
-            public String getUn_receive_qty() {
-                return un_receive_qty;
-            }
-
-            public void setUn_receive_qty(String un_receive_qty) {
-                this.un_receive_qty = un_receive_qty;
-            }
 
             public String getWh_id() {
                 return wh_id;
@@ -282,13 +167,7 @@ public class PastRtnedGoodsBean implements Serializable {
                 this.wh_id = wh_id;
             }
 
-            public String getWh_qty() {
-                return wh_qty;
-            }
 
-            public void setWh_qty(String wh_qty) {
-                this.wh_qty = wh_qty;
-            }
         }
     }
 }

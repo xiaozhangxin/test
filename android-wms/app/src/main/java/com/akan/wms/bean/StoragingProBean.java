@@ -40,7 +40,7 @@ public class StoragingProBean implements Serializable {
     private String create_time;
     private Object update_time;
     private List<StoragingProLinesBean> storaging_pro_lines;
-    private List<BarListsBean> bar_lists;
+    private List<BarVerificationListsBean> bar_lists;
     private List<RecordsBean> recordsBeans;
 
     public List<RecordsBean> getRecordsBeans() {
@@ -171,15 +171,15 @@ public class StoragingProBean implements Serializable {
         this.storaging_pro_lines = storaging_pro_lines;
     }
 
-    public List<BarListsBean> getBar_lists() {
+    public List<BarVerificationListsBean> getBar_lists() {
         return bar_lists;
     }
 
-    public void setBar_lists(List<BarListsBean> bar_lists) {
+    public void setBar_lists(List<BarVerificationListsBean> bar_lists) {
         this.bar_lists = bar_lists;
     }
 
-    public static class StoragingProLinesBean {
+    public static class StoragingProLinesBean implements Serializable{
         /**
          * id : 1190730120546123
          * storaging_pro_id : 1190730120546210
@@ -442,79 +442,5 @@ public class StoragingProBean implements Serializable {
         }
     }
 
-    public static class BarListsBean {
-        /**
-         * id : 3
-         * in_id : 1190730120546210
-         * item_bar : 21
-         * item_id : 123
-         * item_code : 123123
-         * item_name : 名称
-         * wh_id : 12239303
-         */
 
-        private String id;
-        private long in_id;
-        private String item_bar;
-        private String item_id;
-        private String item_code;
-        private String item_name;
-        private String wh_id;
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public long getIn_id() {
-            return in_id;
-        }
-
-        public void setIn_id(long in_id) {
-            this.in_id = in_id;
-        }
-
-        public String getItem_bar() {
-            return item_bar;
-        }
-
-        public void setItem_bar(String item_bar) {
-            this.item_bar = item_bar;
-        }
-
-        public String getItem_id() {
-            return item_id;
-        }
-
-        public void setItem_id(String item_id) {
-            this.item_id = item_id;
-        }
-
-        public String getItem_code() {
-            return item_code;
-        }
-
-        public void setItem_code(String item_code) {
-            this.item_code = item_code;
-        }
-
-        public String getItem_name() {
-            return item_name;
-        }
-
-        public void setItem_name(String item_name) {
-            this.item_name = item_name;
-        }
-
-        public String getWh_id() {
-            return wh_id;
-        }
-
-        public void setWh_id(String wh_id) {
-            this.wh_id = wh_id;
-        }
-    }
 }

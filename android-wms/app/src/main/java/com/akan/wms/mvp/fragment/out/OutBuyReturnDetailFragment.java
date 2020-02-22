@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.akan.wms.R;
 import com.akan.wms.bean.BarBean;
 import com.akan.wms.bean.BarListBean;
+import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.PastRtnedGoodsBean;
 import com.akan.wms.bean.PurchasesBean;
@@ -103,6 +104,7 @@ public class OutBuyReturnDetailFragment extends BaseFragment<IOutBuyReturnView, 
     private BottomPopWindow popWindow;
     private int mScanPosition;
 
+    private RtnedGoodsBean mBean;
     public static OutBuyReturnDetailFragment newInstance(String id) {
         Bundle args = new Bundle();
         OutBuyReturnDetailFragment fragment = new OutBuyReturnDetailFragment();
@@ -147,13 +149,11 @@ public class OutBuyReturnDetailFragment extends BaseFragment<IOutBuyReturnView, 
                         popWindow.dismiss();
                         break;
                     case R.id.btTwo:
+                    case R.id.btFour:
                         popWindow.dismiss();
                         break;
                     case R.id.btThree:
                         showDialog("同意");
-                        popWindow.dismiss();
-                        break;
-                    case R.id.btFour:
                         popWindow.dismiss();
                         break;
                 }
@@ -247,12 +247,15 @@ public class OutBuyReturnDetailFragment extends BaseFragment<IOutBuyReturnView, 
             for (int j = 0; j < mRtnedGodsLines.size(); j++) {
                 RtnedLinesBean.RtnedGodsLinesBean mRtnedGodsLinesBean = mRtnedGodsLines.get(j);
                 PastRtnedGoodsBean.RtnedLinesBean.RtnedGodsLinesBean rtnedGodsLinesBean = new PastRtnedGoodsBean.RtnedLinesBean.RtnedGodsLinesBean();
-                rtnedGodsLinesBean.setDeliver_line_id(mRtnedGodsLinesBean.getRtned_goods_line_id());
-                rtnedGodsLinesBean.setItem_id(mRtnedGodsLinesBean.getItem_id());
-                rtnedGodsLinesBean.setItem_name(mRtnedGodsLinesBean.getItem_name());
-                rtnedGodsLinesBean.setLine_no(mRtnedGodsLinesBean.getRtn_line_no());
                 rtnedGodsLinesBean.setId(mRtnedGodsLinesBean.getId());
+                rtnedGodsLinesBean.setItem_id(mRtnedGodsLinesBean.getItem_id());
                 rtnedGodsLinesBean.setWh_id(mRtnedGodsLinesBean.getWh_id());
+                rtnedGodsLinesBean.setWh_name(mRtnedGodsLinesBean.getWh_name().toString());
+                rtnedGodsLinesBean.setAlloc_qty(mRtnedGodsLinesBean.getAlloc_qty()+"");
+                rtnedGodsLinesBean.setRtn(String.valueOf(mRtnedGodsLinesBean.getRtn()));
+                rtnedGodsLinesBean.setRtn_line_no(mRtnedGodsLinesBean.getRtn_line_no());
+                rtnedGodsLinesBean.setItem_id(mRtnedGodsLinesBean.getItem_id());
+                rtnedGodsLinesBean.setItem_code(mRtnedGodsLinesBean.getItem_code());
                 rtnedGodsLinesBeans.add(rtnedGodsLinesBean);
             }
             linesBean.setRtned_gods_lines(rtnedGodsLinesBeans);
@@ -264,6 +267,7 @@ public class OutBuyReturnDetailFragment extends BaseFragment<IOutBuyReturnView, 
         String jsonBar = gson.toJson(bean);
         map.clear();
         map.put("id", mId);
+        map.put("staff_id", userBean.getStaff_id());
         map.put("pastRtnedGoods", jsonBar);
         getPresenter().pastRtnedGoods(userBean.getStaff_token(), map);
 
@@ -278,6 +282,7 @@ public class OutBuyReturnDetailFragment extends BaseFragment<IOutBuyReturnView, 
 
     @Override
     public void onQueryRtnedGoodsById(RtnedGoodsBean data) {
+        mBean=data;
         // 0 已配货 1已出库  2作废
         updateState(data.getStatus());
         if (isValidImg != null) {
@@ -387,7 +392,7 @@ public class OutBuyReturnDetailFragment extends BaseFragment<IOutBuyReturnView, 
                 scanBean.setBarList(rtnedLinesBean.getBarList());//历史条码
                 scanList.add(scanBean);
             }
-            startInBuyScanFragment(scanList, type);
+            startInBuyScanFragment(scanList, type,mBean.getBar_lists());
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.permission_camera), RC_CAMERA, perms);
         }

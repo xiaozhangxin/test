@@ -18,6 +18,8 @@ import android.widget.TextView;
 import com.akan.wms.R;
 import com.akan.wms.bean.BarBean;
 import com.akan.wms.bean.BarListBean;
+import com.akan.wms.bean.BarListOutTransferBean;
+import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.OutSaleLineBean;
 import com.akan.wms.bean.OutTypeLBean;
@@ -227,11 +229,6 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
                 showSingleDialog();
                 break;
             case R.id.llAdd:
-                String mtvFour = tvFour.getText().toString();
-/*                if (TextUtils.isEmpty(mtvFour)){
-                    ToastUtil.showToast(context.getApplicationContext(),"请选择调入组织");
-                    return;
-                }*/
                 startTransferApplyListFragment("","add");
                 break;
         }
@@ -319,33 +316,32 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
         List<TransferUnCompleteBean> allData = adapter.getAllData();
         TransferUnCompleteBean applyBean = allData.get(0);
         map.clear();
-        map.put("org_id", userBean.getOrg_id());
-        map.put("doc_type_id", mChooseBean.getDoc_type_id());
-        map.put("doc_type_name", tvThree.getText().toString());
-        map.put("in_org_id", mChooseBean.getIn_org_id());
-        map.put("in_org_name", tvFour.getText().toString());
         map.put("apply_id", mChooseBean.getId());
         map.put("apply_no", mChooseBean.getDoc_no());
+
+        map.put("doc_type_id", mChooseBean.getDoc_type_id());
+        map.put("doc_type_name", mChooseBean.getDoc_type_name());
+        map.put("in_org_id", mChooseBean.getIn_org_id());
+        map.put("in_org_name", mChooseBean.getIn_org_name());
+        map.put("org_id", userBean.getOrg_id());
+        map.put("staff_id", userBean.getStaff_id());
         map.put("remark", tvSix.getText().toString());
         map.put("transfer_direction", transfer_direction);
 
         List<TransferUnCompleteBean.LineBeanListBean> lineBeanList = applyBean.getLineBeanList();
         List<OutSaleLineBean> mList = new ArrayList<>();
         List<BarBean> barList = applyBean.getBarList();
-        List<BarListBean> mBarList = new ArrayList<>();
+        List<BarListOutTransferBean> mBarList = new ArrayList<>();
         for (int j = 0; j < lineBeanList.size(); j++) {
             TransferUnCompleteBean.LineBeanListBean lineBeanListBean = lineBeanList.get(j);
-
             if (lineBeanListBean.getPoint_qty() <= 0) {
-                showNotDialog("料品（" + lineBeanListBean.getItem_name() + "）配货数量为0,请扫码");
+                showNotDialog("料品（" + lineBeanListBean.getItem_name() + "）配货数量为零，请扫码");
                 return;
             }
-
             if (TextUtils.isEmpty(lineBeanListBean.getOut_wh_name())) {
                 ToastUtil.showToast(context.getApplicationContext(), "请选择仓库");
                 return;
             }
-
             OutSaleLineBean mBean = new OutSaleLineBean();
             mBean.setItem_id(lineBeanListBean.getItem_id() + "");
             mBean.setApply_line_id(lineBeanListBean.getId() + "");
@@ -353,19 +349,18 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
             mBean.setQty(lineBeanListBean.getPoint_qty() + "");
             mBean.setWh_name(lineBeanListBean.getOut_wh_name() + "");
             mList.add(mBean);
-
-
             for (int m = 0; m < barList.size(); m++) {
                 BarBean barBean = barList.get(m);
                 if (barBean.getItem_code().equals(lineBeanListBean.getItem_code())) {
-                    BarListBean mBarbean = new BarListBean();
-                    mBarbean.setItem_bar(barBean.getBar_code());
+                    BarListOutTransferBean mBarbean = new BarListOutTransferBean();
                     mBarbean.setItem_id(barBean.getItem_id());
                     mBarbean.setQty(barBean.getQty() + "");
-                    mBarbean.setWh_id(lineBeanListBean.getOut_wh() + "");
-                    mBarbean.setItem_code(barBean.getItem_code());
                     mBarbean.setItem_name(barBean.getItem_name());
                     mBarbean.setItem_spec(barBean.getItem_spec());
+                    mBarbean.setItem_bar(barBean.getBar_code());
+                    mBarbean.setItem_code(barBean.getItem_code());
+                    mBarbean.setWh_id(lineBeanListBean.getOut_wh());
+                    mBarbean.setWh_name(lineBeanListBean.getOut_wh_name());
                     mBarList.add(mBarbean);
                 }
             }
@@ -418,7 +413,7 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
                 scanList.add(scanBean);
 
             }
-            startInBuyScanFragment(scanList, type);
+            startInBuyScanFragment(scanList, type,new ArrayList<BarVerificationListsBean>());
 
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.permission_camera), RC_CAMERA, perms);
@@ -516,7 +511,6 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
             case "out_transfer_add"://扫码返回
                 List<ScanInfoBean> listScan = event.getmScanInBuyBean().getList();
                 List<TransferUnCompleteBean> allData = adapter.getAllData();
-
                 if (allData.size() > 0) {
                     List<TransferUnCompleteBean.LineBeanListBean> rtn_lines = allData.get(0).getLineBeanList();
                     for (int i = 0; i < rtn_lines.size(); i++) {

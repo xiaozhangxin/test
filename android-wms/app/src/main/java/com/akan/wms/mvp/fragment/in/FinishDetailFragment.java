@@ -108,6 +108,7 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
     private BottomPopWindow popWindow;
     private int mScanPosition;
     private int mDeportPosition;//选择仓库
+    private StoragingProBean mBean;
 
     public static FinishDetailFragment newInstance(String id) {
         Bundle args = new Bundle();
@@ -207,6 +208,7 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
 
     @Override
     public void onQueryStoragingPro(StoragingProBean data) {
+        mBean=data;
         updateState(data.getStatus());
         if (isValidImg != null) {
             if ("1".equals(data.getIs_valid())) {
@@ -324,7 +326,7 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
             mNumList.add(numBean);
 
             WhAndIdBean whAndIdBean = new WhAndIdBean();
-            whAndIdBean.setId(linesBean.getId() + "");
+            whAndIdBean.setId(linesBean.getId());
             whAndIdBean.setWh_id(linesBean.getWh_id());
             mWhList.add(whAndIdBean);
         }
@@ -402,7 +404,6 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
                 return;
             }
             List<BarBean> barList = linesBean.getBarList();//获取条码信息
-            String wh_id = linesBean.getWh_id() + "";
             for (int m = 0; m < barList.size(); m++) {
                 BarBean barBean = barList.get(m);
                 BarListBean mBarBean = new BarListBean();
@@ -411,7 +412,7 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
                 mBarBean.setItem_name(barBean.getItem_name());
                 mBarBean.setItem_bar(barBean.getBar_code());
                 mBarBean.setItem_code(barBean.getItem_code());
-                mBarBean.setWh_id(wh_id);
+                mBarBean.setWh_id(linesBean.getWh_id());
                 mBarBean.setQty(barBean.getQty() + "");
                 mBarList.add(mBarBean);
             }
@@ -466,7 +467,7 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
             scanBean.setArrive_qty(detail.getCheck_qty());//核定数量
             scanBean.setBarList(detail.getBarList());//历史条码
             scanList.add(scanBean);
-            startInBuyScanFragment(scanList, type);
+            startInBuyScanFragment(scanList, type,mBean.getBar_lists());
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.permission_camera), RC_CAMERA, perms);
         }

@@ -28,8 +28,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
                     android:layout_marginTop="12dp"
+                    android:layout_marginRight="8dp"
                     android:text="基础信息"
                     android:textColor="@color/colorTextG3"
                     android:textSize="14sp"
@@ -47,8 +47,8 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:orientation="horizontal"
-                    android:paddingBottom="12dp"
-                    android:paddingTop="12dp">
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -77,8 +77,8 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:orientation="horizontal"
-                    android:paddingBottom="12dp"
-                    android:paddingTop="12dp">
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -107,8 +107,8 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:orientation="horizontal"
-                    android:paddingBottom="12dp"
-                    android:paddingTop="12dp">
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -136,8 +136,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
                     android:layout_marginTop="12dp"
+                    android:layout_marginRight="8dp"
                     android:orientation="horizontal"
                     android:paddingBottom="12dp">
 
@@ -166,8 +166,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
                     android:layout_marginTop="12dp"
+                    android:layout_marginRight="8dp"
                     android:orientation="horizontal"
                     android:paddingBottom="12dp">
 
@@ -218,8 +218,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
                         android:paddingTop="8dp"
+                        android:paddingRight="16dp"
                         android:src="@drawable/delete_big"
 
                         android:textColor="@color/colorTextG6"
@@ -232,8 +232,8 @@
                         android:layout_height="wrap_content"
                         android:layout_toLeftOf="@+id/tvDelete"
                         android:paddingLeft="16dp"
-                        android:paddingRight="16dp"
                         android:paddingTop="8dp"
+                        android:paddingRight="16dp"
                         android:src="@drawable/detail_scan"
                         android:textColor="@color/colorTextG6"
                         android:textSize="13sp"
@@ -246,6 +246,7 @@
                     android:layout_height="0.5dp"
                     android:layout_marginTop="8dp"
                     android:background="@color/colorActivityBackgroundTwo" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -271,7 +272,9 @@
                         android:gravity="end"
                         android:textColor="@color/colorTextG6"
                         android:textSize="13sp" />
-                </LinearLayout>     <LinearLayout
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -296,7 +299,9 @@
                         android:gravity="end"
                         android:textColor="@color/colorTextG6"
                         android:textSize="13sp" />
-                </LinearLayout>     <LinearLayout
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -328,8 +333,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
                     android:background="@drawable/setbar_gray_top3"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
@@ -422,8 +427,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="12dp" />
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="8dp" />
 
             </LinearLayout>
 

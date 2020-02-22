@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.akan.wms.R;
 import com.akan.wms.bean.BarBean;
+import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.CodeListBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.InforListBean;
@@ -389,27 +390,24 @@ public class ProduceReceiveDetailFragment extends BaseFragment<IProduceReceiveVi
                 map.put("ship_id", mId);
                 map.put("ship_status", "1");
                 List<InforListBean> allData = adapter.getAllData();
-                List<BarBean> barList = miscShipBean.getBarList();
+                List<BarBean> barList = miscShipBean.getBarScanList();
                 List<ShipCodeListBean> list = new ArrayList<>();
                 for (int i = 0; i < allData.size(); i++) {
                     InforListBean listBean = allData.get(i);
                     if (listBean.getScan_num() <= 0) {
-                        showNotDialog("料品（" + listBean.getInfo_name() + "）核定数量为0,请扫码");
+                        showNotDialog("料品（" + listBean.getInfo_name() + "）核定数量为空，请扫码");
                         return;
                     }
 
-                    String info_id = listBean.getInfo_id();
-                    int scan_num = listBean.getScan_num();
                     ShipCodeListBean bean = new ShipCodeListBean();
-                    bean.setInfo_id(info_id);
-                    bean.setNum(scan_num);
+                    bean.setInfo_id(listBean.getInfo_id());
+                    bean.setNum(String.valueOf(listBean.getScan_num()));
                     ArrayList<CodeListBean> childList = new ArrayList<>();
-
                     for (int m = 0; m < barList.size(); m++) {
                         BarBean barBean = barList.get(m);
                         if (barBean.getItem_code().equals(listBean.getItem_code())) {
                             CodeListBean codeListBean = new CodeListBean();
-                            codeListBean.setInfo_id(info_id);
+                            codeListBean.setInfo_id(listBean.getInfo_id());
                             codeListBean.setBar_code(barBean.getBar_code());
                             codeListBean.setCode(barBean.getItem_code());
                             codeListBean.setCode_num(barBean.getQty() + "");
@@ -525,10 +523,10 @@ public class ProduceReceiveDetailFragment extends BaseFragment<IProduceReceiveVi
                         scanBean.setItem_name(detail.getInfo_name());
                         scanBean.setSend_qty(detail.getNumber());//申请数量
                         scanBean.setArrive_qty(detail.getScan_num());//核定数量
-                        scanBean.setBarList(miscShipBean.getBarList());//历史条码
+                        scanBean.setBarList(miscShipBean.getBarScanList());//历史条码
                         scanList.add(scanBean);
                     }
-                    startInBuyScanFragment(scanList, type);
+                    startInBuyScanFragment(scanList, type,new ArrayList<BarVerificationListsBean>());
                     break;
                 case "pro_receive_out":
                     List<InforListBean> allData1 = adapter.getAllData();
@@ -542,10 +540,10 @@ public class ProduceReceiveDetailFragment extends BaseFragment<IProduceReceiveVi
                         scanBean.setItem_name(detail.getInfo_name());
                         scanBean.setSend_qty(detail.getNumber());//申请数量
                         scanBean.setArrive_qty(detail.getCheck_num());//核定数量
-                        scanBean.setBarList(miscShipBean.getBarList());//历史条码
+                        scanBean.setBarList(miscShipBean.getBarScanList());//历史条码
                         scanList1.add(scanBean);
                     }
-                    startInBuyScanFragment(scanList1, type);
+                    startInBuyScanFragment(scanList1, type,miscShipBean.getBarList());
                     break;
             }
 
@@ -627,7 +625,7 @@ public class ProduceReceiveDetailFragment extends BaseFragment<IProduceReceiveVi
                 break;
             case "24":
                 List<BarBean> barBeanList = event.getmScanListBean().getList();
-                miscShipBean.setBarList(barBeanList);
+                miscShipBean.setBarScanList(barBeanList);
                 break;
 
         }

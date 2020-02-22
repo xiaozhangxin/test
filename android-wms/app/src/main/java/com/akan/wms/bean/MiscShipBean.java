@@ -82,16 +82,24 @@ public class MiscShipBean implements Serializable {
         this.recordsBeans = recordsBeans;
     }
 
-    public List<BarBean> getBarList() {
+    public List<BarVerificationListsBean> getBarList() {
         return barList;
     }
+    private List<BarBean> barScanList;
 
-    public void setBarList(List<BarBean> barList) {
+    public List<BarBean> getBarScanList() {
+        return barScanList;
+    }
+
+    public void setBarScanList(List<BarBean> barScanList) {
+        this.barScanList = barScanList;
+    }
+    public void setBarList(List<BarVerificationListsBean> barList) {
         this.barList = barList;
     }
 
     private String is_valid;
-    private List<BarBean> barList;
+    private List<BarVerificationListsBean> barList;
     public String getIs_valid() {
         return is_valid;
     }

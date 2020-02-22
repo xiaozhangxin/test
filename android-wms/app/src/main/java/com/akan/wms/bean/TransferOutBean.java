@@ -3,7 +3,7 @@ package com.akan.wms.bean;
 import java.io.Serializable;
 import java.util.List;
 
-public class TransferOutBean implements Serializable{
+public class TransferOutBean implements Serializable {
 
 
     /**
@@ -71,7 +71,7 @@ public class TransferOutBean implements Serializable{
     private String status_show;
     private String transfer_direction_show;
     private List<LineBeanListBean> lineBeanList;
-    private List<BarBeanListBean> barBeanList;
+    private List<BarVerificationListsBean> barBeanList;
     private List<BarBean> barList;
 
     public List<BarBean> getBarList() {
@@ -290,15 +290,15 @@ public class TransferOutBean implements Serializable{
         this.lineBeanList = lineBeanList;
     }
 
-    public List<BarBeanListBean> getBarBeanList() {
+    public List<BarVerificationListsBean> getBarBeanList() {
         return barBeanList;
     }
 
-    public void setBarBeanList(List<BarBeanListBean> barBeanList) {
+    public void setBarBeanList(List<BarVerificationListsBean> barBeanList) {
         this.barBeanList = barBeanList;
     }
 
-    public static class LineBeanListBean implements Serializable{
+    public static class LineBeanListBean implements Serializable {
         /**
          * id : 1
          * u9_id :
@@ -315,23 +315,23 @@ public class TransferOutBean implements Serializable{
          * apply_qty : 4800
          */
 
-        private int id;
+        private String id;
         private String u9_id;
-        private int out_id;
-        private long apply_line_id;
+        private String out_id;
+        private String apply_line_id;
         private String item_id;
-
-        public int getSend_qty() {
-            return send_qty;
-        }
-
-        public void setSend_qty(int send_qty) {
-            this.send_qty = send_qty;
-        }
-
         private int qty;
         private int send_qty;
         private int point_qty;
+        private String remark;
+        private String wh_id;
+        private String wh_name;
+        private String item_name;
+        private String item_code;
+        private String item_spec;
+        private String item_bar;
+        private int apply_qty;
+        private boolean isCheck;
 
         public int getPoint_qty() {
             return point_qty;
@@ -341,14 +341,13 @@ public class TransferOutBean implements Serializable{
             this.point_qty = point_qty;
         }
 
-        private String remark;
-        private String wh_id;
-        private String wh_name;
-        private String item_name;
-        private String item_code;
-        private String item_spec;private String item_bar;
-        private int apply_qty;
-        private boolean isCheck;
+        public int getSend_qty() {
+            return send_qty;
+        }
+
+        public void setSend_qty(int send_qty) {
+            this.send_qty = send_qty;
+        }
 
         public String getItem_bar() {
             return item_bar;
@@ -366,11 +365,11 @@ public class TransferOutBean implements Serializable{
             isCheck = check;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
@@ -382,19 +381,19 @@ public class TransferOutBean implements Serializable{
             this.u9_id = u9_id;
         }
 
-        public int getOut_id() {
+        public String getOut_id() {
             return out_id;
         }
 
-        public void setOut_id(int out_id) {
+        public void setOut_id(String out_id) {
             this.out_id = out_id;
         }
 
-        public long getApply_line_id() {
+        public String getApply_line_id() {
             return apply_line_id;
         }
 
-        public void setApply_line_id(long apply_line_id) {
+        public void setApply_line_id(String apply_line_id) {
             this.apply_line_id = apply_line_id;
         }
 
@@ -471,99 +470,5 @@ public class TransferOutBean implements Serializable{
         }
     }
 
-    public static class BarBeanListBean implements Serializable {
-        /**
-         * id : 1
-         * out_id : 1
-         * item_bar : 12.11.111.203236—4
-         * wh_id : 1001512260168338
-         * qty : 222
-         * item_id : 1001812181696434
-         * item_code : 12.11.111.203236—4
-         * item_name : 灰色PPR冷水管S4
-         * item_spec : Φ32×3.6(4m)
-         */
 
-        private int id;
-        private int out_id;
-        private String item_bar;
-        private long wh_id;
-        private int qty;
-        private long item_id;
-        private String item_code;
-        private String item_name;
-        private String item_spec;
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public int getOut_id() {
-            return out_id;
-        }
-
-        public void setOut_id(int out_id) {
-            this.out_id = out_id;
-        }
-
-        public String getItem_bar() {
-            return item_bar;
-        }
-
-        public void setItem_bar(String item_bar) {
-            this.item_bar = item_bar;
-        }
-
-        public long getWh_id() {
-            return wh_id;
-        }
-
-        public void setWh_id(long wh_id) {
-            this.wh_id = wh_id;
-        }
-
-        public int getQty() {
-            return qty;
-        }
-
-        public void setQty(int qty) {
-            this.qty = qty;
-        }
-
-        public long getItem_id() {
-            return item_id;
-        }
-
-        public void setItem_id(long item_id) {
-            this.item_id = item_id;
-        }
-
-        public String getItem_code() {
-            return item_code;
-        }
-
-        public void setItem_code(String item_code) {
-            this.item_code = item_code;
-        }
-
-        public String getItem_name() {
-            return item_name;
-        }
-
-        public void setItem_name(String item_name) {
-            this.item_name = item_name;
-        }
-
-        public String getItem_spec() {
-            return item_spec;
-        }
-
-        public void setItem_spec(String item_spec) {
-            this.item_spec = item_spec;
-        }
-    }
 }

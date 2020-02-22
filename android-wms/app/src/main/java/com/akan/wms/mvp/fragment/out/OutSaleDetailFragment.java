@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.akan.wms.R;
+import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.PlanLineBeanDetail;
 import com.akan.wms.bean.RecordsBean;
@@ -398,7 +399,7 @@ public class OutSaleDetailFragment extends BaseFragment<IOutSaleView, OutSalePre
                 scanList.add(scanBean);
             }
 
-            startInBuyScanFragment(scanList, type);
+            startInBuyScanFragment(scanList, type,new ArrayList<BarVerificationListsBean>());
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.permission_camera), RC_CAMERA, perms);
         }

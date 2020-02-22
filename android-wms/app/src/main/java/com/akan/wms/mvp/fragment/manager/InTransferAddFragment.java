@@ -19,6 +19,8 @@ import android.widget.TextView;
 import com.akan.wms.R;
 import com.akan.wms.bean.BarBean;
 import com.akan.wms.bean.BarListBean;
+import com.akan.wms.bean.BarListInTransferBean;
+import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.OutSaleLineBean;
 import com.akan.wms.bean.OutTypeLBean;
@@ -235,13 +237,15 @@ public class InTransferAddFragment extends BaseFragment<IInTransferView, InTrans
         map.put("doc_type_name", tvThree.getText().toString());
         map.put("out_id", applyBean.getId());
         map.put("out_no", applyBean.getDoc_no());
+        map.put("org_id", userBean.getOrg_id());
+        map.put("staff_id", userBean.getStaff_id());
         map.put("remark", tvFour.getText().toString());
 
         List<TransferOutBean.LineBeanListBean> lineBeanList = applyBean.getLineBeanList();
         List<OutSaleLineBean> mList = new ArrayList<>();
 
         List<BarBean> barList = applyBean.getBarList();
-        List<BarListBean> mBarList = new ArrayList<>();
+        List<BarListInTransferBean> mBarList = new ArrayList<>();
         for (int j = 0; j < lineBeanList.size(); j++) {
             TransferOutBean.LineBeanListBean lineBeanListBean = lineBeanList.get(j);
             if (lineBeanListBean.getPoint_qty() <= 0) {
@@ -254,23 +258,24 @@ public class InTransferAddFragment extends BaseFragment<IInTransferView, InTrans
                 return;
             }
             OutSaleLineBean mBean = new OutSaleLineBean();
-            mBean.setOut_line_id(lineBeanListBean.getId() + "");
+            mBean.setOut_line_id(lineBeanListBean.getApply_line_id());
             mBean.setItem_id(lineBeanListBean.getItem_id());
             mBean.setQty(lineBeanListBean.getPoint_qty() + "");
-            mBean.setWh_id(lineBeanListBean.getWh_id() + "");
-            mBean.setWh_name(lineBeanListBean.getWh_name() + "");
+            mBean.setWh_id(lineBeanListBean.getWh_id() );
+            mBean.setWh_name(lineBeanListBean.getWh_name() );
             mList.add(mBean);
             for (int m = 0; m < barList.size(); m++) {
                 BarBean barBean = barList.get(m);
                 if (barBean.getItem_code().equals(lineBeanListBean.getItem_code())) {
-                    BarListBean mBarbean = new BarListBean();
-                    mBarbean.setItem_bar(barBean.getBar_code());
-                    mBarbean.setWh_id(lineBeanListBean.getWh_id());
+                    BarListInTransferBean mBarbean = new BarListInTransferBean();
                     mBarbean.setItem_id(barBean.getItem_id());
                     mBarbean.setQty(barBean.getQty() + "");
                     mBarbean.setItem_code(barBean.getItem_code());
                     mBarbean.setItem_name(barBean.getItem_name());
                     mBarbean.setItem_spec(barBean.getItem_spec());
+                    mBarbean.setItem_bar(barBean.getBar_code());
+                    mBarbean.setWh_id(lineBeanListBean.getWh_id());
+                    mBarbean.setWh_name(lineBeanListBean.getWh_name());
                     mBarList.add(mBarbean);
                 }
             }
@@ -326,7 +331,7 @@ public class InTransferAddFragment extends BaseFragment<IInTransferView, InTrans
                 scanList.add(scanBean);
 
             }
-            startInBuyScanFragment(scanList, type);
+            startInBuyScanFragment(scanList, type,mChooseBean.getBarBeanList());
 
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.permission_camera), RC_CAMERA, perms);
@@ -391,6 +396,7 @@ public class InTransferAddFragment extends BaseFragment<IInTransferView, InTrans
                 tvAddTwo.setText(bean.getIn_org_name());
                 mChooseBean.setLineBeanList(bean.getLineBeanList());
                 mChooseBean.setDoc_no(bean.getDoc_no());
+                mChooseBean.setBarBeanList(bean.getBarBeanList());
                 mChooseBean.setDoc_type_name(bean.getDoc_type_name());
                 List<TransferOutBean.LineBeanListBean> list = new ArrayList<>();
                 for (int i = 0; i < bean.getLineBeanList().size(); i++) {

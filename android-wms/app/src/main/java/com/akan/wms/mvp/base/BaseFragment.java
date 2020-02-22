@@ -16,6 +16,7 @@ import com.akan.wms.App;
 import com.akan.wms.Constants;
 import com.akan.wms.bean.BarBean;
 import com.akan.wms.bean.BarMsgBean;
+import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.InforListBean;
 import com.akan.wms.bean.OutSaleRtuBean;
 import com.akan.wms.bean.ProductionOrderBean;
@@ -24,6 +25,7 @@ import com.akan.wms.bean.ReturnBean;
 import com.akan.wms.bean.SaleReturnBean;
 import com.akan.wms.bean.ScanInfoBean;
 import com.akan.wms.bean.ShipPlanBean;
+import com.akan.wms.bean.StoragingProBean;
 import com.akan.wms.bean.TransferOutBean;
 import com.akan.wms.bean.TransferUnCompleteBean;
 import com.akan.wms.bean.UserBean;
@@ -233,6 +235,10 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
 
     protected void startHomeScanResultFragment(BarMsgBean bean) {
         Intent intent = getFragmentIntent(Constants.HOME_SCAN);
+        intent.putExtra(Constants.BEAN, bean);
+        startActivity(intent);
+    }   protected void startOutSaleCodeDetail(BarMsgBean bean) {
+        Intent intent = getFragmentIntent(Constants.HOME_SCAN_OUT_SALE);
         intent.putExtra(Constants.BEAN, bean);
         startActivity(intent);
     }
@@ -665,9 +671,10 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter<V
         startActivity(intent);
     }
 
-    protected void startInBuyScanFragment(List<ScanInfoBean> list, String detail_id) {
+    protected void startInBuyScanFragment(List<ScanInfoBean> list, String detail_id,List<BarVerificationListsBean> BarVerificationList) {
         Intent intent = getFragmentIntent(Constants.SCAN_IN_BUY);
         intent.putExtra(Constants.LIST_DATA, (Serializable) list);
+        intent.putExtra(Constants.LIST_BAR, (Serializable) BarVerificationList);
         intent.putExtra(Constants.DETAIL_ID, detail_id);
         startActivity(intent);
     }

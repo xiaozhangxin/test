@@ -145,7 +145,15 @@ public class HomeScanResultFragment extends SimpleFragment {
         }else {
             empty.setVisibility(View.GONE);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(new HomeScanListAdapter(context, scanBean.getLogistics()));
+            HomeScanListAdapter adapter = new HomeScanListAdapter(context, scanBean.getLogistics());
+            recyclerView.setAdapter(adapter);
+            adapter.setOnDetailListener(new HomeScanListAdapter.OnDetailListener() {
+                @Override
+                public void onDetail() {
+                    startOutSaleCodeDetail(scanBean);
+                }
+            });
+
         }
 
     }

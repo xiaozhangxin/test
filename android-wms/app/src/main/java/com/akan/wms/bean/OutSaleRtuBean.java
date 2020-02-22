@@ -21,15 +21,16 @@ public class OutSaleRtuBean implements Serializable{
      */
 
     private String id;
-    private String doc_no;
     private String supplier_code;
+    private Object rtn_memo;
+    private String doc_no;
     private String supplier_name;
     private String business_date;
     private String org;
     private String org_name;
     private int status;
     private Object status_name;
-    private Object rtn_memo;
+
     private List<RtnLinesBean> rtn_lines;
     private List<BarBean> barList;
 

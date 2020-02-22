@@ -77,31 +77,10 @@ public class OutTransferAddAdapter extends RecyclerArrayAdapter<TransferUnComple
                         holder.setText(R.id.tvOne, bean.getItem_name() + "/" + bean.getItem_spec());
                     }
 
-                    holder.setText(R.id.tvTwo, bean.getSend_qty()+ "/"+bean.getApply_qty() );
+                    holder.setText(R.id.tvTwo, bean.getOut_qty()+ "/"+bean.getApply_qty() );
                     holder.setText(R.id.tvFive, bean.getSupplier_name() );
                     EditText tvSend = holder.getView(R.id.tvThree);
                     tvSend.setText(bean.getPoint_qty() + "");
-/*                    tvSend.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                        }
-
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            String toString = s.toString();
-                            if (TextUtils.isEmpty(toString)) {
-                                bean.setSend_qty(0);
-                            } else {
-                                bean.setSend_qty(Integer.parseInt(toString));
-                            }
-                        }
-
-                        @Override
-                        public void afterTextChanged(Editable s) {
-
-                        }
-                    });*/
                     TextView tvDeport = holder.getView(R.id.tvFour);
                     tvDeport.setText(bean.getOut_wh_name());
                     tvDeport.setOnClickListener(new View.OnClickListener() {

@@ -6,8 +6,11 @@ import java.util.List;
 public class AddDeliverGoodsBean implements Serializable{
 
     private String supplier_id;
-    private String org_id;
     private String id;
+    private String org_id;
+
+
+
 
     public String getId() {
         return id;

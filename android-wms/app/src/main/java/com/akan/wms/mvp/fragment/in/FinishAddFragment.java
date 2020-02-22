@@ -20,6 +20,7 @@ import com.akan.wms.R;
 import com.akan.wms.bean.AddStoragingProBean;
 import com.akan.wms.bean.BarBean;
 import com.akan.wms.bean.BarListBean;
+import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.ProductionOrderBean;
 import com.akan.wms.bean.ScanInfoBean;
@@ -165,7 +166,7 @@ public class FinishAddFragment extends BaseFragment<IFinishView, FinishPresenter
             scanBean.setArrive_qty(detail.getSend_qty());//扫码入库数量
             scanBean.setBarList(detail.getBarList());//历史条码
             scanList.add(scanBean);
-            startInBuyScanFragment(scanList, type);
+            startInBuyScanFragment(scanList, type,new ArrayList<BarVerificationListsBean>());
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.permission_camera), RC_CAMERA, perms);
         }
@@ -256,20 +257,18 @@ public class FinishAddFragment extends BaseFragment<IFinishView, FinishPresenter
 
             AddStoragingProBean.StoragingProLinesBean mChildBean = new AddStoragingProBean.StoragingProLinesBean();
             mChildBean.setItem_id(orderBean.getItem_id());
-            mChildBean.setPro_id(orderBean.getId() + "");
+            mChildBean.setPro_id(orderBean.getId());
             mChildBean.setWh_id(orderBean.getWh_id());
             mChildBean.setWh_qty(orderBean.getSend_qty() + "");
             mChildBean.setBar_code(orderBean.getBar_code());
             mList.add(mChildBean);
 
-
             List<BarBean> barList = orderBean.getBarList();
-            String wh_id = orderBean.getWh_id();
             for (int m = 0; m < barList.size(); m++) {
                 BarBean barBean = barList.get(m);
                 BarListBean mBarBean = new BarListBean();
                 mBarBean.setItem_bar(barBean.getBar_code());
-                mBarBean.setWh_id(wh_id);
+                mBarBean.setWh_id(orderBean.getWh_id());
                 mBarBean.setQty(barBean.getQty() + "");
                 mBarBean.setItem_id(barBean.getItem_id());
                 mBarBean.setItem_spec(barBean.getItem_spec());
@@ -277,8 +276,6 @@ public class FinishAddFragment extends BaseFragment<IFinishView, FinishPresenter
                 mBarBean.setItem_code(barBean.getItem_code());
                 mBarList.add(mBarBean);
             }
-
-
         }
 
         mBean.setStoraging_pro_lines(mList);

@@ -11,20 +11,25 @@ public class BarListBean implements Serializable {
      * qty : 条码对应的数量
      * wh_id : 仓库
      */
-
     private String item_id;
-    private String item_bar;
     private String qty;
+    private String item_name;
     private String wh_id;
 
+    private String pur_id;//采购入库同意
     private String item_code;
-    private String item_name;
+
+
     private String item_spec;
+
+    private String item_bar;
+
+
     private String code;
     private String name;
     private String bar_code;
     private String rtn_id;//采购退货添加
-    private String pur_id;//采购入库同意
+
     private String in_qty;//入库扫码数量
 
     public String getIn_qty() {
