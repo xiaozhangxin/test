@@ -104,7 +104,6 @@ public class OutBuyReturnDetailFragment extends BaseFragment<IOutBuyReturnView, 
     private BottomPopWindow popWindow;
     private int mScanPosition;
 
-    private RtnedGoodsBean mBean;
     public static OutBuyReturnDetailFragment newInstance(String id) {
         Bundle args = new Bundle();
         OutBuyReturnDetailFragment fragment = new OutBuyReturnDetailFragment();
@@ -282,7 +281,6 @@ public class OutBuyReturnDetailFragment extends BaseFragment<IOutBuyReturnView, 
 
     @Override
     public void onQueryRtnedGoodsById(RtnedGoodsBean data) {
-        mBean=data;
         // 0 已配货 1已出库  2作废
         updateState(data.getStatus());
         if (isValidImg != null) {
@@ -392,7 +390,7 @@ public class OutBuyReturnDetailFragment extends BaseFragment<IOutBuyReturnView, 
                 scanBean.setBarList(rtnedLinesBean.getBarList());//历史条码
                 scanList.add(scanBean);
             }
-            startInBuyScanFragment(scanList, type,mBean.getBar_lists());
+            startInBuyScanFragment(scanList, type,new ArrayList<BarVerificationListsBean>());
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.permission_camera), RC_CAMERA, perms);
         }

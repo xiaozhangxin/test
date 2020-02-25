@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.akan.wms.R;
 import com.akan.wms.bean.BarBean;
 import com.akan.wms.bean.BarListBean;
+import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.FirstEventTwo;
 import com.akan.wms.bean.OutSaleLineBean;
@@ -199,15 +200,9 @@ public class OutSaleAddNewFragment extends BaseFragment<IOutSaleView, OutSalePre
                 }
                 showDialog("完成");
                 break;
-            case R.id.tvFour://选择单据类型
-               // startChooseSaleTypeFragment();
-                break;
+
             case R.id.llAdd:
-/*                if (TextUtils.isEmpty(mDoc_type_id)) {
-                    ToastUtil.showToast(context.getApplicationContext(), "请选择单据类型");
-                    return;
-                }*/
-                startChooseOutPlanListFragment(tvFour.getText().toString());
+                startChooseOutPlanListFragment("add");
                 break;
         }
     }
@@ -370,7 +365,7 @@ public class OutSaleAddNewFragment extends BaseFragment<IOutSaleView, OutSalePre
                 scanBean.setBarList(item.getBarList());//历史条码
                 scanList.add(scanBean);
             }
-            startInBuyScanFragment(scanList, type);
+            startInBuyScanFragment(scanList, type,new ArrayList<BarVerificationListsBean>());
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.permission_camera), RC_CAMERA, perms);
         }

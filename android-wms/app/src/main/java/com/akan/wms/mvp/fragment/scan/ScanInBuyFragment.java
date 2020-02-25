@@ -131,7 +131,7 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
     public boolean onResultCallback(String result) {
         mCode = result;
 
-        if (BarVerificationList.size() > 0) {
+        if (BarVerificationList!=null &&BarVerificationList.size() > 0) {
             boolean isInList = false;
             for (int i = 0; i < BarVerificationList.size(); i++) {
                 if (result.equals(BarVerificationList.get(i).getItem_bar())) {

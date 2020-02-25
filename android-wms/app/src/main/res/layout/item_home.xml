@@ -76,6 +76,7 @@
             android:layout_height="4dp"
             android:layout_marginRight="48dp"
             android:focusable="false"
+            android:scrollbars="none"
             android:saveEnabled="false"
             android:progress="50"
             android:progressDrawable="@drawable/setbar_seekbar_two"

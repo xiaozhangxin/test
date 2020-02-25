@@ -249,7 +249,7 @@ public class InTransferAddFragment extends BaseFragment<IInTransferView, InTrans
         for (int j = 0; j < lineBeanList.size(); j++) {
             TransferOutBean.LineBeanListBean lineBeanListBean = lineBeanList.get(j);
             if (lineBeanListBean.getPoint_qty() <= 0) {
-                showNotDialog("料品（" + lineBeanListBean.getItem_name() + "）调出数量为0,请扫码");
+                showNotDialog("料品（" + lineBeanListBean.getItem_name() + "）调出数量为零，请扫码");
                 return;
             }
 
@@ -258,7 +258,7 @@ public class InTransferAddFragment extends BaseFragment<IInTransferView, InTrans
                 return;
             }
             OutSaleLineBean mBean = new OutSaleLineBean();
-            mBean.setOut_line_id(lineBeanListBean.getApply_line_id());
+            mBean.setOut_line_id(lineBeanListBean.getId());
             mBean.setItem_id(lineBeanListBean.getItem_id());
             mBean.setQty(lineBeanListBean.getPoint_qty() + "");
             mBean.setWh_id(lineBeanListBean.getWh_id() );

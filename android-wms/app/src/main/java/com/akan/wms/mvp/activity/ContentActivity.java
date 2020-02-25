@@ -107,6 +107,7 @@ import com.akan.wms.mvp.fragment.out.OutBuyReturnAddFragment;
 import com.akan.wms.mvp.fragment.out.OutBuyReturnDetailFragment;
 import com.akan.wms.mvp.fragment.out.OutBuyReturnListFragment;
 import com.akan.wms.mvp.fragment.out.OutSaleAddFragment;
+import com.akan.wms.mvp.fragment.out.OutSaleAddNewFragment;
 import com.akan.wms.mvp.fragment.out.OutSaleDetailFragment;
 import com.akan.wms.mvp.fragment.out.OutSaleListFragment;
 import com.akan.wms.mvp.fragment.out.ProduceChooseFragment;
@@ -522,6 +523,10 @@ public class ContentActivity extends AppCompatActivity {
             case Constants.STOCK_FIND_DETAIL:
                 WarnTwoBean warnBean = (WarnTwoBean) getIntent().getSerializableExtra(Constants.BEAN);
                 replaceFragment(StockFindDetailFragment.newInstance(warnBean));
+                break;
+            case Constants.OUT_SALE_ADD_NEW:
+                ShipPlanBean outPlanAddBean = (ShipPlanBean) getIntent().getSerializableExtra(Constants.BEAN);
+                replaceFragment(OutSaleAddNewFragment.newInstance(outPlanAddBean));
                 break;
             case Constants.OUT_TRANSFER_ADD_NEW:
                 TransferUnCompleteBean outTransferAddBean = (TransferUnCompleteBean) getIntent().getSerializableExtra(Constants.BEAN);
