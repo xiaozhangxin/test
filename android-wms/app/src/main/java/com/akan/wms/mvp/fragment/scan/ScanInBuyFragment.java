@@ -131,12 +131,36 @@ public class ScanInBuyFragment extends BaseFragment<ISacnView, ScanPresenter> im
     public boolean onResultCallback(String result) {
         mCode = result;
 
-        if (BarVerificationList!=null &&BarVerificationList.size() > 0) {
+        if (BarVerificationList != null && BarVerificationList.size() > 0) {
             boolean isInList = false;
             for (int i = 0; i < BarVerificationList.size(); i++) {
-                if (result.equals(BarVerificationList.get(i).getItem_bar())) {
-                    isInList = true;
+                switch (type) {
+                    case "pro_return_in":
+                    case "pro_receive_out":
+                        if (result.equals(BarVerificationList.get(i).getBar_code())) {
+                            isInList = true;
+                        }
+                        break;
+
+                    case "in_buy_point"://采购入库(点收)
+                    case "pro_return_point"://生产退料(点收)
+                    case "pro_receive_point"://生产领料(点收)
+                    case "out_buy_add"://采购退货(新增)
+                    case "out_buy_detail"://采购退货(核定)
+                    case "out_sale_add"://销售出库(新增)
+                    case "in_transfer_add"://调拨入库(新增)
+                    case "out_transfer_add"://调拨出库(新增)
+                    case "finish_check"://成品入库(审核)
+                    case "finish_add"://成品入库(添加)
+                    case "in_buy_agree"://采购入库(同意入库)
+                    case "check_add":
+                    case "transfer_add":
+                        if (result.equals(BarVerificationList.get(i).getItem_bar())) {
+                            isInList = true;
+                        }
+                        break;
                 }
+
             }
             if (isInList) {
                 queryBar(result);

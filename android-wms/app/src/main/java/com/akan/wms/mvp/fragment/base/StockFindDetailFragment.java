@@ -1,6 +1,8 @@
 package com.akan.wms.mvp.fragment.base;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.akan.wms.R;
+import com.akan.wms.bean.StoragingProListBean;
 import com.akan.wms.bean.WarnTwoBean;
+import com.akan.wms.mvp.adapter.home.FinishListtAdapter;
+import com.akan.wms.mvp.adapter.home.NumListtAdapter;
 import com.akan.wms.mvp.base.SimpleFragment;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,8 +53,13 @@ public class StockFindDetailFragment extends SimpleFragment {
     TextView tvNine;
     @BindView(R.id.tvBottom)
     TextView tvBottom;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
     Unbinder unbinder;
     private WarnTwoBean mBean;
+
+    private List<WarnTwoBean.MfcStockBean> list;
+    private NumListtAdapter adapter;
 
     public static StockFindDetailFragment newInstance(WarnTwoBean bean) {
         Bundle args = new Bundle();
@@ -81,10 +93,24 @@ public class StockFindDetailFragment extends SimpleFragment {
             tvFive.setTextColor(getResources().getColor(R.color.colorPrimary));
         }*/
         tvFive.setText(mBean.getQty() + "");
+        List<WarnTwoBean.MfcStockBean> mfcStock = mBean.getMfcStock();
+        if (mfcStock!=null && mfcStock.size()>0){
+            recyclerView.setVisibility(View.VISIBLE);
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            adapter = new NumListtAdapter(context, mfcStock);
+            recyclerView.setAdapter(adapter);
+        }else {
+            recyclerView.setVisibility(View.GONE);
+        }
+
+
+
         tvSix.setText(mBean.getCeiling_qty() + "");
         tvSeven.setText(mBean.getFloor_qty() + "");
-       // tvEight.setText(mBean.getWh_time());
-       // tvNine.setText(mBean.getRemain_time());
+        // tvEight.setText(mBean.getWh_time());
+        // tvNine.setText(mBean.getRemain_time());
+
+
     }
 
     @Override

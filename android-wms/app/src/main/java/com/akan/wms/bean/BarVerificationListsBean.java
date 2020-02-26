@@ -20,6 +20,13 @@ public class BarVerificationListsBean implements Serializable {
     private String item_code;
     private String item_name;
     private String wh_id;
+    private String code_id;
+    private String info_id;
+    private String code;
+    private String name;
+    private String code_num;
+
+
 
     public int getOut_id() {
         return out_id;

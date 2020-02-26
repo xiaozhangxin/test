@@ -1,6 +1,9 @@
 package com.akan.wms.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class WarnTwoBean implements Serializable {
 
@@ -42,6 +45,8 @@ public class WarnTwoBean implements Serializable {
     private String status_name;
     private String remain_status;
     private String remain_status_name;
+    private List<MfcStockBean> mfcStock;
+
 
     public String getWarning_time() {
         return warning_time;
@@ -181,6 +186,58 @@ public class WarnTwoBean implements Serializable {
         this.remain_status_name = remain_status_name;
     }
 
+    public List<MfcStockBean> getMfcStock() {
+        return mfcStock;
+    }
+
+    public void setMfcStock(List<MfcStockBean> mfcStock) {
+        this.mfcStock = mfcStock;
+    }
 
 
+    public static class MfcStockBean implements Serializable{
+        /**
+         * mfc_id : 1001812180478196
+         * mfc_code : 99033
+         * mfc_name : 晓星 R200P
+         * qty : 3000
+         */
+
+        private long mfc_id;
+        private String mfc_code;
+        private String mfc_name;
+        private String qty;
+
+        public long getMfc_id() {
+            return mfc_id;
+        }
+
+        public void setMfc_id(long mfc_id) {
+            this.mfc_id = mfc_id;
+        }
+
+        public String getMfc_code() {
+            return mfc_code;
+        }
+
+        public void setMfc_code(String mfc_code) {
+            this.mfc_code = mfc_code;
+        }
+
+        public String getMfc_name() {
+            return mfc_name;
+        }
+
+        public void setMfc_name(String mfc_name) {
+            this.mfc_name = mfc_name;
+        }
+
+        public String getQtyX() {
+            return qty;
+        }
+
+        public void setQtyX(String qtyX) {
+            this.qty = qtyX;
+        }
+    }
 }
