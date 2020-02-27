@@ -1,6 +1,7 @@
 package com.akan.wms.mvp.fragment.in;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,8 +25,10 @@ import com.akan.wms.mvp.presenter.home.InSalePresenter;
 import com.akan.wms.mvp.view.home.IInSaleView;
 import com.akan.wms.util.SpSingleInstance;
 import com.akan.wms.util.ToastUtil;
+import com.akan.wms.view.CustomDialog;
 import com.akan.wms.view.DropDownView.DropDownMenu;
 import com.akan.wms.view.DropDownView.GirdDropDownAdapter;
+import com.akan.wms.view.SonnyJackDragView;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
@@ -69,6 +72,7 @@ public class InSaleReturnListFragment extends BaseFragment<IInSaleView, InSalePr
     private InSaleReturnListAdapter adapter;
     private int page = 1;
     private Map<String, String> map = new HashMap<>();
+    private Map<String, String> map1 = new HashMap<>();
     private UserBean userBean;
 
 
@@ -127,6 +131,23 @@ public class InSaleReturnListFragment extends BaseFragment<IInSaleView, InSalePr
                 refresh();
             }
         });
+
+
+        //悬浮可拖动按钮
+        ImageView imageView = new ImageView(getActivity());
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setImageResource(R.drawable.sync);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getPresenter().syncPlan(userBean.getStaff_token(), map1);
+            }
+        });
+        SonnyJackDragView build = new SonnyJackDragView.Builder()
+                .setActivity(getActivity())
+                .setNeedNearEdge(false)
+                .setView(imageView)
+                .build();
     }
 
     @Override
@@ -368,6 +389,20 @@ public class InSaleReturnListFragment extends BaseFragment<IInSaleView, InSalePr
     @Override
     public void OnWhSaleRcv(String data) {
 
+    }
+
+    @Override
+    public void onSyncPlan(String data) {
+        final CustomDialog.Builder builder = new CustomDialog.Builder(context);
+        builder.setTitle(getString(R.string.point));
+        builder.setMessage(getString(R.string.sync_success));
+        builder.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.onCreate().show();
     }
 
 

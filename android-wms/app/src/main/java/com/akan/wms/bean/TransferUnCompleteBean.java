@@ -246,9 +246,9 @@ public class TransferUnCompleteBean implements Serializable{
         private String id;
         private String apply_id;
         private String item_id;
-        private int apply_qty;
-        private int out_qty;
-        private int in_qty;
+        private double apply_qty;
+        private double out_qty;
+        private double in_qty;
         private int status;
         private String update_time;
         private String out_wh;
@@ -331,15 +331,15 @@ public class TransferUnCompleteBean implements Serializable{
             this.item_id = item_id;
         }
 
-        public int getApply_qty() {
+        public double getApply_qty() {
             return apply_qty;
         }
 
-        public void setApply_qty(int apply_qty) {
+        public void setApply_qty(double apply_qty) {
             this.apply_qty = apply_qty;
         }
 
-        public int getOut_qty() {
+        public double getOut_qty() {
             return out_qty;
         }
 
@@ -347,7 +347,7 @@ public class TransferUnCompleteBean implements Serializable{
             this.out_qty = out_qty;
         }
 
-        public int getIn_qty() {
+        public double getIn_qty() {
             return in_qty;
         }
 

@@ -12,4 +12,5 @@ public interface IInSaleView extends BaseView{
 
     void OnWhSaleRcv(String data);
 
+    void onSyncPlan(String data);
 }

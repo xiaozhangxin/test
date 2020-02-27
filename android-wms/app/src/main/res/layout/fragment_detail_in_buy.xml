@@ -8,8 +8,8 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:focusableInTouchMode="true"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,6 +17,7 @@
             android:orientation="vertical">
 
             <include layout="@layout/top_status_four" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,8 +47,8 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="10dp"
                     android:orientation="horizontal"
-                    android:paddingBottom="12dp"
-                    android:paddingTop="12dp">
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -66,6 +67,40 @@
                 </LinearLayout>
 
                 <View
+                    android:id="@+id/lineU9"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:visibility="gone"
+                    android:background="@color/colorActivityBackground" />
+
+                <LinearLayout
+                    android:id="@+id/llU9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal"
+                    android:paddingTop="12dp"
+                    android:visibility="gone"
+                    android:paddingBottom="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="U9单号"
+                        android:textColor="@color/colorTextG6"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvU9No"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:textColor="@color/colorTextG3"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorActivityBackground" />
@@ -76,8 +111,8 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="10dp"
                     android:orientation="horizontal"
-                    android:paddingBottom="12dp"
-                    android:paddingTop="12dp">
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -106,8 +141,8 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="10dp"
                     android:orientation="horizontal"
-                    android:paddingBottom="12dp"
-                    android:paddingTop="12dp">
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -134,8 +169,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginTop="12dp"
+                    android:layout_marginRight="10dp"
                     android:orientation="horizontal"
                     android:paddingBottom="12dp">
 
@@ -164,8 +199,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginTop="12dp"
+                    android:layout_marginRight="10dp"
                     android:orientation="horizontal"
                     android:paddingBottom="12dp">
 
@@ -226,9 +261,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
                     android:layout_marginTop="12dp"
-                    android:layout_marginBottom="16dp"/>
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="16dp" />
             </LinearLayout>
 
             <View

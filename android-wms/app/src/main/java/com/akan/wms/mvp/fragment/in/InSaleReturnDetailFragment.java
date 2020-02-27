@@ -194,6 +194,11 @@ public class InSaleReturnDetailFragment extends BaseFragment<IInSaleView, InSale
         getData();
     }
 
+    @Override
+    public void onSyncPlan(String data) {
+
+    }
+
 
     //更新顶部状态
     private void updateState(String mState) {

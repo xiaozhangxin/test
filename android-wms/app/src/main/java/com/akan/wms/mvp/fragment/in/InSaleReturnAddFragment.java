@@ -338,5 +338,10 @@ public class InSaleReturnAddFragment  extends BaseFragment<IInSaleView, InSalePr
 
     }
 
+    @Override
+    public void onSyncPlan(String data) {
+
+    }
+
 
 }

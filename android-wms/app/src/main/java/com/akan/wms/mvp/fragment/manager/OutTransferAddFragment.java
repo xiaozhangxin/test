@@ -407,7 +407,7 @@ public class OutTransferAddFragment extends BaseFragment<IOutTransferView, OutTr
                 scanBean.setItem_id(detail.getItem_id());
                 scanBean.setItem_spec(detail.getItem_spec());
                 scanBean.setItem_name(detail.getItem_name());
-                scanBean.setSend_qty(detail.getApply_qty());
+                scanBean.setSend_qty((int) detail.getApply_qty());
                 scanBean.setArrive_qty(detail.getPoint_qty());
                 scanBean.setBarList(item.getBarList());//历史条码
                 scanList.add(scanBean);

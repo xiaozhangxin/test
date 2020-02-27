@@ -36,7 +36,7 @@ public class ChooseTransferOutAdapter extends RecyclerArrayAdapter<TransferOutBe
         public void setData(TransferOutBean data) {
             super.setData(data);
             tvNo.setText("调出组织:"+data.getOut_org_name());
-            tvtittle.setText(data.getDoc_no());
+            tvtittle.setText(data.getDoc_no()+"\n申请单单号："+data.getApply_no());
         }
     }
 

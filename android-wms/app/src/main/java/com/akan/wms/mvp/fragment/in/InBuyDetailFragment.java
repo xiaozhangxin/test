@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.akan.wms.R;
@@ -108,6 +109,12 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
     RecyclerView recyclerView;
     @BindView(R.id.recordRecyclerView)
     RecyclerView recordRecyclerView;
+    @BindView(R.id.lineU9)
+    View lineU9;
+    @BindView(R.id.llU9)
+    LinearLayout llU9;
+    @BindView(R.id.tvU9No)
+    TextView tvU9No;
 
     private List<RecordsBean> listRecord;
     private RecordAdapter adapterRecord;
@@ -472,12 +479,12 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
         List<PurchasesBean> allData = adapter.getAllData();
         List<BarListBean> mBarList = new ArrayList<>();
         for (int i = 0; i < allData.size(); i++) {
-            String wh_id="";
+            String wh_id = "";
             PurchasesBean purchasesBean = allData.get(i);
             String pur_id = purchasesBean.getPur_id();
             List<SupplierReceivesBeanDetail> receives = purchasesBean.getSupplier_receives();
             if (receives.size() > 0) {
-                 wh_id = receives.get(0).getWh_id();
+                wh_id = receives.get(0).getWh_id();
             }
             List<BarBean> barList = allData.get(i).getBarList();
             if (barList == null || barList.size() <= 0) {
@@ -587,7 +594,7 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
                         scanBean.setBarList(adapterItem.getBarList());//历史条码
                         scanList.add(scanBean);
                     }
-                    startInBuyScanFragment(scanList, type,new ArrayList<BarVerificationListsBean>());
+                    startInBuyScanFragment(scanList, type, new ArrayList<BarVerificationListsBean>());
                     break;
                 case "in_buy_agree":
                     PurchasesBean adapterItemTwo = adapter.getItem(mScanPosition);
@@ -607,7 +614,7 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
                         scanListTwo.add(scanBean);
 
                     }
-                    startInBuyScanFragment(scanListTwo, type,new ArrayList<BarVerificationListsBean>());
+                    startInBuyScanFragment(scanListTwo, type, new ArrayList<BarVerificationListsBean>());
                     break;
 
 
