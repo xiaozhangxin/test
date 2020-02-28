@@ -399,7 +399,7 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
         for (int i = 0; i < allData.size(); i++) {
             StoragingProBean.StoragingProLinesBean linesBean = allData.get(i);
 
-            if (linesBean.getWh_qty() > linesBean.getCheck_qty()) {
+            if (linesBean.getQualify_qty() != linesBean.getCheck_qty()) {
                 showNotDialog(linesBean.getItem_name());
                 return;
             }
@@ -437,7 +437,7 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
     private void showNotDialog(String result) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("提示");
-        builder.setMessage("料品（" + result + "）扫码数量小于入库数量,请扫码");
+        builder.setMessage("料品（" + result + "）扫码数量不等于入库数量,请扫码");
         builder.setCancelable(false);
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
