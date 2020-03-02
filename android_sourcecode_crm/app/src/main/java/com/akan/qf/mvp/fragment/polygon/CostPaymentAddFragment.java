@@ -161,7 +161,7 @@ public class CostPaymentAddFragment extends BaseFragment<IADManagementView, ADMa
                 });
                 break;
             case "1":
-                tvTitle.setText("修改推广广告");
+                tvTitle.setText("修改费用付款");
                 ok.setText("确认修改");
 
                 ArrayList<FileListNewBean> fileList = new ArrayList<>();

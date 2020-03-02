@@ -33,13 +33,13 @@ android {
         release {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('E:\\MyProject\\android_sourcecode_crm\\app\\akan.jks')
+            storeFile file('E:\\AndroidStudioProjects\\NEWTWO\\test\\android_sourcecode_crm\\app\\akan.jks')
             storePassword '123456'
         }
         debug {
             keyAlias 'key0'
             keyPassword '123456'
-            storeFile file('E:\\MyProject\\android_sourcecode_crm\\app\\akan.jks')
+            storeFile file('E:\\AndroidStudioProjects\\NEWTWO\\test\\android_sourcecode_crm\\app\\akan.jks')
             storePassword '123456'
         }
     }

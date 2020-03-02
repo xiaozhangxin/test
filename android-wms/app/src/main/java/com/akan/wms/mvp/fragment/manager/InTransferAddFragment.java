@@ -261,8 +261,8 @@ public class InTransferAddFragment extends BaseFragment<IInTransferView, InTrans
             mBean.setOut_line_id(lineBeanListBean.getId());
             mBean.setItem_id(lineBeanListBean.getItem_id());
             mBean.setQty(lineBeanListBean.getPoint_qty() + "");
-            mBean.setWh_id(lineBeanListBean.getWh_id() );
-            mBean.setWh_name(lineBeanListBean.getWh_name() );
+            mBean.setWh_id(lineBeanListBean.getIn_wh() );
+            mBean.setWh_name(lineBeanListBean.getIn_wh_name() );
             mList.add(mBean);
             for (int m = 0; m < barList.size(); m++) {
                 BarBean barBean = barList.get(m);

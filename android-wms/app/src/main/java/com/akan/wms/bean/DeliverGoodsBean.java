@@ -40,6 +40,16 @@ public class DeliverGoodsBean implements Serializable {
     private String creator_id;
     private String creator_name;
     private String doc_no;
+    private String u9_code;
+
+    public String getU9_code() {
+        return u9_code;
+    }
+
+    public void setU9_code(String u9_code) {
+        this.u9_code = u9_code;
+    }
+
     private List<PurchasesBean> purchases;
     private List<RecordsBean> recordsBeans;
 

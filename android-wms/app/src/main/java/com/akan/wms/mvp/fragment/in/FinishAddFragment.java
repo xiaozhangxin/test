@@ -162,7 +162,7 @@ public class FinishAddFragment extends BaseFragment<IFinishView, FinishPresenter
             scanBean.setItem_id(detail.getItem_id());
             scanBean.setItem_name(detail.getItem_name());
             scanBean.setItem_spec(detail.getItem_spec());
-            scanBean.setSend_qty((int)detail.getQualified_qty());//可入库数量
+            scanBean.setSend_qty((int)detail.getComplete_qty());//可入库数量
             scanBean.setArrive_qty(detail.getSend_qty());//扫码入库数量
             scanBean.setBarList(detail.getBarList());//历史条码
             scanList.add(scanBean);

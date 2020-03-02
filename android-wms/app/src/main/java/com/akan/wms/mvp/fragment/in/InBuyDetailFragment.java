@@ -241,6 +241,18 @@ public class InBuyDetailFragment extends BaseFragment<IInBuyView, InBuyPresenter
         LoadingUtil.closeDialog(loading);
         mBean = data;
         updateState(data.getStatus());
+
+        if (TextUtils.isEmpty(data.getU9_code())){
+            lineU9.setVisibility(View.GONE);
+            llU9.setVisibility(View.GONE);
+            tvU9No.setVisibility(View.GONE);
+        }else {
+            lineU9.setVisibility(View.VISIBLE);
+            llU9.setVisibility(View.VISIBLE);
+            tvU9No.setVisibility(View.VISIBLE);
+            tvU9No.setText(data.getU9_code());
+        }
+
         tvOne.setText(data.getDoc_no());
         tvTwo.setText(data.getCreator_name());
         tvThree.setText(data.getSend_time());

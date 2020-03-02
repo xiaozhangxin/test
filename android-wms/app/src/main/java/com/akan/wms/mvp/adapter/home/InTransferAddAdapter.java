@@ -91,7 +91,7 @@ public class InTransferAddAdapter extends RecyclerArrayAdapter<TransferOutBean> 
                         }
                     });*/
                     TextView tvDeport = holder.getView(R.id.tvFour);
-                    tvDeport.setText(bean.getWh_name());
+                    tvDeport.setText(bean.getIn_wh_name());
                     tvDeport.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

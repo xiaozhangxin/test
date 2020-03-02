@@ -11,11 +11,6 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.1'
-        // classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
-        //classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        //classpath 'com.tencent.tinker:tinker-patch-gradle-plugin:1.7.7'
-        // classpath "com.tencent.bugly:tinker-support:latest.release"
-
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
 
@@ -27,11 +22,9 @@ buildscript {
 allprojects {
     repositories {
         google()
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url "https://maven.google.com" }
-        maven { url 'https://dl.bintray.com/jenly/maven' }
-        maven { url "https://jitpack.io" }
         jcenter()
+        maven { url "https://maven.google.com" }
+        maven { url "https://jitpack.io" }
 
     }
 }

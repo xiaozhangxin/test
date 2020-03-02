@@ -330,8 +330,29 @@ public class TransferOutBean implements Serializable {
         private String item_code;
         private String item_spec;
         private String item_bar;
+        private String in_wh;
+        private String in_wh_name;
+
+
+
         private int apply_qty;
         private boolean isCheck;
+
+        public String getIn_wh() {
+            return in_wh;
+        }
+
+        public void setIn_wh(String in_wh) {
+            this.in_wh = in_wh;
+        }
+
+        public String getIn_wh_name() {
+            return in_wh_name;
+        }
+
+        public void setIn_wh_name(String in_wh_name) {
+            this.in_wh_name = in_wh_name;
+        }
 
         public int getPoint_qty() {
             return point_qty;

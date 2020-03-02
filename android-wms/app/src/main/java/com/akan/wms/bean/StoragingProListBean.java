@@ -39,8 +39,8 @@ public class StoragingProListBean implements Serializable {
     private String report_name;
     private String bar_code;
     private String remark;
-    private int is_valid;
-    private int is_delete;
+    private String is_valid;
+    private String is_delete;
     private String create_time;
     private Object update_time;
     private List<StoragingProLinesBean> storaging_pro_lines;
@@ -133,19 +133,19 @@ public class StoragingProListBean implements Serializable {
         this.remark = remark;
     }
 
-    public int getIs_valid() {
+    public String getIs_valid() {
         return is_valid;
     }
 
-    public void setIs_valid(int is_valid) {
+    public void setIs_valid(String is_valid) {
         this.is_valid = is_valid;
     }
 
-    public int getIs_delete() {
+    public String getIs_delete() {
         return is_delete;
     }
 
-    public void setIs_delete(int is_delete) {
+    public void setIs_delete(String is_delete) {
         this.is_delete = is_delete;
     }
 
