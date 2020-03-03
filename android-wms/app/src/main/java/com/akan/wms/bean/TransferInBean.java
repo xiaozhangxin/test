@@ -51,7 +51,17 @@ public class TransferInBean implements Serializable{
     private String doc_no;
     private String u9_id;
     private String u9_code;
+    private String out_u9_code;
     private String apply_id;
+
+    public String getOut_u9_code() {
+        return out_u9_code;
+    }
+
+    public void setOut_u9_code(String out_u9_code) {
+        this.out_u9_code = out_u9_code;
+    }
+
     private String apply_no;
     private String out_id;
 

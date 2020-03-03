@@ -51,6 +51,16 @@ public class TransferOutBean implements Serializable {
     private String doc_no;
     private String u9_id;
     private String u9_code;
+    private String out_u9_code;
+
+    public String getOut_u9_code() {
+        return out_u9_code;
+    }
+
+    public void setOut_u9_code(String out_u9_code) {
+        this.out_u9_code = out_u9_code;
+    }
+
     private long org_id;
     private long apply_id;
     private String apply_no;

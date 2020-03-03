@@ -396,6 +396,7 @@ public class InTransferAddFragment extends BaseFragment<IInTransferView, InTrans
                 tvAddTwo.setText(bean.getIn_org_name());
                 mChooseBean.setLineBeanList(bean.getLineBeanList());
                 mChooseBean.setDoc_no(bean.getDoc_no());
+                mChooseBean.setApply_no(bean.getApply_no());
                 mChooseBean.setBarBeanList(bean.getBarBeanList());
                 mChooseBean.setDoc_type_name(bean.getDoc_type_name());
                 List<TransferOutBean.LineBeanListBean> list = new ArrayList<>();

@@ -157,7 +157,7 @@ public class InTransferDetailFragment extends BaseFragment<IInTransferView, InTr
         tvAddOne.setText(data.getOut_org_name());
         tvAddTwo.setText(data.getIn_org_name());
         tvSeven.setText(data.getRemark());
-        tvTittle.setText("调出单：" +data.getOut_no()+"\n申请单单号："+data.getApply_no()+"\nU9单号："+data.getU9_code());
+        tvTittle.setText("调出单：" +data.getDoc_no()+"\n申请单号："+data.getApply_no()+"\n调出仓单号："+data.getOut_u9_code());
         adapter.clear();
         adapter.addAll(data.getLineBeanList());
         adapter.notifyDataSetChanged();
