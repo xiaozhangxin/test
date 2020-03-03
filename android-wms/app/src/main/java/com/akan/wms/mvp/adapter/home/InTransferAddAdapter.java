@@ -46,7 +46,7 @@ public class InTransferAddAdapter extends RecyclerArrayAdapter<TransferOutBean> 
         @Override
         public void setData(TransferOutBean data) {
             super.setData(data);
-            tvTittle.setText("调拨出库申请单  " + data.getDoc_no());
+            tvTittle.setText("调拨出库申请单：" +data.getDoc_no()+"\n申请单单号："+data.getApply_no()+"\nU9单号："+data.getU9_code());
             tvDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

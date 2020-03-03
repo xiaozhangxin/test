@@ -52,7 +52,17 @@ public class TransferInBean implements Serializable{
     private String u9_id;
     private String u9_code;
     private String apply_id;
+    private String apply_no;
     private String out_id;
+
+    public String getApply_no() {
+        return apply_no;
+    }
+
+    public void setApply_no(String apply_no) {
+        this.apply_no = apply_no;
+    }
+
     private String out_no;
     private String out_org_id;
     private String out_org_name;
