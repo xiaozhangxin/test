@@ -145,7 +145,7 @@ public class ChooseTransferOutFragment extends BaseFragment<IOutTransferView, Ou
 
     private void refresh() {
         map.put("org_id", userBean.getOrg_id());
-        map.put("doc_type_name", type);
+        //map.put("doc_type_name", type);
         map.put("doc_no", etSearch.getText().toString());
         map.put("page", page + "");
         getPresenter().queryTransferOutPage(userBean.getStaff_token(), map);
