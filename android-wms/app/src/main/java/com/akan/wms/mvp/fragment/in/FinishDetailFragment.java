@@ -319,6 +319,11 @@ public class FinishDetailFragment extends BaseFragment<IFinishView, FinishPresen
         for (int i = 0; i < allData.size(); i++) {
             StoragingProBean.StoragingProLinesBean linesBean = allData.get(i);
 
+            if (linesBean.getQualify_qty() == 0) {
+				ToastUtil.showToast(context.getApplicationContext(), "请输入合格数量！");
+				return;
+			}
+
             FinishNumBean numBean = new FinishNumBean();
             numBean.setId(linesBean.getId());
             numBean.setQualify_qty(linesBean.getQualify_qty()+"");
