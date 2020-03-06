@@ -44,6 +44,16 @@ public class RtnLinesBean implements Serializable {
     private String item_bar;
     private String mfc;
     private String mfc_name;
+    private String mfc_code;
+
+    public String getMfc_code() {
+        return mfc_code;
+    }
+
+    public void setMfc_code(String mfc_code) {
+        this.mfc_code = mfc_code;
+    }
+
     private int status;
 
     public String getMfc() {

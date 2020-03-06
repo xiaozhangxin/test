@@ -269,6 +269,9 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
                 mChildBean.setWh_name(linesBean.getWh_name());
                 mChildBean.setItem_id(linesBean.getItem_id());
                 mChildBean.setItem_code(linesBean.getItem_code());
+                mChildBean.setMfc(linesBean.getMfc());
+                mChildBean.setMfc_code(linesBean.getMfc_code());
+                mChildBean.setMfc_name(linesBean.getMfc_name());
                 mChilList.add(mChildBean);
 
             }
