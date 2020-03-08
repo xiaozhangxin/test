@@ -108,6 +108,13 @@ public class OutBuyReturnAddAdapter extends RecyclerArrayAdapter<OutSaleRtuBean>
                             onStockListener.onChooseMfc(getDataPosition(), position, bean.getItem_id());
                         }
                     });
+                    holder.<TextView>getView(R.id.tvPeople).setText(bean.getWh_manager() + "");
+                    holder.<TextView>getView(R.id.tvPeople).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            onStockListener.onChooseWhMAnager(getDataPosition(), position);
+                        }
+                    });
 
                 }
             });
@@ -122,7 +129,10 @@ public class OutBuyReturnAddAdapter extends RecyclerArrayAdapter<OutSaleRtuBean>
         void onScan(int position);
 
         void onChooseDeport(int position, int childPositon);
-        void onChooseMfc(int position, int childPositon,String item_id);
+
+        void onChooseWhMAnager(int position, int childPositon);
+
+        void onChooseMfc(int position, int childPositon, String item_id);
 
         void onDelete(int position);
 

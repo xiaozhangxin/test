@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
     android:background="@color/white"
     android:orientation="vertical"
-    android:paddingBottom="8dp"
     android:paddingLeft="8dp"
-    android:layout_marginTop="10dp"
-    android:paddingRight="8dp">
+    android:paddingRight="8dp"
+    android:paddingBottom="8dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,8 +18,8 @@
             android:id="@+id/tvNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
             android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
             android:text="料品管理"
             android:textColor="@color/colorTextG3"
             android:textSize="14sp"
@@ -96,7 +96,9 @@
             android:gravity="center"
             android:text="所在仓库"
             android:textColor="@color/colorTextG3"
-            android:textSize="13sp" />    <View
+            android:textSize="13sp" />
+
+        <View
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
             android:background="@color/colorActivityBackgroundTwo" />
@@ -107,6 +109,20 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="厂牌"
+            android:textColor="@color/colorTextG3"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorActivityBackgroundTwo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="库管员"
             android:textColor="@color/colorTextG3"
             android:textSize="13sp" />
 

@@ -57,7 +57,7 @@ public class OutBuyReturnDetailAdapter extends RecyclerArrayAdapter<RtnedLinesBe
             }else {tvScan.setVisibility(View.GONE);}
             tvNo.setText("退货申请单  " +data.getDoc_no());
             childRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            childRecyclerView.setAdapter(new CommonAdapter<RtnedLinesBean.RtnedGodsLinesBean>(getContext(), R.layout.item_child_goods_detail_public, data.getRtned_gods_lines()) {
+            childRecyclerView.setAdapter(new CommonAdapter<RtnedLinesBean.RtnedGodsLinesBean>(getContext(), R.layout.item_child_goods_detail_public_new, data.getRtned_gods_lines()) {
                 @Override
                 protected void convert(com.zhy.adapter.recyclerview.base.ViewHolder holder, RtnedLinesBean.RtnedGodsLinesBean bean, final int position) {
                     if (TextUtils.isEmpty(bean.getItem_spec())) {
@@ -69,6 +69,7 @@ public class OutBuyReturnDetailAdapter extends RecyclerArrayAdapter<RtnedLinesBe
                     holder.<TextView>getView(R.id.tvThree).setText(bean.getAlloc_qty() + "");
                     holder.<TextView>getView(R.id.tvFour).setText(bean.getWh_name().toString() );
                     holder.<TextView>getView(R.id.tvMfc).setText(bean.getMfc_name());
+                    holder.<TextView>getView(R.id.tvPeople).setText(bean.getWh_manager());
 
                 }
             });

@@ -24,6 +24,7 @@ import com.akan.wms.bean.BarListBean;
 import com.akan.wms.bean.BarVerificationListsBean;
 import com.akan.wms.bean.FirstEvent;
 import com.akan.wms.bean.MfcBean;
+import com.akan.wms.bean.OperatorBean;
 import com.akan.wms.bean.OutSaleRtuBean;
 import com.akan.wms.bean.RtnLinesBean;
 import com.akan.wms.bean.RtnedGoodsBean;
@@ -92,6 +93,8 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
     private UserBean userBean;
     private int mPosition;
     private int mChildPosition;
+    private int mManagerPosition;
+    private int mManagerChildPosition;
     private int mDeletePosition;
     private int mMfcPosition;
     private int mMfcChildPosition;
@@ -138,6 +141,14 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
                 mPosition = position;
                 mChildPosition = childPositon;
                 startChooseDeportFragment();
+            }
+
+            @Override
+            public void onChooseWhMAnager(int position, int childPositon) {
+                //选择库管员
+                mManagerPosition = position;
+                mManagerChildPosition = childPositon;
+                startProduceChooseFragment("2");
             }
 
             @Override
@@ -241,12 +252,12 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
         List<BarListBean> mBarList = new ArrayList<>();//条码列表
 
         for (int i = 0; i < allData.size(); i++) {
-            String wh_id="";
+            String wh_id = "";
             OutSaleRtuBean shipPlanBean = allData.get(i);
             AddBuyRturnGoodsBean.RtnedLinesBean mBean = new AddBuyRturnGoodsBean.RtnedLinesBean();//退货bean
             List<RtnLinesBean> rtnLines = shipPlanBean.getRtn_lines();
-            if (rtnLines.size()>0){
-                wh_id=rtnLines.get(0).getWh_id();
+            if (rtnLines.size() > 0) {
+                wh_id = rtnLines.get(0).getWh_id();
             }
 
             ArrayList<AddBuyRturnGoodsBean.RtnedLinesBean.RtnedGodsLinesBean> mChilList = new ArrayList<>();
@@ -272,6 +283,7 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
                 mChildBean.setMfc(linesBean.getMfc());
                 mChildBean.setMfc_code(linesBean.getMfc_code());
                 mChildBean.setMfc_name(linesBean.getMfc_name());
+                mChildBean.setWh_manager_id(linesBean.getWh_manager_id());
                 mChilList.add(mChildBean);
 
             }
@@ -348,7 +360,7 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
                 scanBean.setBarList(item.getBarList());//历史条码
                 scanList.add(scanBean);
             }
-            startInBuyScanFragment(scanList, type,new ArrayList<BarVerificationListsBean>());
+            startInBuyScanFragment(scanList, type, new ArrayList<BarVerificationListsBean>());
 
         } else {
             EasyPermissions.requestPermissions(this, getString(R.string.permission_camera), RC_CAMERA, perms);
@@ -451,6 +463,12 @@ public class OutBuyReturnAddFragment extends BaseFragment<IOutBuyReturnView, Out
             case "24":
                 List<BarBean> barBeanList = event.getmScanListBean().getList();
                 adapter.getItem(mScanPosition).setBarList(barBeanList);
+                break;
+            case "9"://选择库管员
+                OperatorBean operatorBean = event.getmOperatorBean();
+                adapter.getItem(mManagerPosition).getRtn_lines().get(mManagerChildPosition).setWh_manager(operatorBean.getOperator_name());
+                adapter.getItem(mManagerPosition).getRtn_lines().get(mManagerChildPosition).setWh_manager_id(operatorBean.getOperator_code());
+                adapter.notifyDataSetChanged();
                 break;
 
         }
