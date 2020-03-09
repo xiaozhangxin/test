@@ -71,14 +71,23 @@ public class AddBuyRturnGoodsBean implements Serializable {
             private String mfc_code;
             private String mfc_name;
             private String mfc;
-            private String wh_manager_id;
+            private String Wh_staff_id;
+            private String Wh_staff_name;
 
-            public String getWh_manager_id() {
-                return wh_manager_id;
+            public String getWh_staff_id() {
+                return Wh_staff_id;
             }
 
-            public void setWh_manager_id(String wh_manager_id) {
-                this.wh_manager_id = wh_manager_id;
+            public void setWh_staff_id(String wh_staff_id) {
+                Wh_staff_id = wh_staff_id;
+            }
+
+            public String getWh_staff_name() {
+                return Wh_staff_name;
+            }
+
+            public void setWh_staff_name(String wh_staff_name) {
+                Wh_staff_name = wh_staff_name;
             }
 
             public String getMfc_code() {

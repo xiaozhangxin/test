@@ -102,14 +102,23 @@ public class RtnedLinesBean implements Serializable{
         private Object org_name;
         private Object bar_code;
         private String description;
-        private String wh_manager;
+        private String wh_staff_id;
+        private String wh_staff_name;
 
-        public String getWh_manager() {
-            return wh_manager;
+        public String getWh_staff_id() {
+            return wh_staff_id;
         }
 
-        public void setWh_manager(String wh_manager) {
-            this.wh_manager = wh_manager;
+        public void setWh_staff_id(String wh_staff_id) {
+            this.wh_staff_id = wh_staff_id;
+        }
+
+        public String getWh_staff_name() {
+            return wh_staff_name;
+        }
+
+        public void setWh_staff_name(String wh_staff_name) {
+            this.wh_staff_name = wh_staff_name;
         }
 
         public int getCheck_qty() {

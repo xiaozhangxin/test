@@ -8,6 +8,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -248,10 +249,6 @@ public class OutBuyReturnDetailFragment extends BaseFragment<IOutBuyReturnView, 
                 PastRtnedGoodsBean.RtnedLinesBean.RtnedGodsLinesBean rtnedGodsLinesBean = new PastRtnedGoodsBean.RtnedLinesBean.RtnedGodsLinesBean();
                 rtnedGodsLinesBean.setId(mRtnedGodsLinesBean.getId());
                 rtnedGodsLinesBean.setItem_id(mRtnedGodsLinesBean.getItem_id());
-                if (TextUtils.isEmpty(mRtnedGodsLinesBean.getWh_id())){
-                    ToastUtil.showToast(context.getApplicationContext(),"没有库管员");
-                    return;
-                }
                 rtnedGodsLinesBean.setWh_id(mRtnedGodsLinesBean.getWh_id());
                 rtnedGodsLinesBean.setWh_name(mRtnedGodsLinesBean.getWh_name().toString());
                 rtnedGodsLinesBean.setAlloc_qty(mRtnedGodsLinesBean.getAlloc_qty()+"");

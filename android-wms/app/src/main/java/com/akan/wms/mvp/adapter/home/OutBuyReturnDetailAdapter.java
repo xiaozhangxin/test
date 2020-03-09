@@ -69,7 +69,7 @@ public class OutBuyReturnDetailAdapter extends RecyclerArrayAdapter<RtnedLinesBe
                     holder.<TextView>getView(R.id.tvThree).setText(bean.getAlloc_qty() + "");
                     holder.<TextView>getView(R.id.tvFour).setText(bean.getWh_name().toString() );
                     holder.<TextView>getView(R.id.tvMfc).setText(bean.getMfc_name());
-                    holder.<TextView>getView(R.id.tvPeople).setText(bean.getWh_manager());
+                    holder.<TextView>getView(R.id.tvPeople).setText(bean.getWh_staff_name());
 
                 }
             });
